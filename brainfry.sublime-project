@@ -1,0 +1,28 @@
+{
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				"*.map",
+				".stylelintcache",
+				".terraform.lock.hcl"
+			],
+			"folder_exclude_patterns":
+			[
+				".angular",
+				".terraform",
+				".vscode",
+				"coverage",
+				"dist",
+				"documentation",
+				"node_modules"
+			],
+			"path": "."
+		}
+	],
+	"settings":
+	{
+		"tab_size": 2
+	}
+}
