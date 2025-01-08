@@ -2,8 +2,8 @@
 resource "google_project" "default" {
   provider = google-beta.no_user_project_override
 
-  name            = var.project_name
-  project_id      = var.project_id
+  name       = var.project_name
+  project_id = var.project_id
 
   # Associates the project with a Cloud Billing account (required for Firebase Authentication with GCIP).
   billing_account = var.billing_account
@@ -59,7 +59,7 @@ resource "google_firebase_project" "default" {
   # Use the provider that performs quota checks from now on
   provider = google-beta
 
-  project  = google_project.default.project_id
+  project = google_project.default.project_id
 
   # Waits for the required APIs to be enabled.
   depends_on = [

@@ -18,13 +18,13 @@ resource "google_identity_platform_config" "auth" {
   # Configures local sign-in methods, like anonymous, email/password, and phone authentication.
   sign_in {
     email {
-      enabled = true
+      enabled           = true
       password_required = true
     }
 
     # Google's response always includes this, so adding it keeps terraform plan from reporting a change.
     phone_number {
-      enabled = false
+      enabled            = false
       test_phone_numbers = {}
     }
   }

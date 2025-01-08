@@ -13,10 +13,10 @@ resource "google_billing_budget" "budget" {
   provider = google-beta
 
   billing_account = var.billing_account
-  display_name = "Budget For ${var.project_name}"
+  display_name    = "Budget For ${var.project_name}"
 
   budget_filter {
-    projects = ["projects/${google_project.default.number}"]
+    projects               = ["projects/${google_project.default.number}"]
     credit_types_treatment = "EXCLUDE_ALL_CREDITS"
   }
 
@@ -27,7 +27,7 @@ resource "google_billing_budget" "budget" {
   }
 
   threshold_rules {
-    threshold_percent =  0.5
+    threshold_percent = 0.5
   }
 
   all_updates_rule {

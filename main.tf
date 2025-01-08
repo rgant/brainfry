@@ -1,5 +1,7 @@
 # tflint-ignore-file: terraform_standard_module_structure
 # Create the Firebase infrastructure for project
+# `./infrastructure` is a Terraform module to keep things tidy.
+# Attempting to have only `main.tf` file in the root for cleanliness.
 
 terraform {
   required_version = ">= 1.0"
@@ -10,8 +12,8 @@ terraform {
 module "brainfry" {
   source = "./infrastructure"
 
-  project_name = var.project_name
-  project_id = var.project_id
+  project_name    = var.project_name
+  project_id      = var.project_id
   billing_account = var.billing_account
 }
 

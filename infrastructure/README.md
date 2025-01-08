@@ -22,14 +22,12 @@ And these repositories:
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_google"></a> [google](#requirement\_google) | >= 6.15 |
 | <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | >= 6.15.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | >= 6.15 |
 | <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | >= 6.15.0 |
 | <a name="provider_google-beta.no_user_project_override"></a> [google-beta.no\_user\_project\_override](#provider\_google-beta.no\_user\_project\_override) | >= 6.15.0 |
 
@@ -41,6 +39,7 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [google-beta_google_billing_budget.budget](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_billing_budget) | resource |
 | [google-beta_google_firebase_project.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebase_project) | resource |
 | [google-beta_google_firebase_web_app.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebase_web_app) | resource |
 | [google-beta_google_identity_platform_config.auth](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_identity_platform_config) | resource |
@@ -50,7 +49,6 @@ No modules.
 | [google-beta_google_project_service.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
 | [google-beta_google_project_service.firebase](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
 | [google-beta_google_project_service.serviceusage](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
-| [google_billing_budget.budget](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/billing_budget) | resource |
 
 ## Inputs
 
