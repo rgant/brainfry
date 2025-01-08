@@ -23,6 +23,7 @@ And these repositories:
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
 | <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | >= 6.15.0 |
+| <a name="requirement_time"></a> [time](#requirement\_time) | 0.12.1 |
 
 ## Providers
 
@@ -30,6 +31,7 @@ And these repositories:
 |------|---------|
 | <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | >= 6.15.0 |
 | <a name="provider_google-beta.no_user_project_override"></a> [google-beta.no\_user\_project\_override](#provider\_google-beta.no\_user\_project\_override) | >= 6.15.0 |
+| <a name="provider_time"></a> [time](#provider\_time) | 0.12.1 |
 
 ## Modules
 
@@ -39,16 +41,29 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [google-beta_google_app_engine_application.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_app_engine_application) | resource |
 | [google-beta_google_billing_budget.budget](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_billing_budget) | resource |
+| [google-beta_google_firebase_app_check_recaptcha_enterprise_config.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebase_app_check_recaptcha_enterprise_config) | resource |
 | [google-beta_google_firebase_project.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebase_project) | resource |
+| [google-beta_google_firebase_storage_bucket.default-bucket](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebase_storage_bucket) | resource |
 | [google-beta_google_firebase_web_app.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebase_web_app) | resource |
+| [google-beta_google_firebaserules_release.default-bucket](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebaserules_release) | resource |
+| [google-beta_google_firebaserules_release.firestore](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebaserules_release) | resource |
+| [google-beta_google_firebaserules_ruleset.firestore](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebaserules_ruleset) | resource |
+| [google-beta_google_firebaserules_ruleset.storage](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebaserules_ruleset) | resource |
+| [google-beta_google_firestore_database.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firestore_database) | resource |
 | [google-beta_google_identity_platform_config.auth](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_identity_platform_config) | resource |
 | [google-beta_google_project.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project) | resource |
+| [google-beta_google_project_service.appcheck](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
 | [google-beta_google_project_service.auth](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
 | [google-beta_google_project_service.budget](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
 | [google-beta_google_project_service.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
-| [google-beta_google_project_service.firebase](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
-| [google-beta_google_project_service.serviceusage](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
+| [google-beta_google_project_service.firestore](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
+| [google-beta_google_project_service.recaptcha_enterprise](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
+| [google-beta_google_project_service.storage](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
+| [google-beta_google_recaptcha_enterprise_key.primary](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_recaptcha_enterprise_key) | resource |
+| [time_sleep.wait_30s](https://registry.terraform.io/providers/hashicorp/time/0.12.1/docs/resources/sleep) | resource |
+| [google-beta_google_firebase_web_app_config.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/data-sources/google_firebase_web_app_config) | data source |
 
 ## Inputs
 
@@ -56,11 +71,14 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_billing_account"></a> [billing\_account](#input\_billing\_account) | The ID of the billing account to associate this project with | `string` | n/a | yes |
 | <a name="input_budget_amount"></a> [budget\_amount](#input\_budget\_amount) | The amount to use as the budget | `number` | `5` | no |
+| <a name="input_firestore_region"></a> [firestore\_region](#input\_firestore\_region) | Firestore instance [location](https://firebase.google.com/docs/firestore/locations) | `string` | `"nam5"` | no |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | Firebase project ID | `string` | n/a | yes |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | Firebase project name | `string` | n/a | yes |
-| <a name="input_region"></a> [region](#input\_region) | Firestore instance [location](https://cloud.google.com/firestore/docs/locations) | `string` | `"nam5"` | no |
+| <a name="input_storage_region"></a> [storage\_region](#input\_storage\_region) | Firebase Storage [location](https://firebase.google.com/docs/storage/locations) | `string` | `"us-central"` | no |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_web_app_config"></a> [web\_app\_config](#output\_web\_app\_config) | n/a |
 <!-- END_TF_DOCS -->

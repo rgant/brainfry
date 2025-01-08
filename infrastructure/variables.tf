@@ -26,7 +26,7 @@ variable "budget_amount" {
 }
 
 variable "storage_region" {
-  type = string
+  type        = string
   description = "Firebase Storage [location](https://firebase.google.com/docs/storage/locations)"
-  default = "us-central" # Cannot get multi-regions us/nam4 to work
+  default     = "us-central" # Cannot get multi-regions us/nam4 to work
 }

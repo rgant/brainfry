@@ -31,3 +31,8 @@ variable "billing_account" {
   type        = string
   description = "GCP billing account for BrainFry app"
 }
+
+output "web_app_config" {
+  description = "Firebase App Config"
+  value       = module.brainfry.web_app_config
+}

@@ -1,4 +1,4 @@
-# Enable the Identity Toolkit API.
+# Enable the Billing Budgets API.
 resource "google_project_service" "budget" {
   provider = google-beta
   project  = google_firebase_project.default.project
