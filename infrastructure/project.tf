@@ -18,34 +18,13 @@ resource "google_project" "default" {
 resource "google_project_service" "default" {
   provider = google-beta.no_user_project_override
   project  = google_project.default.project_id
+
   for_each = toset([
     "firebase.googleapis.com",
     # Enabling the ServiceUsage API allows the new project to be quota checked from now on.
     "serviceusage.googleapis.com",
   ])
   service = each.key
-
-  # Don't disable the service if the resource block is removed by accident.
-  disable_on_destroy = false
-}
-
-# Enable the required underlying Service Usage API.
-resource "google_project_service" "serviceusage" {
-  provider = google-beta.no_user_project_override
-
-  project = google_project.default.project_id
-  service = "serviceusage.googleapis.com"
-
-  # Don't disable the service if the resource block is removed by accident.
-  disable_on_destroy = false
-}
-
-# Enable the required underlying Firebase Management API.
-resource "google_project_service" "firebase" {
-  provider = google-beta.no_user_project_override
-
-  project = google_project.default.project_id
-  service = "firebase.googleapis.com"
 
   # Don't disable the service if the resource block is removed by accident.
   disable_on_destroy = false
@@ -58,8 +37,7 @@ resource "google_project_service" "firebase" {
 resource "google_firebase_project" "default" {
   # Use the provider that performs quota checks from now on
   provider = google-beta
-
-  project = google_project.default.project_id
+  project  = google_project.default.project_id
 
   # Waits for the required APIs to be enabled.
   depends_on = [
@@ -71,8 +49,8 @@ resource "google_firebase_project" "default" {
 # Create a Firebase Web App in the new project created above.
 resource "google_firebase_web_app" "default" {
   provider = google-beta
+  project  = google_firebase_project.default.project
 
-  project      = google_firebase_project.default.project
   display_name = var.project_name
 
   # The other App types (Android and Apple) use "DELETE" by default.

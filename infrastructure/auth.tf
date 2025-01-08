@@ -1,8 +1,8 @@
 # Enable the Identity Toolkit API.
 resource "google_project_service" "auth" {
   provider = google-beta
+  project  = google_firebase_project.default.project
 
-  project = google_firebase_project.default.project
   service = "identitytoolkit.googleapis.com"
 
   # Don't disable the service if the resource block is removed by accident.

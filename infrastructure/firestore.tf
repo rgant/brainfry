@@ -1,8 +1,8 @@
 # Enable required APIs for Cloud Firestore.
 resource "google_project_service" "firestore" {
   provider = google-beta
+  project  = google_firebase_project.default.project
 
-  project = google_firebase_project.default.project
   for_each = toset([
     "firestore.googleapis.com",
     "firebaserules.googleapis.com",
@@ -16,13 +16,13 @@ resource "google_project_service" "firestore" {
 # Provision the Firestore database instance.
 resource "google_firestore_database" "default" {
   provider = google-beta
+  project  = google_firebase_project.default.project
 
-  project = google_firebase_project.default.project
-  name    = "(default)"
+  name = "(default)"
 
   # See available locations:
   # https://firebase.google.com/docs/firestore/locations
-  location_id = var.region
+  location_id = var.firestore_region
 
   # "FIRESTORE_NATIVE" is required to use Firestore with Firebase SDKs,
   # authentication, and Firebase Security Rules.
@@ -57,10 +57,10 @@ resource "google_firebaserules_ruleset" "firestore" {
 # Release the ruleset for the Firestore instance.
 resource "google_firebaserules_release" "firestore" {
   provider = google-beta
+  project  = google_firebase_project.default.project
 
   name         = "cloud.firestore" # must be cloud.firestore
   ruleset_name = google_firebaserules_ruleset.firestore.name
-  project      = google_firebase_project.default.project
 
   # Wait for Firestore to be provisioned before releasing the ruleset.
   depends_on = [
