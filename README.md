@@ -7,6 +7,13 @@ There are two primary areas of this code:
 1. Terraform Infrastructure as Code used to create the GCP Firebase project.
 2. Angular Single Page Application
 
+Install general dependencies:
+
+```sh
+brew install dprint git git-absorb git-machete
+npm --global install markdownlint-cli prettier-plugin-multiline-arrays prettier
+```
+
 ### Terraform Setup
 
 Install local dependencies:
@@ -56,3 +63,12 @@ gcloud storage buckets update gs://terraform-state-$FIREBASE_PROJECT_ID --lifecy
 > The bucket cannot be created until the Project has been assigned a billing
 > account. So there is an order of operations conflict that was manually
 > resolved while generating this documentation.
+
+### Angular Setup
+
+Install local dependencies:
+
+```sh
+brew install nvm tidy-html5
+npm install --global @awmottaz/prettier-plugin-void-html prettier-plugin-organize-attributes
+```
