@@ -38,38 +38,3 @@ resource "google_firebase_storage_bucket" "default-bucket" {
     google_project_service.storage
   ]
 }
-
-# Create a ruleset of Cloud Storage Security Rules from a local file.
-resource "google_firebaserules_ruleset" "storage" {
-  provider = google-beta
-  project  = google_firebase_project.default.project
-
-  source {
-    files {
-      # Write security rules in a local file named "storage.rules".
-      # Learn more: https://firebase.google.com/docs/storage/security/get-started
-      name    = "storage.rules"
-      content = file("storage.rules")
-    }
-  }
-
-  # Wait for the default Storage bucket to be provisioned before creating this ruleset.
-  depends_on = [
-    google_firebase_storage_bucket.default-bucket,
-  ]
-}
-
-# Release the ruleset to the default Storage bucket.
-resource "google_firebaserules_release" "default-bucket" {
-  provider = google-beta
-  project  = google_firebase_project.default.project
-
-  name         = "firebase.storage/${google_app_engine_application.default.default_bucket}"
-  ruleset_name = "projects/${google_firebase_project.default.project}/rulesets/${google_firebaserules_ruleset.storage.name}"
-
-  lifecycle {
-    replace_triggered_by = [
-      google_firebaserules_ruleset.storage
-    ]
-  }
-}

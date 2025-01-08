@@ -47,10 +47,6 @@ No modules.
 | [google-beta_google_firebase_project.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebase_project) | resource |
 | [google-beta_google_firebase_storage_bucket.default-bucket](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebase_storage_bucket) | resource |
 | [google-beta_google_firebase_web_app.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebase_web_app) | resource |
-| [google-beta_google_firebaserules_release.default-bucket](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebaserules_release) | resource |
-| [google-beta_google_firebaserules_release.firestore](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebaserules_release) | resource |
-| [google-beta_google_firebaserules_ruleset.firestore](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebaserules_ruleset) | resource |
-| [google-beta_google_firebaserules_ruleset.storage](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebaserules_ruleset) | resource |
 | [google-beta_google_firestore_database.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firestore_database) | resource |
 | [google-beta_google_identity_platform_config.auth](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_identity_platform_config) | resource |
 | [google-beta_google_project.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project) | resource |
