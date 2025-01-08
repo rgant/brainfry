@@ -5,6 +5,9 @@ resource "google_project" "default" {
   name            = var.project_name
   project_id      = var.project_id
 
+  # Associates the project with a Cloud Billing account (required for Firebase Authentication with GCIP).
+  billing_account = var.billing_account
+
   # Required for the project to display in any list of Firebase projects.
   labels = {
     "firebase" = "enabled"
@@ -71,5 +74,13 @@ resource "google_firebase_web_app" "default" {
 
   project      = google_firebase_project.default.project
   display_name = var.project_name
+
+  # The other App types (Android and Apple) use "DELETE" by default.
+  # Web apps don't use "DELETE" by default due to backward-compatibility.
   deletion_policy = "DELETE"
+
+  # Wait for Firebase to be enabled in the Google Cloud project before creating this App.
+  depends_on = [
+    google_firebase_project.default,
+  ]
 }

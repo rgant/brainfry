@@ -1,5 +1,7 @@
 # Configures the provider to use the resource block's specified project for quota checks.
 provider "google-beta" {
+  project               = var.project_id
+  billing_project       = var.project_id
   user_project_override = true
 }
 

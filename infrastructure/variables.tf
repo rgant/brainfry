@@ -15,7 +15,12 @@ variable "region" {
 }
 
 variable "billing_account" {
-  description = "The ID of the billing account to associate this project with"
   type        = string
-  default     = ""
+  description = "The ID of the billing account to associate this project with"
+}
+
+variable "budget_amount" {
+  type        = number
+  description = "The amount to use as the budget"
+  default     = 5
 }

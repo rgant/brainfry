@@ -5,6 +5,7 @@
 			"file_exclude_patterns":
 			[
 				"*.map",
+				"*.tfstate",
 				".stylelintcache",
 				".terraform.lock.hcl"
 			],
