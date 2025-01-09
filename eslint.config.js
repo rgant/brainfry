@@ -17,8 +17,7 @@ module.exports = tseslint.config(
     extends: [
       eslint.configs.all,
       stylistic.configs['all-flat'],
-      tseslint.configs.recommendedTypeChecked,
-      tseslint.configs.stylisticTypeChecked,
+      tseslint.configs.all,
       importx.flatConfigs.recommended,
       importx.flatConfigs.typescript,
       pluginPromise.configs['flat/recommended'],
@@ -699,10 +698,10 @@ module.exports = tseslint.config(
         'error',
         {
           customGroups: {
-            children: 'children', // Angular Routes
-            deps: 'deps', // Angular providers
-            id: 'id',
-            path: 'path?(Match)', // Angular Routes
+            children: '\bchildren\b', // Angular Routes
+            deps: '\bdeps\b', // Angular providers
+            id: '\bid\b',
+            path: '\bpath(Match)?\b', // Angular Routes
           },
           groups: ['id', 'path', 'unknown', 'children', 'deps'],
           partitionByComment: true,
@@ -768,6 +767,7 @@ module.exports = tseslint.config(
   },
   {
     files: ['**/*.html'],
+    ignores: ['dist/**/*.html', 'src/index.html'],
     extends: [
       ...angular.configs.templateAll,
       ...angular.configs.templateAccessibility,
@@ -793,6 +793,13 @@ module.exports = tseslint.config(
         { allowNullOrUndefined: true },
       ],
       '@angular-eslint/template/no-autofocus': 'off',
+      '@angular-eslint/template/i18n': [
+        'error',
+        {
+          requireDescription: true,
+          requireMeaning: true,
+        },
+      ],
       '@angular-eslint/template/no-inline-styles': [
         'error',
         {

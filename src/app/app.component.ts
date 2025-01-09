@@ -5,8 +5,8 @@ import { RouterOutlet } from '@angular/router';
   imports: [ RouterOutlet ],
   selector: 'app-root',
   styleUrl: './app.component.scss',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'brainfry';
+  public readonly title: string = 'brainfry';
 }
