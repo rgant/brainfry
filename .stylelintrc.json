@@ -1,0 +1,106 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "@stylistic/stylelint-config",
+    "stylelint-config-clean-order/error"
+  ],
+  "ignoreFiles": ["**/*.html", "**/*.ts"],
+  "plugins": [
+    "stylelint-declaration-block-no-ignored-properties",
+    "stylelint-declaration-strict-value",
+    "stylelint-high-performance-animation",
+    "stylelint-no-indistinguishable-colors",
+    "stylelint-no-unsupported-browser-features",
+    "stylelint-plugin-defensive-css",
+    "stylelint-plugin-logical-css",
+    "stylelint-use-nesting"
+  ],
+  "reportNeedlessDisables": true,
+  "rules": {
+    "@stylistic/at-rule-semicolon-space-before": "never",
+    "@stylistic/block-closing-brace-newline-before": "always",
+    "@stylistic/block-closing-brace-space-after": "always-single-line",
+    "@stylistic/declaration-block-semicolon-newline-after": "always",
+    "@stylistic/declaration-block-semicolon-newline-before": "never-multi-line",
+    "@stylistic/function-comma-newline-before": "never-multi-line",
+    "@stylistic/linebreaks": "unix",
+    "@stylistic/max-line-length": 140,
+    "@stylistic/media-query-list-comma-newline-before": "never-multi-line",
+    "@stylistic/named-grid-areas-alignment": true,
+    "@stylistic/number-leading-zero": "never",
+    "@stylistic/selector-list-comma-newline-before": "never-multi-line",
+    "@stylistic/selector-list-comma-space-after": "always-single-line",
+    "@stylistic/string-quotes": "single",
+    "@stylistic/unicode-bom": "never",
+    "@stylistic/value-list-comma-newline-before": "never-multi-line",
+    "color-named": "never",
+    "csstools/use-nesting": "always",
+    "declaration-no-important": true,
+    "max-nesting-depth": 3,
+    "no-unknown-animations": true,
+    "plugin/declaration-block-no-ignored-properties": true,
+    "plugin/no-low-performance-animation-properties": true,
+    "plugin/no-unsupported-browser-features": [
+      true,
+      {
+        "browsers": [
+          "> 5%",
+          "Last 2 versions",
+          "not dead"
+        ],
+        "severity": "warning"
+      }
+    ],
+    "plugin/stylelint-no-indistinguishable-colors": true,
+    "plugin/use-defensive-css": true,
+    "plugin/use-logical-properties-and-values": true,
+    "plugin/use-logical-units": true,
+    "scale-unlimited/declaration-strict-value": [
+      "/color$/",
+      "z-index"
+    ],
+    "scss/at-each-key-value-single-line": true,
+    "scss/at-function-named-arguments": "always",
+    "scss/at-mixin-argumentless-call-parentheses": "always",
+    "scss/at-mixin-named-arguments": "never",
+    "scss/declaration-nested-properties": "never",
+    "scss/dimension-no-non-numeric-values": true,
+    "scss/dollar-variable-colon-space-after": "at-least-one-space",
+    "scss/double-slash-comment-empty-line-before": null,
+    "scss/load-partial-extension": "never",
+    "scss/map-keys-quotes": "always",
+    "scss/media-feature-value-dollar-variable": "always",
+    "scss/no-duplicate-dollar-variables": true,
+    "scss/selector-no-redundant-nesting-selector": true,
+    "selector-max-attribute": 1,
+    "selector-max-class": 2,
+    "selector-max-combinators": 2,
+    "selector-max-compound-selectors": 3,
+    "selector-max-id": 0,
+    "selector-max-type": 1,
+    "selector-max-universal": 0,
+    "selector-no-qualifying-type": [
+      true,
+      { "ignore": ["attribute"] }
+    ],
+    "selector-pseudo-element-no-unknown": [
+      true,
+      { "ignorePseudoElements": ["/^ng-/"] }
+    ],
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": [
+          "/^app-/",
+          "/^ng-/"
+        ]
+      }
+    ],
+    "time-min-milliseconds": 100,
+    "unit-disallowed-list": ["ch", "cm", "ex", "in", "mm", "pc", "pt"],
+    "value-keyword-case": [
+      "lower",
+      { "camelCaseSvgKeywords": true }
+    ]
+  }
+}
