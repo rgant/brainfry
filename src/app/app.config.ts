@@ -1,6 +1,6 @@
 /* eslint-disable import-x/max-dependencies -- config files tend to have a lot of dependencies */
-import { provideZoneChangeDetection } from '@angular/core';
-import type { ApplicationConfig, isDevMode } from '@angular/core';
+import { isDevMode, provideZoneChangeDetection } from '@angular/core';
+import type { ApplicationConfig } from '@angular/core';
 // import {
 //   getAnalytics,
 //   provideAnalytics,
@@ -25,9 +25,9 @@ import type { FirebasePerformance } from '@angular/fire/performance';
 // import { getVertexAI, provideVertexAI } from '@angular/fire/vertexai';
 // import type { VertexAI } from '@angular/fire/vertexai';
 import { provideRouter } from '@angular/router';
+import { provideServiceWorker } from '@angular/service-worker';
 
 import { routes } from './app.routes';
-import { provideServiceWorker } from '@angular/service-worker';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -54,10 +54,14 @@ export const appConfig: ApplicationConfig = {
     // }),
     provideFirestore((): Firestore => getFirestore()),
     // provideFunctions((): Functions => getFunctions()),
-    providePerformance((): FirebasePerformance => getPerformance()), provideServiceWorker('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            registrationStrategy: 'registerWhenStable:30000'
-          }),
+    providePerformance((): FirebasePerformance => getPerformance()),
+    provideServiceWorker(
+      'ngsw-worker.js',
+      {
+        enabled: !isDevMode(),
+        registrationStrategy: 'registerWhenStable:30000',
+      },
+    ),
     // provideStorage((): FirebaseStorage => getStorage()),
     // provideVertexAI((): VertexAI => getVertexAI()),
   ],
