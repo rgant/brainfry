@@ -1,5 +1,7 @@
 # BrainFry Pub Quiz App
 
+![A brain wearing a graduation cap on a plate of fries](/public/imgs/logo-260.png)
+
 ## Developer Setup
 
 There are two primary areas of this code:
