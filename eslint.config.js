@@ -5,10 +5,10 @@ const angular = require('angular-eslint');
 const importx = require('eslint-plugin-import-x');
 const perfectionist = require('eslint-plugin-perfectionist');
 const pluginPromise = require('eslint-plugin-promise');
-const preferArrow = require('eslint-plugin-prefer-arrow-functions');
+const preferArrow = require('eslint-plugin-prefer-arrow-functions').default;
 const rxjs = require('@smarttools/eslint-plugin-rxjs');
 const stylistic = require('@stylistic/eslint-plugin');
-const tsdocPlugin = require('eslint-plugin-tsdoc');
+const tsdoc = require('eslint-plugin-tsdoc');
 const unicorn = require('eslint-plugin-unicorn');
 
 module.exports = tseslint.config(
@@ -31,12 +31,15 @@ module.exports = tseslint.config(
         projectService: true,
       },
     },
+    linterOptions: {
+      reportUnusedDisableDirectives: 'error',
+    },
     processor: angular.processInlineTemplates,
     plugins: {
       '@stylistic': stylistic,
       preferArrow,
       rxjs,
-      tsdoc: tsdocPlugin,
+      tsdoc,
     },
     rules: {
       '@angular-eslint/component-selector': [
@@ -407,9 +410,9 @@ module.exports = tseslint.config(
           format: ['PascalCase'],
         },
       ],
-      '@typescript-eslint/no-empty-interface': [
+      '@typescript-eslint/no-empty-object-type': [
         'error',
-        { allowSingleExtends: true },
+        { allowInterfaces: 'with-single-extends' },
       ],
       '@typescript-eslint/no-extraneous-class': [
         'error',
@@ -431,7 +434,6 @@ module.exports = tseslint.config(
           ignoreEnums: true,
         },
       ],
-      '@typescript-eslint/no-loss-of-precision': 'warn',
       // I think this was done to match https://palantir.github.io/tslint/rules/no-shadowed-variable/
       '@typescript-eslint/no-shadow': [
         'error',
@@ -439,6 +441,7 @@ module.exports = tseslint.config(
       ],
       // Since we require a lot of typedefs having this rule would make things difficult
       '@typescript-eslint/no-type-alias': 'off',
+      '@typescript-eslint/no-unnecessary-type-arguments': 'off', // I prefer explicit types.
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
@@ -734,6 +737,32 @@ module.exports = tseslint.config(
       'promise/prefer-await-to-callbacks': 'error',
       'promise/prefer-await-to-then': 'error',
       'require-await': 'off', // Match TS rule
+      // @smarttools/eslint-plugin-rxjs doesn't have an all so this is all the non-recommended rules at the time
+      'rxjs/ban-observables': 'off',
+      'rxjs/ban-operators': 'off',
+      'rxjs/finnish': 'warn',
+      'rxjs/just': 'off',
+      'rxjs/macro': 'off',
+      'rxjs/no-compat': 'error',
+      'rxjs/no-connectable': 'error',
+      'rxjs/no-cyclic-action': 'off', // Seems like an NgRx thing I don't need
+      'rxjs/no-explicit-generics': 'off', // I prefer explicit types.
+      'rxjs/no-exposed-subjects': 'error',
+      'rxjs/no-finnish': 'off', // I prefer finnish sometimes
+      'rxjs/no-ignored-error': 'error',
+      'rxjs/no-ignored-observable': 'error',
+      'rxjs/no-ignored-subscribe': 'error',
+      'rxjs/no-ignored-subscription': 'off', // I use takeUntil to unsubscribe
+      'rxjs/no-subclass': 'error',
+      'rxjs/no-subject-value': 'error',
+      'rxjs/no-subscribe-handlers': 'error',
+      'rxjs/no-topromise': 'error',
+      'rxjs/no-unsafe-catch': 'error',
+      'rxjs/no-unsafe-first': 'error',
+      'rxjs/no-unsafe-switchmap': 'error',
+      'rxjs/prefer-observer': 'error',
+      'rxjs/suffix-subjects': 'error',
+      'rxjs/throw-error': 'error',
       'sort-imports': 'off', // Using perfectionist/sort-imports instead
       'sort-keys': 'off', // Use perfectionist/sort-objects instead
       'sort-vars': 'off', // This doesn't sort multiple let or consts so it's not useful
@@ -815,14 +844,14 @@ module.exports = tseslint.config(
       '*.spec.ts',
       '**/testing/**/*.ts',
     ],
-    "rules": {
-      "@angular-eslint/prefer-on-push-component-change-detection": "off",
-      "@angular-eslint/use-component-selector": "off",
-      "@angular-eslint/use-injectable-provided-in": "off",
-      "@typescript-eslint/no-magic-numbers": "off",
-      "@typescript-eslint/unbound-method": "off",
-      "max-classes-per-file": "off",
-      "max-lines": "off",
+    'rules': {
+      '@angular-eslint/prefer-on-push-component-change-detection': 'off',
+      '@angular-eslint/use-component-selector': 'off',
+      '@angular-eslint/use-injectable-provided-in': 'off',
+      '@typescript-eslint/no-magic-numbers': 'off',
+      '@typescript-eslint/unbound-method': 'off',
+      'max-classes-per-file': 'off',
+      'max-lines': 'off',
     },
   },
 );
