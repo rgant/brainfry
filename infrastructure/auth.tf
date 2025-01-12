@@ -36,6 +36,13 @@ resource "google_identity_platform_config" "auth" {
     "${google_project.default.project_id}.web.app",
   ]
 
+  client {
+    permissions {
+      disabled_user_signup = !var.allow_user_signup
+      disabled_user_deletion = !var.allow_user_deletion
+    }
+  }
+
   # Wait for identitytoolkit.googleapis.com to be enabled before initializing Authentication.
   depends_on = [
     google_project_service.auth,

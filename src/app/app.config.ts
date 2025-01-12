@@ -32,7 +32,6 @@ import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
     provideFirebaseApp(
       (): FirebaseApp =>
         initializeApp({
@@ -64,5 +63,6 @@ export const appConfig: ApplicationConfig = {
     ),
     // provideStorage((): FirebaseStorage => getStorage()),
     // provideVertexAI((): VertexAI => getVertexAI()),
+    provideRouter(routes),
   ],
 };

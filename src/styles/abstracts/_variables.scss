@@ -1,0 +1,39 @@
+// Colors
+$white: #fff;
+$black: #000;
+$danger-color:     #cc2936;
+$info-color:       #a9e4ef;
+$primary-color:    #ffc05c;
+$secondary-color:  #603f8b;
+$success-color:    #0dfdc9;
+$warning-color:    #f4afb4;
+
+// Fonts
+$primary-header-font: 'Barriecito' sans-serif;
+$primary-text-font:   'Oldenburg' serif;
+$heading-1-size:      3.5rem;
+$heading-2-size:      2.75rem;
+$heading-3-size:      2.25rem;
+$heading-4-size:      1.75rem;
+$heading-5-size:      1.5rem;
+$heading-6-size:      1.125rem;
+$text-size-large:     $heading-5-size;
+$text-size-medium:    $heading-6-size;
+$text-size-regular:   .875rem;
+$text-size-small:     .75rem;
+
+// Breakpoints -- https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/
+$breakpoints: (
+  'small':  767px,
+  'medium': 992px,
+  'large':  1200px
+) !default;
+
+// z-index -- https://css-tricks.com/systems-for-z-index/
+$zindex: (
+  'modal'    : 9000,
+  'overlay'  : 8000,
+  'dropdown' : 7000,
+  'header'   : 6000,
+  'footer'   : 5000
+);

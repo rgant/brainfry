@@ -45,7 +45,6 @@
       {
         "browsers": [
           "> 5%",
-          "Last 2 versions",
           "not dead"
         ],
         "severity": "warning"
@@ -69,7 +68,10 @@
     "scss/double-slash-comment-empty-line-before": null,
     "scss/load-partial-extension": "never",
     "scss/map-keys-quotes": "always",
-    "scss/media-feature-value-dollar-variable": "always",
+    "scss/media-feature-value-dollar-variable": [
+      "always",
+      { "ignore": ["no-preference"] }
+    ],
     "scss/no-duplicate-dollar-variables": true,
     "scss/selector-no-redundant-nesting-selector": true,
     "selector-max-attribute": 1,

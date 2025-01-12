@@ -1,0 +1,61 @@
+@use 'abstracts' as *;
+
+html {
+  font-size: 1em;
+
+  @include respond-to('small') {
+    font-size: .75em;
+  }
+}
+
+::selection { // stylelint-disable plugin/no-unsupported-browser-features -- stylistic change that can be skip in unsupported browsers
+  text-shadow: none;
+  background: rgba($primary-color, 40%);
+}
+
+body {
+  font-size: $text-size-regular;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration-thickness: 8; // Sets the thickness as a percentage of the font size
+  text-underline-position: under; // Places underlines below the descenders
+}
+
+h1 {
+  font-family: $primary-header-font;
+  font-size: $heading-1-size;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: $heading-2-size;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+h3 {
+  font-size: $heading-3-size;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+h4 {
+  font-size: $heading-4-size;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+h5 {
+  font-size: $heading-5-size;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+h6 {
+  font-size: $heading-6-size;
+  line-height: 1.2;
+  text-wrap: balance;
+}

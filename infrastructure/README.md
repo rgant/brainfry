@@ -17,6 +17,16 @@ And these repositories:
 5. [terraform-layout-example](https://github.com/trussworks/terraform-layout-example)
 6. [Three-tier web app](https://github.com/GoogleCloudPlatform/terraform-google-three-tier-web-app)
 
+## Additional Configurations
+
+Some configurations of the GCP Firebase project are not supported by Terraform.
+To manage Firestore rules, storage rules, and Hosting I will be using `firebase-tools`.
+
+Additionally the Password Policy (which includes the minimum password length for
+user accounts among other requirements) and email templates are not currently
+supported by Terraform. See [Firebase Manual Config](/docs/firebase-manual-config.md)
+document for details on how to manage these.
+
 ## Requirements
 
 | Name | Version |
@@ -65,6 +75,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_allow_user_deletion"></a> [allow\_user\_deletion](#input\_allow\_user\_deletion) | All users to self delete accounts | `bool` | `true` | no |
+| <a name="input_allow_user_signup"></a> [allow\_user\_signup](#input\_allow\_user\_signup) | All client app to create new users | `bool` | `false` | no |
 | <a name="input_billing_account"></a> [billing\_account](#input\_billing\_account) | The ID of the billing account to associate this project with | `string` | n/a | yes |
 | <a name="input_budget_amount"></a> [budget\_amount](#input\_budget\_amount) | The amount to use as the budget | `number` | `5` | no |
 | <a name="input_firestore_region"></a> [firestore\_region](#input\_firestore\_region) | Firestore instance [location](https://firebase.google.com/docs/firestore/locations) | `string` | `"nam5"` | no |

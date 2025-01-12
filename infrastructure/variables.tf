@@ -30,3 +30,15 @@ variable "storage_region" {
   description = "Firebase Storage [location](https://firebase.google.com/docs/storage/locations)"
   default     = "us-central" # Cannot get multi-regions us/nam4 to work
 }
+
+variable "allow_user_signup" {
+  type        = bool
+  description = "All client app to create new users"
+  default     = false
+}
+
+variable "allow_user_deletion" {
+  type        = bool
+  description = "All users to self delete accounts"
+  default     = true
+}

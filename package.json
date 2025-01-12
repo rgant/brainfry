@@ -44,6 +44,7 @@
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
     "@angular/service-worker": "^19.0.0",
+    "modern-normalize": "^3.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -52,6 +53,7 @@
     "@angular-devkit/build-angular": "^19.0.7",
     "@angular/cli": "^19.0.7",
     "@angular/compiler-cli": "^19.0.0",
+    "@angular/localize": "^19.0.6",
     "@smarttools/eslint-plugin-rxjs": "^1.0.13",
     "@stylistic/eslint-plugin": "^2.12.1",
     "@stylistic/stylelint-config": "^2.0.0",

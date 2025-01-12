@@ -34,5 +34,12 @@
     "strictInputAccessModifiers": true,
     "strictStandalone": true,
     "strictTemplates": true
-  }
+  },
+  // Cypress and Jasmine types conflict, so need to separate things out so eslint knows what types when
+  // https://github.com/cypress-io/cypress/issues/22059#issuecomment-2422648282
+  "references": [
+    { "path": "tsconfig.app.json" },
+    { "path": "tsconfig.spec.json" },
+    { "path": "tsconfig.cy.json" }
+  ]
 }

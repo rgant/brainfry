@@ -701,10 +701,10 @@ module.exports = tseslint.config(
         'error',
         {
           customGroups: {
-            children: '\bchildren\b', // Angular Routes
-            deps: '\bdeps\b', // Angular providers
-            id: '\bid\b',
-            path: '\bpath(Match)?\b', // Angular Routes
+            children: '^children$', // Angular Routes
+            deps: '^deps$', // Angular providers
+            id: '^id$',
+            path: '^path(Match)?$', // Angular Routes
           },
           groups: ['id', 'path', 'unknown', 'children', 'deps'],
           partitionByComment: true,

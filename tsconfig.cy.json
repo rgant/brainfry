@@ -3,15 +3,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/app",
+    "outDir": "./out-tsc/spec",
     "types": [
+      "cypress",
       "@angular/localize"
     ]
   },
-  "files": [
-    "src/main.ts"
-  ],
-  "include": [
-    "src/**/*.d.ts"
-  ]
+  "files": ["cypress.config.ts"],
+  "include": ["cypress/**/*.ts",]
 }

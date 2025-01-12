@@ -1,0 +1,13 @@
+@use 'abstracts' as *;
+
+html {
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-block-size: 100vb;
+  color: $white;
+  background: $secondary-color;
+}
