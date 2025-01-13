@@ -11,16 +11,16 @@ $warning-color:    #f4afb4;
 // Fonts
 $primary-header-font: 'Barriecito' sans-serif;
 $primary-text-font:   'Oldenburg' serif;
-$heading-1-size:      3.5rem;
-$heading-2-size:      2.75rem;
-$heading-3-size:      2.25rem;
-$heading-4-size:      1.75rem;
-$heading-5-size:      1.5rem;
-$heading-6-size:      1.125rem;
-$text-size-large:     $heading-5-size;
-$text-size-medium:    $heading-6-size;
-$text-size-regular:   .875rem;
-$text-size-small:     .75rem;
+$heading-1-size:      3.5rem;   // 56px
+$heading-2-size:      2.75rem;  // 44px
+$heading-3-size:      2.25rem;  // 36px
+$heading-4-size:      1.75rem;  // 28px
+$heading-5-size:      1.5rem;   // 24px
+$heading-6-size:      1.25rem;  // 20px
+$text-size-large:     $heading-6-size;
+$text-size-medium:    1.125rem; // 18px
+$text-size-regular:   1rem;     // 16px
+$text-size-small:     .875rem;  // 14px
 
 // Breakpoints -- https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/
 $breakpoints: (
