@@ -5,7 +5,7 @@ const angular = require('angular-eslint');
 const importx = require('eslint-plugin-import-x');
 const perfectionist = require('eslint-plugin-perfectionist');
 const pluginPromise = require('eslint-plugin-promise');
-const preferArrow = require('eslint-plugin-prefer-arrow-functions').default;
+const preferArrow = require('eslint-plugin-prefer-arrow-functions');
 const rxjs = require('@smarttools/eslint-plugin-rxjs');
 const stylistic = require('@stylistic/eslint-plugin');
 const tsdoc = require('eslint-plugin-tsdoc');
@@ -24,7 +24,7 @@ module.exports = tseslint.config(
       perfectionist.configs['recommended-natural'],
       rxjs.configs.recommended,
       unicorn.configs['flat/all'],
-      angular.configs.tsRecommended,
+      angular.configs.tsAll,
     ],
     languageOptions: {
       parserOptions: {
@@ -57,6 +57,13 @@ module.exports = tseslint.config(
           prefix: 'app',
           style: 'camelCase',
         },
+      ],
+      '@angular-eslint/require-localize-metadata': [
+        'error',
+        {
+          'requireDescription': true,
+          'requireMeaning': true,
+        }
       ],
       '@angular-eslint/sort-lifecycle-methods': 'off', // Conflicts with other sorting rules.
       '@stylistic/array-bracket-newline': [
@@ -797,10 +804,7 @@ module.exports = tseslint.config(
   {
     files: ['**/*.html'],
     ignores: ['dist/**/*.html', 'src/index.html'],
-    extends: [
-      ...angular.configs.templateAll,
-      ...angular.configs.templateAccessibility,
-    ],
+    extends: [angular.configs.templateAll],
     rules: {
       '@angular-eslint/template/attributes-order': [
         'error',
