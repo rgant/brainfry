@@ -5,6 +5,7 @@ import { RouterOutlet } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ RouterOutlet ],
   selector: 'app-root',
+  styles: ':host { display: flex; flex-direction: column; }',
   templateUrl: './app.component.html',
 })
 export class AppComponent {}

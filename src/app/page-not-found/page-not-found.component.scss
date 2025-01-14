@@ -1,5 +1,3 @@
-@use 'abstracts' as *;
-
 // Note: this only imports the glyphs needed for "Game Over", if translations begin this this will need to change to support
 @import 'https://fonts.googleapis.com/css2?family=Pixelify+Sans&text=GOaemrv%20&display=swap';
 
@@ -11,26 +9,6 @@
   font-style: normal;
   text-align: center;
   letter-spacing: .4rem;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  inline-size: fit-content;
-  margin: 0 auto;
-  padding: $regular-spacing;
-  border-radius: $lg-border-radius;
-
-  color: $black;
-  text-align: center;
-
-  background-color: $white;
-
-  :first-child {
-    margin-block-start: 0;
-  }
 }
 
 .logo {
