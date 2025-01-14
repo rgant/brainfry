@@ -1,0 +1,60 @@
+@use 'abstracts' as *;
+
+.spinner {
+  inline-size: 9rem;
+  block-size: 9rem;
+}
+
+// Changing these colors
+.squares {
+  fill: $primary-color;
+  animation: spin 2.4s linear infinite;
+  animation-delay: -2.4s;
+}
+
+.square-1 {
+  fill: $success-color;
+  animation-delay: -1.6s;
+}
+
+.square-2 {
+  fill: $danger-color;
+  animation-delay: -.8s;
+}
+
+@keyframes spin {
+  8.33% {
+    x: 13px;
+    y: 1px;
+  }
+
+  25% {
+    x: 13px;
+    y: 1px;
+  }
+
+  33.3% {
+    x: 13px;
+    y: 13px;
+  }
+
+  50% {
+    x: 13px;
+    y: 13px;
+  }
+
+  58.33% {
+    x: 1px;
+    y: 13px;
+  }
+
+  75% {
+    x: 1px;
+    y: 13px;
+  }
+
+  83.33% {
+    x: 1px;
+    y: 1px;
+  }
+}

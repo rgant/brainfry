@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barriecito&amp;family=Oldenburg&amp;display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Brainfry</title>
   <base href="/">
@@ -11,12 +14,19 @@
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#b1a8b9" />
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#603f8b" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barriecito&amp;family=Oldenburg&amp;display=swap" rel="stylesheet">
+  <style>.app-loading{display:flex;align-items:center;justify-content:center;block-size:100vb}.spinner{inline-size:9rem;block-size:9rem}.squares{fill:#ffc05c;animation:2.4s linear -2.4s infinite spin}.square-1{fill:#0dfdc9;animation-delay:-1.6s}.square-2{fill:#cc2936;animation-delay:-.8s}@keyframes spin{25%,8.33%{x:13px;y:1px}33.3%,50%{x:13px;y:13px}58.33%,75%{x:1px;y:13px}83.33%{x:1px;y:1px}}</style>
 </head>
 <body>
-  <app-root></app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
+  <app-root>
+    <div class="app-loading">
+      <svg class="spinner" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <title>Application loading…</title>
+        <rect class="squares" x="1" y="1" rx="1" width="10" height="10" />
+        <rect class="squares square-1" x="1" y="1" rx="1" width="10" height="10" />
+        <rect class="squares square-2" x="1" y="1" rx="1" width="10" height="10" />
+      </svg>
+    </div>
+  </app-root>
 </body>
 </html>

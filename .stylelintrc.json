@@ -4,7 +4,7 @@
     "@stylistic/stylelint-config",
     "stylelint-config-clean-order/error"
   ],
-  "ignoreFiles": ["**/*.html", "**/*.ts"],
+  "ignoreFiles": ["**/*.html", "**/*.svg", "**/*.ts"],
   "plugins": [
     "stylelint-declaration-block-no-ignored-properties",
     "stylelint-declaration-strict-value",
@@ -68,10 +68,7 @@
     "scss/double-slash-comment-empty-line-before": null,
     "scss/load-partial-extension": "never",
     "scss/map-keys-quotes": "always",
-    "scss/media-feature-value-dollar-variable": [
-      "always",
-      { "ignore": ["no-preference"] }
-    ],
+    "scss/media-feature-value-dollar-variable": "off",
     "scss/no-duplicate-dollar-variables": true,
     "scss/selector-no-redundant-nesting-selector": true,
     "selector-max-attribute": 1,

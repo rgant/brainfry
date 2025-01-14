@@ -552,7 +552,7 @@ module.exports = tseslint.config(
       'import-x/no-named-default': 'error',
       'import-x/no-namespace': 'error',
       'import-x/no-nodejs-modules': 'error',
-      'import-x/no-relative-parent-imports': 'error',
+      'import-x/no-relative-parent-imports': 'off', // tsconfig.paths make this less necessary, and angular style is incompatible
       'import-x/no-rename-default': 'warn',
       'import-x/no-self-import': 'error',
       'import-x/no-unassigned-import': 'error',
@@ -832,6 +832,7 @@ module.exports = tseslint.config(
         {
           requireDescription: true,
           requireMeaning: true,
+          ignoreAttributes: [ 'ngSrc' ],
         },
       ],
       '@angular-eslint/template/no-inline-styles': [

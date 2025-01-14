@@ -1,21 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
 
-import { LoginComponent } from './login.component';
+import { SpinnerComponent } from './spinner.component';
 
-describe('LoginComponent', (): void => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('SpinnerComponent', (): void => {
+  let component: SpinnerComponent;
+  let fixture: ComponentFixture<SpinnerComponent>;
 
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      imports: [ LoginComponent ],
-      providers: [ provideRouter([]) ],
+      imports: [ SpinnerComponent ],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(SpinnerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

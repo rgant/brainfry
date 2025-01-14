@@ -14,6 +14,7 @@ html {
 }
 
 body {
+  font-family: $primary-text-font;
   font-size: $text-size-regular;
   line-height: 1.5;
 }
@@ -24,7 +25,6 @@ a {
 }
 
 h1 {
-  font-family: $primary-header-font;
   font-size: $heading-1-size;
   line-height: 1.2;
   text-wrap: balance;
@@ -58,4 +58,8 @@ h6 {
   font-size: $heading-6-size;
   line-height: 1.2;
   text-wrap: balance;
+}
+
+.display {
+  font-family: $primary-display-font;
 }

@@ -36,7 +36,7 @@ export const routes: Routes = [
       {
         path: 'reset-password',
         component: ResetPasswordComponent,
-        title: $localize`:HTML title tag|Reset forgotten password@@htmlTitle.reset-password:Login`,
+        title: $localize`:HTML title tag|Reset forgotten password@@htmlTitle.reset-password:Reset Password`,
       },
     ],
   },

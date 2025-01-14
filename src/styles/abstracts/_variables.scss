@@ -9,8 +9,8 @@ $success-color:    #0dfdc9;
 $warning-color:    #f4afb4;
 
 // Fonts
-$primary-header-font: 'Barriecito' sans-serif;
-$primary-text-font:   'Oldenburg' serif;
+$primary-display-font: 'Barriecito', sans-serif;
+$primary-text-font:   'Oldenburg', serif;
 $heading-1-size:      3.5rem;   // 56px
 $heading-2-size:      2.75rem;  // 44px
 $heading-3-size:      2.25rem;  // 36px
@@ -37,3 +37,9 @@ $zindex: (
   'header'   : 6000,
   'footer'   : 5000
 );
+
+// Border Radius options
+$lg-border-radius: 1rem;
+
+// Padding Spacing
+$regular-spacing: 1rem;
