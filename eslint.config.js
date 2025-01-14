@@ -3,6 +3,7 @@ const eslint = require('@eslint/js');
 const tseslint = require('typescript-eslint');
 const angular = require('angular-eslint');
 const importx = require('eslint-plugin-import-x');
+const jasmine = require('eslint-plugin-jasmine');
 const perfectionist = require('eslint-plugin-perfectionist');
 const pluginPromise = require('eslint-plugin-promise');
 const preferArrow = require('eslint-plugin-prefer-arrow-functions');
@@ -845,15 +846,21 @@ module.exports = tseslint.config(
   },
   {
     files: [
-      '*.spec.ts',
-      '**/testing/**/*.ts',
+      '**/*.spec.ts',
+      'testing/**/*.ts',
     ],
+    extends: [jasmine.configs.recommended],
+    plugins: {jasmine},
     'rules': {
       '@angular-eslint/prefer-on-push-component-change-detection': 'off',
       '@angular-eslint/use-component-selector': 'off',
       '@angular-eslint/use-injectable-provided-in': 'off',
       '@typescript-eslint/no-magic-numbers': 'off',
       '@typescript-eslint/unbound-method': 'off',
+      // eslint-plugin-jasmine doens't have an all config, so this is just cusomizations on the recommendations
+      'jasmine/named-spy': 'error',
+      'jasmine/no-focused-tests': 'off', // jasmine already warns us about this.
+      'jasmine/prefer-toBeUndefined': 'error',
       'max-classes-per-file': 'off',
       'max-lines': 'off',
     },

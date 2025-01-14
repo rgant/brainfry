@@ -24,10 +24,11 @@ import type { FirebasePerformance } from '@angular/fire/performance';
 // import type { FirebaseStorage } from '@angular/fire/storage';
 // import { getVertexAI, provideVertexAI } from '@angular/fire/vertexai';
 // import type { VertexAI } from '@angular/fire/vertexai';
-import { provideRouter } from '@angular/router';
+import { provideRouter, TitleStrategy } from '@angular/router';
 import { provideServiceWorker } from '@angular/service-worker';
 
 import { routes } from './app.routes';
+import { AppTitleStrategyService } from './core/app-title-strategy.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -64,5 +65,6 @@ export const appConfig: ApplicationConfig = {
     // provideStorage((): FirebaseStorage => getStorage()),
     // provideVertexAI((): VertexAI => getVertexAI()),
     provideRouter(routes),
+    { provide: TitleStrategy, useClass: AppTitleStrategyService },
   ],
 };

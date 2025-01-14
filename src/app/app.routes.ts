@@ -1,4 +1,4 @@
-/* eslint-disable @angular-eslint/runtime-localize -- titles may not be translated using `loadTranslations()`, needs a Service eventually */
+/* eslint-disable @angular-eslint/runtime-localize -- `Route.title`s may not be translated using `loadTranslations()` */
 /* eslint-disable import-x/max-dependencies -- routes files tend to have a lot of dependencies */
 import type { Routes } from '@angular/router';
 
