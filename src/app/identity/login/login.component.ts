@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
-import { FormPopoverComponent } from '@app/shared/form-popover/form-popover.component';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
 // These should match [Password Policy](/docs/firebase-manual-config.md#update-the-configuration)
@@ -21,12 +20,7 @@ type LoginFormGroup = FormGroup<{
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    FormPopoverComponent,
-    ReactiveFormsModule,
-    RouterLink,
-    SpinnerComponent,
-  ],
+  imports: [ ReactiveFormsModule, RouterLink, SpinnerComponent ],
   selector: 'app-login',
   styleUrl: './login.component.scss',
   templateUrl: './login.component.html',

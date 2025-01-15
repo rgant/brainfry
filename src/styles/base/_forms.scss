@@ -1,3 +1,5 @@
+@use 'abstracts' as *;
+
 label,
 button,
 select,
@@ -6,4 +8,45 @@ summary,
 [type='submit'],
 [type='checkbox'] {
   cursor: pointer;
+}
+
+.ng-dirty.ng-invalid {
+  border-color: $danger-color;
+}
+
+.form-control {
+  position: relative;
+
+  label {
+    display: block;
+    text-align: start;
+  }
+
+  input,
+  textarea {
+    inline-size: 100%;
+    padding: $small-spacing;
+    border: 1px solid $gray;
+    border-radius: $border-radius;
+  }
+}
+
+.form-alerts {
+  display: block;
+
+  margin-block-start: .5rem;
+  padding: $small-spacing;
+  border: 1px solid $danger-color;
+  border-radius: $border-radius;
+
+  background-color: $warning-color;
+
+  @include respond-to('medium') {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 100%;
+
+    inline-size: 100%;
+    margin-inline-start: .5rem;
+  }
 }

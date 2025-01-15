@@ -13,7 +13,7 @@
         required
       >
       @if (emailCntrl.invalid && emailCntrl.dirty) {
-        <app-form-popover>
+        <div class="form-alerts">
           @if (emailCntrl.errors?.['required']) {
             <ng-container i18n="form field error message|Email is a required field@@formErrors.email.required">
               Please enter your email address.
@@ -24,7 +24,7 @@
               Please enter a valid email address.
             </ng-container>
           }
-        </app-form-popover>
+        </div>
       }
     </p>
 
@@ -40,7 +40,7 @@
         required
       >
       @if (passwordCntrl.invalid && passwordCntrl.dirty) {
-        <app-form-popover>
+        <div class="form-alerts">
           @if (passwordCntrl.errors?.['required']) {
             <ng-container i18n="form field error message|Password is a required field@@formErrors.password.required">
               Please enter your password.
@@ -57,7 +57,7 @@
               Your password may not be longer than {{ maxPasswordLength }} characters.
             </ng-container>
           }
-        </app-form-popover>
+        </div>
       }
     </p>
 
