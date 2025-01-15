@@ -1,0 +1,14 @@
+@use 'abstracts' as *;
+
+form {
+  // Un-collapse the width from the .card content-fit width.
+  inline-size: 100%;
+
+  @include respond-to('small') {
+    inline-size: 24rem;
+  }
+}
+
+.form-actions {
+  text-align: center;
+}

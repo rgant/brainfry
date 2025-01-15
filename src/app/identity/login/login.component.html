@@ -1,70 +1,77 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-  <p>
-    <label for="fld-email" i18n="form field label|Login email input@@fields.email">Email:</label>
-    <input
-      id="fld-email"
-      type="email"
-      autocomplete="email"
-      autofocus
-      formControlName="email"
-      i18n-placeholder="input placeholder|Example email@@placeholders.emailExample"
-      placeholder="email@example.com"
-      required
-    >
-    @if (emailCntrl.invalid && (emailCntrl.touched || emailCntrl.dirty)) {
-      <span class="alert alert-danger">
-        @if (emailCntrl.errors?.['required']) {
-          <ng-container i18n="form field error message|Email is a required field@@formErrors.email.required">
-            Please enter your email address.
-          </ng-container>
-        }
-        @if (emailCntrl.errors?.['email']) {
-          <ng-container i18n="form field error message|Email is a required field@@formErrors.email.valid">
-            Please enter a valid email address.
-          </ng-container>
-        }
-      </span>
-    }
-  </p>
+<section class="card">
+  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <p class="form-control">
+      <label for="fld-email" i18n="form field label|Login email input@@fields.email">Email:</label>
+      <input
+        id="fld-email"
+        type="email"
+        autocomplete="email"
+        autofocus
+        formControlName="email"
+        i18n-placeholder="input placeholder|Example email@@placeholders.emailExample"
+        placeholder="email@example.com"
+        required
+      >
+      @if (emailCntrl.invalid && emailCntrl.dirty) {
+        <app-form-popover>
+          @if (emailCntrl.errors?.['required']) {
+            <ng-container i18n="form field error message|Email is a required field@@formErrors.email.required">
+              Please enter your email address.
+            </ng-container>
+          }
+          @if (emailCntrl.errors?.['email']) {
+            <ng-container i18n="form field error message|Email is a required field@@formErrors.email.valid">
+              Please enter a valid email address.
+            </ng-container>
+          }
+        </app-form-popover>
+      }
+    </p>
 
-  <p>
-    <label for="fld-password" i18n="form field label|Login password input@@fields.password">Password:</label>
-    <input
-      [minlength]="minPasswordLength"
-      [maxlength]="maxPasswordLength"
-      id="fld-password"
-      type="password"
-      autocomplete="current-password"
-      formControlName="password"
-      required
-    >
-    @if (passwordCntrl.invalid && (passwordCntrl.touched || passwordCntrl.dirty)) {
-      <span class="alert alert-danger">
-        @if (passwordCntrl.errors?.['required']) {
-          <ng-container i18n="form field error message|Password is a required field@@formErrors.password.required">
-            Please enter your password.
-          </ng-container>
-        }
-        @if (passwordCntrl.errors?.['minLength']) {
-          <ng-container i18n="form field error message|Password is too short@@formErrors.password.minlength">
-            Please enter a password that contains at least {{ minPasswordLength }} characters and a combination of upper and lowercase
-            letters, numbers, and symbols.
-          </ng-container>
-        }
-        @if (passwordCntrl.errors?.['maxLength']) {
-          <ng-container i18n="form field error message|Password is too long@@formErrors.password.maxlength">
-            Your password may not be longer than {{ maxPasswordLength }} characters.
-          </ng-container>
-        }
-      </span>
-    }
-  </p>
+    <p class="form-control">
+      <label for="fld-password" i18n="form field label|Login password input@@fields.password">Password:</label>
+      <input
+        [minlength]="minPasswordLength"
+        [maxlength]="maxPasswordLength"
+        id="fld-password"
+        type="password"
+        autocomplete="current-password"
+        formControlName="password"
+        required
+      >
+      @if (passwordCntrl.invalid && passwordCntrl.dirty) {
+        <app-form-popover>
+          @if (passwordCntrl.errors?.['required']) {
+            <ng-container i18n="form field error message|Password is a required field@@formErrors.password.required">
+              Please enter your password.
+            </ng-container>
+          }
+          @if (passwordCntrl.errors?.['minlength']) {
+            <ng-container i18n="form field error message|Password is too short@@formErrors.password.minlength">
+              Please enter a password that contains at least {{ minPasswordLength }} characters and a combination of upper and lowercase
+              letters, numbers, and symbols.
+            </ng-container>
+          }
+          @if (passwordCntrl.errors?.['maxlength']) {
+            <ng-container i18n="form field error message|Password is too long@@formErrors.password.maxlength">
+              Your password may not be longer than {{ maxPasswordLength }} characters.
+            </ng-container>
+          }
+        </app-form-popover>
+      }
+    </p>
 
-  <p>
-    <button [disabled]="loginForm.invalid" type="submit" i18n="form submit button|Email and password login form submit button@@buttons.login">
-      Login
-    </button>
-  </p>
-</form>
-<a routerLink="/forgot-password" i18n="navigation link|Link to page to recover password@@links.forgot-password">Forgot your password?</a>
+    <p class="form-actions">
+      <button
+        [disabled]="loginForm.invalid"
+        class="button"
+        type="submit"
+        i18n="form submit button|Email and password login form submit button@@buttons.login"
+      >
+        Login
+      </button>
+    </p>
+  </form>
+  <a routerLink="/forgot-password" i18n="navigation link|Link to page to recover password@@links.forgot-password">Forgot your password?</a>
+</section>
 <app-spinner />

@@ -1,20 +1,24 @@
 @use 'abstracts' as *;
 
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  inline-size: fit-content;
-  margin: 0 auto;
+  margin: 0 $small-spacing;
   padding: $regular-spacing;
   border-radius: $lg-border-radius;
 
   color: $black;
-  text-align: center;
 
   background-color: $white;
 
+  @include respond-to('small') {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    inline-size: fit-content;
+    margin: 0 auto;
+  }
+
+  // Deeply applies to all of the first-children of the card to remove the top margin.
   :first-child {
     margin-block-start: 0;
   }

@@ -68,7 +68,7 @@
     "scss/double-slash-comment-empty-line-before": null,
     "scss/load-partial-extension": "never",
     "scss/map-keys-quotes": "always",
-    "scss/media-feature-value-dollar-variable": "off",
+    "scss/media-feature-value-dollar-variable": null,
     "scss/no-duplicate-dollar-variables": true,
     "scss/selector-no-redundant-nesting-selector": true,
     "selector-max-attribute": 1,

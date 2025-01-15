@@ -1,0 +1,19 @@
+@use 'abstracts' as *;
+
+$disabled-color: rgba($primary-color, 50%);
+
+.button {
+  display: inline-block;
+
+  padding: $small-spacing $regular-spacing;
+  border: 1px solid $primary-color;
+  border-radius: $border-radius;
+
+  background-color: $primary-color;
+
+  &:disabled {
+    border-color: $disabled-color;
+    color: $white;
+    background-color: $disabled-color;
+  }
+}

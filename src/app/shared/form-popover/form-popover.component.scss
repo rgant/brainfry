@@ -1,0 +1,21 @@
+@use 'abstracts' as *;
+
+:host {
+  display: block;
+
+  margin-block-start: .5rem;
+  padding: $small-spacing;
+  border: 1px solid $danger-color;
+  border-radius: $border-radius;
+
+  background-color: $warning-color;
+
+  @include respond-to('small') {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 100%;
+
+    inline-size: 100%;
+    margin-inline-start: .5rem;
+  }
+}
