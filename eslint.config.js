@@ -827,6 +827,10 @@ module.exports = tseslint.config(
         { allowNullOrUndefined: true },
       ],
       '@angular-eslint/template/no-autofocus': 'off',
+      '@angular-eslint/template/no-call-expression': [
+        'error',
+        { allowPrefix: '$' },
+      ],
       '@angular-eslint/template/i18n': [
         'error',
         {

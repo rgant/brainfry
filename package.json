@@ -54,7 +54,7 @@
     "@angular/cli": "^19.0.7",
     "@angular/compiler-cli": "^19.0.0",
     "@angular/localize": "^19.0.6",
-    "@smarttools/eslint-plugin-rxjs": "^1.0.15",
+    "@smarttools/eslint-plugin-rxjs": "^1.0.16",
     "@stylistic/eslint-plugin": "^2.13.0",
     "@stylistic/stylelint-config": "^2.0.0",
     "@types/jasmine": "~5.1.0",
