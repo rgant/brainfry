@@ -11,6 +11,7 @@ const rxjs = require('@smarttools/eslint-plugin-rxjs');
 const stylistic = require('@stylistic/eslint-plugin');
 const tsdoc = require('eslint-plugin-tsdoc');
 const unicorn = require('eslint-plugin-unicorn');
+const { createTypeScriptImportResolver } = require('eslint-import-resolver-typescript');
 
 module.exports = tseslint.config(
   {
@@ -29,6 +30,7 @@ module.exports = tseslint.config(
     ],
     languageOptions: {
       parserOptions: {
+        // Fixes: You have used a rule which requires type information, but don't have parserOptions set to generate type information for this file. See https://typescript-eslint.io/getting-started/typed-linting for enabling linting with type information.
         projectService: true,
       },
     },
@@ -435,7 +437,7 @@ module.exports = tseslint.config(
         },
       ],
       '@typescript-eslint/no-magic-numbers': [
-        'off', // rarely useful, but did make the sort methods clearer IMPO
+        'warn',
         {
           enforceConst: true,
           ignore: [ 0, 1 ],
@@ -539,7 +541,7 @@ module.exports = tseslint.config(
       'import-x/no-commonjs': 'error',
       'import-x/no-cycle': ['error', { ignoreExternal: true }],
       'import-x/no-default-export': 'error',
-      'import-x/no-deprecated': 'warn',
+      'import-x/no-deprecated': 'off', // Use @typescript-eslint/no-deprecated instead
       'import-x/no-duplicates': 'error', // Change from warning to error
       'import-x/no-dynamic-require': 'warn',
       'import-x/no-empty-named-blocks': 'error',
@@ -605,7 +607,7 @@ module.exports = tseslint.config(
       'no-lone-blocks': 'off',
       'no-loss-of-precision': 'warn', // Match TS rule
       'no-magic-numbers': [ // Match TS rule
-        'warn', // rarely useful, but did make the sort methods clearer IMPO
+        'off', // replaced with TS version
         { enforceConst: true },
       ],
       'no-multi-str': 'off', // Unlikely we will do this
@@ -748,7 +750,14 @@ module.exports = tseslint.config(
       // @smarttools/eslint-plugin-rxjs doesn't have an all so this is all the non-recommended rules at the time
       'rxjs/ban-observables': 'off',
       'rxjs/ban-operators': 'off',
-      'rxjs/finnish': 'warn',
+      'rxjs/finnish': [
+        'warn',
+        {
+          functions: false,
+          methods: false,
+          parameters: false,
+        },
+      ],
       'rxjs/just': 'off',
       'rxjs/macro': 'off',
       'rxjs/no-compat': 'error',
@@ -800,6 +809,13 @@ module.exports = tseslint.config(
       'unicorn/prevent-abbreviations': 'off',
       'unicorn/string-content': 'off', // Doesn't actually work on HTML where this would be most useful.
       'vars-on-top': 'off',
+    },
+    settings: {
+      'import-x/resolver-next': [
+        createTypeScriptImportResolver({
+          alwaysTryTypes: true,
+        }),
+      ],
     },
   },
   {
@@ -860,8 +876,7 @@ module.exports = tseslint.config(
       '@angular-eslint/prefer-on-push-component-change-detection': 'off',
       '@angular-eslint/use-component-selector': 'off',
       '@angular-eslint/use-injectable-provided-in': 'off',
-      '@typescript-eslint/no-magic-numbers': 'off',
-      '@typescript-eslint/unbound-method': 'off',
+      '@typescript-eslint/unbound-method': 'off', // Jasmine expect(spy) triggers this a bunch
       // eslint-plugin-jasmine doens't have an all config, so this is just cusomizations on the recommendations
       'jasmine/named-spy': 'error',
       'jasmine/no-focused-tests': 'off', // jasmine already warns us about this.

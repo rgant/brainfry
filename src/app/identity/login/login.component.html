@@ -12,19 +12,19 @@
         placeholder="email@example.com"
         required
       >
-      @if (emailCntrl.invalid && emailCntrl.dirty) {
-        <div class="form-alerts">
-          @if (emailCntrl.errors?.['required']) {
+      @if ($emailCntrlErrors(); as errors) {
+        <span class="form-alerts">
+          @if (errors['required']) {
             <ng-container i18n="form field error message|Email is a required field@@formErrors.email.required">
               Please enter your email address.
             </ng-container>
           }
-          @if (emailCntrl.errors?.['email']) {
+          @if (errors['email']) {
             <ng-container i18n="form field error message|Email is a required field@@formErrors.email.valid">
               Please enter a valid email address.
             </ng-container>
           }
-        </div>
+        </span>
       }
     </p>
 
@@ -39,25 +39,25 @@
         formControlName="password"
         required
       >
-      @if (passwordCntrl.invalid && passwordCntrl.dirty) {
-        <div class="form-alerts">
-          @if (passwordCntrl.errors?.['required']) {
+      @if ($passwordCntrlErrors(); as errors) {
+        <span class="form-alerts">
+          @if (errors['required']) {
             <ng-container i18n="form field error message|Password is a required field@@formErrors.password.required">
               Please enter your password.
             </ng-container>
           }
-          @if (passwordCntrl.errors?.['minlength']) {
+          @if (errors['minlength']) {
             <ng-container i18n="form field error message|Password is too short@@formErrors.password.minlength">
               Please enter a password that contains at least {{ minPasswordLength }} characters and a combination of upper and lowercase
               letters, numbers, and symbols.
             </ng-container>
           }
-          @if (passwordCntrl.errors?.['maxlength']) {
+          @if (errors['maxlength']) {
             <ng-container i18n="form field error message|Password is too long@@formErrors.password.maxlength">
               Your password may not be longer than {{ maxPasswordLength }} characters.
             </ng-container>
           }
-        </div>
+        </span>
       }
     </p>
 

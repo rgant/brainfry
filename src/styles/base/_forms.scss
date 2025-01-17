@@ -32,7 +32,7 @@ summary,
 }
 
 .form-alerts {
-  display: block;
+  display: block; // Generally a span by default
 
   margin-block-start: .5rem;
   padding: $small-spacing;
@@ -41,6 +41,8 @@ summary,
 
   background-color: $warning-color;
 
+  // This really needs some better attention to fitting into the available window without making the
+  // page scroll or the form jump around as messages appear and disappear.
   @include respond-to('medium') {
     position: absolute;
     inset-block-start: 0;
