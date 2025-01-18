@@ -1,5 +1,11 @@
 @use 'abstracts' as *;
 
+// Need to think about how to always have the spinner in the correct position for each page.
+:host {
+  display: block;
+  text-align: center;
+}
+
 .spinner {
   inline-size: 9rem;
   block-size: 9rem;

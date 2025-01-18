@@ -6,7 +6,7 @@
         <source>Forgot Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">35</context>
         </context-group>
         <note priority="1" from="description">Send password recover email</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -15,7 +15,7 @@
         <source>Login</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">40</context>
         </context-group>
         <note priority="1" from="description">Login to application</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -24,52 +24,70 @@
         <source>Reset Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">45</context>
         </context-group>
         <note priority="1" from="description">Reset forgotten password</note>
-        <note priority="1" from="meaning">HTML title tag</note>
-      </trans-unit>
-      <trans-unit id="htmlTitle.dashboard" datatype="html">
-        <source>Dashboard</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">52</context>
-        </context-group>
-        <note priority="1" from="description">Default page for user showing key information</note>
         <note priority="1" from="meaning">HTML title tag</note>
       </trans-unit>
       <trans-unit id="htmlTitle.confirm-email" datatype="html">
         <source>Confirm Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">61</context>
         </context-group>
         <note priority="1" from="description">Send email confirming address access</note>
         <note priority="1" from="meaning">HTML title tag</note>
       </trans-unit>
-      <trans-unit id="htmlTitle.verify-email" datatype="html">
-        <source>Verify Email</source>
+      <trans-unit id="htmlTitle.dashboard" datatype="html">
+        <source>Dashboard</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">66</context>
         </context-group>
-        <note priority="1" from="description">Marks email address is verified</note>
+        <note priority="1" from="description">Default page for user showing key information</note>
+        <note priority="1" from="meaning">HTML title tag</note>
+      </trans-unit>
+      <trans-unit id="htmlTitle.privacy" datatype="html">
+        <source>Privacy Policy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+        <note priority="1" from="description">Legal document page</note>
         <note priority="1" from="meaning">HTML title tag</note>
       </trans-unit>
       <trans-unit id="htmlTitle.recover-email" datatype="html">
         <source>Recover Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">92</context>
         </context-group>
         <note priority="1" from="description">Reverts email address change</note>
+        <note priority="1" from="meaning">HTML title tag</note>
+      </trans-unit>
+      <trans-unit id="htmlTitle.terms" datatype="html">
+        <source>Terms &amp; Conditions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+        <note priority="1" from="description">Legal document page</note>
+        <note priority="1" from="meaning">HTML title tag</note>
+      </trans-unit>
+      <trans-unit id="htmlTitle.verify-email" datatype="html">
+        <source>Verify Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+        <note priority="1" from="description">Marks email address is verified</note>
         <note priority="1" from="meaning">HTML title tag</note>
       </trans-unit>
       <trans-unit id="htmlTitle.not-found" datatype="html">
         <source>Page Not Found</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">108</context>
         </context-group>
         <note priority="1" from="description">Page not found 404 error</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -78,7 +96,7 @@
         <source>Email:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">3,7</context>
+          <context context-type="linenumber">5,8</context>
         </context-group>
         <note priority="1" from="description">Login email input</note>
         <note priority="1" from="meaning">form field label</note>
@@ -87,7 +105,7 @@
         <source>email@example.com</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">11,14</context>
+          <context context-type="linenumber">13,16</context>
         </context-group>
         <note priority="1" from="description">Example email</note>
         <note priority="1" from="meaning">input placeholder</note>
@@ -96,7 +114,7 @@
         <source> Please enter your email address. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">18,21</context>
+          <context context-type="linenumber">20,23</context>
         </context-group>
         <note priority="1" from="description">Email is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -105,7 +123,7 @@
         <source> Please enter a valid email address. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">23,31</context>
+          <context context-type="linenumber">25,29</context>
         </context-group>
         <note priority="1" from="description">Email is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -114,7 +132,7 @@
         <source>Password:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">31,34</context>
+          <context context-type="linenumber">33,36</context>
         </context-group>
         <note priority="1" from="description">Login password input</note>
         <note priority="1" from="meaning">form field label</note>
@@ -123,7 +141,7 @@
         <source> Please enter your password. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">45,48</context>
+          <context context-type="linenumber">48,51</context>
         </context-group>
         <note priority="1" from="description">Password is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -132,7 +150,7 @@
         <source> Please enter a password that contains at least <x id="INTERPOLATION" equiv-text="{{ minPasswordLength }}"/> characters and a combination of upper and lowercase letters, numbers, and symbols. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">50,52</context>
+          <context context-type="linenumber">53,55</context>
         </context-group>
         <note priority="1" from="description">Password is too short</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -141,7 +159,7 @@
         <source> Your password may not be longer than <x id="INTERPOLATION" equiv-text="{{ maxPasswordLength }}"/> characters. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">56,57</context>
+          <context context-type="linenumber">59,60</context>
         </context-group>
         <note priority="1" from="description">Password is too long</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -150,7 +168,7 @@
         <source> Login </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">65,69</context>
+          <context context-type="linenumber">73,78</context>
         </context-group>
         <note priority="1" from="description">Email and password login form submit button</note>
         <note priority="1" from="meaning">form submit button</note>
@@ -159,10 +177,23 @@
         <source>Forgot your password?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">69,71</context>
+          <context context-type="linenumber">78,84</context>
         </context-group>
         <note priority="1" from="description">Link to page to recover password</note>
         <note priority="1" from="meaning">navigation link</note>
+      </trans-unit>
+      <trans-unit id="text.siteTitle" datatype="html">
+        <source>Brainfry Quiz</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/central/central.component.html</context>
+          <context context-type="linenumber">4,10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+        <note priority="1" from="description">Title of the application</note>
+        <note priority="1" from="meaning">h1 display heading</note>
       </trans-unit>
       <trans-unit id="pageNotFound.banner" datatype="html">
         <source>Game Over</source>

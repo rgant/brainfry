@@ -2,10 +2,10 @@ import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
-import { MESSAGE_DELAY } from '@app/shared/utilities';
+import { FORMS, PASSWORDS } from '@app/shared/constants';
 import { getCompiled, safeQuerySelector } from '@testing/helpers';
 
-import { LoginComponent, MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from './login.component';
+import { LoginComponent } from './login.component';
 
 describe('LoginComponent', (): void => {
   let component: LoginComponent;
@@ -64,21 +64,21 @@ describe('LoginComponent', (): void => {
     // Required message
     component.emailCntrl.markAsDirty();
     component.emailCntrl.setErrors({ required: true });
-    tick(MESSAGE_DELAY); // debounceTime
+    tick(FORMS.inputDebounce); // debounceTime
     fixture.detectChanges();
 
     expect(safeQuerySelector(compiled, '.form-alerts').textContent).toContain('Please enter your email address.');
 
     // Valid email message
     component.emailCntrl.setErrors({ email: true });
-    tick(MESSAGE_DELAY); // debounceTime
+    tick(FORMS.inputDebounce); // debounceTime
     fixture.detectChanges();
 
     expect(safeQuerySelector(compiled, '.form-alerts').textContent).toContain('Please enter a valid email address.');
 
     // Hide message when control is valid.
     component.emailCntrl.setErrors(null); // eslint-disable-line unicorn/no-null -- DOM uses null
-    tick(MESSAGE_DELAY); // debounceTime
+    tick(FORMS.inputDebounce); // debounceTime
     fixture.detectChanges();
 
     expect(compiled.querySelector('.form-alerts')).withContext('.form-alerts').toBeNull();
@@ -88,8 +88,8 @@ describe('LoginComponent', (): void => {
     // Default state
     expect(component.passwordCntrl.value).withContext('value').toBeNull();
     expect(component.passwordCntrl.invalid).withContext('invalid').toBeTrue();
-    expect(component.maxPasswordLength).withContext('maxPasswordLength').toBe(MAX_PASSWORD_LENGTH);
-    expect(component.minPasswordLength).withContext('minPasswordLength').toBe(MIN_PASSWORD_LENGTH);
+    expect(component.maxPasswordLength).withContext('maxPasswordLength').toBe(PASSWORDS.maxLength);
+    expect(component.minPasswordLength).withContext('minPasswordLength').toBe(PASSWORDS.minLength);
 
     // Valid
     component.passwordCntrl.setValue('08a2fe27260b');
@@ -117,8 +117,8 @@ describe('LoginComponent', (): void => {
     const compiled: HTMLElement = getCompiled(fixture);
     const passwordInput: HTMLInputElement = safeQuerySelector(compiled, 'input[type="password"]');
 
-    expect(passwordInput.getAttribute('maxlength')).withContext('get attribute maxlength').toBe(`${MAX_PASSWORD_LENGTH}`);
-    expect(passwordInput.getAttribute('minlength')).withContext('get attribute minlength').toBe(`${MIN_PASSWORD_LENGTH}`);
+    expect(passwordInput.getAttribute('maxlength')).withContext('get attribute maxlength').toBe(`${PASSWORDS.maxLength}`);
+    expect(passwordInput.getAttribute('minlength')).withContext('get attribute minlength').toBe(`${PASSWORDS.minLength}`);
     expect(passwordInput.getAttribute('type')).withContext('get attribute type').toBe('password');
     expect(passwordInput.getAttribute('autocomplete')).withContext('get attribute autocomplete').toBe('current-password');
     expect(passwordInput.hasAttribute('required')).withContext('has attribute required').toBeTrue();
@@ -134,30 +134,30 @@ describe('LoginComponent', (): void => {
     // Required message
     component.passwordCntrl.markAsDirty();
     component.passwordCntrl.setErrors({ required: true });
-    tick(MESSAGE_DELAY); // debounceTime
+    tick(FORMS.inputDebounce); // debounceTime
     fixture.detectChanges();
 
     expect(safeQuerySelector(compiled, '.form-alerts').textContent).toContain('Please enter your password.');
 
     // Minimum length message
     component.passwordCntrl.setErrors({ minlength: true });
-    tick(MESSAGE_DELAY); // debounceTime
+    tick(FORMS.inputDebounce); // debounceTime
     fixture.detectChanges();
 
     expect(safeQuerySelector(compiled, '.form-alerts').textContent)
-      .toContain(`Please enter a password that contains at least ${MIN_PASSWORD_LENGTH} characters`);
+      .toContain(`Please enter a password that contains at least ${PASSWORDS.minLength} characters`);
 
     // Maximum length message
     component.passwordCntrl.setErrors({ maxlength: true });
-    tick(MESSAGE_DELAY); // debounceTime
+    tick(FORMS.inputDebounce); // debounceTime
     fixture.detectChanges();
 
     expect(safeQuerySelector(compiled, '.form-alerts').textContent)
-      .toContain(`Your password may not be longer than ${MAX_PASSWORD_LENGTH} characters.`);
+      .toContain(`Your password may not be longer than ${PASSWORDS.maxLength} characters.`);
 
     // Hide message when control is valid.
     component.passwordCntrl.setErrors(null); // eslint-disable-line unicorn/no-null -- DOM uses null
-    tick(MESSAGE_DELAY); // debounceTime
+    tick(FORMS.inputDebounce); // debounceTime
     fixture.detectChanges();
 
     expect(compiled.querySelector('.form-alerts')).withContext('.form-alerts').toBeNull();

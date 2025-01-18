@@ -1,19 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 
-import { ChangeEmailComponent } from './change-email.component';
+import { FooterComponent } from './footer.component';
 
-describe('ChangeEmailComponent', (): void => {
-  let component: ChangeEmailComponent;
-  let fixture: ComponentFixture<ChangeEmailComponent>;
+describe('FooterComponent', (): void => {
+  let component: FooterComponent;
+  let fixture: ComponentFixture<FooterComponent>;
 
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      imports: [ ChangeEmailComponent ],
+      imports: [ FooterComponent ],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(ChangeEmailComponent);
+    fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

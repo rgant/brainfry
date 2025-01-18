@@ -1,0 +1,20 @@
+:host {
+  display: grid;
+  grid-template-rows: [outer-start content-start] 1fr [content-end] min-content [outer-end];
+  min-block-size: 100vb;
+}
+
+.wrapper {
+  display: flex;
+  grid-row: outer-start / content-end;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}

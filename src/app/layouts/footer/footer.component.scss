@@ -1,0 +1,16 @@
+@use 'abstracts' as *;
+
+footer {
+  @extend %dark-bg-links;
+
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 $regular-spacing;
+  background-color: $dark-gray;
+}
+
+.policies {
+  a {
+    padding: 0 $small-spacing;
+  }
+}

@@ -1,0 +1,12 @@
+%dark-bg-links {
+  $dark-link: #90c8ee;
+  $dark-link-visited: #c0c0ee;
+
+  a:link {
+    color: $dark-link;
+  }
+
+  a:visited {
+    color: $dark-link-visited;
+  }
+}

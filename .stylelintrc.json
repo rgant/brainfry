@@ -55,8 +55,8 @@
     "plugin/use-logical-properties-and-values": true,
     "plugin/use-logical-units": true,
     "scale-unlimited/declaration-strict-value": [
-      "/color$/",
-      "z-index"
+      ["/color$/", "z-index"],
+      { "ignoreValues": ["currentColor", "inherit", "transparent"] }
     ],
     "scss/at-each-key-value-single-line": true,
     "scss/at-function-named-arguments": "always",

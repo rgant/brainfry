@@ -12,6 +12,10 @@ import { LoginComponent } from './identity/login/login.component';
 import { RecoverEmailComponent } from './identity/recover-email/recover-email.component';
 import { ResetPasswordComponent } from './identity/reset-password/reset-password.component';
 import { VerifyEmailComponent } from './identity/verify-email/verify-email.component';
+import { CentralLayoutComponent } from './layouts/central/central.component';
+import { StandardLayoutComponent } from './layouts/standard/standard.component';
+import { PrivacyPolicyComponent } from './legal/privacy-policy/privacy-policy.component';
+import { TermsAndConditionsComponent } from './legal/terms-and-conditions/terms-and-conditions.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const routes: Routes = [
@@ -22,6 +26,8 @@ export const routes: Routes = [
   {
     path: '',
     canActivateChild: [ noAuthGuard ],
+    component: CentralLayoutComponent,
+
     children: [
       {
         path: 'forgot-password',
@@ -45,17 +51,19 @@ export const routes: Routes = [
   {
     path: '',
     canActivateChild: [ authGuard ],
+    component: StandardLayoutComponent,
+
     children: [
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-        title: $localize`:HTML title tag|Default page for user showing key information@@htmlTitle.dashboard:Dashboard`,
-      },
       {
         // Sends the user an email to confirm access to the email address
         path: 'confirm-email',
         component: ConfirmEmailComponent,
         title: $localize`:HTML title tag|Send email confirming address access@@htmlTitle.confirm-email:Confirm Email`,
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        title: $localize`:HTML title tag|Default page for user showing key information@@htmlTitle.dashboard:Dashboard`,
       },
     ],
   },
@@ -68,20 +76,37 @@ export const routes: Routes = [
     // title: '', // Redirect page with no need for title
   },
   {
-    // Marks user account has having a verified email address
-    path: 'verify-email',
-    component: VerifyEmailComponent,
-    title: $localize`:HTML title tag|Marks email address is verified@@htmlTitle.verify-email:Verify Email`,
-  },
-  {
-    // Undoes a change of email address on the account
-    path: 'recover-email',
-    component: RecoverEmailComponent,
-    title: $localize`:HTML title tag|Reverts email address change@@htmlTitle.recover-email:Recover Email`,
-  },
-  {
-    path: '**',
-    component: PageNotFoundComponent,
-    title: $localize`:HTML title tag|Page not found 404 error@@htmlTitle.not-found:Page Not Found`,
+    path: '',
+    component: CentralLayoutComponent,
+
+    children: [
+      {
+        path: 'privacy',
+        component: PrivacyPolicyComponent,
+        title: $localize`:HTML title tag|Legal document page@@htmlTitle.privacy:Privacy Policy`,
+      },
+      {
+        // Reverts a change of email address on the account
+        path: 'recover-email',
+        component: RecoverEmailComponent,
+        title: $localize`:HTML title tag|Reverts email address change@@htmlTitle.recover-email:Recover Email`,
+      },
+      {
+        path: 'terms',
+        component: TermsAndConditionsComponent,
+        title: $localize`:HTML title tag|Legal document page@@htmlTitle.terms:Terms & Conditions`,
+      },
+      {
+        // Marks user account has having a verified email address
+        path: 'verify-email',
+        component: VerifyEmailComponent,
+        title: $localize`:HTML title tag|Marks email address is verified@@htmlTitle.verify-email:Verify Email`,
+      },
+      {
+        path: '**',
+        component: PageNotFoundComponent,
+        title: $localize`:HTML title tag|Page not found 404 error@@htmlTitle.not-found:Page Not Found`,
+      },
+    ],
   },
 ];

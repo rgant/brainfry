@@ -1,19 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 
-import { ChangeEmailComponent } from './change-email.component';
+import { TermsAndConditionsComponent } from './terms-and-conditions.component';
 
-describe('ChangeEmailComponent', (): void => {
-  let component: ChangeEmailComponent;
-  let fixture: ComponentFixture<ChangeEmailComponent>;
+describe('TermsAndConditionsComponent', (): void => {
+  let component: TermsAndConditionsComponent;
+  let fixture: ComponentFixture<TermsAndConditionsComponent>;
 
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      imports: [ ChangeEmailComponent ],
+      imports: [ TermsAndConditionsComponent ],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(ChangeEmailComponent);
+    fixture = TestBed.createComponent(TermsAndConditionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

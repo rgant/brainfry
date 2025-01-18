@@ -20,8 +20,13 @@ body {
 }
 
 a {
-  text-decoration-thickness: 8; // Sets the thickness as a percentage of the font size
+  text-decoration-thickness: 8%; // Sets the thickness as a percentage of the font size
   text-underline-position: under; // Places underlines below the descenders
+
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 h1 {

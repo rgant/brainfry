@@ -1,0 +1,8 @@
+@use 'abstracts' as *;
+
+header {
+  display: flex;
+  gap: $regular-spacing;
+  align-items: center;
+  justify-content: start;
+}

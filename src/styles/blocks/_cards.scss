@@ -1,25 +1,36 @@
 @use 'abstracts' as *;
 
+%card-base,
 .card {
-  margin: 0 $small-spacing;
   padding: $regular-spacing;
   border-radius: $lg-border-radius;
-
   color: $black;
-
   background-color: $white;
-
-  @include respond-to('small') {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    inline-size: fit-content;
-    margin: 0 auto;
-  }
 
   // Deeply applies to all of the first-children of the card to remove the top margin.
   :first-child {
     margin-block-start: 0;
+  }
+
+  :last-child {
+    margin-block-end: 0;
+  }
+}
+
+.main-card {
+  @extend %card-base;
+
+  max-inline-size: 24rem;
+
+  @include respond-to('small') {
+    min-inline-size: 24rem;
+  }
+
+  .button {
+    inline-size: 90%;
+  }
+
+  .card-actions {
+    text-align: center;
   }
 }

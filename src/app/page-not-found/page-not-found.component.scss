@@ -1,5 +1,11 @@
+@use 'abstracts' as *;
+
 // Note: this only imports the glyphs needed for "Game Over", if translations begin this this will need to change to support
 @import 'https://fonts.googleapis.com/css2?family=Pixelify+Sans&text=GOaemrv%20&display=swap';
+
+:host {
+  text-align: center;
+}
 
 .banner {
   font-family: 'Pixelify Sans', monospace;
@@ -7,10 +13,14 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  text-align: center;
   letter-spacing: .4rem;
 }
 
-.logo {
-  text-align: center;
+.card {
+  max-inline-size: 90%;
+  margin: 0 auto;
+
+  @include respond-to('medium') {
+    max-inline-size: 52rem;
+  }
 }

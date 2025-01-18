@@ -1,0 +1,11 @@
+<footer>
+  <p class="policies">
+    <a routerLink="/privacy" i18n="global footer|Link to privacy policy page@@links.privacy">Privacy Policy</a>
+    <a routerLink="/terms" i18n="global footer|Link to terms &amp; conditions page@@links.terms">Terms &amp; Conditions</a>
+  </p>
+  <p class="copyright">
+    <span i18n="global footer|Site copyright notice@@text.copyright">&copy; Copyright</span><!--
+    Angular collapses whitespace -->&nbsp;<!--
+    --><time [attr.datetime]="today | date: 'yyyy'">{{ today | date: 'yyyy' }}</time>
+  </p>
+</footer>

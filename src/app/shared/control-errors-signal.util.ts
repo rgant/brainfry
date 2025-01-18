@@ -15,12 +15,12 @@ import {
 } from 'rxjs';
 import type { Observable } from 'rxjs';
 
+import { FORMS } from './constants';
+
 interface CombinedObs {
   dirty: boolean;
   errors: ValidationErrors | undefined;
 }
-
-export const MESSAGE_DELAY = 500; // Milliseconds
 
 export const controlErrorsSignal = (control: AbstractControl): Signal<ValidationErrors | undefined> => {
   // Only care about dirty controls for purposes of displaying validation error messages.
@@ -32,7 +32,7 @@ export const controlErrorsSignal = (control: AbstractControl): Signal<Validation
   // When status is INVALID emit control.errors, otherwise undefined
   const emailCntrlStatus$: Observable<ValidationErrors | undefined> = control.statusChanges.pipe(
     // Wait for input to stop before displaying error messages
-    debounceTime(MESSAGE_DELAY),
+    debounceTime(FORMS.inputDebounce),
     map((status: FormControlStatus): ValidationErrors | undefined => {
       const { errors } = control;
       if (status === 'INVALID' && errors) {

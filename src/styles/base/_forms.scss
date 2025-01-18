@@ -26,7 +26,7 @@ summary,
   textarea {
     inline-size: 100%;
     padding: $small-spacing;
-    border: 1px solid $gray;
+    border: 1px solid $light-gray;
     border-radius: $border-radius;
   }
 }
@@ -34,7 +34,7 @@ summary,
 .form-alerts {
   display: block; // Generally a span by default
 
-  margin-block-start: .5rem;
+  margin-block-start: $small-spacing;
   padding: $small-spacing;
   border: 1px solid $danger-color;
   border-radius: $border-radius;
@@ -49,6 +49,6 @@ summary,
     inset-inline-start: 100%;
 
     inline-size: 100%;
-    margin-inline-start: .5rem;
+    margin-inline-start: $small-spacing;
   }
 }

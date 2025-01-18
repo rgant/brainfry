@@ -1,0 +1,22 @@
+@use 'abstracts' as *;
+
+:host {
+  display: grid;
+  grid-template-rows: [outer-start] min-content [content-start] 1fr [content-end] min-content [outer-end];
+  min-block-size: 100vb;
+}
+
+main {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: [outer-start] max-content [content-start] 1fr [content-end outer-end];
+  gap: $regular-spacing;
+
+  .content {
+    grid-column: content-start / content-end;
+  }
+
+  .sidebar {
+    grid-column: outer-start / content-start;
+  }
+}

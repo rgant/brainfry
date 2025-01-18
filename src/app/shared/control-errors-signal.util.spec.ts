@@ -3,7 +3,8 @@ import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormControl } from '@angular/forms';
 import type { ValidationErrors } from '@angular/forms';
 
-import { controlErrorsSignal, MESSAGE_DELAY } from './utilities';
+import { FORMS } from './constants';
+import { controlErrorsSignal } from './control-errors-signal.util';
 
 const createSignal = (control: FormControl): Signal<ValidationErrors | undefined> =>
   TestBed.runInInjectionContext((): Signal<ValidationErrors | undefined> => controlErrorsSignal(control));
@@ -25,18 +26,18 @@ describe('controlErrorsSignal', (): void => {
     expect($theSignal()).toBeUndefined();
 
     theControl.setErrors({ bad: true });
-    tick(MESSAGE_DELAY);
+    tick(FORMS.inputDebounce);
 
     expect($theSignal()).toBeUndefined();
 
     theControl.markAsDirty();
-    tick(MESSAGE_DELAY);
+    tick(FORMS.inputDebounce);
 
     expect($theSignal()).toEqual({ bad: true });
   }));
 
   it('should wait to emit errors', fakeAsync((): void => {
-    const delay = MESSAGE_DELAY * HALF;
+    const delay = FORMS.inputDebounce * HALF;
 
     theControl.markAsDirty();
     theControl.setErrors({ bad: true });
@@ -52,12 +53,12 @@ describe('controlErrorsSignal', (): void => {
   it('should clear errors', fakeAsync((): void => {
     theControl.markAsDirty();
     theControl.setErrors({ bad: true });
-    tick(MESSAGE_DELAY);
+    tick(FORMS.inputDebounce);
 
     expect($theSignal()).toEqual({ bad: true });
 
     theControl.setErrors(null); // eslint-disable-line unicorn/no-null -- DOM uses null
-    tick(MESSAGE_DELAY);
+    tick(FORMS.inputDebounce);
 
     expect($theSignal()).toBeUndefined();
   }));
