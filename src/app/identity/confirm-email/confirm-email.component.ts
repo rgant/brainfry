@@ -1,3 +1,6 @@
+/**
+ * Sends the user an email to confirm access to the email address.
+ */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({

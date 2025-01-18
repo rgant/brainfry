@@ -24,13 +24,13 @@ interface CombinedObs {
 
 export const controlErrorsSignal = (control: AbstractControl): Signal<ValidationErrors | undefined> => {
   // Only care about dirty controls for purposes of displaying validation error messages.
-  const emailCntrlDirty$: Observable<boolean> = control.events.pipe(
+  const controlDirty$: Observable<boolean> = control.events.pipe(
     filter((event: ControlEvent<unknown>): event is PristineChangeEvent => event instanceof PristineChangeEvent),
     map((event: PristineChangeEvent): boolean => !event.pristine),
   );
 
   // When status is INVALID emit control.errors, otherwise undefined
-  const emailCntrlStatus$: Observable<ValidationErrors | undefined> = control.statusChanges.pipe(
+  const controlStatus$: Observable<ValidationErrors | undefined> = control.statusChanges.pipe(
     // Wait for input to stop before displaying error messages
     debounceTime(FORMS.inputDebounce),
     map((status: FormControlStatus): ValidationErrors | undefined => {
@@ -43,10 +43,10 @@ export const controlErrorsSignal = (control: AbstractControl): Signal<Validation
   );
 
   // Combine the Observables so that ValidationErrors are emitted only when the control is dirty.
-  const emailCntrlErrors$: Observable<ValidationErrors | undefined> = combineLatest({
+  const controlErrors$: Observable<ValidationErrors | undefined> = combineLatest({
     /* eslint-disable rxjs/finnish */
-    dirty: emailCntrlDirty$,
-    errors: emailCntrlStatus$,
+    dirty: controlDirty$,
+    errors: controlStatus$,
   }).pipe(
     map(({ dirty, errors }: CombinedObs): ValidationErrors | undefined => {
       if (dirty) {
@@ -57,5 +57,5 @@ export const controlErrorsSignal = (control: AbstractControl): Signal<Validation
     }),
   );
 
-  return toSignal(emailCntrlErrors$);
+  return toSignal(controlErrors$);
 };

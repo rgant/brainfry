@@ -11,6 +11,7 @@ import { RouterLink } from '@angular/router';
 
 import { PASSWORDS } from '@app/shared/constants';
 import { controlErrorsSignal } from '@app/shared/control-errors-signal.util';
+import { controlInvalidSignal } from '@app/shared/control-invalid-signal.util';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
 type LoginFormGroup = FormGroup<{
@@ -26,7 +27,9 @@ type LoginFormGroup = FormGroup<{
 })
 export class LoginComponent {
   public readonly $emailCntrlErrors: Signal<ValidationErrors | undefined>;
+  public readonly $emailCntrlInvalid: Signal<boolean>;
   public readonly $passwordCntrlErrors: Signal<ValidationErrors | undefined>;
+  public readonly $passwordCntrlInvalid: Signal<boolean>;
   public readonly $showForm: WritableSignal<boolean>;
   public readonly emailCntrl: FormControl<string | null>;
   public readonly loginForm: LoginFormGroup;
@@ -52,7 +55,9 @@ export class LoginComponent {
     });
 
     this.$emailCntrlErrors = controlErrorsSignal(this.emailCntrl);
+    this.$emailCntrlInvalid = controlInvalidSignal(this.emailCntrl);
     this.$passwordCntrlErrors = controlErrorsSignal(this.passwordCntrl);
+    this.$passwordCntrlInvalid = controlInvalidSignal(this.passwordCntrl);
     this.$showForm = signal<boolean>(true);
   }
 

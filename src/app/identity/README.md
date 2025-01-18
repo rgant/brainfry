@@ -10,9 +10,11 @@ And while it might appear that the `password: FormControl` is reused, there are
 subtle differences:
 
 1. Login
-2. Reset Password (need two _new_ password fields that have different autocomple
+2. Reset Password (needs two _new_ password fields that have different autocomple
    and autofocus)
 3. Change Email
+4. Change Password (needs two _new_ password fields that have different autocomple
+   and autofocus, plus the current password field)
 
 If we add self signup then you could add Join to both of those lists, but
 perhaps with other subtle differences.

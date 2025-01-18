@@ -2,7 +2,7 @@ export enum FORMS {
   /**
    * Input event delay for form fields to prevent an event on every keystroke. Milliseconds
    */
-  inputDebounce = 500,
+  inputDebounce = 1000,
 }
 
 /**

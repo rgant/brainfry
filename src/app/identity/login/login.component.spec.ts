@@ -46,17 +46,62 @@ describe('LoginComponent', (): void => {
 
   it('should configure email input', (): void => {
     const compiled: HTMLElement = getCompiled(fixture);
-    const emailInput: HTMLInputElement = safeQuerySelector(compiled, 'input[type="email"]');
+    const emailInput: HTMLInputElement = safeQuerySelector(compiled, '#fld-email');
+    const errorsId: string | null = emailInput.getAttribute('aria-describedby');
 
     expect(emailInput.getAttribute('type')).withContext('get attribute type').toBe('email');
     expect(emailInput.getAttribute('autocomplete')).withContext('get attribute autocomplete').toBe('email');
     expect(emailInput.hasAttribute('autofocus')).withContext('has attribute autofocus').toBeTrue();
     expect(emailInput.hasAttribute('required')).withContext('has attribute required').toBeTrue();
-    expect(compiled.querySelector(`label[for='${emailInput.id}']`)).withContext(`label for #'${emailInput.id}'`).toBeTruthy();
+    expect(compiled.querySelector(`label[for='${emailInput.id}']`)).withContext(`label for #${emailInput.id}`).toBeTruthy();
+    expect(errorsId).withContext('get attribute aria-describedby').toBeTruthy();
+    expect(compiled.querySelector(`#${errorsId}`)).withContext(`error id #${errorsId}`).toBeTruthy();
+  });
+
+  it('should set email field aria-invalid attribute', (): void => {
+    const compiled: HTMLElement = getCompiled(fixture);
+    const emailInput: HTMLInputElement = safeQuerySelector(compiled, '#fld-email');
+
+    expect(component.emailCntrl.invalid).withContext('emailCntrl.invalid').toBe(true);
+    expect(emailInput.getAttribute('aria-invalid')).withContext('get attribute aria-invalid').toBe('false');
+
+    component.emailCntrl.markAsDirty();
+    component.emailCntrl.markAsTouched();
+    fixture.detectChanges();
+
+    // When invalid, dirty, and touched
+    expect(emailInput.getAttribute('aria-invalid')).withContext('get attribute aria-invalid').toBe('true');
+
+    // When not one of invalid, dirty, or touched
+
+    // Touched
+    component.emailCntrl.markAsUntouched();
+    fixture.detectChanges();
+
+    expect(emailInput.getAttribute('aria-invalid')).withContext('get attribute aria-invalid').toBe('false');
+
+    component.emailCntrl.markAsTouched();
+
+    // Dirty
+    component.emailCntrl.markAsPristine();
+    fixture.detectChanges();
+
+    expect(emailInput.getAttribute('aria-invalid')).withContext('get attribute aria-invalid').toBe('false');
+
+    component.emailCntrl.markAsDirty();
+
+    // Invalid
+    component.emailCntrl.setErrors(null); // eslint-disable-line unicorn/no-null -- FormControl.errors use null
+    fixture.detectChanges();
+
+    expect(emailInput.getAttribute('aria-invalid')).withContext('get attribute aria-invalid').toBe('false');
+
+    component.emailCntrl.setErrors({ required: true });
   });
 
   it('should configure email error messages', fakeAsync((): void => {
     const compiled: HTMLElement = getCompiled(fixture);
+    const errorsEl: HTMLSpanElement = safeQuerySelector(compiled, '#fld-email-msgs');
 
     expect(component.emailCntrl.dirty).withContext('dirty').toBeFalse();
     expect(compiled.querySelector('.form-alerts')).withContext('.form-alerts').toBeNull();
@@ -67,14 +112,14 @@ describe('LoginComponent', (): void => {
     tick(FORMS.inputDebounce); // debounceTime
     fixture.detectChanges();
 
-    expect(safeQuerySelector(compiled, '.form-alerts').textContent).toContain('Please enter your email address.');
+    expect(errorsEl.textContent).toContain('Please enter your email address.');
 
     // Valid email message
     component.emailCntrl.setErrors({ email: true });
     tick(FORMS.inputDebounce); // debounceTime
     fixture.detectChanges();
 
-    expect(safeQuerySelector(compiled, '.form-alerts').textContent).toContain('Please enter a valid email address.');
+    expect(errorsEl.textContent).toContain('Please enter a valid email address.');
 
     // Hide message when control is valid.
     component.emailCntrl.setErrors(null); // eslint-disable-line unicorn/no-null -- DOM uses null
@@ -115,7 +160,8 @@ describe('LoginComponent', (): void => {
 
   it('should configure password input', (): void => {
     const compiled: HTMLElement = getCompiled(fixture);
-    const passwordInput: HTMLInputElement = safeQuerySelector(compiled, 'input[type="password"]');
+    const passwordInput: HTMLInputElement = safeQuerySelector(compiled, '#fld-password');
+    const errorsId: string | null = passwordInput.getAttribute('aria-describedby');
 
     expect(passwordInput.getAttribute('maxlength')).withContext('get attribute maxlength').toBe(`${PASSWORDS.maxLength}`);
     expect(passwordInput.getAttribute('minlength')).withContext('get attribute minlength').toBe(`${PASSWORDS.minLength}`);
@@ -123,10 +169,54 @@ describe('LoginComponent', (): void => {
     expect(passwordInput.getAttribute('autocomplete')).withContext('get attribute autocomplete').toBe('current-password');
     expect(passwordInput.hasAttribute('required')).withContext('has attribute required').toBeTrue();
     expect(compiled.querySelector(`label[for='${passwordInput.id}']`)).withContext(`label for #'${passwordInput.id}'`).toBeTruthy();
+    expect(errorsId).withContext('get attribute aria-describedby').toBeTruthy();
+    expect(compiled.querySelector(`#${errorsId}`)).withContext(`error id #${errorsId}`).toBeTruthy();
+  });
+
+  it('should set password field aria-invalid attribute', (): void => {
+    const compiled: HTMLElement = getCompiled(fixture);
+    const passwordInput: HTMLInputElement = safeQuerySelector(compiled, '#fld-password');
+
+    expect(component.emailCntrl.invalid).withContext('emailCntrl.invalid').toBe(true);
+    expect(passwordInput.getAttribute('aria-invalid')).withContext('get attribute aria-invalid').toBe('false');
+
+    component.passwordCntrl.markAsDirty();
+    component.passwordCntrl.markAsTouched();
+    fixture.detectChanges();
+
+    // When invalid, dirty, and touched
+    expect(passwordInput.getAttribute('aria-invalid')).withContext('get attribute aria-invalid').toBe('true');
+
+    // When not one of invalid, dirty, or touched
+
+    // Touched
+    component.passwordCntrl.markAsUntouched();
+    fixture.detectChanges();
+
+    expect(passwordInput.getAttribute('aria-invalid')).withContext('get attribute aria-invalid').toBe('false');
+
+    component.passwordCntrl.markAsTouched();
+
+    // Dirty
+    component.passwordCntrl.markAsPristine();
+    fixture.detectChanges();
+
+    expect(passwordInput.getAttribute('aria-invalid')).withContext('get attribute aria-invalid').toBe('false');
+
+    component.passwordCntrl.markAsDirty();
+
+    // Invalid
+    component.passwordCntrl.setErrors(null); // eslint-disable-line unicorn/no-null -- FormControl.errors use null
+    fixture.detectChanges();
+
+    expect(passwordInput.getAttribute('aria-invalid')).withContext('get attribute aria-invalid').toBe('false');
+
+    component.passwordCntrl.setErrors({ required: true });
   });
 
   it('should configure password error messages', fakeAsync((): void => {
     const compiled: HTMLElement = getCompiled(fixture);
+    const errorsEl: HTMLSpanElement = safeQuerySelector(compiled, '#fld-password-msgs');
 
     expect(component.passwordCntrl.dirty).withContext('dirty').toBeFalse();
     expect(compiled.querySelector('.form-alerts')).withContext('.form-alerts').toBeNull();
@@ -137,23 +227,21 @@ describe('LoginComponent', (): void => {
     tick(FORMS.inputDebounce); // debounceTime
     fixture.detectChanges();
 
-    expect(safeQuerySelector(compiled, '.form-alerts').textContent).toContain('Please enter your password.');
+    expect(errorsEl.textContent).toContain('Please enter your password.');
 
     // Minimum length message
     component.passwordCntrl.setErrors({ minlength: true });
     tick(FORMS.inputDebounce); // debounceTime
     fixture.detectChanges();
 
-    expect(safeQuerySelector(compiled, '.form-alerts').textContent)
-      .toContain(`Please enter a password that contains at least ${PASSWORDS.minLength} characters`);
+    expect(errorsEl.textContent).toContain(`Please enter a password that contains at least ${PASSWORDS.minLength} characters`);
 
     // Maximum length message
     component.passwordCntrl.setErrors({ maxlength: true });
     tick(FORMS.inputDebounce); // debounceTime
     fixture.detectChanges();
 
-    expect(safeQuerySelector(compiled, '.form-alerts').textContent)
-      .toContain(`Your password may not be longer than ${PASSWORDS.maxLength} characters.`);
+    expect(errorsEl.textContent).toContain(`Your password may not be longer than ${PASSWORDS.maxLength} characters.`);
 
     // Hide message when control is valid.
     component.passwordCntrl.setErrors(null); // eslint-disable-line unicorn/no-null -- DOM uses null

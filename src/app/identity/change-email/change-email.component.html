@@ -1,1 +1,90 @@
-<p>change-email works!</p>
+@if ($showForm()) {
+  <div class="main-card">
+    <form (ngSubmit)="onSubmit()" [formGroup]="changeEmailForm">
+      <p class="form-control">
+        <label for="fld-oldEmail" i18n="form field label|Change email form old email@@fields.oldEmail">Current Email:</label>
+        <input id="fld-oldEmail" type="email" disabled>
+      </p>
+
+      <p class="form-control">
+        <label for="fld-newEmail" i18n="form field label|Change email form new email@@fields.email">Email:</label>
+        <input
+          [attr.aria-invalid]="$emailCntrlInvalid()"
+          id="fld-newEmail"
+          type="email"
+          aria-describedby="fld-email-msgs"
+          autocomplete="email"
+          autofocus
+          formControlName="email"
+          required
+        >
+        <span id="fld-email-msgs">
+          @if ($emailCntrlErrors(); as errors) {
+            <span class="form-alerts">
+              @if (errors['required']) {
+                <ng-container i18n="form field error message|Email is a required field@@formErrors.email.required">
+                  Please enter your email address.
+                </ng-container>
+              }
+              @if (errors['email']) {
+                <ng-container i18n="form field error message|Email is a required field@@formErrors.email.valid">
+                  Please enter a valid email address.
+                </ng-container>
+              }
+            </span>
+          }
+        </span>
+      </p>
+
+      <p class="form-control">
+        <label for="fld-password" i18n="form field label|Login password input@@fields.password">Password:</label>
+        <input
+          [attr.aria-invalid]="$passwordCntrlInvalid()"
+          [minlength]="minPasswordLength"
+          [maxlength]="maxPasswordLength"
+          id="fld-password"
+          type="password"
+          aria-describedby="fld-password-msgs"
+          autocomplete="current-password"
+          formControlName="password"
+          required
+        >
+        <span id="fld-password-msgs">
+          @if ($passwordCntrlErrors(); as errors) {
+            <span class="form-alerts">
+              @if (errors['required']) {
+                <ng-container i18n="form field error message|Password is a required field@@formErrors.password.required">
+                  Please enter your password.
+                </ng-container>
+              }
+              @if (errors['minlength']) {
+                <ng-container i18n="form field error message|Password is too short@@formErrors.password.minlength">
+                  Please enter a password that contains at least {{ minPasswordLength }} characters and a combination of upper and lowercase
+                  letters, numbers, and symbols.
+                </ng-container>
+              }
+              @if (errors['maxlength']) {
+                <ng-container i18n="form field error message|Password is too long@@formErrors.password.maxlength">
+                  Your password may not be longer than {{ maxPasswordLength }} characters.
+                </ng-container>
+              }
+            </span>
+          }
+        </span>
+      </p>
+
+      <p class="card-actions">
+        <button
+          [disabled]="changeEmailForm.invalid"
+          class="button"
+          type="submit"
+          i18n="form submit button|Change account email form submit button@@buttons.changeEmail"
+        >
+          Change Email
+        </button>
+      </p>
+    </form>
+  </div>
+} @else {
+  <app-spinner />
+}

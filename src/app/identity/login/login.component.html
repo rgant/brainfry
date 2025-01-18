@@ -1,63 +1,71 @@
 @if ($showForm()) {
-  <section class="main-card">
+  <div class="main-card">
     <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
       <p class="form-control">
         <label for="fld-email" i18n="form field label|Login email input@@fields.email">Email:</label>
         <input
+          [attr.aria-invalid]="$emailCntrlInvalid()"
           id="fld-email"
           type="email"
+          aria-describedby="fld-email-msgs"
           autocomplete="email"
           autofocus
           formControlName="email"
           required
         >
-        @if ($emailCntrlErrors(); as errors) {
-          <span class="form-alerts">
-            @if (errors['required']) {
-              <ng-container i18n="form field error message|Email is a required field@@formErrors.email.required">
-                Please enter your email address.
-              </ng-container>
-            }
-            @if (errors['email']) {
-              <ng-container i18n="form field error message|Email is a required field@@formErrors.email.valid">
-                Please enter a valid email address.
-              </ng-container>
-            }
-          </span>
-        }
+        <span id="fld-email-msgs">
+          @if ($emailCntrlErrors(); as errors) {
+            <span class="form-alerts">
+              @if (errors['required']) {
+                <ng-container i18n="form field error message|Email is a required field@@formErrors.email.required">
+                  Please enter your email address.
+                </ng-container>
+              }
+              @if (errors['email']) {
+                <ng-container i18n="form field error message|Email is a required field@@formErrors.email.valid">
+                  Please enter a valid email address.
+                </ng-container>
+              }
+            </span>
+          }
+        </span>
       </p>
 
       <p class="form-control">
         <label for="fld-password" i18n="form field label|Login password input@@fields.password">Password:</label>
         <input
+          [attr.aria-invalid]="$passwordCntrlInvalid()"
           [minlength]="minPasswordLength"
           [maxlength]="maxPasswordLength"
           id="fld-password"
           type="password"
+          aria-describedby="fld-password-msgs"
           autocomplete="current-password"
           formControlName="password"
           required
         >
-        @if ($passwordCntrlErrors(); as errors) {
-          <span class="form-alerts">
-            @if (errors['required']) {
-              <ng-container i18n="form field error message|Password is a required field@@formErrors.password.required">
-                Please enter your password.
-              </ng-container>
-            }
-            @if (errors['minlength']) {
-              <ng-container i18n="form field error message|Password is too short@@formErrors.password.minlength">
-                Please enter a password that contains at least {{ minPasswordLength }} characters and a combination of upper and lowercase
-                letters, numbers, and symbols.
-              </ng-container>
-            }
-            @if (errors['maxlength']) {
-              <ng-container i18n="form field error message|Password is too long@@formErrors.password.maxlength">
-                Your password may not be longer than {{ maxPasswordLength }} characters.
-              </ng-container>
-            }
-          </span>
-        }
+        <span id="fld-password-msgs">
+          @if ($passwordCntrlErrors(); as errors) {
+            <span class="form-alerts">
+              @if (errors['required']) {
+                <ng-container i18n="form field error message|Password is a required field@@formErrors.password.required">
+                  Please enter your password.
+                </ng-container>
+              }
+              @if (errors['minlength']) {
+                <ng-container i18n="form field error message|Password is too short@@formErrors.password.minlength">
+                  Please enter a password that contains at least {{ minPasswordLength }} characters and a combination of upper and lowercase
+                  letters, numbers, and symbols.
+                </ng-container>
+              }
+              @if (errors['maxlength']) {
+                <ng-container i18n="form field error message|Password is too long@@formErrors.password.maxlength">
+                  Your password may not be longer than {{ maxPasswordLength }} characters.
+                </ng-container>
+              }
+            </span>
+          }
+        </span>
       </p>
 
       <p class="card-actions">
@@ -72,9 +80,11 @@
       </p>
     </form>
     <p class="card-actions">
-      <a routerLink="/forgot-password" i18n="navigation link|Link to page to recover password@@links.forgot-password">Forgot your password?</a>
+      <a routerLink="/forgot-password" i18n="navigation link|Link to page to recover password@@links.forgot-password"
+        >Forgot your password?</a
+      >
     </p>
-  </section>
+  </div>
 } @else {
   <app-spinner />
 }

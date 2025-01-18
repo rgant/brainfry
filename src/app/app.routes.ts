@@ -6,11 +6,15 @@ import { authGuard } from './core/guards/auth.guard';
 import { noAuthGuard } from './core/guards/no-auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ActionsComponent } from './identity/actions/actions.component';
+import { ChangeEmailComponent } from './identity/change-email/change-email.component';
+import { ChangePasswordComponent } from './identity/change-password/change-password.component';
 import { ConfirmEmailComponent } from './identity/confirm-email/confirm-email.component';
 import { ForgotPasswordComponent } from './identity/forgot-password/forgot-password.component';
 import { LoginComponent } from './identity/login/login.component';
+import { LogoutComponent } from './identity/logout/logout.component';
 import { RecoverEmailComponent } from './identity/recover-email/recover-email.component';
 import { ResetPasswordComponent } from './identity/reset-password/reset-password.component';
+import { UserProfileComponent } from './identity/user-profile/user-profile.component';
 import { VerifyEmailComponent } from './identity/verify-email/verify-email.component';
 import { CentralLayoutComponent } from './layouts/central/central.component';
 import { StandardLayoutComponent } from './layouts/standard/standard.component';
@@ -55,6 +59,16 @@ export const routes: Routes = [
 
     children: [
       {
+        path: 'change-email',
+        component: ChangeEmailComponent,
+        title: $localize`:HTML title tag|Change account email address@@htmlTitle.change-email:Change your email address`,
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent,
+        title: $localize`:HTML title tag|Change account password@@htmlTitle.change-password:Change your password`,
+      },
+      {
         // Sends the user an email to confirm access to the email address
         path: 'confirm-email',
         component: ConfirmEmailComponent,
@@ -64,6 +78,16 @@ export const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         title: $localize`:HTML title tag|Default page for user showing key information@@htmlTitle.dashboard:Dashboard`,
+      },
+      {
+        path: 'logout',
+        component: LogoutComponent,
+        title: $localize`:HTML title tag|Logout of session@@htmlTitle.logout:Logout`,
+      },
+      {
+        path: 'profile',
+        component: UserProfileComponent,
+        title: $localize`:HTML title tag|Page displaying your user profile@@htmlTitle.profile:Your Profile`,
       },
     ],
   },
