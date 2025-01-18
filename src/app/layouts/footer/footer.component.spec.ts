@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { FooterComponent } from './footer.component';
 
@@ -10,6 +11,7 @@ describe('FooterComponent', (): void => {
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
       imports: [ FooterComponent ],
+      providers: [ provideRouter([]) ],
     })
       .compileComponents();
 

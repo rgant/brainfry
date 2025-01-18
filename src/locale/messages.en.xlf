@@ -101,20 +101,11 @@
         <note priority="1" from="description">Login email input</note>
         <note priority="1" from="meaning">form field label</note>
       </trans-unit>
-      <trans-unit id="placeholders.emailExample" datatype="html">
-        <source>email@example.com</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">13,16</context>
-        </context-group>
-        <note priority="1" from="description">Example email</note>
-        <note priority="1" from="meaning">input placeholder</note>
-      </trans-unit>
       <trans-unit id="formErrors.email.required" datatype="html">
         <source> Please enter your email address. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">20,23</context>
+          <context context-type="linenumber">18,21</context>
         </context-group>
         <note priority="1" from="description">Email is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -123,7 +114,7 @@
         <source> Please enter a valid email address. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">25,29</context>
+          <context context-type="linenumber">23,27</context>
         </context-group>
         <note priority="1" from="description">Email is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -132,7 +123,7 @@
         <source>Password:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">33,36</context>
+          <context context-type="linenumber">31,34</context>
         </context-group>
         <note priority="1" from="description">Login password input</note>
         <note priority="1" from="meaning">form field label</note>
@@ -141,7 +132,7 @@
         <source> Please enter your password. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">48,51</context>
+          <context context-type="linenumber">45,48</context>
         </context-group>
         <note priority="1" from="description">Password is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -150,7 +141,7 @@
         <source> Please enter a password that contains at least <x id="INTERPOLATION" equiv-text="{{ minPasswordLength }}"/> characters and a combination of upper and lowercase letters, numbers, and symbols. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">53,55</context>
+          <context context-type="linenumber">50,52</context>
         </context-group>
         <note priority="1" from="description">Password is too short</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -159,7 +150,7 @@
         <source> Your password may not be longer than <x id="INTERPOLATION" equiv-text="{{ maxPasswordLength }}"/> characters. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">59,60</context>
+          <context context-type="linenumber">56,57</context>
         </context-group>
         <note priority="1" from="description">Password is too long</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -168,7 +159,7 @@
         <source> Login </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">73,78</context>
+          <context context-type="linenumber">70,75</context>
         </context-group>
         <note priority="1" from="description">Email and password login form submit button</note>
         <note priority="1" from="meaning">form submit button</note>
@@ -177,7 +168,7 @@
         <source>Forgot your password?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">78,84</context>
+          <context context-type="linenumber">75,81</context>
         </context-group>
         <note priority="1" from="description">Link to page to recover password</note>
         <note priority="1" from="meaning">navigation link</note>
@@ -194,6 +185,33 @@
         </context-group>
         <note priority="1" from="description">Title of the application</note>
         <note priority="1" from="meaning">h1 display heading</note>
+      </trans-unit>
+      <trans-unit id="text.copyright" datatype="html">
+        <source>© Copyright</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/footer/footer.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <note priority="1" from="description">Site copyright notice</note>
+        <note priority="1" from="meaning">global footer</note>
+      </trans-unit>
+      <trans-unit id="links.privacy" datatype="html">
+        <source>Privacy Policy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/footer/footer.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+        <note priority="1" from="description">Link to privacy policy page</note>
+        <note priority="1" from="meaning">global footer</note>
+      </trans-unit>
+      <trans-unit id="links.terms" datatype="html">
+        <source>Terms &amp; Conditions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/footer/footer.component.html</context>
+          <context context-type="linenumber">6,9</context>
+        </context-group>
+        <note priority="1" from="description">Link to terms &amp; conditions page</note>
+        <note priority="1" from="meaning">global footer</note>
       </trans-unit>
       <trans-unit id="pageNotFound.banner" datatype="html">
         <source>Game Over</source>

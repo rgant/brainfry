@@ -5,12 +5,18 @@ footer {
 
   display: flex;
   justify-content: flex-end;
-  padding: 0 $regular-spacing;
   background-color: $dark-gray;
 }
 
-.policies {
-  a {
-    padding: 0 $small-spacing;
+.item {
+  margin-inline-end: .5rem;
+  padding-inline-end: $small-spacing;
+  border-inline-end: 2px solid $white;
+
+  // Hide the separator between the copyright and date, and on the last item.
+  &:first-child,
+  &:last-child {
+    margin-inline-end: 0;
+    border-inline-end: none;
   }
 }
