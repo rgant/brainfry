@@ -26,6 +26,9 @@
   ],
   "scripts": {
     "build": "ng build",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "e2e": "ng e2e",
     "lint": "ng lint",
     "ng": "ng",
     "start": "ng serve",
@@ -59,7 +62,7 @@
     "@stylistic/stylelint-config": "^2.0.0",
     "@types/jasmine": "~5.1.0",
     "angular-eslint": "19.0.2",
-    "cypress": "^14.0.0",
+    "cypress": "latest",
     "eslint": "^9.18.0",
     "eslint_d": "^14.3.0",
     "eslint-import-resolver-typescript": "^3.7.0",

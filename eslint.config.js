@@ -547,7 +547,7 @@ module.exports = tseslint.config(
       'import-x/no-empty-named-blocks': 'error',
       'import-x/no-extraneous-dependencies': [
         'error',
-        { devDependencies: ['**/*.spec.ts'] },
+        { devDependencies: ['cypress.config.ts', 'cypress/**/*.ts', '**/*.spec.ts'] },
       ],
       'import-x/no-import-module-exports': 'error',
       'import-x/no-mutable-exports': 'error',
@@ -820,7 +820,7 @@ module.exports = tseslint.config(
   },
   {
     files: ['**/*.html'],
-    ignores: ['dist/**/*.html', 'src/index.html'],
+    ignores: ['cypress/**/*.html', 'dist/**/*.html', 'src/index.html'],
     extends: [angular.configs.templateAll],
     rules: {
       '@angular-eslint/template/attributes-order': [

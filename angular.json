@@ -3,7 +3,9 @@
   "cli": {
     "analytics": "49295121-a570-4cbc-a5c7-ced1714fa46f",
     "schematicCollections": [
-      "angular-eslint"
+      "@cypress/schematic",
+      "angular-eslint",
+      "@schematics/angular"
     ]
   },
   "newProjectRoot": "projects",
@@ -64,6 +66,51 @@
               "src/styles.scss"
             ],
             "tsConfig": "tsconfig.app.json"
+          }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "configurations": {
+            "development": {
+              "devServerTarget": "brainfry:serve:development"
+            }
+          },
+          "options": {
+            "devServerTarget": "brainfry:serve",
+            "headless": false,
+            "testingType": "component",
+            "watch": true
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "headless": false,
+            "watch": true
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "configurations": {
+            "production": {
+              "devServerTarget": "brainfry:serve:production"
+            }
+          },
+          "options": {
+            "devServerTarget": "brainfry:serve"
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "configurations": {
+            "production": {
+              "devServerTarget": "brainfry:serve:production"
+            }
+          },
+          "options": {
+            "devServerTarget": "brainfry:serve",
+            "headless": false,
+            "watch": true
           }
         },
         "extract-i18n": {

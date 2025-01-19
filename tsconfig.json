@@ -39,7 +39,7 @@
   // https://github.com/cypress-io/cypress/issues/22059#issuecomment-2422648282
   "references": [
     { "path": "tsconfig.app.json" },
-    { "path": "tsconfig.spec.json" },
-    { "path": "tsconfig.cy.json" }
+    { "path": "tsconfig.cy.json" },
+    { "path": "tsconfig.spec.json" }
   ]
 }
