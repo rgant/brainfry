@@ -725,7 +725,6 @@ module.exports = tseslint.config(
       'preferArrow/prefer-arrow-functions': [
         'warn',
         {
-          classPropertiesAllowed: true,
           returnStyle: 'implicit',
         },
       ],

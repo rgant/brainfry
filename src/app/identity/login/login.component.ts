@@ -1,18 +1,13 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import type { Signal, WritableSignal } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import type { ValidationErrors } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import type { FormControl, ValidationErrors } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 import { PASSWORDS } from '@app/shared/constants';
-import { controlErrorsSignal } from '@app/shared/control-errors-signal.util';
-import { controlInvalidSignal } from '@app/shared/control-invalid-signal.util';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
+
+import { createEmailControl, createPasswordControl } from '../identity-forms';
 
 type LoginFormGroup = FormGroup<{
   email: FormControl<string | null>;
@@ -38,26 +33,14 @@ export class LoginComponent {
   public readonly passwordCntrl: FormControl<string | null>;
 
   constructor() {
-    /* eslint-disable unicorn/no-null -- DOM forms use null */
-    this.emailCntrl = new FormControl<string | null>(null, [ Validators.required, Validators.email ]);
-    this.passwordCntrl = new FormControl(
-      null,
-      [
-        Validators.required,
-        Validators.minLength(this.minPasswordLength),
-        Validators.maxLength(this.maxPasswordLength),
-      ],
-    );
-    /* eslint-enable unicorn/no-null */
+    ({ $errors: this.$emailCntrlErrors, $invalid: this.$emailCntrlInvalid, control: this.emailCntrl } = createEmailControl());
+    ({ $errors: this.$passwordCntrlErrors, $invalid: this.$passwordCntrlInvalid, control: this.passwordCntrl } = createPasswordControl());
+
     this.loginForm = new FormGroup({
       email: this.emailCntrl,
       password: this.passwordCntrl,
     });
 
-    this.$emailCntrlErrors = controlErrorsSignal(this.emailCntrl);
-    this.$emailCntrlInvalid = controlInvalidSignal(this.emailCntrl);
-    this.$passwordCntrlErrors = controlErrorsSignal(this.passwordCntrl);
-    this.$passwordCntrlInvalid = controlInvalidSignal(this.passwordCntrl);
     this.$showForm = signal<boolean>(true);
   }
 
