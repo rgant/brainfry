@@ -29,6 +29,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "e2e": "ng e2e",
+    "i18n": "ng extract-i18n --out-file=messages.en.xlf --output-path=src/locale/",
     "lint": "ng lint",
     "ng": "ng",
     "start": "ng serve",

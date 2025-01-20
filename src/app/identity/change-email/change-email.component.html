@@ -7,23 +7,23 @@
       </p>
 
       <p class="form-control">
-        <label for="fld-newEmail" i18n="form field label|Change email form new email@@fields.email">Email:</label>
+        <label for="fld-newEmail" i18n="form field label|Change email form new email@@fields.newEmail">New Email:</label>
         <input
           [attr.aria-invalid]="$emailCntrlInvalid()"
           id="fld-newEmail"
           type="email"
-          aria-describedby="fld-email-msgs"
+          aria-describedby="fld-newEmail-msgs"
           autocomplete="email"
           autofocus
           formControlName="email"
           required
         >
-        <span id="fld-email-msgs">
+        <span id="fld-newEmail-msgs">
           @if ($emailCntrlErrors(); as errors) {
             <span class="form-alerts">
               @if (errors['required']) {
-                <ng-container i18n="form field error message|Email is a required field@@formErrors.email.required">
-                  Please enter your email address.
+                <ng-container i18n="form field error message|Email is a required field@@formErrors.newEmail.required">
+                  Please enter your new email address.
                 </ng-container>
               }
               @if (errors['email']) {

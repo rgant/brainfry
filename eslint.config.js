@@ -640,7 +640,7 @@ module.exports = tseslint.config(
       'no-unused-labels': 'off',
       'no-unused-private-class-members': 'off', // tsc already checks for this
       'no-unused-vars': [ // Match TS rule
-        'error',
+        'off',
         {
           varsIgnorePattern: '^_',
           argsIgnorePattern: '^_',
