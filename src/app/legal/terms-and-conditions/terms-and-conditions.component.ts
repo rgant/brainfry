@@ -1,12 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-terms-and-conditions',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
-  templateUrl: './terms-and-conditions.component.html',
+  selector: 'app-terms-and-conditions',
   styleUrl: './terms-and-conditions.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: './terms-and-conditions.component.html',
 })
-export class TermsAndConditionsComponent {
-
-}
+export class TermsAndConditionsComponent {}

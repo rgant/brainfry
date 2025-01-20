@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-sidebar',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
-  templateUrl: './sidebar.component.html',
+  selector: 'app-sidebar',
   styleUrl: './sidebar.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
 
