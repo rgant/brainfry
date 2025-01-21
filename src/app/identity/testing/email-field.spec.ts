@@ -35,7 +35,7 @@ export const emailErrorMessagesTest = (
   const errorsEl: HTMLSpanElement = safeQuerySelector(compiled, `#${errorsId}`);
 
   expect(emailControl.dirty).withContext('dirty').toBeFalse();
-  expect(compiled.querySelector('.form-alerts')).withContext('.form-alerts').toBeNull();
+  expect(errorsEl.querySelector('.form-alerts')).withContext('.form-alerts').toBeNull();
 
   // Required message
   emailControl.markAsDirty();
@@ -57,7 +57,7 @@ export const emailErrorMessagesTest = (
   tick(FORMS.inputDebounce); // debounceTime
   fixture.detectChanges();
 
-  expect(compiled.querySelector('.form-alerts')).withContext('.form-alerts').toBeNull();
+  expect(errorsEl.querySelector('.form-alerts')).withContext('.form-alerts').toBeNull();
 };
 
 export const emailInputTest = (fixture: ComponentFixture<unknown>, fieldId: string): void => {

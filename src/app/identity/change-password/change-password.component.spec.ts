@@ -1,7 +1,7 @@
-import { fakeAsync, TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 
-import { PASSWORDS } from '@app/shared/constants';
+import { FORMS, PASSWORDS } from '@app/shared/constants';
 import { getCompiled, safeQuerySelector } from '@testing/helpers';
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
@@ -76,17 +76,37 @@ describe('ChangePasswordComponent', (): void => {
     passwordFieldTests(setup);
   }
 
-  it('should configure change password FormGroup', (): void => {
+  it('should configure change password FormGroup', fakeAsync((): void => {
     // Default state
     // eslint-disable-next-line unicorn/no-null -- DOM forms use null
     expect(component.changePasswordForm.value).withContext('value').toEqual({ currentPw: null, password1: null, password2: null });
     expect(component.changePasswordForm.invalid).withContext('invalid').toBeTrue();
 
+    // Password Mismatch
+    component.changePasswordForm.setValue({ currentPw: 'a8c2ba38-8ec8', password1: '4d6b-8870-52', password2: 'a3b9d49420f7' });
+    tick(FORMS.inputDebounce);
+
+    expect(component.changePasswordForm.invalid).withContext('invalid').toBeTrue();
+    expect(component.$formPasswordsInvalid()).withContext('$formPasswordsInvalid').toBeTrue();
+
     // Valid
     component.changePasswordForm.setValue({ currentPw: 'b1851b66-191', password1: '3bbce452c731', password2: '3bbce452c731' });
 
     expect(component.changePasswordForm.valid).withContext('valid').toBeTrue();
-  });
+  }));
+
+  it('should display password match form errors', fakeAsync((): void => {
+    const compiled: HTMLElement = getCompiled(fixture);
+    const frmErrsEl: HTMLDivElement = safeQuerySelector(compiled, '#frm-msgs');
+
+    expect(frmErrsEl.querySelector('.form-alerts')).withContext('.form-alert').toBeNull();
+
+    component.changePasswordForm.setValue({ currentPw: '188f1dff-7dc', password1: 'c-41e3-81e4-', password2: '7c19a13bdd5f' });
+    tick(FORMS.inputDebounce);
+    fixture.detectChanges();
+
+    expect(frmErrsEl.textContent).toContain('Passwords must match.');
+  }));
 
   it('should submit form', (): void => {
     expect((): void => { component.onSubmit(); }).toThrowError('Invalid form submitted');

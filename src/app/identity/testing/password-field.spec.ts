@@ -43,7 +43,7 @@ export const passwordErrorMessagesTest = (
   const errorsEl: HTMLSpanElement = safeQuerySelector(compiled, `#${errorsId}`);
 
   expect(passwordControl.dirty).withContext('dirty').toBeFalse();
-  expect(compiled.querySelector('.form-alerts')).withContext('.form-alerts').toBeNull();
+  expect(errorsEl.querySelector('.form-alerts')).withContext('.form-alerts').toBeNull();
 
   // Required message
   passwordControl.markAsDirty();
@@ -78,7 +78,7 @@ export const passwordErrorMessagesTest = (
   tick(FORMS.inputDebounce); // debounceTime
   fixture.detectChanges();
 
-  expect(compiled.querySelector('.form-alerts')).withContext('.form-alerts').toBeNull();
+  expect(errorsEl.querySelector('.form-alerts')).withContext('.form-alerts').toBeNull();
 };
 
 export const passwordInputTest = (fixture: ComponentFixture<unknown>, fieldId: string, expectedAutocomplete: string): void => {

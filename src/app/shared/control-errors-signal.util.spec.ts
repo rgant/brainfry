@@ -6,9 +6,6 @@ import type { ValidationErrors } from '@angular/forms';
 import { FORMS } from './constants';
 import { controlErrorsSignal } from './control-errors-signal.util';
 
-const createSignal = (control: FormControl): Signal<ValidationErrors | undefined> =>
-  TestBed.runInInjectionContext((): Signal<ValidationErrors | undefined> => controlErrorsSignal(control));
-
 const HALF = .5;
 
 describe('controlErrorsSignal', (): void => {
@@ -19,7 +16,7 @@ describe('controlErrorsSignal', (): void => {
     TestBed.configureTestingModule({});
 
     theControl = new FormControl();
-    $theSignal = createSignal(theControl);
+    $theSignal = TestBed.runInInjectionContext((): Signal<ValidationErrors | undefined> => controlErrorsSignal(theControl));
   });
 
   it('should only display errors for dirty controls', fakeAsync((): void => {
