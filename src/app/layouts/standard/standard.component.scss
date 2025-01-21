@@ -14,9 +14,17 @@ main {
 
   .content {
     grid-column: content-start / content-end;
+
+    padding: $regular-spacing;
+    border-start-start-radius: $lg-border-radius;
+
+    color: $black;
+
+    background-color: $white;
   }
 
   .sidebar {
     grid-column: outer-start / content-start;
+    padding: $small-spacing;
   }
 }

@@ -605,7 +605,7 @@ module.exports = tseslint.config(
       'no-label-var': 'off',
       'no-labels': 'off',
       'no-lone-blocks': 'off',
-      'no-loss-of-precision': 'warn', // Match TS rule
+      'no-loss-of-precision': 'off', // Match TS rule
       'no-magic-numbers': [ // Match TS rule
         'off', // replaced with TS version
         { enforceConst: true },
@@ -623,7 +623,7 @@ module.exports = tseslint.config(
       'no-self-compare': 'off',
       'no-sequences': 'off',
       'no-shadow': [ // Match TS rule
-        'error',
+        'off',
         { hoist: 'all' },
       ],
       'no-ternary': 'off',
