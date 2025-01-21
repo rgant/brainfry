@@ -8,10 +8,11 @@ import type {
   ValidationErrors,
   ValidatorFn,
 } from '@angular/forms';
+import { passwordStrength } from 'check-password-strength';
 import { debounceTime, map } from 'rxjs';
 import type { Observable } from 'rxjs';
 
-import { FORMS } from '@app/shared/constants';
+import { FORMS, PASSWORDS } from '@app/shared/constants';
 
 const ERROR_NAME = 'passwordsmatch';
 
@@ -44,7 +45,7 @@ export const passwordsMatch = (password1: string, password2: string): ValidatorF
       throw new Error(`Cannot find FormControl named '${password2}'.`);
     }
 
-    // eslint-disable-next-line unicorn/no-null -- Angular forms use null
+    // eslint-disable-next-line unicorn/no-null -- ValidatorFn returns null
     return password1Cntrl.value === password2Cntrl.value ? null : { [ERROR_NAME]: true };
   };
 
@@ -68,4 +69,21 @@ export const passwordsMatchFormErrors = (form: FormGroup, password1: FormControl
   );
 
   return toSignal(formStatus$, { initialValue });
+};
+
+export const passwordStrengthValidator = (control: AbstractControl<unknown>): ValidationErrors | null => {
+  const { value } = control;
+
+  // Like Validators.email, rely on Validators.required to check for blank passwords.
+  if (value == undefined || value === '') {
+    return null; // eslint-disable-line unicorn/no-null -- ValidatorFn returns null
+  }
+
+  if (typeof value !== 'string') {
+    throw new TypeError(`Invalid Control Value Type: '${typeof value}'`);
+  }
+
+  const strength = passwordStrength(value);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison -- Enum is just a bag of values
+  return strength.id < PASSWORDS.minStrength ? { passwordstrength: strength.value } : null; // eslint-disable-line unicorn/no-null
 };

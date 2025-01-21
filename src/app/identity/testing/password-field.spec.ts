@@ -5,7 +5,7 @@ import type { FormControl } from '@angular/forms';
 import { FORMS, PASSWORDS } from '@app/shared/constants';
 import { getCompiled, safeQuerySelector } from '@testing/helpers';
 
-export const passwordControlTest = (passwordControl: FormControl): void => {
+export const passwordControlTest = (passwordControl: FormControl, validateStrength: boolean = false): void => {
   const expectedPassword = 'f8f93627';
 
   // Default state
@@ -13,7 +13,7 @@ export const passwordControlTest = (passwordControl: FormControl): void => {
   expect(passwordControl.invalid).withContext('invalid').toBeTrue();
 
   // Valid
-  passwordControl.setValue('08a2fe27260b');
+  passwordControl.setValue('08a2fGe2&7260b');
 
   expect(passwordControl.valid).withContext('valid').toBeTrue();
 
@@ -28,6 +28,12 @@ export const passwordControlTest = (passwordControl: FormControl): void => {
 
   expect(passwordControl.hasError('maxlength')).withContext('has error maxlength').toBeTrue();
 
+  if (validateStrength) {
+    passwordControl.setValue('08a2fe27260b');
+
+    expect(passwordControl.hasError('passwordstrength')).withContext('has error passwordstrength').toBeTrue();
+  }
+
   // Required value
   passwordControl.setValue('');
 
@@ -38,6 +44,7 @@ export const passwordErrorMessagesTest = (
   passwordControl: FormControl<string | null>,
   fixture: ComponentFixture<unknown>,
   errorsId: string,
+  validateStrength: boolean = false
 ): void => {
   const compiled: HTMLElement = getCompiled(fixture);
   const errorsEl: HTMLSpanElement = safeQuerySelector(compiled, `#${errorsId}`);
@@ -72,6 +79,14 @@ export const passwordErrorMessagesTest = (
   fixture.detectChanges();
 
   expect(errorsEl.textContent).toContain(`Your password may not be longer than ${PASSWORDS.maxLength} characters.`);
+
+  if (validateStrength) {
+    passwordControl.setErrors({ passwordstrength: true });
+    tick(FORMS.inputDebounce); // debounceTime
+    fixture.detectChanges();
+
+    expect(errorsEl.textContent).toContain('Your password is not very strong.');
+  }
 
   // Hide message when control is valid.
   passwordControl.setErrors(null); // eslint-disable-line unicorn/no-null -- DOM uses null

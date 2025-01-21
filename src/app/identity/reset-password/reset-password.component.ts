@@ -38,7 +38,7 @@ export class ResetPasswordComponent {
       $errors: this.$password1CntrlErrors,
       $invalid: this.$password1CntrlInvalid,
       control: this.password1Cntrl,
-    } = createPasswordControl());
+    } = createPasswordControl(true));
     ({
       $errors: this.$password2CntrlErrors,
       $invalid: this.$password2CntrlInvalid,

@@ -25,4 +25,12 @@ describe('Identity Forms', (): void => {
     expect($errors).toBeTruthy();
     expect($invalid).toBeTruthy();
   });
+
+  it('should create password control with strength check', (): void => {
+    const { control } = TestBed.runInInjectionContext((): ControlStruct => createPasswordControl(true));
+
+    control.setValue('1ed8be94-cbec');
+
+    expect(control.errors).toEqual({ passwordstrength: 'Weak' });
+  });
 });

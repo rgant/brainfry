@@ -14,12 +14,14 @@ const passwordFields = [
     control: 'password1Cntrl',
     errorId: 'fld-password1-msgs',
     inputId: 'fld-password1',
+    validateStrength: true,
   },
   {
     autoComplete: 'new-password',
     control: 'password2Cntrl',
     errorId: 'fld-password2-msgs',
     inputId: 'fld-password2',
+    validateStrength: false,
   },
 ] as const;
 
@@ -29,10 +31,10 @@ describe('ResetPasswordComponent', (): void => {
   let component: ResetPasswordComponent;
   let fixture: ComponentFixture<ResetPasswordComponent>;
 
-  const passwordFieldTests = ({ autoComplete, control, errorId, inputId }: FieldSetup): void => {
+  const passwordFieldTests = ({ autoComplete, control, errorId, inputId, validateStrength }: FieldSetup): void => {
     it(`should configure current ${control} FormControl`, (): void => {
       const cntrl = component[control];
-      passwordControlTest(cntrl);
+      passwordControlTest(cntrl, validateStrength);
     });
 
     it(`should configure ${control} input`, (): void => {
@@ -46,7 +48,7 @@ describe('ResetPasswordComponent', (): void => {
 
     it(`should configure ${control} error messages`, fakeAsync((): void => {
       const cntrl = component[control];
-      passwordErrorMessagesTest(cntrl, fixture, errorId);
+      passwordErrorMessagesTest(cntrl, fixture, errorId, validateStrength);
     }));
   };
 
@@ -77,14 +79,14 @@ describe('ResetPasswordComponent', (): void => {
     expect(component.resetPasswordForm.invalid).withContext('invalid').toBeTrue();
 
     // Password Mismatch
-    component.resetPasswordForm.setValue({ password1: '5716e3c0-6ed4-46f9', password2: 'b4ed-9c249d447ef7' });
+    component.resetPasswordForm.setValue({ password1: '571^e3c0-6Ed4-46f9', password2: 'b4ed-9c249d447ef7' });
     tick(FORMS.inputDebounce);
 
     expect(component.resetPasswordForm.invalid).withContext('invalid').toBeTrue();
     expect(component.$formPasswordsInvalid()).withContext('$formPasswordsInvalid').toBeTrue();
 
     // Valid
-    component.resetPasswordForm.setValue({ password1: '6880164ec676', password2: '6880164ec676' });
+    component.resetPasswordForm.setValue({ password1: '68*0164eC676', password2: '68*0164eC676' });
     tick(FORMS.inputDebounce);
 
     expect(component.resetPasswordForm.valid).withContext('valid').toBeTrue();
@@ -97,7 +99,7 @@ describe('ResetPasswordComponent', (): void => {
 
     expect(frmErrsEl.querySelector('.form-alerts')).withContext('.form-alert').toBeNull();
 
-    component.resetPasswordForm.setValue({ password1: '95b074d7-4530-43db', password2: '87f9-7e2d71c9cf03' });
+    component.resetPasswordForm.setValue({ password1: '95B07$d7-4530-43db', password2: '87f9-7e2d71c9cf03' });
     tick(FORMS.inputDebounce);
     fixture.detectChanges();
 
@@ -115,7 +117,7 @@ describe('ResetPasswordComponent', (): void => {
 
     expect(bttnEl.disabled).withContext('disabled').toBe(true);
 
-    component.resetPasswordForm.setValue({ password1: 'e8a570c8f8c7', password2: 'e8a570c8f8c7' });
+    component.resetPasswordForm.setValue({ password1: 'e8a5&0C8f8c7', password2: 'e8a5&0C8f8c7' });
     fixture.detectChanges();
 
     expect(component.resetPasswordForm.invalid).toBeFalse();

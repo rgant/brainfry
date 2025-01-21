@@ -18,4 +18,10 @@ export enum PASSWORDS {
    * Glyphs, nominally secure length
    */
   minLength = 12,
+
+  /**
+   * Password strength as computed by check-password-strength library.
+   * https://github.com/deanilvincent/check-password-strength?tab=readme-ov-file#result
+   */
+  minStrength = 2,
 }

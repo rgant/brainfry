@@ -14,18 +14,21 @@ const passwordFields = [
     control: 'currentPwCntrl',
     errorId: 'fld-currentPw-msgs',
     inputId: 'fld-currentPw',
+    validateStrength: false,
   },
   {
     autoComplete: 'new-password',
     control: 'password1Cntrl',
     errorId: 'fld-password1-msgs',
     inputId: 'fld-password1',
+    validateStrength: true,
   },
   {
     autoComplete: 'new-password',
     control: 'password2Cntrl',
     errorId: 'fld-password2-msgs',
     inputId: 'fld-password2',
+    validateStrength: false,
   },
 ] as const;
 
@@ -35,10 +38,10 @@ describe('ChangePasswordComponent', (): void => {
   let component: ChangePasswordComponent;
   let fixture: ComponentFixture<ChangePasswordComponent>;
 
-  const passwordFieldTests = ({ autoComplete, control, errorId, inputId }: FieldSetup): void => {
+  const passwordFieldTests = ({ autoComplete, control, errorId, inputId, validateStrength }: FieldSetup): void => {
     it(`should configure current ${control} FormControl`, (): void => {
       const cntrl = component[control];
-      passwordControlTest(cntrl);
+      passwordControlTest(cntrl, validateStrength);
     });
 
     it(`should configure ${control} input`, (): void => {
@@ -52,7 +55,7 @@ describe('ChangePasswordComponent', (): void => {
 
     it(`should configure ${control} error messages`, fakeAsync((): void => {
       const cntrl = component[control];
-      passwordErrorMessagesTest(cntrl, fixture, errorId);
+      passwordErrorMessagesTest(cntrl, fixture, errorId, validateStrength);
     }));
   };
 
@@ -83,14 +86,14 @@ describe('ChangePasswordComponent', (): void => {
     expect(component.changePasswordForm.invalid).withContext('invalid').toBeTrue();
 
     // Password Mismatch
-    component.changePasswordForm.setValue({ currentPw: 'a8c2ba38-8ec8', password1: '4d6b-8870-52', password2: 'a3b9d49420f7' });
+    component.changePasswordForm.setValue({ currentPw: 'a8c2ba38-8ec8', password1: '4d6B-887%-52', password2: 'a3b9d49420f7' });
     tick(FORMS.inputDebounce);
 
     expect(component.changePasswordForm.invalid).withContext('invalid').toBeTrue();
     expect(component.$formPasswordsInvalid()).withContext('$formPasswordsInvalid').toBeTrue();
 
     // Valid
-    component.changePasswordForm.setValue({ currentPw: 'b1851b66-191', password1: '3bbce452c731', password2: '3bbce452c731' });
+    component.changePasswordForm.setValue({ currentPw: 'b1851b66-191', password1: '3bBce4%2c731', password2: '3bBce4%2c731' });
 
     expect(component.changePasswordForm.valid).withContext('valid').toBeTrue();
   }));
@@ -101,7 +104,7 @@ describe('ChangePasswordComponent', (): void => {
 
     expect(frmErrsEl.querySelector('.form-alerts')).withContext('.form-alert').toBeNull();
 
-    component.changePasswordForm.setValue({ currentPw: '188f1dff-7dc', password1: 'c-41e3-81e4-', password2: '7c19a13bdd5f' });
+    component.changePasswordForm.setValue({ currentPw: '188f1dff-7dc', password1: 'c-41E3-81e4-', password2: '7c19a13bdd5f' });
     tick(FORMS.inputDebounce);
     fixture.detectChanges();
 
@@ -119,7 +122,7 @@ describe('ChangePasswordComponent', (): void => {
 
     expect(bttnEl.disabled).withContext('disabled').toBe(true);
 
-    component.changePasswordForm.setValue({ currentPw: '9492906e-492', password1: '9d8aef795f75', password2: '9d8aef795f75' });
+    component.changePasswordForm.setValue({ currentPw: '9492906e-492', password1: '9d*Aef795f75', password2: '9d*Aef795f75' });
     fixture.detectChanges();
 
     expect(component.changePasswordForm.invalid).toBeFalse();
