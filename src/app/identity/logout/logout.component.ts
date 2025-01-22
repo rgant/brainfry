@@ -26,6 +26,6 @@ export class LogoutComponent {
   public async logout(): Promise<void> {
     this.$blockWindow.set(true);
     await signOut(this._auth);
-    await this._router.navigateByUrl('/');
+    await this._router.navigateByUrl('/'); // Navigate to root to allow Guards to handle final redirecting.
   }
 }

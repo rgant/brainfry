@@ -1,8 +1,14 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import type { Signal, WritableSignal } from '@angular/core';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import type { FormControl, ValidationErrors } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { PASSWORDS } from '@app/shared/constants';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
@@ -32,7 +38,12 @@ export class LoginComponent {
   public readonly minPasswordLength: number = PASSWORDS.minLength;
   public readonly passwordCntrl: FormControl<string | null>;
 
+  private readonly _auth: Auth;
+  private readonly _router: Router = inject(Router);
+
   constructor() {
+    this._auth = inject(Auth);
+
     ({ $errors: this.$emailCntrlErrors, $invalid: this.$emailCntrlInvalid, control: this.emailCntrl } = createEmailControl());
     ({ $errors: this.$passwordCntrlErrors, $invalid: this.$passwordCntrlInvalid, control: this.passwordCntrl } = createPasswordControl());
 
@@ -44,11 +55,17 @@ export class LoginComponent {
     this.$showForm = signal<boolean>(true);
   }
 
-  public onSubmit(): void {
-    if (this.loginForm.invalid) {
+  public async onSubmit(): Promise<void> {
+    const { email, password } = this.loginForm.value;
+
+    // Validators prevent email or password being falsey, but TypeScript doesn't know that.
+    if (this.loginForm.invalid || !email || !password) {
       throw new Error('Invalid form submitted');
     }
 
     this.$showForm.set(false);
+
+    await signInWithEmailAndPassword(this._auth, email, password);
+    await this._router.navigateByUrl('/'); // Navigate to root to allow default redirectTo Route to decide initial destination
   }
 }

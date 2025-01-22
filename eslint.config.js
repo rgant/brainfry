@@ -886,6 +886,7 @@ module.exports = tseslint.config(
       '@angular-eslint/use-component-selector': 'off',
       '@angular-eslint/use-injectable-provided-in': 'off',
       '@typescript-eslint/unbound-method': 'off', // Jasmine expect(spy) triggers this a bunch
+      'import-x/max-dependencies': 'off', // So many imports needed for testing
       // eslint-plugin-jasmine doens't have an all config, so this is just cusomizations on the recommendations
       'jasmine/named-spy': 'error',
       'jasmine/no-focused-tests': 'off', // jasmine already warns us about this.

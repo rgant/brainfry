@@ -1,9 +1,12 @@
 import { fakeAsync, TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { Auth, signOut } from '@angular/fire/auth';
+import { provideRouter, Router } from '@angular/router';
 
+import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
 import { PASSWORDS } from '@app/shared/constants';
-import { getCompiled, safeQuerySelector } from '@testing/helpers';
+import { DEFAULT_TEST_USER } from '@testing/constants';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/helpers';
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { emailControlTest, emailErrorMessagesTest, emailInputTest } from '../testing/email-field.spec';
@@ -17,7 +20,7 @@ describe('LoginComponent', (): void => {
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
       imports: [ LoginComponent ],
-      providers: [ provideRouter([]) ],
+      providers: [ provideOurFirebaseApp(), provideEmulatedAuth(), provideRouter([]) ],
     })
       .compileComponents();
 
@@ -73,8 +76,25 @@ describe('LoginComponent', (): void => {
     expect(component.loginForm.valid).withContext('valid').toBeTrue();
   });
 
-  it('should submit form', (): void => {
-    expect((): void => { component.onSubmit(); }).toThrowError('Invalid form submitted');
+  it('should error on submit of invalid form', async (): Promise<void> => {
+    await expectAsync(component.onSubmit()).toBeRejectedWithError('Invalid form submitted');
+  });
+
+  it('should submit form', async (): Promise<void> => {
+    const auth = TestBed.inject(Auth);
+    const router = TestBed.inject(Router);
+    const navigateSpy = spyOn(router, 'navigateByUrl').and.resolveTo(true);
+
+    // Emulators keep the session across tests. Which isn't desireable for isolated unit tests.
+    await signOut(auth);
+
+    expect(auth.currentUser).withContext('Auth.currentUser').toBeNull();
+
+    component.loginForm.setValue({ email: DEFAULT_TEST_USER.email, password: DEFAULT_TEST_USER.password });
+    await component.onSubmit();
+
+    expect(auth.currentUser?.uid).withContext('Auth.currentUser').toBe(DEFAULT_TEST_USER.userId);
+    expect(navigateSpy).withContext('navigateByUrl').toHaveBeenCalledOnceWith('/');
   });
 
   it('should configure submit button', (): void => {
