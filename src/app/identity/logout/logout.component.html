@@ -1,4 +1,7 @@
 <h2 i18n="page heading 2|Logout of your session@@logoutPage.header">Logout</h2>
 <p i18n="paragraph text|explain logout process@@logoutPage.explaination">Click here to logout:</p>
-<button (click)="logout()" class="button" type="button" i18n="logout button|perform logout@@logoutPage.button">Complete Logout</button>
+<button (click)="logout()" [disabled]="$blockWindow()" class="button" type="button" i18n="logout button|perform logout@@logoutPage.button">Complete Logout</button>
 <p><a routerLink="/dashboard" i18n="link text|Navigate back to dashboard page@@links.backToDashboard">Go back to dashboard</a></p>
+@if ($blockWindow()) {
+  <app-spinner class="modal-blocker" />
+}

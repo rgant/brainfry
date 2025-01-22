@@ -3,16 +3,14 @@
  * https://blog.angular.dev/write-better-tests-without-router-mocks-stubs-bf5fc95c1c57
  * https://jamienordmeyer.medium.com/unit-testing-a-custom-angular-title-strategy-64d05f3d401f
  */
-import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
 import { provideRouter, TitleStrategy } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 
-import { AppTitleStrategyService } from './app-title-strategy.service';
+import { TestComponent } from '@testing/test.component';
 
-@Component({ template: '' })
-class TestComponent {}
+import { AppTitleStrategyService } from './app-title-strategy.service';
 
 describe('AppTitleStrategyService', (): void => {
   let harness: RouterTestingHarness;

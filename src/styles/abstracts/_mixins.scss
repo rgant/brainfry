@@ -1,6 +1,6 @@
 @use 'sass:map';
 
-@use 'variables' as *;
+@use 'variables' as app;
 
 // https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/
 /// Mixin to manage responsive breakpoints
@@ -9,9 +9,9 @@
 /// @require $breakpoints
 @mixin respond-to($breakpoint) {
   // If the key exists in the map
-  @if map.has-key($breakpoints, $breakpoint) {
+  @if map.has-key($map: app.$breakpoints, $key: $breakpoint) {
     // Prints a media query based on the value
-    @media only screen and (min-width: map.get($breakpoints, $breakpoint)) {
+    @media only screen and (min-width: map.get($map: app.$breakpoints, $key: $breakpoint)) {
       @content;
     }
   }

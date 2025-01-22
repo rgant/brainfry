@@ -419,6 +419,10 @@ module.exports = tseslint.config(
           selector: 'typeLike',
           format: ['PascalCase'],
         },
+        {
+          selector: 'enum',
+          format: ['UPPER_CASE'],
+        },
       ],
       '@typescript-eslint/no-empty-object-type': [
         'error',
@@ -865,9 +869,15 @@ module.exports = tseslint.config(
     },
   },
   {
+    // Disable rules for inline templates in spec & testing files
+    // https://github.com/angular-eslint/angular-eslint/issues/1023#issuecomment-2607207815
+    files: ['**/*.spec.ts*.html', 'src/testing/**/*.html'],
+    rules: { '@angular-eslint/template/i18n': 'off' }
+  },
+  {
     files: [
       '**/*.spec.ts',
-      'testing/**/*.ts',
+      'src/testing/**/*.ts',
     ],
     extends: [jasmine.configs.recommended],
     plugins: {jasmine},
