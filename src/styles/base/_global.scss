@@ -1,4 +1,4 @@
-@use 'abstracts' as *;
+@use 'abstracts' as app;
 
 html {
   @media (prefers-reduced-motion: no-preference) {
@@ -8,6 +8,6 @@ html {
 
 body {
   min-block-size: 100vb;
-  color: $white;
-  background: $secondary-color;
+  color: app.$white;
+  background: app.$secondary-color;
 }

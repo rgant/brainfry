@@ -1,4 +1,4 @@
-@use 'abstracts' as *;
+@use 'abstracts' as app;
 
 label,
 button,
@@ -11,7 +11,7 @@ summary,
 }
 
 .ng-dirty.ng-invalid {
-  border-color: $danger-color;
+  border-color: app.$danger-color;
 }
 
 .form-control {
@@ -25,9 +25,9 @@ summary,
   input,
   textarea {
     inline-size: 100%;
-    padding: $small-spacing;
-    border: 1px solid $light-gray;
-    border-radius: $border-radius;
+    padding: app.$small-spacing;
+    border: 1px solid app.$light-gray;
+    border-radius: app.$border-radius;
   }
 }
 
@@ -38,21 +38,21 @@ summary,
 .form-alerts {
   display: block; // Generally a span by default
 
-  margin-block-start: $small-spacing;
-  padding: $small-spacing;
-  border: 1px solid $danger-color;
-  border-radius: $border-radius;
+  margin-block-start: app.$small-spacing;
+  padding: app.$small-spacing;
+  border: 1px solid app.$danger-color;
+  border-radius: app.$border-radius;
 
-  background-color: $warning-color;
+  background-color: app.$warning-color;
 
   // This really needs some better attention to fitting into the available window without making the
   // page scroll or the form jump around as messages appear and disappear.
-  @include respond-to('medium') {
+  @include app.respond-to('medium') {
     position: absolute;
     inset-block-start: 0;
     inset-inline-start: 100%;
 
     inline-size: 100%;
-    margin-inline-start: $small-spacing;
+    margin-inline-start: app.$small-spacing;
   }
 }

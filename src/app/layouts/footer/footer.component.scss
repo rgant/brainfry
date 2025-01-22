@@ -1,17 +1,17 @@
-@use 'abstracts' as *;
+@use 'abstracts' as app;
 
 footer {
   @extend %dark-bg-links;
 
   display: flex;
   justify-content: flex-end;
-  background-color: $dark-gray;
+  background-color: app.$dark-gray;
 }
 
 .item {
   margin-inline-end: .5rem;
-  padding-inline-end: $small-spacing;
-  border-inline-end: 2px solid $white;
+  padding-inline-end: app.$small-spacing;
+  border-inline-end: 2px solid app.$white;
 
   // Hide the separator between the copyright and date, and on the last item.
   &:first-child,

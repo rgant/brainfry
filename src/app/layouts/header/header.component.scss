@@ -1,12 +1,24 @@
-@use 'abstracts' as *;
+@use 'abstracts' as app;
 
 header {
   display: flex;
-  gap: $regular-spacing;
+  gap: app.$regular-spacing;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
 }
 
 h1 {
-  margin-block: $small-spacing;
+  margin-block: app.$small-spacing;
+}
+
+@include app.respond-to('medium') {
+  :host {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  header {
+    justify-conent: start;
+  }
 }

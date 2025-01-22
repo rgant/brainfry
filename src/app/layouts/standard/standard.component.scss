@@ -1,4 +1,4 @@
-@use 'abstracts' as *;
+@use 'abstracts' as app;
 
 :host {
   display: grid;
@@ -8,23 +8,31 @@
 
 main {
   display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: [outer-start] max-content [content-start] 1fr [content-end outer-end];
-  gap: $regular-spacing;
+  grid-template-rows: [outer-start content-start] 1fr [content-end] min-content [outer-end];
+  gap: app.$regular-spacing;
+
+  @include app.respond-to('medium') {
+    grid-auto-flow: column;
+    grid-template-columns: [outer-start] max-content [content-start] 1fr [content-end outer-end];
+    grid-template-rows: none;
+
+    .content {
+      grid-column: content-start / content-end;
+      border-start-start-radius: app.$lg-border-radius;
+    }
+
+    .sidebar {
+      grid-column: outer-start / content-start;
+    }
+  }
 
   .content {
-    grid-column: content-start / content-end;
-
-    padding: $regular-spacing;
-    border-start-start-radius: $lg-border-radius;
-
-    color: $black;
-
-    background-color: $white;
+    padding: app.$regular-spacing;
+    color: app.$black;
+    background-color: app.$white;
   }
 
   .sidebar {
-    grid-column: outer-start / content-start;
-    padding: $small-spacing;
+    padding: app.$small-spacing;
   }
 }

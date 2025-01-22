@@ -1,11 +1,11 @@
-@use 'abstracts' as *;
+@use 'abstracts' as app;
 
 %card-base,
 .card {
-  padding: $regular-spacing;
-  border-radius: $lg-border-radius;
-  color: $black;
-  background-color: $white;
+  padding: app.$regular-spacing;
+  border-radius: app.$lg-border-radius;
+  color: app.$black;
+  background-color: app.$white;
 
   // Deeply applies to all of the first-children of the card to remove the top margin.
   :first-child {
@@ -22,7 +22,7 @@
 
   max-inline-size: 24rem;
 
-  @include respond-to('small') {
+  @include app.respond-to('small') {
     min-inline-size: 24rem;
   }
 
