@@ -1,24 +1,88 @@
 @use 'abstracts' as app;
 
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 header {
   display: flex;
   gap: app.$regular-spacing;
   align-items: center;
   justify-content: center;
+
+  @include app.respond-to('medium') {
+    justify-content: start;
+  }
 }
 
 h1 {
   margin-block: app.$small-spacing;
 }
 
-@include app.respond-to('medium') {
-  :host {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.toggle {
+  margin-inline-end: app.$regular-spacing;
+  border: none;
+  color: app.$white;
+  background-color: transparent;
+
+  .text {
+    display: none;
+    font-size: app.$heading-2-size;
   }
 
-  header {
-    justify-conent: start;
+  @include app.respond-to('medium') {
+    .icon {
+      display: none;
+    }
+
+    .text {
+      display: inline-block;
+      font-size: app.$heading-6-size;
+
+      &::after {
+        content: '';
+
+        display: inline-block;
+
+        margin-inline-start: .375rem;
+
+        // This makes a little downward facing triangle
+        border-block-start: .375rem solid;
+        border-block-end: 0;
+        border-inline-start: .375rem solid transparent;
+        border-inline-end: .375rem solid transparent;
+
+        vertical-align: middle;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.menu {
+  position: absolute;
+  inset-inline: 0;
+
+  display: none;
+
+  margin-block-start: 1.5rem;
+  padding-block: app.$regular-spacing;
+
+  background-color: app.$light-gray;
+
+  @include app.z-index('dropdown');
+
+  &.expanded {
+    display: block;
+  }
+
+  li {
+    margin-block: app.$small-spacing;
+    padding-block: app.$small-spacing;
   }
 }

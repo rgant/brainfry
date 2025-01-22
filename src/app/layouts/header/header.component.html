@@ -3,9 +3,27 @@
   <h1 class="display" i18n="h1 display heading|Title of the application@@text.siteTitle">Brainfry Quiz</h1>
 </header>
 
-<nav>
-  <ul>
-    <li><a routerLink="/profile" i18n="navigation link|Link to profile page@@links.profile">Your Account</a></li>
+<nav class="toggle-menu">
+  <button
+    (click)="toggleMenu()"
+    [attr.aria-expanded]="$showMenu()"
+    class="toggle"
+    type="button"
+    aria-controls="account-menu"
+    aria-label="Toggle account menu"
+    i18n-aria-label="aria label text|Button to open and close user account menu@@button.accountMenu.aria-label"
+  >
+    <fa-icon
+      [icon]="$showMenu() ? faX : faBars"
+      class="icon"
+      title="Your Account"
+      i18n-title="global navigation toogle|Opens the user menu@@button.accountMenu"
+    />
+    <span class="text" i18n="global navigation toogle|Opens the user menu@@button.accountMenu">Your Account</span>
+  </button>
+
+  <ul [class.expanded]="$showMenu()" class="menu" id="account-menu">
+    <li><a routerLink="/profile" i18n="navigation link|Link to profile page@@links.profile">Your Profile</a></li>
     <li><a routerLink="/change-email" i18n="navigation link|Link to change emailp page@@links.changeEmail">Change Email</a></li>
     <li><a routerLink="/change-password" i18n="navigation link|Link to change password page@@links.changePassword">Change Password</a></li>
     <li><a routerLink="/logout" i18n="navigation link|Link to logout page@@links.logout">Logout</a></li>

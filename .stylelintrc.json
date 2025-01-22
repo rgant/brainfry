@@ -4,7 +4,14 @@
     "@stylistic/stylelint-config",
     "stylelint-config-clean-order/error"
   ],
-  "ignoreFiles": ["**/*.html", "**/*.svg", "**/*.ts"],
+  "ignoreFiles": [
+    "**/*.html",
+    "**/*.json",
+    "**/*.md",
+    "**/*.svg",
+    "**/*.ts",
+    "**/*.xlf"
+  ],
   "plugins": [
     "stylelint-declaration-block-no-ignored-properties",
     "stylelint-declaration-strict-value",

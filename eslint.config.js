@@ -855,7 +855,7 @@ module.exports = tseslint.config(
         {
           requireDescription: true,
           requireMeaning: true,
-          ignoreAttributes: [ 'ngSrc', 'aria-describedby' ],
+          ignoreAttributes: [ 'aria-controls', 'aria-describedby', 'ngSrc' ],
         },
       ],
       '@angular-eslint/template/no-inline-styles': [

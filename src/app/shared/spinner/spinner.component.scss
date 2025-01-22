@@ -1,5 +1,3 @@
-@use 'sass:map';
-
 @use 'abstracts' as app;
 
 // Need to think about how to always have the spinner in the correct position for each page.
@@ -35,16 +33,18 @@
     content: '';
 
     position: fixed;
-    z-index: map.get($map: app.$zindex, $key: 'overlay');
     inset-block: 0;
     inset-inline: 0;
 
     background-color: rgba(app.$light-gray, 10%);
+
+    @include app.z-index('overlay');
   }
 
   svg {
     position: relative;
-    z-index: map.get($map: app.$zindex, $key: 'modal');
+
+    @include app.z-index('modal');
   }
 }
 

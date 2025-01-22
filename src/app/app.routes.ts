@@ -87,7 +87,7 @@ export const routes: Routes = [
       {
         path: 'profile',
         component: UserProfileComponent,
-        title: $localize`:HTML title tag|Page displaying your user profile@@htmlTitle.profile:Your Account`,
+        title: $localize`:HTML title tag|Page displaying your user profile@@htmlTitle.profile:Your Profile`,
       },
     ],
   },

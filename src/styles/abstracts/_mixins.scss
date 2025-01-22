@@ -21,3 +21,15 @@
     @warn 'Unfortunately, no value could be retrieved from `#{$breakpoint}`. Available breakpoints are: #{map-keys($breakpoints)}.';
   }
 }
+
+@mixin z-index($level) {
+  // If the key exists in the map
+  @if map.has-key($map: app.$zindex, $key: $level) {
+    z-index: map.get($map: app.$zindex, $key: $level);
+  }
+
+  // If the key doesn't exist in the map
+  @else { // stylelint-disable-line plugin/no-unsupported-browser-features -- this is SCSS which the plugin doesn't support
+    @warn 'Unfortunately, no value could be retrieved from `#{$level}`. Available z-indexes are: #{map-keys($zindex)}.';
+  }
+}

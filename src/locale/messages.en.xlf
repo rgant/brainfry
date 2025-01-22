@@ -427,12 +427,12 @@
         <note priority="1" from="meaning">form submit button</note>
       </trans-unit>
       <trans-unit id="links.login" datatype="html">
-        <source>Return to login</source>
+        <source> Return to login </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">47,54</context>
+          <context context-type="linenumber">47,52</context>
         </context-group>
-        <note priority="1" from="description">Link to page to recover password</note>
+        <note priority="1" from="description">Link to login page</note>
         <note priority="1" from="meaning">navigation link</note>
       </trans-unit>
       <trans-unit id="buttons.login" datatype="html">
@@ -445,10 +445,10 @@
         <note priority="1" from="meaning">form submit button</note>
       </trans-unit>
       <trans-unit id="links.forgot-password" datatype="html">
-        <source>Forgot your password?</source>
+        <source> Forgot your password? </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">84,91</context>
+          <context context-type="linenumber">84,89</context>
         </context-group>
         <note priority="1" from="description">Link to page to recover password</note>
         <note priority="1" from="meaning">navigation link</note>
@@ -484,7 +484,7 @@
         <source>Go back to dashboard</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/logout/logout.component.html</context>
-          <context context-type="linenumber">4,5</context>
+          <context context-type="linenumber">4,8</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>
@@ -510,7 +510,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">3,5</context>
+          <context context-type="linenumber">3,8</context>
         </context-group>
         <note priority="1" from="description">Title of the application</note>
         <note priority="1" from="meaning">h1 display heading</note>
@@ -541,6 +541,64 @@
         </context-group>
         <note priority="1" from="description">Link to terms &amp; conditions page</note>
         <note priority="1" from="meaning">global footer</note>
+      </trans-unit>
+      <trans-unit id="button.accountMenu.aria-label" datatype="html">
+        <source>Toggle account menu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+        <note priority="1" from="description">Button to open and close user account menu</note>
+        <note priority="1" from="meaning">aria label text</note>
+      </trans-unit>
+      <trans-unit id="button.accountMenu" datatype="html">
+        <source>Your Account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">22,25</context>
+        </context-group>
+        <note priority="1" from="description">Opens the user menu</note>
+        <note priority="1" from="meaning">global navigation toogle</note>
+      </trans-unit>
+      <trans-unit id="links.profile" datatype="html">
+        <source>Your Profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+        <note priority="1" from="description">Link to profile page</note>
+        <note priority="1" from="meaning">navigation link</note>
+      </trans-unit>
+      <trans-unit id="links.changeEmail" datatype="html">
+        <source>Change Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+        <note priority="1" from="description">Link to change emailp page</note>
+        <note priority="1" from="meaning">navigation link</note>
+      </trans-unit>
+      <trans-unit id="links.changePassword" datatype="html">
+        <source>Change Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+        <note priority="1" from="description">Link to change password page</note>
+        <note priority="1" from="meaning">navigation link</note>
+      </trans-unit>
+      <trans-unit id="links.logout" datatype="html">
+        <source>Logout</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">29,32</context>
+        </context-group>
+        <note priority="1" from="description">Link to logout page</note>
+        <note priority="1" from="meaning">navigation link</note>
       </trans-unit>
       <trans-unit id="pageNotFound.banner" datatype="html">
         <source>Game Over</source>
