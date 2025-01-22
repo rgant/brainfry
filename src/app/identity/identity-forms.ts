@@ -6,7 +6,7 @@ import { PASSWORDS } from '@app/shared/constants';
 import { controlErrorsSignal } from '@app/shared/control-errors-signal.util';
 import { controlInvalidSignal } from '@app/shared/control-invalid-signal.util';
 
-import { passwordStrengthValidator } from './validators/passwords.validator';
+import { passwordFirebaseValidator, passwordStrengthValidator } from './validators/passwords';
 
 const getControlStructure = <T extends AbstractControl>(control: T): ControlStruct<T> => {
   const $invalid = controlInvalidSignal(control);
@@ -27,7 +27,12 @@ export const createEmailControl = (): ControlStruct<FormControl> => {
   return getControlStructure(control);
 };
 
-export const createPasswordControl = (validateStrength: boolean = false): ControlStruct<FormControl> => {
+/**
+ * @param isNewPassword - Adds extra validators to control when being used to create a new password.
+ *                      Note: this should only be used on the first password field, not the confirm
+ *                      field.
+ */
+export const createPasswordControl = (isNewPassword: boolean = false): ControlStruct<FormControl> => {
   const control = new FormControl<string | null>(
     null, // eslint-disable-line unicorn/no-null -- DOM forms use null
     [
@@ -37,8 +42,9 @@ export const createPasswordControl = (validateStrength: boolean = false): Contro
     ],
   );
 
-  if (validateStrength) {
+  if (isNewPassword) {
     control.addValidators(passwordStrengthValidator);
+    control.addAsyncValidators(passwordFirebaseValidator());
   }
 
   return getControlStructure(control);

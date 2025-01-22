@@ -3,9 +3,17 @@ import type { ComponentFixture } from '@angular/core/testing';
 import type { FormControl } from '@angular/forms';
 
 import { FORMS, PASSWORDS } from '@app/shared/constants';
-import { getCompiled, safeQuerySelector } from '@testing/helpers';
+import { getCompiled, safeQuerySelector, setValidatePassword } from '@testing/helpers';
 
-export const passwordControlTest = (passwordControl: FormControl, validateStrength: boolean = false): void => {
+interface PasswordErrorMessagesTestOptions {
+  errorsId: string;
+  isNewPassword?: boolean;
+}
+
+/**
+ * @param isNewPassword - If this is true then the tests use `tick`, so much be called within `fakeAsync`.
+ */
+export const passwordControlTest = (passwordControl: FormControl, isNewPassword: boolean = false): void => {
   const expectedPassword = 'f8f93627';
 
   // Default state
@@ -14,6 +22,9 @@ export const passwordControlTest = (passwordControl: FormControl, validateStreng
 
   // Valid
   passwordControl.setValue('08a2fGe2&7260b');
+  if (isNewPassword) {
+    tick(); // Firebase validatePassword is async
+  }
 
   expect(passwordControl.valid).withContext('valid').toBeTrue();
 
@@ -28,10 +39,15 @@ export const passwordControlTest = (passwordControl: FormControl, validateStreng
 
   expect(passwordControl.hasError('maxlength')).withContext('has error maxlength').toBeTrue();
 
-  if (validateStrength) {
+  if (isNewPassword) {
     passwordControl.setValue('08a2fe27260b');
 
     expect(passwordControl.hasError('passwordstrength')).withContext('has error passwordstrength').toBeTrue();
+
+    setValidatePassword(false);
+    passwordControl.setValue('08A2fe@7260b');
+    tick(); // Firebase validatePassword is async
+    expect(passwordControl.hasError('firebasevalidator')).withContext('has error firebasevalidator').toBeTrue();
   }
 
   // Required value
@@ -43,8 +59,7 @@ export const passwordControlTest = (passwordControl: FormControl, validateStreng
 export const passwordErrorMessagesTest = (
   passwordControl: FormControl<string | null>,
   fixture: ComponentFixture<unknown>,
-  errorsId: string,
-  validateStrength: boolean = false
+  { errorsId, isNewPassword = false }: PasswordErrorMessagesTestOptions,
 ): void => {
   const compiled: HTMLElement = getCompiled(fixture);
   const errorsEl: HTMLSpanElement = safeQuerySelector(compiled, `#${errorsId}`);
@@ -80,12 +95,18 @@ export const passwordErrorMessagesTest = (
 
   expect(errorsEl.textContent).toContain(`Your password may not be longer than ${PASSWORDS.maxLength} characters.`);
 
-  if (validateStrength) {
+  if (isNewPassword) {
     passwordControl.setErrors({ passwordstrength: true });
     tick(FORMS.inputDebounce); // debounceTime
     fixture.detectChanges();
 
     expect(errorsEl.textContent).toContain('Your password is not very strong.');
+
+    passwordControl.setErrors({ firebasevalidator: true });
+    tick(FORMS.inputDebounce); // debounceTime
+    fixture.detectChanges();
+
+    expect(errorsEl.textContent).toContain('Your password needs to include:');
   }
 
   // Hide message when control is valid.

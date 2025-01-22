@@ -8,8 +8,6 @@ import type { ApplicationConfig } from '@angular/core';
 //   UserTrackingService,
 // } from '@angular/fire/analytics';
 // import type { Analytics } from '@angular/fire/analytics';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import type { FirebaseApp } from '@angular/fire/app';
 // import { initializeAppCheck, provideAppCheck, ReCaptchaEnterpriseProvider } from '@angular/fire/app-check';
 // import type { AppCheck } from '@angular/fire/app-check';
 import { getAuth, provideAuth } from '@angular/fire/auth';
@@ -29,21 +27,12 @@ import { provideServiceWorker } from '@angular/service-worker';
 
 import { routes } from './app.routes';
 import { AppTitleStrategyService } from './core/app-title-strategy.service';
+import { provideOurFirebaseApp } from './core/firebase-app.provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideFirebaseApp(
-      (): FirebaseApp =>
-        initializeApp({
-          apiKey: 'AIzaSyB75fqz0szrfVCLvpil9_t9UPQlLYplNcI',
-          appId: '1:207926801743:web:e1402f665312fb7ab0813a',
-          authDomain: 'brainfry-app.firebaseapp.com',
-          messagingSenderId: '207926801743',
-          projectId: 'brainfry-app',
-          storageBucket: 'brainfry-app.appspot.com',
-        }),
-    ),
+    provideOurFirebaseApp(),
     provideAuth((): Auth => getAuth()),
     // provideAnalytics((): Analytics => getAnalytics()),
     // ScreenTrackingService,

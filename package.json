@@ -34,7 +34,7 @@
     "ng": "ng",
     "start": "ng serve",
     "stylelint": "stylelint --quiet-deprecation-warnings src/",
-    "test": "ng test",
+    "test": "firebase emulators:exec --only auth --ui 'ng test'",
     "watch": "ng build --watch --configuration development"
   },
   "dependencies": {

@@ -1,8 +1,9 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 
+import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
 import { FORMS, PASSWORDS } from '@app/shared/constants';
-import { getCompiled, safeQuerySelector } from '@testing/helpers';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/helpers';
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { passwordControlTest, passwordErrorMessagesTest, passwordInputTest } from '../testing/password-field.spec';
@@ -39,10 +40,10 @@ describe('ChangePasswordComponent', (): void => {
   let fixture: ComponentFixture<ChangePasswordComponent>;
 
   const passwordFieldTests = ({ autoComplete, control, errorId, inputId, validateStrength }: FieldSetup): void => {
-    it(`should configure current ${control} FormControl`, (): void => {
+    it(`should configure current ${control} FormControl`, fakeAsync((): void => {
       const cntrl = component[control];
       passwordControlTest(cntrl, validateStrength);
-    });
+    }));
 
     it(`should configure ${control} input`, (): void => {
       passwordInputTest(fixture, inputId, autoComplete);
@@ -55,13 +56,14 @@ describe('ChangePasswordComponent', (): void => {
 
     it(`should configure ${control} error messages`, fakeAsync((): void => {
       const cntrl = component[control];
-      passwordErrorMessagesTest(cntrl, fixture, errorId, validateStrength);
+      passwordErrorMessagesTest(cntrl, fixture, { errorsId: errorId, isNewPassword: validateStrength });
     }));
   };
 
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
       imports: [ ChangePasswordComponent ],
+      providers: [ provideOurFirebaseApp(), provideEmulatedAuth() ],
     })
       .compileComponents();
 
@@ -94,6 +96,7 @@ describe('ChangePasswordComponent', (): void => {
 
     // Valid
     component.changePasswordForm.setValue({ currentPw: 'b1851b66-191', password1: '3bBce4%2c731', password2: '3bBce4%2c731' });
+    tick(); // Firebase validatePassword is async
 
     expect(component.changePasswordForm.valid).withContext('valid').toBeTrue();
   }));

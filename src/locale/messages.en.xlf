@@ -214,7 +214,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
-          <context context-type="linenumber">115,116</context>
+          <context context-type="linenumber">120,121</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
@@ -226,7 +226,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">71,72</context>
+          <context context-type="linenumber">76,77</context>
         </context-group>
         <note priority="1" from="description">Password is too short</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -247,7 +247,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
-          <context context-type="linenumber">121,122</context>
+          <context context-type="linenumber">126,127</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
@@ -259,7 +259,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">77,78</context>
+          <context context-type="linenumber">82,83</context>
         </context-group>
         <note priority="1" from="description">Password is too long</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -321,24 +321,37 @@
         <source> Your password is not very strong. Include a combination of upper and lowercase letters, numbers, and symbols. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
-          <context context-type="linenumber">82,86</context>
+          <context context-type="linenumber">82,85</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">38,42</context>
+          <context context-type="linenumber">38,41</context>
         </context-group>
         <note priority="1" from="description">Password is too weak</note>
+        <note priority="1" from="meaning">form field error message</note>
+      </trans-unit>
+      <trans-unit id="formErrors.password.firebasevalidator" datatype="html">
+        <source> Your password needs to include: TODO </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
+          <context context-type="linenumber">87,93</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">43,49</context>
+        </context-group>
+        <note priority="1" from="description">Password was rejected by Firebase policy</note>
         <note priority="1" from="meaning">form field error message</note>
       </trans-unit>
       <trans-unit id="fields.confirmPassword" datatype="html">
         <source> Confirm Password: </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
-          <context context-type="linenumber">92,95</context>
+          <context context-type="linenumber">97,100</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">48,51</context>
+          <context context-type="linenumber">53,56</context>
         </context-group>
         <note priority="1" from="description">Change password form confirm password</note>
         <note priority="1" from="meaning">form field label</note>
@@ -347,11 +360,11 @@
         <source> Please re-enter your password. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
-          <context context-type="linenumber">110,113</context>
+          <context context-type="linenumber">115,118</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">66,69</context>
+          <context context-type="linenumber">71,74</context>
         </context-group>
         <note priority="1" from="description">Password is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -360,11 +373,11 @@
         <source> Passwords must match. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
-          <context context-type="linenumber">132,139</context>
+          <context context-type="linenumber">137,144</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">88,95</context>
+          <context context-type="linenumber">93,100</context>
         </context-group>
         <note priority="1" from="description">Both password fields in form must match</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -373,7 +386,7 @@
         <source> Change Password </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
-          <context context-type="linenumber">144,150</context>
+          <context context-type="linenumber">149,155</context>
         </context-group>
         <note priority="1" from="description">Change password for user</note>
         <note priority="1" from="meaning">form submit button</note>
@@ -440,11 +453,51 @@
         <note priority="1" from="description">Link to page to recover password</note>
         <note priority="1" from="meaning">navigation link</note>
       </trans-unit>
+      <trans-unit id="logoutPage.header" datatype="html">
+        <source>Logout</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/logout/logout.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+        <note priority="1" from="description">Logout of your session</note>
+        <note priority="1" from="meaning">page heading 2</note>
+      </trans-unit>
+      <trans-unit id="logoutPage.explaination" datatype="html">
+        <source>Click here to logout:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/logout/logout.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+        <note priority="1" from="description">explain logout process</note>
+        <note priority="1" from="meaning">paragraph text</note>
+      </trans-unit>
+      <trans-unit id="logoutPage.button" datatype="html">
+        <source>Complete Logout</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/logout/logout.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <note priority="1" from="description">perform logout</note>
+        <note priority="1" from="meaning">logout button</note>
+      </trans-unit>
+      <trans-unit id="links.backToDashboard" datatype="html">
+        <source>Go back to dashboard</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/logout/logout.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>
+          <context context-type="linenumber">8,11</context>
+        </context-group>
+        <note priority="1" from="description">Navigate back to dashboard page</note>
+        <note priority="1" from="meaning">link text</note>
+      </trans-unit>
       <trans-unit id="buttons.resetPassword" datatype="html">
         <source> Replace Password </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">100,106</context>
+          <context context-type="linenumber">105,111</context>
         </context-group>
         <note priority="1" from="description">Change password for user</note>
         <note priority="1" from="meaning">form submit button</note>
@@ -515,15 +568,6 @@
         </context-group>
         <note priority="1" from="description">Amusing text refering to losing a game</note>
         <note priority="1" from="meaning">page heading 1</note>
-      </trans-unit>
-      <trans-unit id="links.backToDashboard" datatype="html">
-        <source>Go back to dashboard</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>
-          <context context-type="linenumber">8,11</context>
-        </context-group>
-        <note priority="1" from="description">Navigate back to dashboard page</note>
-        <note priority="1" from="meaning">link text</note>
       </trans-unit>
       <trans-unit id="text.loading" datatype="html">
         <source>Loading…</source>

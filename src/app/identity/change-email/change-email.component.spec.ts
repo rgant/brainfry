@@ -56,7 +56,7 @@ describe('ChangeEmailComponent', (): void => {
   });
 
   it('should configure password error messages', fakeAsync((): void => {
-    passwordErrorMessagesTest(component.passwordCntrl, fixture, 'fld-password-msgs');
+    passwordErrorMessagesTest(component.passwordCntrl, fixture, { errorsId: 'fld-password-msgs' });
   }));
 
   it('should configure login FormGroup', (): void => {

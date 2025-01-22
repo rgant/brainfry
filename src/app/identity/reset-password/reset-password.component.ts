@@ -7,7 +7,7 @@ import { PASSWORDS } from '@app/shared/constants';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
 import { createPasswordControl } from '../identity-forms';
-import { passwordsMatch, passwordsMatchFormErrors } from '../validators/passwords.validator';
+import { passwordsMatch, passwordsMatchFormErrors } from '../validators/passwords';
 
 type ResetPasswordFormGroup = FormGroup<{
   password1: FormControl<string | null>;

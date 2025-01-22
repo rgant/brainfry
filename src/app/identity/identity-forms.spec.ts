@@ -1,5 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
+import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
+import { provideEmulatedAuth } from '@testing/helpers';
+
 import { createEmailControl, createPasswordControl } from './identity-forms';
 import type { ControlStruct } from './identity-forms';
 import { emailControlTest } from './testing/email-field.spec';
@@ -7,7 +10,9 @@ import { passwordControlTest } from './testing/password-field.spec';
 
 describe('Identity Forms', (): void => {
   beforeEach((): void => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [ provideOurFirebaseApp(), provideEmulatedAuth() ],
+    });
   });
 
   it('should create email control and signals', (): void => {
