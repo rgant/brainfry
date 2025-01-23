@@ -11,7 +11,7 @@ import type {
 import { map } from 'rxjs';
 import type { Observable } from 'rxjs';
 
-export const authGuard: CanActivateChildFn = (
+export const emailVerifiedGuard: CanActivateChildFn = (
   _childRoute: ActivatedRouteSnapshot,
   state: RouterStateSnapshot,
 ): Observable<UrlTree | true> => {
@@ -22,7 +22,11 @@ export const authGuard: CanActivateChildFn = (
   return user(auth).pipe(
     map((maybeUser: User | null): UrlTree | true => {
       if (!maybeUser) {
-        return router.parseUrl(`/login?next=${url}`);
+        throw new Error('Cannot verify email without logged in user!');
+      }
+
+      if (!maybeUser.emailVerified) {
+        return router.parseUrl(`/confirm-email?next=${url}`);
       }
 
       return true;

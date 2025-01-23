@@ -1,1 +1,5 @@
-<p>dashboard works!</p>
+@if (name$ | async; as name) {
+  <h2>Hello {{ name }}!</h2>
+} @else {
+  <app-spinner />
+}

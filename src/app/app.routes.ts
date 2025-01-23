@@ -2,8 +2,7 @@
 /* eslint-disable import-x/max-dependencies -- routes files tend to have a lot of dependencies */
 import type { Routes } from '@angular/router';
 
-import { authGuard } from './core/guards/auth.guard';
-import { noAuthGuard } from './core/guards/no-auth.guard';
+import { authGuard, emailVerifiedGuard, noAuthGuard } from './core/guards';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ActionsComponent } from './identity/actions/actions.component';
 import { ChangeEmailComponent } from './identity/change-email/change-email.component';
@@ -54,7 +53,7 @@ export const routes: Routes = [
   // Views inside of logged in area.
   {
     path: '',
-    canActivateChild: [ authGuard ],
+    canActivateChild: [ authGuard, emailVerifiedGuard ],
     component: StandardLayoutComponent,
 
     children: [
@@ -67,12 +66,6 @@ export const routes: Routes = [
         path: 'change-password',
         component: ChangePasswordComponent,
         title: $localize`:HTML title tag|Change account password@@htmlTitle.change-password:Change your password`,
-      },
-      {
-        // Sends the user an email to confirm access to the email address
-        path: 'confirm-email',
-        component: ConfirmEmailComponent,
-        title: $localize`:HTML title tag|Send email confirming address access@@htmlTitle.confirm-email:Confirm Email`,
       },
       {
         path: 'dashboard',
@@ -104,6 +97,13 @@ export const routes: Routes = [
     component: CentralLayoutComponent,
 
     children: [
+      {
+        // Sends the user an email to confirm access to the email address
+        path: 'confirm-email',
+        canActivate: [ authGuard ],
+        component: ConfirmEmailComponent,
+        title: $localize`:HTML title tag|Send email confirming address access@@htmlTitle.confirm-email:Confirm Email`,
+      },
       {
         path: 'privacy',
         component: PrivacyPolicyComponent,

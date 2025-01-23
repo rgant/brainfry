@@ -1,3 +1,6 @@
+/**
+ * Marks the user's email as verified.
+ */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({

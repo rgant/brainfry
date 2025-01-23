@@ -1,6 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 
+import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
+import { provideEmulatedAuth } from '@testing/helpers';
+
 import { DashboardComponent } from './dashboard.component';
 
 describe('DashboardComponent', (): void => {
@@ -10,6 +13,7 @@ describe('DashboardComponent', (): void => {
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
       imports: [ DashboardComponent ],
+      providers: [ provideOurFirebaseApp(), provideEmulatedAuth() ],
     })
       .compileComponents();
 
