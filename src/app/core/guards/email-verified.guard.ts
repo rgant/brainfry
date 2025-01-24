@@ -14,15 +14,15 @@ import type { Observable } from 'rxjs';
 export const emailVerifiedGuard: CanActivateChildFn = (
   _childRoute: ActivatedRouteSnapshot,
   state: RouterStateSnapshot,
-): Observable<UrlTree | true> => {
+): Observable<UrlTree | boolean> => {
   const auth = inject(Auth);
   const router = inject(Router);
   const { url } = state;
 
   return user(auth).pipe(
-    map((maybeUser: User | null): UrlTree | true => {
+    map((maybeUser: User | null): UrlTree | boolean => {
       if (!maybeUser) {
-        throw new Error('Cannot verify email without logged in user!');
+        return false;
       }
 
       if (!maybeUser.emailVerified) {

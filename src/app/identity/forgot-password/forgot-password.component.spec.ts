@@ -2,7 +2,7 @@ import { fakeAsync, TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
-import { getCompiled, safeQuerySelector } from '@testing/helpers';
+import { getCompiled, safeQuerySelector } from '@testing/utilities';
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { emailControlTest, emailErrorMessagesTest, emailInputTest } from '../testing/email-field.spec';

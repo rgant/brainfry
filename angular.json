@@ -3,7 +3,6 @@
   "cli": {
     "analytics": "49295121-a570-4cbc-a5c7-ced1714fa46f",
     "schematicCollections": [
-      "@cypress/schematic",
       "angular-eslint",
       "@schematics/angular"
     ]

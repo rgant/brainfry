@@ -17,6 +17,7 @@ export const noAuthGuard: CanActivateChildFn = (
 ): Observable<UrlTree | true> => {
   const auth = inject(Auth);
   const router = inject(Router);
+  /** Navigate to the `next` query parameter if set, else to the root and allow default redirectTo Route to decide initial destination. */
   const nextUrl = childRoute.queryParamMap.get('next') ?? '/';
 
   return user(auth).pipe(

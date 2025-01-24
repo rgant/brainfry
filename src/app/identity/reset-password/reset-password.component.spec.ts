@@ -3,7 +3,7 @@ import type { ComponentFixture } from '@angular/core/testing';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
 import { FORMS, PASSWORDS } from '@app/shared/constants';
-import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/helpers';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { passwordControlTest, passwordErrorMessagesTest, passwordInputTest } from '../testing/password-field.spec';

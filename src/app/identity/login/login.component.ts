@@ -2,9 +2,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
+  input,
   signal,
 } from '@angular/core';
-import type { Signal, WritableSignal } from '@angular/core';
+import type { InputSignal, Signal, WritableSignal } from '@angular/core';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import type { FormControl, ValidationErrors } from '@angular/forms';
@@ -36,6 +37,8 @@ export class LoginComponent {
   public readonly loginForm: LoginFormGroup;
   public readonly maxPasswordLength: number = PASSWORDS.maxLength;
   public readonly minPasswordLength: number = PASSWORDS.minLength;
+  // Navigate to root to allow default redirectTo Route to decide initial destination unless the `next` query parameter is set.
+  public readonly next: InputSignal<string> = input<string>('/');
   public readonly passwordCntrl: FormControl<string | null>;
 
   private readonly _auth: Auth;
@@ -46,13 +49,12 @@ export class LoginComponent {
 
     ({ $errors: this.$emailCntrlErrors, $invalid: this.$emailCntrlInvalid, control: this.emailCntrl } = createEmailControl());
     ({ $errors: this.$passwordCntrlErrors, $invalid: this.$passwordCntrlInvalid, control: this.passwordCntrl } = createPasswordControl());
+    this.$showForm = signal<boolean>(true);
 
     this.loginForm = new FormGroup({
       email: this.emailCntrl,
       password: this.passwordCntrl,
     });
-
-    this.$showForm = signal<boolean>(true);
   }
 
   public async onSubmit(): Promise<void> {
@@ -66,6 +68,6 @@ export class LoginComponent {
     this.$showForm.set(false);
 
     await signInWithEmailAndPassword(this._auth, email, password);
-    await this._router.navigateByUrl('/'); // Navigate to root to allow default redirectTo Route to decide initial destination
+    await this._router.navigateByUrl(this.next());
   }
 }

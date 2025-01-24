@@ -72,6 +72,7 @@ export const routes: Routes = [
         component: DashboardComponent,
         title: $localize`:HTML title tag|Default page for user showing key information@@htmlTitle.dashboard:Dashboard`,
       },
+      // Only Users with verified emails can logout. Is that the correct choice?
       {
         path: 'logout',
         component: LogoutComponent,
@@ -87,16 +88,16 @@ export const routes: Routes = [
 
   // Views for both logged in and out visitors
   {
-    // Redirects the user from the Firebase email to our custom action URLs
-    path: 'actions',
-    component: ActionsComponent,
-    // title: '', // Redirect page with no need for title
-  },
-  {
     path: '',
     component: CentralLayoutComponent,
 
     children: [
+      {
+        // Redirects the user from the Firebase email to our custom action URLs
+        path: 'actions',
+        component: ActionsComponent,
+        // title: '', // Redirect page with no need for title
+      },
       {
         // Sends the user an email to confirm access to the email address
         path: 'confirm-email',

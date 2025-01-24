@@ -4,7 +4,7 @@ import type { AsyncValidatorFn } from '@angular/forms';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
 import validatePasswordResponse from '@testing/firebase-validate-password.json';
-import { provideEmulatedAuth, setValidatePassword } from '@testing/helpers';
+import { provideEmulatedAuth, setValidatePassword } from '@testing/utilities';
 
 import { passwordFirebaseValidator } from './firebase.validator';
 

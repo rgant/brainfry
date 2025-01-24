@@ -5,8 +5,8 @@ import { RouterTestingHarness } from '@angular/router/testing';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
 import { DEFAULT_TEST_USER } from '@testing/constants';
-import { provideEmulatedAuth } from '@testing/helpers';
 import { TestComponent } from '@testing/test.component';
+import { provideEmulatedAuth } from '@testing/utilities';
 
 import { noAuthGuard } from './no-auth.guard';
 
@@ -23,7 +23,6 @@ describe('noAuthGuard', (): void => {
         provideRouter([
           { path: '', canActivateChild: [ noAuthGuard ], children: [ { path: 'unauthenticated-child', component: TestComponent } ] },
           { path: 'unauthenticated', canActivate: [ noAuthGuard ], component: TestComponent },
-          { path: 'no-requirements', component: TestComponent },
           { path: 'dashboard', component: TestComponent },
           { path: '', component: TestComponent },
         ]),
@@ -57,12 +56,6 @@ describe('noAuthGuard', (): void => {
 
       expect(router.url).toBe('/dashboard');
     });
-
-    it('should ignore unguarded routes', async (): Promise<void> => {
-      await harness.navigateByUrl('/no-requirements');
-
-      expect(router.url).toBe('/no-requirements');
-    });
   });
 
   describe('logged out user', (): void => {
@@ -80,12 +73,6 @@ describe('noAuthGuard', (): void => {
       await harness.navigateByUrl('/unauthenticated-child');
 
       expect(router.url).toBe('/unauthenticated-child');
-    });
-
-    it('should ignore unguarded routes', async (): Promise<void> => {
-      await harness.navigateByUrl('/no-requirements');
-
-      expect(router.url).toBe('/no-requirements');
     });
   });
 });

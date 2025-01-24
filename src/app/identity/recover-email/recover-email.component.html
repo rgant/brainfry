@@ -1,1 +1,41 @@
-<p>recover-email works!</p>
+@if (vm$ | async; as vm) {
+  <div class="card">
+    @if (vm.successful) {
+      <h2 i18n="page heading 2|Successful restoration of previous email for account@@recoverEmail.successHeader">
+        Your email has been restored!
+      </h2>
+      @if (vm.restoredEmail) {
+        <p i18n="paragraph|Specific email for account restored@@recoverEmail.restoredEmail">
+          Your email has been restored to {{ vm.restoredEmail }}.
+        </p>
+      }
+      @if (vm.passwordResetSent) {
+        <p i18n="paragraph|Notice that a password reset email was also sent@@recoverEmail.passwordResetSent">
+          Additionally we have sent you a link to reset your password in the event your account was compromised.
+        </p>
+      } @else {
+        <p i18n="paragraph with link|Could not automatically reset password, so suggest user do so manually@@recoverEmail.passwordResetNotSent">
+          In the event your account was compromised, please
+          <a routerLink="/forgot-password">reset your password</a>.
+        </p>
+      }
+      <a routerLink="/" class="button" i18n="navigation link button styled|Return to default page to either login again or go to dashboard@@link.continue">
+        Continue
+      </a>
+    } @else {
+      <h2 i18n="page heading 2|Failed restoration of previous email for account@@recoverEmail.failureHeader">
+        There was a problem with your restoration link
+      </h2>
+      <p class="alert">
+        <app-auth-error-messages [$code]="vm.errorCode ?? 'unknown'" />
+      </p>
+      <p i18n="paragraph|Suggest contacting support@@recoverEmail.contact">
+        Please
+        <a href="mailto:rob@brainfry-app.web.app?subject=404">contact support</a>
+        for assistance.
+      </p>
+    }
+  </div>
+} @else {
+  <app-spinner class="modal-block" />
+}

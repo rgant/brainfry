@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
-import { getCompiled, safeQuerySelector } from '@testing/helpers';
+import { getCompiled, safeQuerySelector } from '@testing/utilities';
 
 import { HeaderComponent } from './header.component';
 

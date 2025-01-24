@@ -3,7 +3,7 @@ import type { ComponentFixture } from '@angular/core/testing';
 import type { FormControl } from '@angular/forms';
 
 import { FORMS, PASSWORDS } from '@app/shared/constants';
-import { getCompiled, safeQuerySelector, setValidatePassword } from '@testing/helpers';
+import { getCompiled, safeQuerySelector, setValidatePassword } from '@testing/utilities';
 
 interface PasswordErrorMessagesTestOptions {
   errorsId: string;

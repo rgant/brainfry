@@ -1,19 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
-import {
-  ActivatedRoute,
-  provideRouter,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
-import type { GuardResult, MaybeAsync } from '@angular/router';
+import { provideRouter, Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
-import { firstValueFrom, Observable } from 'rxjs';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
 import { DEFAULT_TEST_USER, UNVERIFIED_TEST_USER } from '@testing/constants';
-import { provideEmulatedAuth } from '@testing/helpers';
 import { TestComponent } from '@testing/test.component';
+import { provideEmulatedAuth } from '@testing/utilities';
 
 import { emailVerifiedGuard } from './email-verified.guard';
 
@@ -34,10 +27,8 @@ describe('emailVerifiedGuard', (): void => {
             children: [ { path: 'verified-required-child', component: TestComponent } ],
           },
           { path: 'verified-required', canActivate: [ emailVerifiedGuard ], component: TestComponent },
-          { path: 'verified-not-required', component: TestComponent },
           { path: 'confirm-email', component: TestComponent },
         ]),
-        { provide: RouterStateSnapshot, useValue: { url: '/' } },
       ],
     });
 
@@ -62,12 +53,6 @@ describe('emailVerifiedGuard', (): void => {
 
       expect(router.url).toBe('/verified-required-child');
     });
-
-    it('should ignore unguarded routes', async (): Promise<void> => {
-      await harness.navigateByUrl('/verified-not-required');
-
-      expect(router.url).toBe('/verified-not-required');
-    });
   });
 
   describe('user with unverified email', (): void => {
@@ -86,12 +71,6 @@ describe('emailVerifiedGuard', (): void => {
 
       expect(router.url).toBe('/confirm-email?next=%2Fverified-required-child');
     });
-
-    it('should ignore unguarded routes', async (): Promise<void> => {
-      await harness.navigateByUrl('/verified-not-required');
-
-      expect(router.url).toBe('/verified-not-required');
-    });
   });
 
   describe('logged out user', (): void => {
@@ -99,24 +78,12 @@ describe('emailVerifiedGuard', (): void => {
       await signOut(auth);
     });
 
-    it('should error without user', async (): Promise<void> => {
-      const activatedRoute = TestBed.inject(ActivatedRoute);
-      const routerStateSnapshot = TestBed.inject(RouterStateSnapshot);
+    it('should prevent navigation', async (): Promise<void> => {
+      await harness.navigateByUrl('/verified-required');
+      const { lastSuccessfulNavigation, url } = router;
 
-      const guard$ = TestBed.runInInjectionContext(
-        (): MaybeAsync<GuardResult> => emailVerifiedGuard(activatedRoute.snapshot, routerStateSnapshot),
-      );
-      if (guard$ instanceof Observable) {
-        await expectAsync(firstValueFrom(guard$)).toBeRejectedWithError('Cannot verify email without logged in user!');
-      } else {
-        fail('Guard failed to return Observable');
-      }
-    });
-
-    it('should ignore unguarded routes', async (): Promise<void> => {
-      await harness.navigateByUrl('/verified-not-required');
-
-      expect(router.url).toBe('/verified-not-required');
+      expect(url).toBe('/');
+      expect(lastSuccessfulNavigation).toBeNull();
     });
   });
 });

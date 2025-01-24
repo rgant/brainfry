@@ -432,6 +432,16 @@ module.exports = tseslint.config(
         'error',
         { allowWithDecorator: true }, // Angular uses empty decorated classes (@NgModule) all the time
       ],
+      '@typescript-eslint/no-floating-promises': [
+        'error',
+        {
+          allowForKnownSafeCalls: [
+            // Angular Router handles navigation failures.
+            { from: 'package', name: 'navigate', package: '@angular/router' },
+            { from: 'package', name: 'navigateByUrl', package: '@angular/router' },
+          ],
+        },
+      ],
       '@typescript-eslint/no-implicit-any-catch': 'off', // Already covered by tsconfig strict
       '@typescript-eslint/no-inferrable-types': [
         'error',
@@ -747,7 +757,7 @@ module.exports = tseslint.config(
         { disallowRedundantWrapping: true },
       ],
       // eslint-plugin-promise doesn't have an all so this is just modifications to recommended
-      'promise/prefer-await-to-callbacks': 'error',
+      'promise/prefer-await-to-callbacks': 'error', // This can be triggered by rxjs catchError((err) => {}) :-(
       'promise/prefer-await-to-then': 'error',
       'require-await': 'off', // Match TS rule
       // @smarttools/eslint-plugin-rxjs doesn't have an all so this is all the non-recommended rules at the time

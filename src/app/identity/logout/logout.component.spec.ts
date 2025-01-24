@@ -5,7 +5,7 @@ import { provideRouter, Router } from '@angular/router';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
 import { DEFAULT_TEST_USER } from '@testing/constants';
-import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/helpers';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
 
 import { LogoutComponent } from './logout.component';
 
