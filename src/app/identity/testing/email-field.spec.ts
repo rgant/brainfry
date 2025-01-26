@@ -43,7 +43,10 @@ export const emailErrorMessagesTest = (
   tick(FORMS.inputDebounce); // debounceTime
   fixture.detectChanges();
 
-  expect(errorsEl.textContent).toMatch(/Please enter your (?:new )?email address\./u);
+  // Please enter your email address.
+  // Please enter your new email address.
+  // Please re-enter your new email address.
+  expect(errorsEl.textContent).toMatch(/Please (?:re-)?enter your (?:new )?email address\./u);
 
   // Valid email message
   emailControl.setErrors({ email: true });

@@ -1,13 +1,17 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
+import { provideRouter, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
 import { FORMS, PASSWORDS } from '@app/shared/constants';
-import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
+import { getCompiled, safeQuerySelector } from '@testing/utilities';
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
+import { createMockNavigation } from '../testing/create-mock-navigation.spec';
 import { passwordControlTest, passwordErrorMessagesTest, passwordInputTest } from '../testing/password-field.spec';
 import { ResetPasswordComponent } from './reset-password.component';
+import { ResetPasswordService } from './reset-password.service';
+import type { ResetPasswordResults } from './reset-password.service';
 
 const passwordFields = [
   {
@@ -31,41 +35,69 @@ type FieldSetup = typeof passwordFields[number];
 describe('ResetPasswordComponent', (): void => {
   let component: ResetPasswordComponent;
   let fixture: ComponentFixture<ResetPasswordComponent>;
+  let getCurrentNavigationSpy: jasmine.Spy;
+  let mockService: jasmine.SpyObj<ResetPasswordService>;
+  let router: Router;
+
+  const setupComponent = (oobCode: string): void => {
+    getCurrentNavigationSpy.and.returnValue(createMockNavigation(oobCode));
+    fixture = TestBed.createComponent(ResetPasswordComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  };
+  const viewModelSubject$ = new Subject<ResetPasswordResults>();
 
   const passwordFieldTests = ({ autoComplete, control, errorId, inputId, validateStrength }: FieldSetup): void => {
     it(`should configure current ${control} FormControl`, fakeAsync((): void => {
+      setupComponent('foo');
+
       const cntrl = component[control];
       passwordControlTest(cntrl, validateStrength);
     }));
 
     it(`should configure ${control} input`, (): void => {
+      setupComponent('foo');
+
       passwordInputTest(fixture, inputId, autoComplete);
     });
 
     it(`should set ${control} input aria-invalid attribute`, (): void => {
+      setupComponent('foo');
+
       const cntrl = component[control];
       ariaInvalidTest(cntrl, fixture, inputId);
     });
 
     it(`should configure ${control} error messages`, fakeAsync((): void => {
+      setupComponent('foo');
+
       const cntrl = component[control];
       passwordErrorMessagesTest(cntrl, fixture, { errorsId: errorId, isNewPassword: validateStrength });
     }));
   };
 
   beforeEach(async (): Promise<void> => {
+    mockService = jasmine.createSpyObj<ResetPasswordService>([ 'replacePassword', 'resetPassword$' ]);
+    mockService.resetPassword$.and.returnValue(viewModelSubject$);
+
     await TestBed.configureTestingModule({
       imports: [ ResetPasswordComponent ],
-      providers: [ provideOurFirebaseApp(), provideEmulatedAuth() ],
+      providers: [
+        provideRouter([]),
+        { provide: ResetPasswordService, useValue: mockService },
+      ],
+      teardown: { destroyAfterEach: false },
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(ResetPasswordComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    router = TestBed.inject(Router);
+    getCurrentNavigationSpy = spyOn(router, 'getCurrentNavigation');
+    // Cannot call createComponent until the getCurrentNavigationSpy return is setup for each test.
   });
 
   it('should have password constraints', (): void => {
+    setupComponent('foo');
+
     expect(component.maxPasswordLength).withContext('maxPasswordLength').toBe(PASSWORDS.maxLength);
     expect(component.minPasswordLength).withContext('minPasswordLength').toBe(PASSWORDS.minLength);
   });
@@ -75,6 +107,8 @@ describe('ResetPasswordComponent', (): void => {
   }
 
   it('should configure change password FormGroup', fakeAsync((): void => {
+    setupComponent('foo');
+
     // Default state
     // eslint-disable-next-line unicorn/no-null -- DOM forms use null
     expect(component.resetPasswordForm.value).withContext('value').toEqual({ password1: null, password2: null });
@@ -96,6 +130,8 @@ describe('ResetPasswordComponent', (): void => {
   }));
 
   it('should display password match form errors', fakeAsync((): void => {
+    setupComponent('foo');
+
     const compiled: HTMLElement = getCompiled(fixture);
     const frmErrsEl: HTMLDivElement = safeQuerySelector(compiled, '#frm-msgs');
 
@@ -109,10 +145,14 @@ describe('ResetPasswordComponent', (): void => {
   }));
 
   it('should submit form', (): void => {
+    setupComponent('foo');
+
     expect((): void => { component.onSubmit(); }).toThrowError('Invalid form submitted');
   });
 
   it('should configure submit button', (): void => {
+    setupComponent('foo');
+
     const submitSpy = spyOn(component, 'onSubmit');
     const compiled: HTMLElement = getCompiled(fixture);
     const bttnEl: HTMLButtonElement = safeQuerySelector(compiled, 'button');

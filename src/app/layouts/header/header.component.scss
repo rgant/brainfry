@@ -23,7 +23,8 @@ h1 {
 
 .toggle {
   margin-inline-end: app.$regular-spacing;
-  border: none;
+  // Better support for high-contrast mode. https://frontendmasters.com/blog/you-want-border-color-transparent-not-border-none/
+  border: transparent;
   color: app.$white;
   background-color: transparent;
 

@@ -22,7 +22,12 @@ import type { FirebasePerformance } from '@angular/fire/performance';
 // import type { FirebaseStorage } from '@angular/fire/storage';
 // import { getVertexAI, provideVertexAI } from '@angular/fire/vertexai';
 // import type { VertexAI } from '@angular/fire/vertexai';
-import { provideRouter, TitleStrategy, withComponentInputBinding } from '@angular/router';
+import {
+  provideRouter,
+  TitleStrategy,
+  withComponentInputBinding,
+  withInMemoryScrolling,
+} from '@angular/router';
 import { provideServiceWorker } from '@angular/service-worker';
 
 import { routes } from './app.routes';
@@ -53,7 +58,11 @@ export const appConfig: ApplicationConfig = {
     ),
     // provideStorage((): FirebaseStorage => getStorage()),
     // provideVertexAI((): VertexAI => getVertexAI()),
-    provideRouter(routes, withComponentInputBinding()),
+    provideRouter(
+      routes,
+      withComponentInputBinding(),
+      withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
+    ),
     { provide: TitleStrategy, useClass: AppTitleStrategyService },
   ],
 };

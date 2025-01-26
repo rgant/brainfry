@@ -14,12 +14,20 @@
           Additionally we have sent you a link to reset your password in the event your account was compromised.
         </p>
       } @else {
-        <p i18n="paragraph with link|Could not automatically reset password, so suggest user do so manually@@recoverEmail.passwordResetNotSent">
+        <p
+          i18n="paragraph with link
+            |Could not automatically reset password, so suggest user do so manually
+            @@recoverEmail.passwordResetNotSent"
+        >
           In the event your account was compromised, please
           <a routerLink="/forgot-password">reset your password</a>.
         </p>
       }
-      <a routerLink="/" class="button" i18n="navigation link button styled|Return to default page to either login again or go to dashboard@@link.continue">
+      <a
+        class="button"
+        routerLink="/"
+        i18n="navigation link button styled|Return to default page to either login again or go to dashboard@@link.continue"
+      >
         Continue
       </a>
     } @else {
@@ -31,7 +39,7 @@
       </p>
       <p i18n="paragraph|Suggest contacting support@@recoverEmail.contact">
         Please
-        <a href="mailto:rob@brainfry-app.web.app?subject=404">contact support</a>
+        <a href="mailto:rob@brainfry-app.web.app?subject=recover+email">contact support</a>
         for assistance.
       </p>
     }

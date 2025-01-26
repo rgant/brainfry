@@ -544,7 +544,7 @@ module.exports = tseslint.config(
       'id-match': 'off',
       // eslint-plugin-import-x doesn't have an all config so this is just modifications to recommended
       'import-x/consistent-type-specifier-style': ['error', 'prefer-top-level'],
-      'import-x/exports-last': 'error',
+      'import-x/exports-last': 'off', // conflicts with perfectionist/sort-modules
       'import-x/extensions': ['error', 'never', { json: 'always' }],
       'import-x/first': 'error',
       'import-x/max-dependencies': 'error',

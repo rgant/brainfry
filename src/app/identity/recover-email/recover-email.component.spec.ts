@@ -1,16 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
-import type { Navigation } from '@angular/router';
 import { Subject } from 'rxjs';
 
 import { getCompiled, safeQuerySelector } from '@testing/utilities';
 
+import { createMockNavigation } from '../testing/create-mock-navigation.spec';
 import { RecoverEmailComponent } from './recover-email.component';
 import { RecoverEmailService } from './recover-email.service';
 import type { RecoverEmailResults } from './recover-email.service';
-
-const getMockNavigation = (oobCode: string): Partial<Navigation> => ({ extras: { state: { oobCode } } });
 
 describe('RecoverEmailComponent', (): void => {
   let fixture: ComponentFixture<RecoverEmailComponent>;
@@ -18,6 +16,11 @@ describe('RecoverEmailComponent', (): void => {
   let recoverEmailSpy: jasmine.Spy;
   let router: Router;
 
+  const setupFixture = (oobCode: string): void => {
+    getCurrentNavigationSpy.and.returnValue(createMockNavigation(oobCode));
+    fixture = TestBed.createComponent(RecoverEmailComponent);
+    fixture.detectChanges();
+  };
   const viewModelSubject$ = new Subject<RecoverEmailResults>();
 
   beforeEach(async (): Promise<void> => {
@@ -30,7 +33,6 @@ describe('RecoverEmailComponent', (): void => {
         provideRouter([]),
         { provide: RecoverEmailService, useValue: mockService },
       ],
-      teardown: { destroyAfterEach: false },
     })
       .compileComponents();
 
@@ -43,9 +45,7 @@ describe('RecoverEmailComponent', (): void => {
     const expectedCode = '4ae6cbd3-2e70-48da-9267-a6940d26854a';
     const expectedEmail = 'ca82@4c53.a7e2';
 
-    getCurrentNavigationSpy.and.returnValue(getMockNavigation(expectedCode));
-    fixture = TestBed.createComponent(RecoverEmailComponent);
-    fixture.detectChanges();
+    setupFixture(expectedCode);
 
     expect(recoverEmailSpy).toHaveBeenCalledOnceWith(expectedCode);
 
@@ -77,9 +77,7 @@ describe('RecoverEmailComponent', (): void => {
     const expectedCode = '20617098-bb1a-4782-98ff-0f86ea182af0';
     const expectedEmail = '4f5c@4794.9642';
 
-    getCurrentNavigationSpy.and.returnValue(getMockNavigation(expectedCode));
-    fixture = TestBed.createComponent(RecoverEmailComponent);
-    fixture.detectChanges();
+    setupFixture(expectedCode);
 
     viewModelSubject$.next({
       passwordResetSent: true,
@@ -99,9 +97,7 @@ describe('RecoverEmailComponent', (): void => {
     const expectedCode = '622a8967-b356-4716-a6d9-adee1d5a21b6';
     const expectedEmail = '40b3@4d05.a5ae';
 
-    getCurrentNavigationSpy.and.returnValue(getMockNavigation(expectedCode));
-    fixture = TestBed.createComponent(RecoverEmailComponent);
-    fixture.detectChanges();
+    setupFixture(expectedCode);
 
     viewModelSubject$.next({
       passwordResetSent: false,
@@ -120,9 +116,7 @@ describe('RecoverEmailComponent', (): void => {
   it('should handle failure to restore email', (): void => {
     const expectedCode = '2ba1c46f-a9f4-4122-b9a6-a0c5545ab868';
 
-    getCurrentNavigationSpy.and.returnValue(getMockNavigation(expectedCode));
-    fixture = TestBed.createComponent(RecoverEmailComponent);
-    fixture.detectChanges();
+    setupFixture(expectedCode);
 
     expect(recoverEmailSpy).toHaveBeenCalledOnceWith(expectedCode);
 

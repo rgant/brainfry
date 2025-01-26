@@ -1,25 +1,30 @@
 @if ($showForm()) {
   <div class="main-card">
-    <form (ngSubmit)="onSubmit()" [formGroup]="changeEmailForm">
+    <form
+      (ngSubmit)="onSubmit()"
+      [formGroup]="changeEmailForm"
+      aria-label="Change Email"
+      i18n-aria-label="aria-label|Form to change email for user account@@form.role.changeEmail"
+    >
       <p class="form-control">
-        <label for="fld-oldEmail" i18n="form field label|Change email form old email@@fields.oldEmail">Current Email:</label>
-        <input id="fld-oldEmail" type="email" disabled>
+        <label for="fld-oldEmail" i18n="form field label|Current user account email@@fields.oldEmail">Current Email:</label>
+        <input [value]="oldEmail" id="fld-oldEmail" type="email" disabled>
       </p>
 
       <p class="form-control">
-        <label for="fld-newEmail" i18n="form field label|Change email form new email@@fields.newEmail">New Email:</label>
+        <label for="fld-newEmail1" i18n="form field label|Change email form new email@@fields.newEmail1">New Email:</label>
         <input
-          [attr.aria-invalid]="$emailCntrlInvalid()"
-          id="fld-newEmail"
+          [attr.aria-invalid]="$email1CntrlInvalid()"
+          id="fld-newEmail1"
           type="email"
-          aria-describedby="fld-newEmail-msgs"
+          aria-describedby="fld-newEmail1-msgs"
           autocomplete="email"
           autofocus
-          formControlName="email"
+          formControlName="email1"
           required
         >
-        <span id="fld-newEmail-msgs">
-          @if ($emailCntrlErrors(); as errors) {
+        <span id="fld-newEmail1-msgs">
+          @if ($email1CntrlErrors(); as errors) {
             <span class="form-alerts">
               @if (errors['required']) {
                 <ng-container i18n="form field error message|Email is a required field@@formErrors.newEmail.required">
@@ -35,6 +40,44 @@
           }
         </span>
       </p>
+
+      <p class="form-control">
+        <label for="fld-newEmail2" i18n="form field label|Change email form new email@@fields.newEmail2">Confirm Email:</label>
+        <input
+          [attr.aria-invalid]="$email2CntrlInvalid()"
+          id="fld-newEmail2"
+          type="email"
+          aria-describedby="fld-newEmail2-msgs"
+          autocomplete="email"
+          autofocus
+          formControlName="email2"
+          required
+        >
+        <span id="fld-newEmail2-msgs">
+          @if ($email2CntrlErrors(); as errors) {
+            <span class="form-alerts">
+              @if (errors['required']) {
+                <ng-container i18n="form field error message|Email is a required field@@formErrors.confirmEmail.required">
+                  Please re-enter your new email address.
+                </ng-container>
+              }
+              @if (errors['email']) {
+                <ng-container i18n="form field error message|Email is a required field@@formErrors.email.valid">
+                  Please enter a valid email address.
+                </ng-container>
+              }
+            </span>
+          }
+        </span>
+      </p>
+
+      <div class="frm-alerts" id="frm-msgs">
+        @if ($formEmailsInvalid()) {
+          <span class="form-alerts" i18n="form field error message|Both email fields in form must match@@formErrors.emailsMatch">
+            Emails must match.
+          </span>
+        }
+      </div>
 
       <p class="form-control">
         <label for="fld-password" i18n="form field label|Login password input@@fields.password">Password:</label>

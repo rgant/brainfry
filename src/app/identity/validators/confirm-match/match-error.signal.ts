@@ -9,19 +9,18 @@ import { FORMS } from '@app/shared/constants';
 import { ERROR_NAME } from './confirm-match.validator';
 
 /**
- * Only display the passwordsmatch error if the two password controls are valid, and the form has
- * the error.
+ * Only display the confirmmatch error if the two controls are valid, and the form has the error.
  */
-export const passwordsMatchFormErrors = (form: FormGroup, password1: FormControl, password2: FormControl): Signal<boolean> => {
-  const initialValue: boolean = form.invalid && password1.valid && password2.valid && form.errors?.[ERROR_NAME] != undefined;
+export const confirmMatchFormErrors = (form: FormGroup, control1: FormControl, control2: FormControl): Signal<boolean> => {
+  const initialValue: boolean = form.invalid && control1.valid && control2.valid && form.errors?.[ERROR_NAME] != undefined;
 
   const formStatus$: Observable<boolean> = form.statusChanges.pipe(
     // Wait for input to stop before displaying error messages
     debounceTime(FORMS.inputDebounce),
     map((status: FormControlStatus): boolean => {
       const { errors } = form;
-      if (status === 'INVALID' && password1.valid && password2.valid && errors) {
-        return 'passwordsmatch' in errors;
+      if (status === 'INVALID' && control1.valid && control2.valid && errors) {
+        return errors[ERROR_NAME] != undefined;
       }
       return false;
     }),

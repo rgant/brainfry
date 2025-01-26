@@ -15,3 +15,24 @@ version for [Firebase Functions](https://firebase.google.com/docs/functions/mana
 
 Follow the [Angular Style Guide](https://angular.dev/style-guide#style-04-06)
 example for how to structure the files in the application.
+
+## Linting
+
+Use `ng lint` to inspect the entire code base.
+
+Use `eslint --fix [FILE_PATH]` to apply automatic fixes to specific files or paths.
+
+Use `npm run stylelint` to inspect the SCSS files in the entire code base.
+
+Use `stylelint [FILE_PATH] --fix` to apply automatic fixes to specific files or
+paths.
+
+## Testing
+
+The test suite uses the Firebase Emulator for tests. So you _cannot_ use `ng test`
+directly. Instead use `npm run test` which will run `ng test` as an executable
+script for `firebase emulator:exec`.
+
+There is also `npm run test:once` for single test runs including code coverage.
+And there is `npm run test:export` which will update the `fixtures/` directory
+in the project root with the final state of the Firebase Emulator on exit.

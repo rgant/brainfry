@@ -2,13 +2,13 @@ import {
   createUserWithEmailAndPassword,
   deleteUser,
   sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   updateEmail,
-  updatePassword,
 } from '@angular/fire/auth';
 import type { Auth, User } from '@angular/fire/auth';
 
-type ActionFunctions = 'sendEmailVerification' | 'updateEmail' | 'updatePassword';
+type ActionFunctions = 'sendEmailVerification' | 'sendPasswordResetEmail' | 'updateEmail';
 
 interface EmulatorOobCodes {
   oobCodes: OoBCodePayload[];
@@ -21,7 +21,7 @@ interface OoBCodePayload {
   requestType: string; // The type of action to perform.
 }
 
-const doAction = async (action: ActionFunctions, user: User): Promise<void> => {
+const doAction = async (action: Omit<ActionFunctions, 'sendPasswordResetEmail'>, user: User): Promise<void> => {
   switch (action) {
     case 'sendEmailVerification': {
       await sendEmailVerification(user);
@@ -31,12 +31,6 @@ const doAction = async (action: ActionFunctions, user: User): Promise<void> => {
     case 'updateEmail': {
       const newEmail = generateRandomEmail('new');
       await updateEmail(user, newEmail);
-      break;
-    }
-
-    case 'updatePassword': {
-      const newPassword = String.raw`F@5056o\djM,`;
-      await updatePassword(user, newPassword);
       break;
     }
   }
@@ -53,6 +47,7 @@ const getOobCodes = async (): Promise<OoBCodePayload[]> => {
   if (response.ok) {
     /* eslint-disable @stylistic/max-len */
     /* Example Data:
+     * ```
      * {
      *   "oobCodes": [
      *     {
@@ -63,6 +58,7 @@ const getOobCodes = async (): Promise<OoBCodePayload[]> => {
      *     }
      *   ]
      * }
+     * ```
      */
     /* eslint-enable @stylistic/max-len */
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- This is test code
@@ -84,12 +80,12 @@ const getRequestType = (action: ActionFunctions): string => {
       return 'VERIFY_EMAIL';
     }
 
-    case 'updateEmail': {
-      return 'RECOVER_EMAIL';
+    case 'sendPasswordResetEmail': {
+      return 'PASSWORD_RESET';
     }
 
-    case 'updatePassword': {
-      return 'PASSWORD_RESET';
+    case 'updateEmail': {
+      return 'RECOVER_EMAIL';
     }
   }
 };
@@ -109,15 +105,17 @@ export const cleanupUsers = async (testUsers: User[]): Promise<void> => {
  * the test user.
  * Then we can query an endpoint on the emulator to get the current oobCodes, find the correct one
  * and return it to the test.
-*/
+ */
 export const createOobCode = async (auth: Auth, actionFn: ActionFunctions): Promise<TestData> => {
   const originalEmail = generateRandomEmail('orig');
   const password = 'p/V8L5tk15*q';
 
   // Create a new user for each test so that we don't corrupt the default test users and pollute other tests.
   await createUserWithEmailAndPassword(auth, originalEmail, password);
-  await signInWithEmailAndPassword(auth, originalEmail, password);
-  if (auth.currentUser) {
+  await (actionFn == 'sendPasswordResetEmail'
+    ? sendPasswordResetEmail(auth, originalEmail, { url: '/login' })
+    : signInWithEmailAndPassword(auth, originalEmail, password));
+  if (auth.currentUser && actionFn != 'sendPasswordResetEmail') {
     await doAction(actionFn, auth.currentUser);
   } else {
     throw new Error('No Current User');

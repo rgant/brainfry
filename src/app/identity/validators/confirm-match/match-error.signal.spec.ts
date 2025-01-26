@@ -4,12 +4,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { FORMS } from '@app/shared/constants';
 
-import { passwordsMatchFormErrors } from './match-error.signal';
+import { confirmMatchFormErrors } from './match-error.signal';
 
 const createSignal = (theForm: FormGroup, pw1Cntrl: FormControl, pw2Cntrl: FormControl): Signal<boolean> =>
-  TestBed.runInInjectionContext((): Signal<boolean> => passwordsMatchFormErrors(theForm, pw1Cntrl, pw2Cntrl));
+  TestBed.runInInjectionContext((): Signal<boolean> => confirmMatchFormErrors(theForm, pw1Cntrl, pw2Cntrl));
 
-describe('passwordsMatchFormErrors', (): void => {
+describe('confirmMatchFormErrors', (): void => {
   let pw1Cntrl: FormControl;
   let pw2Cntrl: FormControl;
   let theForm: FormGroup;
@@ -26,7 +26,7 @@ describe('passwordsMatchFormErrors', (): void => {
   });
 
   it('should emit inital status', (): void => {
-    theForm.setErrors({ passwordsmatch: true });
+    theForm.setErrors({ confirmmatch: true });
 
     const $errors = createSignal(theForm, pw1Cntrl, pw2Cntrl);
 
@@ -38,7 +38,7 @@ describe('passwordsMatchFormErrors', (): void => {
 
     expect($errors()).toBe(false);
 
-    theForm.setErrors({ passwordsmatch: true });
+    theForm.setErrors({ confirmmatch: true });
     tick(FORMS.inputDebounce);
 
     expect($errors()).toBe(true);

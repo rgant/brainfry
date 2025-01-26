@@ -15,6 +15,8 @@ const getControlStructure = <T extends AbstractControl>(control: T): ControlStru
   return { $errors, $invalid, control };
 };
 
+export { PASSWORDS };
+
 export interface ControlStruct<T extends AbstractControl = FormControl> {
   $errors: Signal<ValidationErrors | undefined>;
   $invalid: Signal<boolean>;

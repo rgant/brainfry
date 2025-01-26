@@ -71,7 +71,7 @@
     "@types/jasmine": "~5.1.0",
     "angular-eslint": "19.0.2",
     "cypress": "latest",
-    "eslint": "^9.18.0",
+    "eslint": "^9.19.0",
     "eslint_d": "^14.3.0",
     "eslint-import-resolver-typescript": "^3.7.0",
     "eslint-plugin-import-x": "^4.6.1",

@@ -9,8 +9,9 @@ import { Auth } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { cleanupUsers, createOobCode, provideEmulatedAuth } from '@testing/utilities';
+import { provideEmulatedAuth } from '@testing/utilities';
 
+import { cleanupUsers, createOobCode } from '../testing/oob-codes.spec';
 import { RecoverEmailService, SEND_EMAIL_DELAY } from './recover-email.service';
 import type { RecoverEmailResults } from './recover-email.service';
 
@@ -35,13 +36,14 @@ describe('RecoverEmailService', (): void => {
     TestBed.configureTestingModule({
       providers: [ provideOurFirebaseApp(), provideEmulatedAuth() ],
     });
-    service = TestBed.inject(RecoverEmailService);
 
     auth = TestBed.inject(Auth);
 
     let user: User;
     ({ oobCode: testOobCode, originalEmail: testOriginalEmail, user } = await createOobCode(auth, 'updateEmail'));
     testUsers.push(user);
+
+    service = TestBed.inject(RecoverEmailService);
   });
 
   it('should recover email sync', (done: DoneFn): void => {

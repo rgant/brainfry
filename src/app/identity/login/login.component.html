@@ -1,6 +1,6 @@
 @if ($showForm()) {
   <div class="main-card">
-    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" aria-label="Login" i18n-aria-label="aria-label|Form to login@@form.role.login">
       <p class="form-control">
         <label for="fld-email" i18n="form field label|Login email input@@fields.email">Email:</label>
         <input

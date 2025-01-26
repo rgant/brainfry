@@ -1,11 +1,11 @@
 import { FormControl, FormGroup } from '@angular/forms';
 
-import { ERROR_NAME, passwordsMatch } from './confirm-match.validator';
+import { confirmMatch, ERROR_NAME } from './confirm-match.validator';
 
-describe('passwordsMatch Validator', (): void => {
+describe('confirmMatch Validator', (): void => {
   it('should throw error if not used with FormGroup', (): void => {
     const passwordCntrl = new FormControl('4e174726-e003-4eb3');
-    const validatorFn = passwordsMatch('password1', 'password2');
+    const validatorFn = confirmMatch('password1', 'password2');
 
     expect((): void => { validatorFn(passwordCntrl); }).toThrowError('Control must be an instance of FormGroup.');
   });
@@ -15,11 +15,11 @@ describe('passwordsMatch Validator', (): void => {
       password1: new FormControl('573b0e34-a5e9-43b2'),
       password2: new FormControl('a73e-4cdb3dcabf6d'),
     });
-    let validatorFn = passwordsMatch('missing1', 'password2');
+    let validatorFn = confirmMatch('missing1', 'password2');
 
     expect((): void => { validatorFn(testForm); }).toThrowError("Cannot find FormControl named 'missing1'.");
 
-    validatorFn = passwordsMatch('password1', 'missing2');
+    validatorFn = confirmMatch('password1', 'missing2');
 
     expect((): void => { validatorFn(testForm); }).toThrowError("Cannot find FormControl named 'missing2'.");
   });
@@ -29,7 +29,7 @@ describe('passwordsMatch Validator', (): void => {
       password1: new FormControl('8e1d130d-6082'),
       password2: new FormControl('8e1d130d-6082'),
     });
-    const validatorFn = passwordsMatch('password1', 'password2');
+    const validatorFn = confirmMatch('password1', 'password2');
 
     expect(validatorFn(testForm)).toBeNull();
   });
@@ -39,7 +39,7 @@ describe('passwordsMatch Validator', (): void => {
       password1: new FormControl('8e1d130d-6082'),
       password2: new FormControl('4d6d-ba63-971f9ab55325'),
     });
-    const validatorFn = passwordsMatch('password1', 'password2');
+    const validatorFn = confirmMatch('password1', 'password2');
 
     expect(validatorFn(testForm)).toEqual({ [ERROR_NAME]: true });
   });
@@ -50,7 +50,7 @@ describe('passwordsMatch Validator', (): void => {
         password1: new FormControl('8f61270a-c410-442e'),
         password2: new FormControl('a73e-4cdb3dcabf6d'),
       },
-      { validators: passwordsMatch('password1', 'password2') },
+      { validators: confirmMatch('password1', 'password2') },
     );
 
     if (testForm.errors) {

@@ -5,7 +5,7 @@ import type {
   ValidatorFn,
 } from '@angular/forms';
 
-export const ERROR_NAME = 'passwordsmatch';
+export const ERROR_NAME = 'confirmmatch';
 
 /**
  * Usage:
@@ -15,27 +15,27 @@ export const ERROR_NAME = 'passwordsmatch';
  *      password1: new FormControl(null, [ Validators.required, Validators.minLength(num), Validators.maxLength(num) ]),
  *      password2: new FormControl(null, [ Validators.required, Validators.minLength(num), Validators.maxLength(num) ]),
  *    },
- *    { validators: passwordsMatch('password1', 'password2') },
+ *    { validators: confirmMatch('password1', 'password2') },
  *  );
  * ```
  */
-export const passwordsMatch = (password1: string, password2: string): ValidatorFn =>
+export const confirmMatch = (password1: string, password2: string): ValidatorFn =>
   // control: AbstractControl is required by the type ValidatorFn, but the actual expected type is FormGroup.
   (formGrp: AbstractControl): ValidationErrors | null => {
     if (!(formGrp instanceof FormGroup)) {
       throw new TypeError('Control must be an instance of FormGroup.');
     }
 
-    const password1Cntrl = formGrp.get(password1);
-    const password2Cntrl = formGrp.get(password2);
+    const control1 = formGrp.get(password1);
+    const control2 = formGrp.get(password2);
 
-    if (!password1Cntrl) {
+    if (!control1) {
       throw new Error(`Cannot find FormControl named '${password1}'.`);
     }
-    if (!password2Cntrl) {
+    if (!control2) {
       throw new Error(`Cannot find FormControl named '${password2}'.`);
     }
 
     // eslint-disable-next-line unicorn/no-null -- ValidatorFn returns null
-    return password1Cntrl.value === password2Cntrl.value ? null : { [ERROR_NAME]: true };
+    return control1.value === control2.value ? null : { [ERROR_NAME]: true };
   };

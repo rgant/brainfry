@@ -11,10 +11,9 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import type { FormControl, ValidationErrors } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
-import { PASSWORDS } from '@app/shared/constants';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
-import { createEmailControl, createPasswordControl } from '../identity-forms';
+import { createEmailControl, createPasswordControl, PASSWORDS } from '../identity-forms';
 
 type LoginFormGroup = FormGroup<{
   email: FormControl<string | null>;

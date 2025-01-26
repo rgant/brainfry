@@ -1,5 +1,4 @@
 import { inject, Injectable } from '@angular/core';
-import type { FirebaseError } from '@angular/fire/app';
 import {
   applyActionCode,
   Auth,
@@ -15,45 +14,23 @@ import {
 } from 'rxjs';
 import type { Observable } from 'rxjs';
 
-interface ApplyResult {
-  restoredEmail?: string;
-  successful: boolean;
-}
-
-const getErrorCode = (err: unknown): string => {
-  if (err instanceof Error) {
-    const errObj = err as Error | FirebaseError;
-    // Possible error codes from applyActionCode:
-    // auth/expired-action-code
-    // auth/invalid-action-code
-    // auth/user-disabled
-    // auth/user-not-found
-
-    // Possible error codes from sendResetEmail:
-    // auth/invalid-email
-    // auth/missing-continue-uri
-    // auth/invalid-continue-uri
-    // auth/unauthorized-continue-uri
-    // auth/user-not-found
-    return 'code' in errObj ? errObj.code : errObj.message;
-  }
-  return 'unknown';
-};
+import { getErrorCode } from '../actions/error-code';
 
 export interface RecoverEmailResults extends ApplyResult {
   errorCode?: string;
   passwordResetSent: boolean;
 }
 
+interface ApplyResult {
+  restoredEmail?: string;
+  successful: boolean;
+}
+
 export const SEND_EMAIL_DELAY = 500; // milliseconds
 
 @Injectable({ providedIn: 'root' })
 export class RecoverEmailService {
-  private readonly _auth: Auth;
-
-  constructor() {
-    this._auth = inject(Auth);
-  }
+  private readonly _auth: Auth = inject(Auth);
 
   /**
    * Creates and Observable that when subscribed to will apply the action code to restore the user's

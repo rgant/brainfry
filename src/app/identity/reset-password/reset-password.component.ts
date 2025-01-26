@@ -1,13 +1,20 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import type { Signal, WritableSignal } from '@angular/core';
+/* eslint-disable import-x/max-dependencies -- 11 dependencies */
+import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import type { Signal } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import type { FormControl, ValidationErrors } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import type { Observable } from 'rxjs';
 
-import { PASSWORDS } from '@app/shared/constants';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
-import { createPasswordControl } from '../identity-forms';
-import { passwordsMatch, passwordsMatchFormErrors } from '../validators/passwords';
+import { getCode } from '../actions/get-code';
+import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
+import { createPasswordControl, PASSWORDS } from '../identity-forms';
+import { confirmMatch, confirmMatchFormErrors } from '../validators/confirm-match';
+import { ResetPasswordService } from './reset-password.service';
+import type { ResetPasswordResults } from './reset-password.service';
 
 type ResetPasswordFormGroup = FormGroup<{
   password1: FormControl<string | null>;
@@ -16,7 +23,13 @@ type ResetPasswordFormGroup = FormGroup<{
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ ReactiveFormsModule, SpinnerComponent ],
+  imports: [
+    AsyncPipe,
+    AuthErrorMessagesComponent,
+    ReactiveFormsModule,
+    RouterLink,
+    SpinnerComponent,
+  ],
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
 })
@@ -26,14 +39,20 @@ export class ResetPasswordComponent {
   public readonly $password1CntrlInvalid: Signal<boolean>;
   public readonly $password2CntrlErrors: Signal<ValidationErrors | undefined>;
   public readonly $password2CntrlInvalid: Signal<boolean>;
-  public readonly $showForm: WritableSignal<boolean>;
   public readonly maxPasswordLength: number = PASSWORDS.maxLength;
   public readonly minPasswordLength: number = PASSWORDS.minLength;
   public readonly password1Cntrl: FormControl<string | null>;
   public readonly password2Cntrl: FormControl<string | null>;
   public readonly resetPasswordForm: ResetPasswordFormGroup;
+  public readonly vm$: Observable<ResetPasswordResults>;
+
+  private readonly _router: Router;
+  private readonly _service: ResetPasswordService;
 
   constructor() {
+    this._router = inject(Router);
+    this._service = inject(ResetPasswordService);
+
     ({
       $errors: this.$password1CntrlErrors,
       $invalid: this.$password1CntrlInvalid,
@@ -50,18 +69,22 @@ export class ResetPasswordComponent {
         password1: this.password1Cntrl,
         password2: this.password2Cntrl,
       },
-      passwordsMatch('password1', 'password2'),
+      confirmMatch('password1', 'password2'),
     );
 
-    this.$formPasswordsInvalid = passwordsMatchFormErrors(this.resetPasswordForm, this.password1Cntrl, this.password2Cntrl);
-    this.$showForm = signal<boolean>(true);
+    this.$formPasswordsInvalid = confirmMatchFormErrors(this.resetPasswordForm, this.password1Cntrl, this.password2Cntrl);
+
+    const maybeOobCode = getCode(this._router.getCurrentNavigation());
+    this.vm$ = this._service.resetPassword$(maybeOobCode);
   }
 
   public onSubmit(): void {
-    if (this.resetPasswordForm.invalid) {
+    const { password1 } = this.resetPasswordForm.value;
+
+    if (this.resetPasswordForm.invalid || !password1) {
       throw new Error('Invalid form submitted');
     }
 
-    this.$showForm.set(false);
+    this._service.replacePassword(password1);
   }
 }

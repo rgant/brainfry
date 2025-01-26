@@ -3,11 +3,10 @@ import type { Signal, WritableSignal } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import type { FormControl, ValidationErrors } from '@angular/forms';
 
-import { PASSWORDS } from '@app/shared/constants';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
-import { createPasswordControl } from '../identity-forms';
-import { passwordsMatch, passwordsMatchFormErrors } from '../validators/passwords';
+import { createPasswordControl, PASSWORDS } from '../identity-forms';
+import { confirmMatch, confirmMatchFormErrors } from '../validators/confirm-match';
 
 type ChangePasswordFormGroup = FormGroup<{
   currentPw: FormControl<string | null>;
@@ -60,10 +59,10 @@ export class ChangePasswordComponent {
         password1: this.password1Cntrl,
         password2: this.password2Cntrl,
       },
-      passwordsMatch('password1', 'password2'),
+      confirmMatch('password1', 'password2'),
     );
 
-    this.$formPasswordsInvalid = passwordsMatchFormErrors(this.changePasswordForm, this.password1Cntrl, this.password2Cntrl);
+    this.$formPasswordsInvalid = confirmMatchFormErrors(this.changePasswordForm, this.password1Cntrl, this.password2Cntrl);
     this.$showForm = signal<boolean>(true);
   }
 

@@ -1,0 +1,120 @@
+import { inject, Injectable } from '@angular/core';
+import { Auth, confirmPasswordReset, verifyPasswordResetCode } from '@angular/fire/auth';
+import {
+  merge,
+  of,
+  startWith,
+  Subject,
+  switchMap,
+} from 'rxjs';
+import type { Observable } from 'rxjs';
+
+import { getErrorCode } from '../actions/error-code';
+
+export type ResetPasswordResults = PasswordResetSuccess | ShowForm | VerifiedFailed | undefined;
+
+type ConfirmResult = PasswordResetSuccess | ShowForm;
+
+// Final state after resetting password
+interface PasswordResetSuccess {
+  errorCode: undefined; // This makes the template type checker happier
+  showForm: false;
+}
+
+// Verified Success & Password Reset Failure
+interface ShowForm {
+  email: string;
+  errorCode?: string;
+  showForm: true;
+}
+
+// Code Verification Failed
+interface VerifiedFailed {
+  email: undefined; // This makes the type checker happier in the destructuring
+  errorCode: string;
+  showForm: false;
+}
+
+type VerifiedResult = ShowForm | VerifiedFailed;
+
+@Injectable({ providedIn: 'root' })
+export class ResetPasswordService {
+  private readonly _auth: Auth = inject(Auth);
+  private readonly _newPasswordSubject$: Subject<string> = new Subject<string>();
+
+  /**
+   * Triggers the confirmPasswordReset promise to apply the action code and replace the user's password.
+   */
+  public replacePassword(newPassword: string): void {
+    this._newPasswordSubject$.next(newPassword);
+  }
+
+  /**
+   * Sets up an Observable that will first verify the oobCode is valid for password resetting, and
+   * then show the password reset form and the user's email address.
+   * This is followed by setting up a subject to emit a new password that will then be confirmed as
+   * the new password for the user. While that action is pending it emits `undefined` to show the
+   * spinner again. In the event of an error it shows the form again with an error message.
+   */
+  public resetPassword$(code: string | undefined): Observable<ResetPasswordResults> {
+    return of(code).pipe(
+      switchMap(async (oobCode: string | undefined): Promise<VerifiedResult> => this._verifyCode(oobCode)),
+      switchMap((verifyResults: VerifiedResult): Observable<ResetPasswordResults> => {
+        const verifyResults$ = of(verifyResults);
+        const { email } = verifyResults;
+
+        // Verified succeeded
+        if (email) {
+          const confirmPasswordReset$ = this._newPasswordSubject$.pipe(
+            switchMap(async (newPassword: string): Promise<ConfirmResult> => this._confirmPasswordReset(code, email, newPassword)),
+            // Show the spinner while applying the action code.
+            startWith(undefined),
+          );
+
+          return merge(
+            // This will emit first after code verification.
+            verifyResults$,
+            // This will emit after form submission.
+            confirmPasswordReset$,
+          );
+        }
+
+        // Verified failed
+        return verifyResults$;
+      }),
+    );
+  }
+
+  /**
+   * Applies the new password to the user's account using the oobCode.
+   * @param email - Is necessary only in the case that `confirmPasswordReset` fails to redisplay the form.
+   * @throws If the oobCode is falsy
+   */
+  private async _confirmPasswordReset(code: string | undefined, email: string, newPassword: string): Promise<ConfirmResult> {
+    if (code) {
+      try {
+        await confirmPasswordReset(this._auth, code, newPassword);
+        return { errorCode: undefined, showForm: false };
+      } catch (err: unknown) {
+        return { email, errorCode: getErrorCode(err), showForm: true };
+      }
+    }
+    throw new Error('oobCode not found');
+  }
+
+  /**
+   * This identifies the email for the User who's password would be reset by the oobCode.
+   */
+  private async _verifyCode(code: string | undefined): Promise<VerifiedResult> {
+    if (code) {
+      try {
+        const email = await verifyPasswordResetCode(this._auth, code);
+        return { email, showForm: true };
+      } catch (err: unknown) {
+        return { email: undefined, errorCode: getErrorCode(err), showForm: false };
+      }
+    }
+
+    return { email: undefined, errorCode: 'oobCode not found', showForm: false };
+  }
+}

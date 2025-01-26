@@ -1,215 +1,382 @@
 @switch ($code()) {
   @case ('auth/code-expired') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.code-expired">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.code-expired"
+    >
       The SMS code has expired. Please re-send the verification code to try again.
     </ng-container>
   }
 
   @case ('auth/cors-unsupported') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.cors-unsupported">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.cors-unsupported"
+    >
       This browser is not supported.
     </ng-container>
   }
 
   @case ('auth/credential-already-in-use') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.credential-already-in-use">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.credential-already-in-use"
+    >
       This credential is already associated with a different user account.
     </ng-container>
   }
 
   @case ('auth/requires-recent-login') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.requires-recent-login">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.requires-recent-login"
+    >
       This operation is sensitive and requires recent authentication. Log in again before retrying this request.
     </ng-container>
   }
 
   @case ('auth/email-change-needs-verification') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.email-change-needs-verification">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.email-change-needs-verification"
+    >
       Multi-factor users must always have a verified email.
     </ng-container>
   }
 
   @case ('auth/email-already-in-use') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.email-already-in-use">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.email-already-in-use"
+    >
       The email address is already in use by another account.
     </ng-container>
   }
 
   @case ('auth/expired-action-code') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.expired-action-code">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.expired-action-code"
+    >
       The action code has expired.
     </ng-container>
   }
 
   @case ('auth/cancelled-popup-request') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.cancelled-popup-request">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.cancelled-popup-request"
+    >
       This operation has been cancelled due to another conflicting popup being opened.
     </ng-container>
   }
 
   @case ('auth/invalid-verification-code') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.invalid-verification-code">
-      The SMS verification code used to create the phone auth credential is invalid. Please resend the verification code sms and be sure to use the verification code provided by the user.
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-verification-code"
+    >
+      The SMS verification code used to create the phone auth credential is invalid. Please resend the verification code sms and be sure to
+      use the verification code provided by the user.
     </ng-container>
   }
 
   @case ('auth/invalid-continue-uri') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.invalid-continue-uri">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-continue-uri"
+    >
       The continue URL provided in the request is invalid.
     </ng-container>
   }
 
   @case ('auth/invalid-email') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.invalid-email">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-email"
+    >
       The email address is badly formatted.
     </ng-container>
   }
 
   @case ('auth/password-does-not-meet-requirements') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.password-does-not-meet-requirements">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.password-does-not-meet-requirements"
+    >
       The password does not meet the requirements.
     </ng-container>
   }
 
   @case ('auth/invalid-action-code') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.invalid-action-code">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-action-code"
+    >
       The action code is invalid. This can happen if the code is malformed, expired, or has already been used.
     </ng-container>
   }
 
   @case ('auth/wrong-password') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.wrong-password">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.wrong-password"
+    >
       The password is invalid or the user does not have a password.
     </ng-container>
   }
 
   @case ('auth/invalid-phone-number') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.invalid-phone-number">
-      The format of the phone number provided is incorrect. Please enter the phone number in a format that can be parsed into E.164 format. E.164 phone numbers are written in the format [+][country code][subscriber number including area code].
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-phone-number"
+    >
+      The format of the phone number provided is incorrect. Please enter the phone number in a format that can be parsed into E.164 format.
+      E.164 phone numbers are written in the format [+][country code][subscriber number including area code].
     </ng-container>
   }
 
   @case ('auth/invalid-recipient-email') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.invalid-recipient-email">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-recipient-email"
+    >
       The email corresponding to this action failed to send as the provided recipient email address is invalid.
     </ng-container>
   }
 
   @case ('auth/missing-phone-number') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.missing-phone-number">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.missing-phone-number"
+    >
       To send verification codes, provide a phone number for the recipient.
     </ng-container>
   }
   @case ('auth/multi-factor-auth-required') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.multi-factor-auth-required">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.multi-factor-auth-required"
+    >
       Proof of ownership of a second factor is required to complete sign-in.
     </ng-container>
   }
 
   @case ('auth/account-exists-with-different-credential') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.account-exists-with-different-credential">
-      An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address.
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.account-exists-with-different-credential"
+    >
+      An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this
+      email address.
     </ng-container>
   }
 
   @case ('auth/network-request-failed') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.network-request-failed">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.network-request-failed"
+    >
       A network error (such as timeout, interrupted connection or unreachable host) has occurred.
     </ng-container>
   }
 
   @case ('auth/popup-blocked') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.popup-blocked">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.popup-blocked"
+    >
       Unable to establish a connection with the popup. It may have been blocked by the browser.
     </ng-container>
   }
 
   @case ('auth/popup-closed-by-user') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.popup-closed-by-user">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.popup-closed-by-user"
+    >
       The popup has been closed by your before finalizing the operation.
     </ng-container>
   }
 
   @case ('auth/quota-exceeded') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.quota-exceeded">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.quota-exceeded"
+    >
       The project’s quota for this operation has been exceeded.
     </ng-container>
   }
 
   @case ('auth/redirect-cancelled-by-user') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.redirect-cancelled-by-user">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.redirect-cancelled-by-user"
+    >
       The redirect operation has been cancelled by you before finalizing.
     </ng-container>
   }
 
   @case ('auth/redirect-operation-pending') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.redirect-operation-pending">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.redirect-operation-pending"
+    >
       A redirect sign-in operation is already pending.
     </ng-container>
   }
 
   @case ('auth/timeout') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.timeout">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.timeout"
+    >
       The operation has timed out.
     </ng-container>
   }
 
   @case ('auth/user-token-expired') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.user-token-expired">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.user-token-expired"
+    >
       Your credentials is no longer valid. You must sign in again.
     </ng-container>
   }
 
   @case ('auth/too-many-requests') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.too-many-requests">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.too-many-requests"
+    >
       We have blocked all requests from this device due to unusual activity. Try again later.
     </ng-container>
   }
 
   @case ('auth/unverified-email') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.unverified-email">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.unverified-email"
+    >
       The operation requires a verified email.
     </ng-container>
   }
 
   @case ('auth/user-cancelled') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.user-cancelled">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.user-cancelled"
+    >
       You did not grant your application the permissions it requested.
     </ng-container>
   }
 
   @case ('auth/user-not-found') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.user-not-found">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.user-not-found"
+    >
       There is no user record corresponding to this identifier. The user may have been deleted.
     </ng-container>
   }
 
   @case ('auth/user-disabled') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.user-disabled">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.user-disabled"
+    >
       The user account has been disabled by an administrator.
     </ng-container>
   }
 
   @case ('auth/user-mismatch') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.user-mismatch">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.user-mismatch"
+    >
       The supplied credentials do not correspond to the previously signed in user.
     </ng-container>
   }
 
   @case ('auth/weak-password') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.weak-password">
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.weak-password"
+    >
       The password must be 12 characters long or more.
     </ng-container>
   }
 
   @case ('auth/web-storage-unsupported') {
-    <ng-container i18n="error message from Firebase|Friendly error message to display based on errors from backend@@firebase.errorMsg.web-storage-unsupported">
+    <ng-container
+      i18n="
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.web-storage-unsupported"
+    >
       This browser is not supported or 3rd party cookies and data may be disabled.
     </ng-container>
   }
 
   @default {
-    <ng-container i18n="error message from Firebase|Unknown error code@@firebase.errorMsg.invalid-recaptcha-version">
+    <ng-container i18n="error message from Firebase
+      |Unknown error code
+      @@firebase.errorMsg.invalid-recaptcha-version"
+    >
       A problem occurred. Please refresh and try again.
     </ng-container>
   }
