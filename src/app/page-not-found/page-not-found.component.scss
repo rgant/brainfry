@@ -1,7 +1,12 @@
 @use 'abstracts' as app;
 
-// Note: this only imports the glyphs needed for "Game Over", if translations begin this this will need to change to support
-@import 'https://fonts.googleapis.com/css2?family=Pixelify+Sans&text=GOaemrv%20&display=swap';
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf') format('woff2');
+}
 
 :host {
   text-align: center;
