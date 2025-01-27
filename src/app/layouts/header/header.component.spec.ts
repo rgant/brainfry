@@ -42,7 +42,7 @@ describe('HeaderComponent', (): void => {
     clickCnt += 1;
 
     expect(clickSpy).toHaveBeenCalledTimes(clickCnt);
-    expect(component.$showMenu()).withContext('$showMenu').toBe(false);
+    expect(component.$showMenu()).withContext('$showMenu').toBeFalse();
 
     // Re-show the menu for further testing
     component.$showMenu.set(true);
@@ -52,7 +52,7 @@ describe('HeaderComponent', (): void => {
     clickCnt += 1;
 
     expect(clickSpy).toHaveBeenCalledTimes(clickCnt);
-    expect(component.$showMenu()).withContext('$showMenu').toBe(true);
+    expect(component.$showMenu()).withContext('$showMenu').toBeTrue();
 
     // Test most of the elements in the component.
     expect(elements.length).toBeGreaterThan(0);
@@ -64,27 +64,27 @@ describe('HeaderComponent', (): void => {
         expect(clickSpy).toHaveBeenCalledTimes(clickCnt);
 
         if (el instanceof HTMLAnchorElement) {
-          expect(component.$showMenu()).withContext('$showMenu').toBe(false);
+          expect(component.$showMenu()).withContext('$showMenu').toBeFalse();
 
           // Re-show the menu for further testing
           component.$showMenu.set(true);
         } else {
-          expect(component.$showMenu()).withContext('$showMenu').toBe(true);
+          expect(component.$showMenu()).withContext('$showMenu').toBeTrue();
         }
       }
     }
   });
 
   it('should toggle show menu signal', (): void => {
-    expect(component.$showMenu()).withContext('$showMenu').toBe(false);
+    expect(component.$showMenu()).withContext('$showMenu').toBeFalse();
 
     component.toggleMenu();
 
-    expect(component.$showMenu()).withContext('$showMenu').toBe(true);
+    expect(component.$showMenu()).withContext('$showMenu').toBeTrue();
 
     component.toggleMenu();
 
-    expect(component.$showMenu()).withContext('$showMenu').toBe(false);
+    expect(component.$showMenu()).withContext('$showMenu').toBeFalse();
   });
 
   it('should call toggleMenu on button click', (): void => {
@@ -101,7 +101,7 @@ describe('HeaderComponent', (): void => {
     const compiled: HTMLElement = getCompiled(fixture);
     const buttonEl: HTMLButtonElement = safeQuerySelector(compiled, '.toggle');
 
-    expect(component.$showMenu()).withContext('$showMenu').toBe(false);
+    expect(component.$showMenu()).withContext('$showMenu').toBeFalse();
     expect(buttonEl.getAttribute('aria-expanded')).withContext('aria-expanded').toBe('false');
 
     component.$showMenu.set(true);

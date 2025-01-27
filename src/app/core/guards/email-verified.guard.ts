@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { Auth, user } from '@angular/fire/auth';
+import { Auth, user as getUser$ } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import type {
@@ -19,7 +19,7 @@ export const emailVerifiedGuard: CanActivateChildFn = (
   const router = inject(Router);
   const { url } = state;
 
-  return user(auth).pipe(
+  return getUser$(auth).pipe(
     map((maybeUser: User | null): UrlTree | boolean => {
       if (!maybeUser) {
         return false;

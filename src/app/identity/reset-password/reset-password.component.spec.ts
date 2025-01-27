@@ -235,13 +235,13 @@ describe('ResetPasswordComponent', (): void => {
     const compiled: HTMLElement = getCompiled(fixture);
     const bttnEl: HTMLButtonElement = safeQuerySelector(compiled, 'button');
 
-    expect(bttnEl.disabled).withContext('disabled').toBe(true);
+    expect(bttnEl.disabled).withContext('disabled').toBeTrue();
 
     component.resetPasswordForm.setValue({ password1: 'e8a5&0C8f8c7', password2: 'e8a5&0C8f8c7' });
     fixture.detectChanges();
 
     expect(component.resetPasswordForm.invalid).toBeFalse();
-    expect(bttnEl.disabled).withContext('disabled').toBe(false);
+    expect(bttnEl.disabled).withContext('disabled').toBeFalse();
 
     bttnEl.click();
 

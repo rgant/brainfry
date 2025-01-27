@@ -11,7 +11,7 @@ export const ariaInvalidTest = (
   const compiled: HTMLElement = getCompiled(fixture);
   const emailInput: HTMLInputElement = safeQuerySelector(compiled, `#${fieldId}`);
 
-  expect(control.invalid).withContext('FormControl.invalid').toBe(true);
+  expect(control.invalid).withContext('FormControl.invalid').toBeTrue();
   expect(emailInput.getAttribute('aria-invalid')).withContext('get attribute aria-invalid').toBe('false');
 
   control.markAsDirty();

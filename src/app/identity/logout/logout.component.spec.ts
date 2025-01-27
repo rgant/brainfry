@@ -47,13 +47,13 @@ describe('LogoutComponent', (): void => {
     const compiled: HTMLElement = getCompiled(fixture);
     const bttnEl: HTMLButtonElement = safeQuerySelector(compiled, 'button');
 
-    expect(bttnEl.disabled).withContext('disabled').toBe(false);
+    expect(bttnEl.disabled).withContext('disabled').toBeFalse();
 
     bttnEl.click();
     fixture.detectChanges();
 
     expect(buttonSpy).toHaveBeenCalledTimes(1);
-    expect(bttnEl.disabled).withContext('disabled').toBe(true);
+    expect(bttnEl.disabled).withContext('disabled').toBeTrue();
   });
 
   it('should show modal spinner during logoout', (): void => {

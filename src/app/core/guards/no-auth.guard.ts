@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { Auth, user } from '@angular/fire/auth';
+import { Auth, user as getUser$ } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import type {
@@ -20,7 +20,7 @@ export const noAuthGuard: CanActivateChildFn = (
   /** Navigate to the `next` query parameter if set, else to the root and allow default redirectTo Route to decide initial destination. */
   const nextUrl = childRoute.queryParamMap.get('next') ?? '/';
 
-  return user(auth).pipe(
+  return getUser$(auth).pipe(
     map((maybeUser: User | null): UrlTree | true => {
       if (maybeUser) {
         return router.parseUrl(nextUrl);

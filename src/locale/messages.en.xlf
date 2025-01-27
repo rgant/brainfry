@@ -832,6 +832,51 @@
         <note priority="1" from="description">Change password for user</note>
         <note priority="1" from="meaning">form submit button</note>
       </trans-unit>
+      <trans-unit id="confirmEmail.header" datatype="html">
+        <source>Confirm email address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/confirm-email/confirm-email.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <note priority="1" from="description">Confirm that email address is controled by user</note>
+        <note priority="1" from="meaning">page heading 2</note>
+      </trans-unit>
+      <trans-unit id="confirmEmail.explaination" datatype="html">
+        <source> To confirm that your email address is valid we need to send an email to <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION" equiv-text="{{ user.email }}"/><x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> with a verification link. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/confirm-email/confirm-email.component.html</context>
+          <context context-type="linenumber">5,9</context>
+        </context-group>
+        <note priority="1" from="description">explain email confirmation process</note>
+        <note priority="1" from="meaning">paragraph text</note>
+      </trans-unit>
+      <trans-unit id="confirmEmail.notification" datatype="html">
+        <source> A verification email has been sent to <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION" equiv-text="{{ user.email }}"/><x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>. Please check your email inbox and spam folder in a few minutes. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/confirm-email/confirm-email.component.html</context>
+          <context context-type="linenumber">17,20</context>
+        </context-group>
+        <note priority="1" from="description">notify that verify email was sent</note>
+        <note priority="1" from="meaning">paragraph text</note>
+      </trans-unit>
+      <trans-unit id="confirmEmail.button.reconfirm" datatype="html">
+        <source> Resend Verification Email </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/confirm-email/confirm-email.component.html</context>
+          <context context-type="linenumber">24,29</context>
+        </context-group>
+        <note priority="1" from="description">send a verification link again</note>
+        <note priority="1" from="meaning">confirm email button</note>
+      </trans-unit>
+      <trans-unit id="confirmEmail.button" datatype="html">
+        <source> Send Verification Email </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/confirm-email/confirm-email.component.html</context>
+          <context context-type="linenumber">30,38</context>
+        </context-group>
+        <note priority="1" from="description">send a verification link to user&apos;s email</note>
+        <note priority="1" from="meaning">confirm email button</note>
+      </trans-unit>
       <trans-unit id="form.role.forgotPassword" datatype="html">
         <source>Forgot Password</source>
         <context-group purpose="location">
@@ -911,7 +956,7 @@
         <source> Forgot your password? </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">84,89</context>
+          <context context-type="linenumber">84,91</context>
         </context-group>
         <note priority="1" from="description">Link to page to recover password</note>
         <note priority="1" from="meaning">navigation link</note>

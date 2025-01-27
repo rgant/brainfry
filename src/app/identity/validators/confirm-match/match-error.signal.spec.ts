@@ -30,23 +30,23 @@ describe('confirmMatchFormErrors', (): void => {
 
     const $errors = createSignal(theForm, pw1Cntrl, pw2Cntrl);
 
-    expect($errors()).toBe(true);
+    expect($errors()).toBeTrue();
   });
 
   it('should emit form error when controls are valid', fakeAsync((): void => {
     const $errors = createSignal(theForm, pw1Cntrl, pw2Cntrl);
 
-    expect($errors()).toBe(false);
+    expect($errors()).toBeFalse();
 
     theForm.setErrors({ confirmmatch: true });
     tick(FORMS.inputDebounce);
 
-    expect($errors()).toBe(true);
+    expect($errors()).toBeTrue();
 
     pw2Cntrl.setErrors({ bad: true });
     tick(FORMS.inputDebounce);
 
-    expect($errors()).toBe(false);
+    expect($errors()).toBeFalse();
   }));
 
   it('should only emit for passwords match errors', fakeAsync((): void => {
@@ -54,11 +54,11 @@ describe('confirmMatchFormErrors', (): void => {
 
     const $errors = createSignal(theForm, pw1Cntrl, pw2Cntrl);
 
-    expect($errors()).toBe(false);
+    expect($errors()).toBeFalse();
 
     theForm.setErrors({ bad: true, worse: true });
     tick(FORMS.inputDebounce);
 
-    expect($errors()).toBe(false);
+    expect($errors()).toBeFalse();
   }));
 });

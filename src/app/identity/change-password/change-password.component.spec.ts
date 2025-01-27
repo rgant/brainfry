@@ -123,13 +123,13 @@ describe('ChangePasswordComponent', (): void => {
     const compiled: HTMLElement = getCompiled(fixture);
     const bttnEl: HTMLButtonElement = safeQuerySelector(compiled, 'button');
 
-    expect(bttnEl.disabled).withContext('disabled').toBe(true);
+    expect(bttnEl.disabled).withContext('disabled').toBeTrue();
 
     component.changePasswordForm.setValue({ currentPw: '9492906e-492', password1: '9d*Aef795f75', password2: '9d*Aef795f75' });
     fixture.detectChanges();
 
     expect(component.changePasswordForm.invalid).toBeFalse();
-    expect(bttnEl.disabled).withContext('disabled').toBe(false);
+    expect(bttnEl.disabled).withContext('disabled').toBeFalse();
 
     bttnEl.click();
 

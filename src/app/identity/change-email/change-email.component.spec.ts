@@ -104,13 +104,13 @@ describe('ChangeEmailComponent', (): void => {
     const compiled: HTMLElement = getCompiled(fixture);
     const bttnEl: HTMLButtonElement = safeQuerySelector(compiled, 'button');
 
-    expect(bttnEl.disabled).withContext('disabled').toBe(true);
+    expect(bttnEl.disabled).withContext('disabled').toBeTrue();
 
     component.changeEmailForm.setValue({ email1: 'ce5a@4de7.a2db', email2: 'ce5a@4de7.a2db', password: 'ec6309685851b17d146d' });
     fixture.detectChanges();
 
     expect(component.changeEmailForm.invalid).toBeFalse();
-    expect(bttnEl.disabled).withContext('disabled').toBe(false);
+    expect(bttnEl.disabled).withContext('disabled').toBeFalse();
 
     bttnEl.click();
 

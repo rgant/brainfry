@@ -21,25 +21,25 @@ describe('controlInvalidSignal', (): void => {
 
     const $theSignal = createSignal(theControl);
 
-    expect($theSignal()).toBe(true);
+    expect($theSignal()).toBeTrue();
   });
 
   it('should only emit when all properties are true', (): void => {
     const theControl = new FormControl();
     const $theSignal = createSignal(theControl);
 
-    expect($theSignal()).toBe(false);
+    expect($theSignal()).toBeFalse();
 
     theControl.markAsDirty();
 
-    expect($theSignal()).toBe(false);
+    expect($theSignal()).toBeFalse();
 
     theControl.setErrors({ bad: true });
 
-    expect($theSignal()).toBe(false);
+    expect($theSignal()).toBeFalse();
 
     theControl.markAsTouched();
 
-    expect($theSignal()).toBe(true);
+    expect($theSignal()).toBeTrue();
   });
 });

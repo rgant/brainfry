@@ -61,13 +61,13 @@ describe('ForgotPasswordComponent', (): void => {
     const compiled: HTMLElement = getCompiled(fixture);
     const bttnEl: HTMLButtonElement = safeQuerySelector(compiled, 'button');
 
-    expect(bttnEl.disabled).withContext('disabled').toBe(true);
+    expect(bttnEl.disabled).withContext('disabled').toBeTrue();
 
     component.emailCntrl.setValue('6783@4086.890b');
     fixture.detectChanges();
 
     expect(component.emailCntrl.invalid).toBeFalse();
-    expect(bttnEl.disabled).withContext('disabled').toBe(false);
+    expect(bttnEl.disabled).withContext('disabled').toBeFalse();
 
     bttnEl.click();
 

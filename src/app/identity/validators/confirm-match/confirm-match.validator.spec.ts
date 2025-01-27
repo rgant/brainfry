@@ -54,7 +54,7 @@ describe('confirmMatch Validator', (): void => {
     );
 
     if (testForm.errors) {
-      expect(testForm.errors[ERROR_NAME]).toBe(true);
+      expect(testForm.errors[ERROR_NAME]).toBeTrue();
     } else {
       fail('testForm has no errors property');
     }

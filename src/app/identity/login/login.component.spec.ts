@@ -102,13 +102,13 @@ describe('LoginComponent', (): void => {
     const compiled: HTMLElement = getCompiled(fixture);
     const bttnEl: HTMLButtonElement = safeQuerySelector(compiled, 'button');
 
-    expect(bttnEl.disabled).withContext('disabled').toBe(true);
+    expect(bttnEl.disabled).withContext('disabled').toBeTrue();
 
     component.loginForm.setValue({ email: 'ce5a@4de7.a2db', password: 'ec6309685851b17d146d' });
     fixture.detectChanges();
 
     expect(component.loginForm.invalid).toBeFalse();
-    expect(bttnEl.disabled).withContext('disabled').toBe(false);
+    expect(bttnEl.disabled).withContext('disabled').toBeFalse();
 
     bttnEl.click();
 

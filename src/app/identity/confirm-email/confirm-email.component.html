@@ -1,1 +1,39 @@
-<p>confirm-email works!</p>
+@if (user$ | async; as user) {
+  <div class="main-card">
+    <h2 i18n="page heading 2|Confirm that email address is controled by user@@confirmEmail.header">Confirm email address</h2>
+    <p i18n="paragraph text|explain email confirmation process@@confirmEmail.explaination">
+      To confirm that your email address is valid we need to send an email to
+      <strong>{{ user.email }}</strong>
+      with a verification link.
+    </p>
+    @let status = $verificationStatus();
+    @if (status === 'sent') {
+      @if ($errorCode(); as errorCode) {
+        <p class="alert">
+          <app-auth-error-messages [$code]="errorCode" />
+        </p>
+      } @else {
+        <p i18n="paragraph text|notify that verify email was sent@@confirmEmail.notification">
+          A verification email has been sent to
+          <strong>{{ user.email }}</strong>.
+          Please check your email inbox and spam folder in a few minutes.
+        </p>
+      }
+    }
+    <p class="card-actions">
+      <button (click)="sendConfirmEmail(user)" [disabled]="status === 'sending'" class="button" type="button">
+        @if (status === 'sent') {
+          <ng-container i18n="confirm email button|send a verification link again@@confirmEmail.button.reconfirm">
+            Resend Verification Email
+          </ng-container>
+        } @else {
+          <ng-container i18n="confirm email button|send a verification link to user's email@@confirmEmail.button">
+            Send Verification Email
+          </ng-container>
+        }
+      </button>
+    </p>
+  </div>
+} @else {
+  <app-spinner />
+}

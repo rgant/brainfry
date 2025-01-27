@@ -23,7 +23,11 @@
   max-inline-size: 24rem;
 
   @include app.respond-to('small') {
+    // max-width overrides width, but min-width overrides max-width.
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/max-width
     min-inline-size: 24rem;
+    max-inline-size: 50%;
+    margin-inline: auto;
   }
 
   .button {

@@ -8,7 +8,7 @@ provider. So I need to use the RESTful API instead.
 All the API requests need a bearer token.
 
 ```sh
-TOKEN=$(gcloud auth print-access-token --project=brainfry-app)
+TOKEN=$(gcloud auth print-access-token --project="${FIREBASE_PROJECT_ID}")
 ```
 
 > [!WARNING]
@@ -84,7 +84,7 @@ These settings can be managed through the [RESTful API](https://cloud.google.com
 The ket for this configuration is `notifications.sendEmail`.
 
 ```sh
-curl -X PATCH -d '{"notification":{"sendEmail":{"callbackUri":"https://'"${FIREBASE_PROJECT_ID}"'.web.app/action"}}}' \
+curl -X PATCH -d '{"notification":{"sendEmail":{"callbackUri":"https://'"${FIREBASE_PROJECT_ID}"'.web.app/actions"}}}' \
     -H "Authorization: Bearer ${TOKEN}" \
     -H 'Content-Type: application/json' -H "X-Goog-User-Project: ${FIREBASE_PROJECT_ID}" \
     "https://identitytoolkit.googleapis.com/admin/v2/projects/${FIREBASE_PROJECT_ID}/config?updateMask=notification.sendEmail.callbackUri"

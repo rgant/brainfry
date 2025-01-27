@@ -62,6 +62,7 @@ describe('RecoverEmailService', (): void => {
 
   // Cannot get `fakeAsync` testing to work with `checkActionCode` and `applyActionCode`.
   // This causes a FirebaseError auth/network-request-failed, but would be a better test with the delay.
+  // eslint-disable-next-line jasmine/no-disabled-tests -- keeping this around in case I want to try again.
   xit('should recover email fakeAsync', fakeAsync((): void => {
     service.recoverEmail$(testOobCode).subscribe({
       error: fail,
