@@ -36,8 +36,9 @@ const doAction = async (action: Omit<ActionFunctions, 'sendPasswordResetEmail'>,
   }
 };
 
+const RADIX = 36; // Convert number to string using digits and lower case letters
 // eslint-disable-next-line @typescript-eslint/no-magic-numbers -- Test code, but probably should still not use magic
-const generateRandomEmail = (prefix: string): string => `${prefix}-${Math.random().toString(20).slice(2, 6)}@test.email`;
+const generateRandomEmail = (prefix: string): string => `${prefix}-${Math.random().toString(RADIX).slice(2, 6)}@test.email`;
 
 /**
  * https://firebase.google.com/docs/reference/rest/auth#section-auth-emulator-oob
@@ -112,14 +113,15 @@ export const createOobCode = async (auth: Auth, actionFn: ActionFunctions): Prom
 
   // Create a new user for each test so that we don't corrupt the default test users and pollute other tests.
   await createUserWithEmailAndPassword(auth, originalEmail, password);
-  await (actionFn == 'sendPasswordResetEmail'
-    ? sendPasswordResetEmail(auth, originalEmail, { url: '/login' })
-    : signInWithEmailAndPassword(auth, originalEmail, password));
-  if (auth.currentUser && actionFn != 'sendPasswordResetEmail') {
-    await doAction(actionFn, auth.currentUser);
-  } else {
+  // Always sign in the user so we can return it for later cleanup to prevent cross test pollution.
+  await signInWithEmailAndPassword(auth, originalEmail, password);
+  if (!auth.currentUser) {
     throw new Error('No Current User');
   }
+
+  await (actionFn == 'sendPasswordResetEmail'
+    ? sendPasswordResetEmail(auth, originalEmail)
+    : doAction(actionFn, auth.currentUser));
 
   const oobCodeList = await getOobCodes();
   for (const payload of oobCodeList) {

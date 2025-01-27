@@ -1,9 +1,5 @@
 import { FormGroup } from '@angular/forms';
-import type {
-  AbstractControl,
-  ValidationErrors,
-  ValidatorFn,
-} from '@angular/forms';
+import type { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export const ERROR_NAME = 'confirmmatch';
 

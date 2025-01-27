@@ -30,8 +30,8 @@ describe('RecoverEmailComponent', (): void => {
     await TestBed.configureTestingModule({
       imports: [ RecoverEmailComponent ],
       providers: [
-        provideRouter([]),
         { provide: RecoverEmailService, useValue: mockService },
+        provideRouter([]),
       ],
     })
       .compileComponents();

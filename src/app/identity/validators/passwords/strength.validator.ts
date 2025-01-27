@@ -14,6 +14,5 @@ export const passwordStrengthValidator: ValidatorFn = (control: AbstractControl<
   }
 
   const strength = passwordStrength(value);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison -- Enum is just a bag of values
   return strength.id < PASSWORDS.minStrength ? { passwordstrength: strength.value } : null; // eslint-disable-line unicorn/no-null
 };

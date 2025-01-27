@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Auth, confirmPasswordReset, verifyPasswordResetCode } from '@angular/fire/auth';
 import {
+  from,
   merge,
   of,
   startWith,
@@ -65,10 +66,17 @@ export class ResetPasswordService {
 
         // Verified succeeded
         if (email) {
+          // This design with an inner `merge` after `_verifyCode` settles is to accomodate passing
+          // the email to _confirmPasswordReset in case the new password is rejected.
+          // However, it does make testing this path more complicated I think. Would it be better to
+          // move the merge to the return of resetPassword$ and store the email as a private property?
           const confirmPasswordReset$ = this._newPasswordSubject$.pipe(
-            switchMap(async (newPassword: string): Promise<ConfirmResult> => this._confirmPasswordReset(code, email, newPassword)),
-            // Show the spinner while applying the action code.
-            startWith(undefined),
+            switchMap((newPassword: string): Observable<ConfirmResult | undefined> => {
+              const promise = this._confirmPasswordReset(code, email, newPassword);
+              return from(promise)
+                // Show the spinner while applying the action code.
+                .pipe(startWith(undefined));
+            }),
           );
 
           return merge(
@@ -87,7 +95,8 @@ export class ResetPasswordService {
 
   /**
    * Applies the new password to the user's account using the oobCode.
-   * @param email - Is necessary only in the case that `confirmPasswordReset` fails to redisplay the form.
+   * @param email - Is necessary only in the case that `confirmPasswordReset` fails, and we need to
+   *              redisplay the form.
    * @throws If the oobCode is falsy
    */
   private async _confirmPasswordReset(code: string | undefined, email: string, newPassword: string): Promise<ConfirmResult> {

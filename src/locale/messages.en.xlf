@@ -1093,10 +1093,19 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">3,6</context>
+          <context context-type="linenumber">4,8</context>
         </context-group>
         <note priority="1" from="description">Title of the application</note>
         <note priority="1" from="meaning">h1 display heading</note>
+      </trans-unit>
+      <trans-unit id="footer.aria-label" datatype="html">
+        <source>Main footer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/footer/footer.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Primary footer</note>
+        <note priority="1" from="meaning">aria label</note>
       </trans-unit>
       <trans-unit id="text.copyright" datatype="html">
         <source>© Copyright</source>
@@ -1125,11 +1134,20 @@
         <note priority="1" from="description">Link to terms &amp; conditions page</note>
         <note priority="1" from="meaning">global footer</note>
       </trans-unit>
-      <trans-unit id="accountMenu.aria-label" datatype="html">
-        <source>Account</source>
+      <trans-unit id="header.aria-label" datatype="html">
+        <source>Main Header</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Main application header</note>
+        <note priority="1" from="meaning">aria label</note>
+      </trans-unit>
+      <trans-unit id="accountMenu.aria-label" datatype="html">
+        <source>Account Menu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">8</context>
         </context-group>
         <note priority="1" from="description">User Account Navigation</note>
         <note priority="1" from="meaning">aria-label</note>
@@ -1138,7 +1156,7 @@
         <source>Toggle account menu</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">13,14</context>
+          <context context-type="linenumber">15,16</context>
         </context-group>
         <note priority="1" from="description">Button to open and close user account menu</note>
         <note priority="1" from="meaning">aria label text</note>
@@ -1147,11 +1165,11 @@
         <source>Your Account</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">19,20</context>
+          <context context-type="linenumber">21,22</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">22,25</context>
+          <context context-type="linenumber">24,27</context>
         </context-group>
         <note priority="1" from="description">Opens the user menu</note>
         <note priority="1" from="meaning">global navigation toogle</note>
@@ -1160,7 +1178,7 @@
         <source>Your Profile</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">26,27</context>
+          <context context-type="linenumber">28,29</context>
         </context-group>
         <note priority="1" from="description">Link to profile page</note>
         <note priority="1" from="meaning">navigation link</note>
@@ -1169,7 +1187,7 @@
         <source>Change Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">27,28</context>
+          <context context-type="linenumber">29,30</context>
         </context-group>
         <note priority="1" from="description">Link to change emailp page</note>
         <note priority="1" from="meaning">navigation link</note>
@@ -1178,7 +1196,7 @@
         <source>Change Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">28,29</context>
+          <context context-type="linenumber">30,31</context>
         </context-group>
         <note priority="1" from="description">Link to change password page</note>
         <note priority="1" from="meaning">navigation link</note>
@@ -1187,10 +1205,19 @@
         <source>Logout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">29,32</context>
+          <context context-type="linenumber">31,34</context>
         </context-group>
         <note priority="1" from="description">Link to logout page</note>
         <note priority="1" from="meaning">navigation link</note>
+      </trans-unit>
+      <trans-unit id="sidebar.aria-label" datatype="html">
+        <source>Main toolbar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Primary sidebar of application</note>
+        <note priority="1" from="meaning">aria label</note>
       </trans-unit>
       <trans-unit id="pageNotFound.banner" datatype="html">
         <source>Game Over</source>
