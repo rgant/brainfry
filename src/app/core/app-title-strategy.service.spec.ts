@@ -17,7 +17,7 @@ describe('AppTitleStrategyService', (): void => {
   let titleSpy: jasmine.SpyObj<Title>;
 
   beforeEach(async (): Promise<void> => {
-    titleSpy = jasmine.createSpyObj<Title>([ 'getTitle', 'setTitle' ]);
+    titleSpy = jasmine.createSpyObj<Title>('Title', [ 'getTitle', 'setTitle' ]);
 
     TestBed.configureTestingModule({
       providers: [

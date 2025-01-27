@@ -13,7 +13,7 @@ describe('PageNotFoundComponent', (): void => {
   const metaTag = document.createElement('meta');
 
   beforeEach(async (): Promise<void> => {
-    metaSpy = jasmine.createSpyObj<Meta>([ 'addTag', 'removeTagElement' ]);
+    metaSpy = jasmine.createSpyObj<Meta>('Meta', [ 'addTag', 'removeTagElement' ]);
     metaSpy.addTag.and.returnValue(metaTag);
 
     await TestBed.configureTestingModule({

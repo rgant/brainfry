@@ -87,13 +87,14 @@ describe('ActionsComponent', (): void => {
 
   it('should add continueUrl to state', async (): Promise<void> => {
     const expectedState: ActionCodeState = {
-      continueUrl: '/login',
+      continueUrl: '/login?next=/dashboard&tab=quizzes#2025-04-14',
       lang: undefined,
       mode: 'verifyEmail',
       oobCode: 'ABC123',
     };
 
-    await harness.navigateByUrl('/actions?mode=verifyEmail&oobCode=ABC123&continueUrl=%2Flogin');
+    const continueUrl = 'https%3A%2F%2Fexample.com%2Flogin%3Fnext%3D%2Fdashboard%26tab%3Dquizzes%232025-04-14';
+    await harness.navigateByUrl(`/actions?mode=verifyEmail&oobCode=ABC123&continueUrl=${continueUrl}`);
     const { lastSuccessfulNavigation, url } = router;
 
     expect(consoleSpy).not.toHaveBeenCalled();

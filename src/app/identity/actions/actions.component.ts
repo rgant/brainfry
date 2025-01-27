@@ -59,6 +59,11 @@ export class ActionsComponent {
     effect(async (): Promise<void> => {
       const state = this._$actionState();
 
+      if (state.continueUrl) {
+        const url = new URL(state.continueUrl);
+        state.continueUrl = `${url.pathname}${url.search}${url.hash}`;
+      }
+
       if (state.mode && state.oobCode) {
         const path = this._modePaths[state.mode];
 

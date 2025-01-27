@@ -41,7 +41,7 @@ describe('ResetPasswordComponent', (): void => {
   let router: Router;
 
   const setupComponent = (oobCode: string, verifyPayload?: ResetPasswordResults): void => {
-    getCurrentNavigationSpy.and.returnValue(createMockNavigation(oobCode));
+    getCurrentNavigationSpy.and.returnValue(createMockNavigation({ oobCode }));
     fixture = TestBed.createComponent(ResetPasswordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -87,7 +87,7 @@ describe('ResetPasswordComponent', (): void => {
   };
 
   beforeEach(async (): Promise<void> => {
-    mockService = jasmine.createSpyObj<ResetPasswordService>([ 'replacePassword', 'resetPassword$' ]);
+    mockService = jasmine.createSpyObj<ResetPasswordService>('ResetPasswordService', [ 'replacePassword', 'resetPassword$' ]);
     mockService.resetPassword$.and.returnValue(viewModelSubject$);
 
     await TestBed.configureTestingModule({
@@ -98,7 +98,6 @@ describe('ResetPasswordComponent', (): void => {
         { provide: ResetPasswordService, useValue: mockService },
         provideRouter([]),
       ],
-      teardown: { destroyAfterEach: false },
     })
       .compileComponents();
 
@@ -144,13 +143,9 @@ describe('ResetPasswordComponent', (): void => {
     setupComponent(expectedCode, mockVerifyError);
 
     const compiled: HTMLElement = getCompiled(fixture);
-    const headingEl: HTMLHeadingElement = safeQuerySelector(compiled, 'h2');
 
-    expect(headingEl.textContent).toContain('There was a problem with your reset link');
-
-    const alertEl: HTMLParagraphElement = safeQuerySelector(compiled, '.alert');
-
-    expect(alertEl.textContent).toContain('The action code is invalid.');
+    expect(safeQuerySelector(compiled, 'h2').textContent).toContain('There was a problem with your reset link');
+    expect(safeQuerySelector(compiled, '.alert').textContent).toContain('The action code is invalid.');
   });
 
   for (const setup of passwordFields) {
@@ -223,15 +218,14 @@ describe('ResetPasswordComponent', (): void => {
     setupComponent('b8344e72-c9ec-4051-af7b-3bbabab68abf', mockVerifyError);
 
     const compiled: HTMLElement = getCompiled(fixture);
-    const paragraphEl: HTMLParagraphElement = safeQuerySelector(compiled, '#reset-description');
 
-    expect(paragraphEl.textContent)
+    expect(safeQuerySelector(compiled, '#reset-description').textContent)
       .withContext('#reset-description')
       .toContain(`Replace the password for ${mockVerifyError.email} account.`);
 
-    const alertEl: HTMLParagraphElement = safeQuerySelector(compiled, '.alert');
-
-    expect(alertEl.textContent).withContext('.alert').toContain('The password does not meet the requirements.');
+    expect(safeQuerySelector(compiled, '.alert').textContent)
+      .withContext('.alert')
+      .toContain('The password does not meet the requirements.');
   });
 
   it('should configure submit button', (): void => {
@@ -264,8 +258,7 @@ describe('ResetPasswordComponent', (): void => {
     setupComponent(expectedCode, mockSuccess);
 
     const compiled: HTMLElement = getCompiled(fixture);
-    const headingEl: HTMLHeadingElement = safeQuerySelector(compiled, 'h2');
 
-    expect(headingEl.textContent).toContain('Your password has been replaced!');
+    expect(safeQuerySelector(compiled, 'h2').textContent).toContain('Your password has been replaced!');
   });
 });

@@ -5,7 +5,7 @@ import type { Observable } from 'rxjs';
 
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
-import { getCode } from '../actions/get-code';
+import { getState } from '../actions/get-state';
 import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
 import { RecoverEmailService } from './recover-email.service';
 import type { RecoverEmailResults } from './recover-email.service';
@@ -30,6 +30,8 @@ export class RecoverEmailComponent {
   constructor() {
     this._router = inject(Router);
     this._service = inject(RecoverEmailService);
-    this.vm$ = this._service.recoverEmail$(getCode(this._router.getCurrentNavigation()));
+
+    const { oobCode } = getState(this._router.getCurrentNavigation());
+    this.vm$ = this._service.recoverEmail$(oobCode);
   }
 }

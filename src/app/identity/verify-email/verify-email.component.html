@@ -1,1 +1,30 @@
-<p>verify-email works!</p>
+@if (vm | async; as vm) {
+  <div class="card">
+    @if (vm.verified) {
+      <h2 i18n="page heading 2|Successful verification of user email for account@@verifyEmail.successHeader">
+        Your email has been verified!
+      </h2>
+      <a
+        [routerLink]="vm.continueUrl"
+        class="button"
+        i18n="navigation link button styled|Return to default page to either login again or go to dashboard@@link.continue"
+      >
+        Continue
+      </a>
+    } @else {
+      <h2 i18n="page heading 2|Failed verification of email for account@@verifyEmail.failureHeader">
+        There was a problem with your verification link
+      </h2>
+      <p class="alert">
+        <app-auth-error-messages [$code]="vm.errorCode ?? 'unknown'" />
+      </p>
+      <p i18n="paragraph|Suggest contacting support@@verifyEmail.contact">
+        Please
+        <a href="mailto:rob@brainfry-app.web.app?subject=verify+email">contact support</a>
+        for assistance.
+      </p>
+    }
+  </div>
+} @else {
+  <app-spinner class="modal-block" />
+}

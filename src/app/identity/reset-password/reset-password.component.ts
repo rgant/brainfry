@@ -9,7 +9,7 @@ import type { Observable } from 'rxjs';
 
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
-import { getCode } from '../actions/get-code';
+import { getState } from '../actions/get-state';
 import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
 import { createPasswordControl, PASSWORDS } from '../identity-forms';
 import { confirmMatch, confirmMatchFormErrors } from '../validators/confirm-match';
@@ -74,8 +74,8 @@ export class ResetPasswordComponent {
 
     this.$formPasswordsInvalid = confirmMatchFormErrors(this.resetPasswordForm, this.password1Cntrl, this.password2Cntrl);
 
-    const maybeOobCode = getCode(this._router.getCurrentNavigation());
-    this.vm$ = this._service.resetPassword$(maybeOobCode);
+    const { oobCode } = getState(this._router.getCurrentNavigation());
+    this.vm$ = this._service.resetPassword$(oobCode);
   }
 
   public onSubmit(): void {

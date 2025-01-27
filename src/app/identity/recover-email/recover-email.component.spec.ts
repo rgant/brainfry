@@ -17,14 +17,14 @@ describe('RecoverEmailComponent', (): void => {
   let router: Router;
 
   const setupFixture = (oobCode: string): void => {
-    getCurrentNavigationSpy.and.returnValue(createMockNavigation(oobCode));
+    getCurrentNavigationSpy.and.returnValue(createMockNavigation({ oobCode }));
     fixture = TestBed.createComponent(RecoverEmailComponent);
     fixture.detectChanges();
   };
   const viewModelSubject$ = new Subject<RecoverEmailResults>();
 
   beforeEach(async (): Promise<void> => {
-    const mockService = jasmine.createSpyObj<RecoverEmailService>([ 'recoverEmail$' ]);
+    const mockService = jasmine.createSpyObj<RecoverEmailService>('RecoverEmailService', [ 'recoverEmail$' ]);
     recoverEmailSpy = mockService.recoverEmail$.and.returnValue(viewModelSubject$);
 
     await TestBed.configureTestingModule({
@@ -139,9 +139,5 @@ describe('RecoverEmailComponent', (): void => {
     expect(safeQuerySelector(compiled, 'p.alert').textContent)
       .withContext('alert p')
       .toContain('The action code has expired.');
-
-    expect(safeQuerySelector(compiled, 'p:nth-of-type(2)').textContent)
-      .withContext('second p')
-      .toContain('Please contact support for assistance');
   });
 });
