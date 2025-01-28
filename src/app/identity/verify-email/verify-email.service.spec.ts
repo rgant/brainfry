@@ -17,7 +17,7 @@ describe('VerifyEmailService', (): void => {
 
   // This is really only necessary so that we don't export these users from the emulator
   afterAll(async (): Promise<void> => {
-    await cleanupUsers(testUsers);
+    await cleanupUsers(auth, testUsers);
   });
 
   beforeEach(async (): Promise<void> => {

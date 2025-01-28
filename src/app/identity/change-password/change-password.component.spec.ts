@@ -9,7 +9,7 @@ import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/ut
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { passwordControlTest, passwordErrorMessagesTest, passwordInputTest } from '../testing/password-field.spec';
-import { createAndSignInUser, TEST_USER_PASSWORD } from '../testing/test-users.spec';
+import { cleanupUsers, createAndSignInUser, TEST_USER_PASSWORD } from '../testing/test-users.spec';
 import { ChangePasswordComponent } from './change-password.component';
 
 const passwordFields = [
@@ -65,6 +65,13 @@ describe('ChangePasswordComponent', (): void => {
     }));
   };
 
+  const testUsers: User[] = [];
+
+  // This is really only necessary so that we don't export these users from the emulator
+  afterAll(async (): Promise<void> => {
+    await cleanupUsers(auth, testUsers);
+  });
+
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
       imports: [ ChangePasswordComponent ],
@@ -79,6 +86,7 @@ describe('ChangePasswordComponent', (): void => {
     fixture.detectChanges();
 
     testUser = await createAndSignInUser(auth);
+    testUsers.push(testUser);
     await fixture.whenStable();
     fixture.detectChanges();
   });

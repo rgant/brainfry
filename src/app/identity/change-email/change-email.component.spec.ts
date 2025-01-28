@@ -11,7 +11,12 @@ import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/ut
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { emailControlTest, emailErrorMessagesTest, emailInputTest } from '../testing/email-field.spec';
 import { passwordControlTest, passwordErrorMessagesTest, passwordInputTest } from '../testing/password-field.spec';
-import { createAndSignInUser, generateRandomEmail, TEST_USER_PASSWORD } from '../testing/test-users.spec';
+import {
+  cleanupUsers,
+  createAndSignInUser,
+  generateRandomEmail,
+  TEST_USER_PASSWORD,
+} from '../testing/test-users.spec';
 import { ChangeEmailComponent } from './change-email.component';
 
 const emailFields = [
@@ -56,6 +61,13 @@ describe('ChangeEmailComponent', (): void => {
     }));
   };
 
+  const testUsers: User[] = [];
+
+  // This is really only necessary so that we don't export these users from the emulator
+  afterAll(async (): Promise<void> => {
+    await cleanupUsers(auth, testUsers);
+  });
+
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
       imports: [ ChangeEmailComponent ],
@@ -70,6 +82,7 @@ describe('ChangeEmailComponent', (): void => {
     fixture.detectChanges();
 
     testUser = await createAndSignInUser(auth);
+    testUsers.push(testUser);
     await fixture.whenStable();
     fixture.detectChanges();
   });

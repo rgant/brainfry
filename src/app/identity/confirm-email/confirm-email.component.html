@@ -24,11 +24,11 @@
       <button (click)="sendConfirmEmail(user)" [disabled]="status === 'sending'" class="button" type="button">
         @if (status === 'sent') {
           <ng-container i18n="confirm email button|send a verification link again@@confirmEmail.button.reconfirm">
-            Resend Verification Email
+            Resend verification email
           </ng-container>
         } @else {
           <ng-container i18n="confirm email button|send a verification link to user's email@@confirmEmail.button">
-            Send Verification Email
+            Send verification email
           </ng-container>
         }
       </button>

@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { firstValueFrom } from 'rxjs';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
 import { UNVERIFIED_TEST_USER } from '@testing/constants';
@@ -42,6 +43,9 @@ describe('ConfirmEmailComponent', (): void => {
 
     expect(component.$errorCode()).withContext('$errorCode').toBe('');
     expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('sent');
+
+    // Prevent cross test pollution because it seems users can remain logged in across tests.
+    await signOut(auth);
   });
 
   it('should handle send verification email error', async (): Promise<void> => {
@@ -60,6 +64,9 @@ describe('ConfirmEmailComponent', (): void => {
 
     expect(component.$errorCode()).withContext('$errorCode').toBe('auth/invalid-user-token');
     expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('sent');
+
+    // Prevent cross test pollution because it seems users can remain logged in across tests.
+    await signOut(auth);
   });
 
   it('should show spinner', async (): Promise<void> => {
@@ -69,16 +76,27 @@ describe('ConfirmEmailComponent', (): void => {
     expect(compiled.querySelector('.main-card')).withContext('.main-card').toBeNull();
 
     await signInWithEmailAndPassword(auth, UNVERIFIED_TEST_USER.email, UNVERIFIED_TEST_USER.password);
+    // Sometimes the tests fail because it doesn't wait for the Observable to emit
+    await firstValueFrom(component.user$);
     fixture.detectChanges();
 
     expect(compiled.querySelector('app-spinner')).withContext('app-spinner').toBeNull();
     expect(compiled.querySelector('.main-card')).withContext('.main-card').toBeTruthy();
+
+    // Prevent cross test pollution because it seems users can remain logged in across tests.
+    await signOut(auth);
   });
 
   describe('with unverified user', (): void => {
+    afterEach(async (): Promise<void> => {
+      // Prevent cross test pollution because it seems users can remain logged in across tests.
+      await signOut(auth);
+    });
+
     beforeEach(async (): Promise<void> => {
       await signInWithEmailAndPassword(auth, UNVERIFIED_TEST_USER.email, UNVERIFIED_TEST_USER.password);
-      await fixture.whenStable();
+      // Sometimes the tests fail because it doesn't wait for the Observable to emit
+      await firstValueFrom(component.user$);
       fixture.detectChanges();
     });
 
@@ -95,7 +113,7 @@ describe('ConfirmEmailComponent', (): void => {
       const bttnEl: HTMLButtonElement = safeQuerySelector(compiled, 'button');
       const sendSpy = spyOn(component, 'sendConfirmEmail');
 
-      expect(bttnEl.textContent).toContain('Send Verification Email');
+      expect(bttnEl.textContent).toContain('Send verification email');
       expect(bttnEl.disabled).withContext('disabled').toBeFalse();
 
       bttnEl.click();
@@ -108,13 +126,13 @@ describe('ConfirmEmailComponent', (): void => {
       fixture.detectChanges();
 
       expect(bttnEl.disabled).withContext('disabled').toBeTrue();
-      expect(bttnEl.textContent).toContain('Send Verification Email');
+      expect(bttnEl.textContent).toContain('Send verification email');
 
       component.$verificationStatus.set('sent');
       fixture.detectChanges();
 
       expect(bttnEl.disabled).withContext('disabled').toBeFalse();
-      expect(bttnEl.textContent).toContain('Resend Verification Email');
+      expect(bttnEl.textContent).toContain('Resend verification email');
     });
 
     it('should display send success message', (): void => {

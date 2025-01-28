@@ -13,6 +13,7 @@ module.exports = function (config) {
         // or set a specific seed with `seed: 4321`
         failSpecWithNoExpectations: true,
         forbidDuplicateNames: true,
+        // seed: '32615',
         timeoutInterval: 250,
       },
     },

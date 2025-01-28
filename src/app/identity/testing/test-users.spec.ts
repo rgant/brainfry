@@ -1,7 +1,14 @@
 import type { Auth, User } from '@angular/fire/auth';
-import { createUserWithEmailAndPassword, deleteUser, signInWithEmailAndPassword } from '@angular/fire/auth';
+import {
+  createUserWithEmailAndPassword,
+  deleteUser,
+  signInWithEmailAndPassword,
+  signOut,
+} from '@angular/fire/auth';
 
-export const cleanupUsers = async (testUsers: User[]): Promise<void> => {
+export const cleanupUsers = async (auth: Auth, testUsers: User[]): Promise<void> => {
+  // Prevent cross test pollution because it seems users can remain logged in across tests.
+  await signOut(auth);
   await Promise.all(testUsers.map(async (usr: User): Promise<void> => deleteUser(usr)));
 };
 

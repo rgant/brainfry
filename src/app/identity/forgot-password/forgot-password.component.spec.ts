@@ -2,7 +2,8 @@ import { fakeAsync, TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
-import { getCompiled, safeQuerySelector } from '@testing/utilities';
+import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { emailControlTest, emailErrorMessagesTest, emailInputTest } from '../testing/email-field.spec';
@@ -15,13 +16,17 @@ describe('ForgotPasswordComponent', (): void => {
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
       imports: [ ForgotPasswordComponent ],
-      providers: [ provideRouter([]) ],
+      providers: [ provideOurFirebaseApp(), provideEmulatedAuth(), provideRouter([]) ],
     })
       .compileComponents();
 
     fixture = TestBed.createComponent(ForgotPasswordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  it('should error when invalid form is submitted', async (): Promise<void> => {
+    await expectAsync(component.onSubmit()).toBeRejectedWithError('Invalid form submitted');
   });
 
   it('should configure email FormControl', (): void => {
@@ -50,10 +55,6 @@ describe('ForgotPasswordComponent', (): void => {
     component.forgotForm.setValue({ email: 'c817@49ad.ac20' });
 
     expect(component.forgotForm.valid).withContext('valid').toBeTrue();
-  });
-
-  it('should submit form', (): void => {
-    expect((): void => { component.onSubmit(); }).toThrowError('Invalid form submitted');
   });
 
   it('should configure submit button', (): void => {

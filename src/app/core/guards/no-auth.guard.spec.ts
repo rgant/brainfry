@@ -35,6 +35,11 @@ describe('noAuthGuard', (): void => {
   });
 
   describe('logged in user', (): void => {
+    afterEach(async (): Promise<void> => {
+      // Prevent cross test pollution because it seems users can remain logged in across tests.
+      await signOut(auth);
+    });
+
     beforeEach(async (): Promise<void> => {
       await signInWithEmailAndPassword(auth, DEFAULT_TEST_USER.email, DEFAULT_TEST_USER.password);
     });

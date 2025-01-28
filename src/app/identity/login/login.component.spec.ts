@@ -85,7 +85,7 @@ describe('LoginComponent', (): void => {
     const router = TestBed.inject(Router);
     const navigateSpy = spyOn(router, 'navigateByUrl').and.resolveTo(true);
 
-    // Emulators keep the session across tests. Which isn't desireable for isolated unit tests.
+    // Prevent cross test pollution because it seems users can remain logged in across tests.
     await signOut(auth);
 
     expect(auth.currentUser).withContext('Auth.currentUser').toBeNull();
@@ -95,6 +95,9 @@ describe('LoginComponent', (): void => {
 
     expect(auth.currentUser?.uid).withContext('Auth.currentUser').toBe(DEFAULT_TEST_USER.userId);
     expect(navigateSpy).withContext('navigateByUrl').toHaveBeenCalledOnceWith('/');
+
+    // Prevent cross test pollution because it seems users can remain logged in across tests.
+    await signOut(auth);
   });
 
   it('should configure submit button', (): void => {

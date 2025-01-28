@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { provideRouter, Router } from '@angular/router';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
@@ -40,6 +40,10 @@ describe('LogoutComponent', (): void => {
     expect(component.$blockWindow()).withContext('blockWindow').toBeTrue();
     expect(auth.currentUser).withContext('Auth.currentUser').toBeNull();
     expect(navigateSpy).withContext('navigateByUrl').toHaveBeenCalledOnceWith('/');
+
+    // If the test succeeds then this isn't necessary, but if it fails then the signIn might pollute
+    // other tests.
+    await signOut(auth);
   });
 
   it('should call logout on click', (): void => {
