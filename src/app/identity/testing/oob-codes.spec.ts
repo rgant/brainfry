@@ -108,13 +108,21 @@ export const createOobCode = async (auth: Auth, actionFn: ActionFunctions): Prom
     ? sendPasswordResetEmail(auth, originalEmail)
     : doAction(actionFn, user));
 
-  const oobCodeList = await getOobCodes();
-  for (const payload of oobCodeList) {
-    if (payload.email === originalEmail && payload.requestType === getRequestType(actionFn)) {
-      const { oobCode } = payload;
-      return { oobCode, originalEmail, user };
-    }
+  const oobCode = await findOobCode(originalEmail, actionFn);
+  if (oobCode) {
+    return { oobCode, originalEmail, user };
   }
 
   throw new Error('Failed to get oobCode');
+};
+
+export const findOobCode = async (email: string, actionFn: ActionFunctions): Promise<string> => {
+  const oobCodeList = await getOobCodes();
+  for (const payload of oobCodeList) {
+    if (payload.email === email && payload.requestType === getRequestType(actionFn)) {
+      const { oobCode } = payload;
+      return oobCode;
+    }
+  }
+  return '';
 };

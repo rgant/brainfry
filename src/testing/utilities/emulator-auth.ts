@@ -1,6 +1,7 @@
 import type { EnvironmentProviders } from '@angular/core';
 import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
 import type { Auth, PasswordValidationStatus } from '@angular/fire/auth';
+import { inMemoryPersistence, setPersistence } from 'firebase/auth'; // eslint-disable-line import-x/no-extraneous-dependencies
 
 import firebaseSettings from '../../../firebase.json';
 import validatePasswordResponse from './firebase-validate-password.json';
@@ -26,6 +27,9 @@ const resolveValidatePassword = async (): Promise<PasswordValidationStatus> =>
 export const provideEmulatedAuth = (): EnvironmentProviders =>
   provideAuth((): Auth => {
     const auth = getAuth();
+
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises -- just for testing.
+    setPersistence(auth, inMemoryPersistence);
 
     // Connecting to the emulator multiple times for each TestBed.configureTestingModule call causes
     // errors: auth/emulator-config-failed

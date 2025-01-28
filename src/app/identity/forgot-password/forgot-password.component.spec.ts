@@ -3,10 +3,12 @@ import type { ComponentFixture } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
+import { DEFAULT_TEST_USER } from '@testing/constants';
 import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { emailControlTest, emailErrorMessagesTest, emailInputTest } from '../testing/email-field.spec';
+import { findOobCode } from '../testing/oob-codes.spec';
 import { ForgotPasswordComponent } from './forgot-password.component';
 
 describe('ForgotPasswordComponent', (): void => {
@@ -27,6 +29,42 @@ describe('ForgotPasswordComponent', (): void => {
 
   it('should error when invalid form is submitted', async (): Promise<void> => {
     await expectAsync(component.onSubmit()).toBeRejectedWithError('Invalid form submitted');
+  });
+
+  it('should send password reset email', async (): Promise<void> => {
+    component.forgotForm.setValue({ email: DEFAULT_TEST_USER.email });
+
+    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+
+    const promise = component.onSubmit();
+
+    expect(component.$showForm()).withContext('$showForm').toBeFalse();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+
+    await promise;
+    const oobCode = await findOobCode(DEFAULT_TEST_USER.email, 'sendPasswordResetEmail');
+
+    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+    expect(oobCode).withContext('oobCode for password reset email').toBeTruthy();
+  });
+
+  it('should handle send email errors', async (): Promise<void> => {
+    component.forgotForm.setValue({ email: '58de@4e2a.8181' });
+
+    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+
+    const promise = component.onSubmit();
+
+    expect(component.$showForm()).withContext('$showForm').toBeFalse();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+
+    await promise;
+
+    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('auth/user-not-found');
   });
 
   it('should configure email FormControl', (): void => {
