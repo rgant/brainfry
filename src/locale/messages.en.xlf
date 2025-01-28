@@ -524,29 +524,38 @@
         <note priority="1" from="meaning">error message from Firebase
       </note>
       </trans-unit>
+      <trans-unit id="changeEmail.heading" datatype="html">
+        <source>Change your email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
+          <context context-type="linenumber">3,6</context>
+        </context-group>
+        <note priority="1" from="description">Form to update account email</note>
+        <note priority="1" from="meaning">page heading 2</note>
+      </trans-unit>
       <trans-unit id="form.role.changeEmail" datatype="html">
         <source>Change Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">6,7</context>
+          <context context-type="linenumber">8,9</context>
         </context-group>
         <note priority="1" from="description">Form to change email for user account</note>
         <note priority="1" from="meaning">aria-label</note>
       </trans-unit>
       <trans-unit id="fields.oldEmail" datatype="html">
-        <source>Current Email:</source>
+        <source>Current email:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">10,11</context>
+          <context context-type="linenumber">13,14</context>
         </context-group>
         <note priority="1" from="description">Current user account email</note>
         <note priority="1" from="meaning">form field label</note>
       </trans-unit>
       <trans-unit id="fields.newEmail1" datatype="html">
-        <source>New Email:</source>
+        <source>New email:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">15,17</context>
+          <context context-type="linenumber">19,21</context>
         </context-group>
         <note priority="1" from="description">Change email form new email</note>
         <note priority="1" from="meaning">form field label</note>
@@ -555,7 +564,7 @@
         <source> Please enter your new email address. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">31,34</context>
+          <context context-type="linenumber">35,38</context>
         </context-group>
         <note priority="1" from="description">Email is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -564,11 +573,11 @@
         <source> Please enter a valid email address. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">36,40</context>
+          <context context-type="linenumber">40,43</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">66,70</context>
+          <context context-type="linenumber">70,73</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/forgot-password/forgot-password.component.html</context>
@@ -582,10 +591,10 @@
         <note priority="1" from="meaning">form field error message</note>
       </trans-unit>
       <trans-unit id="fields.newEmail2" datatype="html">
-        <source>Confirm Email:</source>
+        <source>Confirm email:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">45,47</context>
+          <context context-type="linenumber">49,51</context>
         </context-group>
         <note priority="1" from="description">Change email form new email</note>
         <note priority="1" from="meaning">form field label</note>
@@ -594,7 +603,7 @@
         <source> Please re-enter your new email address. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">61,64</context>
+          <context context-type="linenumber">65,68</context>
         </context-group>
         <note priority="1" from="description">Email is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -603,7 +612,7 @@
         <source> Emails must match. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">77,83</context>
+          <context context-type="linenumber">81,87</context>
         </context-group>
         <note priority="1" from="description">Both email fields in form must match</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -612,7 +621,7 @@
         <source>Password:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">83,85</context>
+          <context context-type="linenumber">87,89</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
@@ -625,7 +634,7 @@
         <source> Please enter your password. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">100,103</context>
+          <context context-type="linenumber">104,107</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
@@ -638,7 +647,7 @@
         <source> Please enter a password that contains at least <x id="INTERPOLATION" equiv-text="{{ minPasswordLength }}"/> characters and a combination of upper and lowercase letters, numbers, and symbols. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">105,106</context>
+          <context context-type="linenumber">109,110</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
@@ -671,7 +680,7 @@
         <source> Your password may not be longer than <x id="INTERPOLATION" equiv-text="{{ maxPasswordLength }}"/> characters. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">111,112</context>
+          <context context-type="linenumber">115,116</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
@@ -704,7 +713,7 @@
         <source> Change Email </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">126,134</context>
+          <context context-type="linenumber">136,143</context>
         </context-group>
         <note priority="1" from="description">Change account email form submit button</note>
         <note priority="1" from="meaning">form submit button</note>
@@ -719,7 +728,7 @@
         <note priority="1" from="meaning">aria-label</note>
       </trans-unit>
       <trans-unit id="fields.currentPassword" datatype="html">
-        <source> Current Password: </source>
+        <source> Current password: </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
           <context context-type="linenumber">13,16</context>
@@ -737,7 +746,7 @@
         <note priority="1" from="meaning">form field error message</note>
       </trans-unit>
       <trans-unit id="fields.newPassword" datatype="html">
-        <source>New Password:</source>
+        <source>New password:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
           <context context-type="linenumber">51,54</context>
@@ -789,7 +798,7 @@
         <note priority="1" from="meaning">form field error message</note>
       </trans-unit>
       <trans-unit id="fields.confirmPassword" datatype="html">
-        <source> Confirm Password: </source>
+        <source> Confirm password: </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
           <context context-type="linenumber">101,104</context>
@@ -863,7 +872,7 @@
         <source> Resend Verification Email </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/confirm-email/confirm-email.component.html</context>
-          <context context-type="linenumber">24,29</context>
+          <context context-type="linenumber">27,30</context>
         </context-group>
         <note priority="1" from="description">send a verification link again</note>
         <note priority="1" from="meaning">confirm email button</note>
@@ -872,7 +881,7 @@
         <source> Send Verification Email </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/confirm-email/confirm-email.component.html</context>
-          <context context-type="linenumber">30,38</context>
+          <context context-type="linenumber">31,38</context>
         </context-group>
         <note priority="1" from="description">send a verification link to user&apos;s email</note>
         <note priority="1" from="meaning">confirm email button</note>
@@ -965,7 +974,7 @@
         <source>Logout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/logout/logout.component.html</context>
-          <context context-type="linenumber">1,2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <note priority="1" from="description">Logout of your session</note>
         <note priority="1" from="meaning">page heading 2</note>
@@ -974,17 +983,16 @@
         <source>Click here to logout:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/logout/logout.component.html</context>
-          <context context-type="linenumber">2,3</context>
+          <context context-type="linenumber">3,4</context>
         </context-group>
         <note priority="1" from="description">explain logout process</note>
         <note priority="1" from="meaning">paragraph text</note>
       </trans-unit>
       <trans-unit id="logoutPage.button" datatype="html">
-        <source> Complete Logout
-</source>
+        <source> Complete Logout </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/logout/logout.component.html</context>
-          <context context-type="linenumber">4,6</context>
+          <context context-type="linenumber">5,7</context>
         </context-group>
         <note priority="1" from="description">perform logout</note>
         <note priority="1" from="meaning">logout button</note>
@@ -993,7 +1001,7 @@
         <source>Go back to dashboard</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/logout/logout.component.html</context>
-          <context context-type="linenumber">6,10</context>
+          <context context-type="linenumber">7,10</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>

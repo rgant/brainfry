@@ -1,12 +1,7 @@
-import {
-  createUserWithEmailAndPassword,
-  deleteUser,
-  sendEmailVerification,
-  sendPasswordResetEmail,
-  signInWithEmailAndPassword,
-  updateEmail,
-} from '@angular/fire/auth';
+import { sendEmailVerification, sendPasswordResetEmail, updateEmail } from '@angular/fire/auth';
 import type { Auth, User } from '@angular/fire/auth';
+
+import { cleanupUsers, createAndSignInUser, generateRandomEmail } from './test-users.spec';
 
 type ActionFunctions = 'sendEmailVerification' | 'sendPasswordResetEmail' | 'updateEmail';
 
@@ -35,10 +30,6 @@ const doAction = async (action: Omit<ActionFunctions, 'sendPasswordResetEmail'>,
     }
   }
 };
-
-const RADIX = 36; // Convert number to string using digits and lower case letters
-// eslint-disable-next-line @typescript-eslint/no-magic-numbers -- Test code, but probably should still not use magic
-const generateRandomEmail = (prefix: string): string => `${prefix}-${Math.random().toString(RADIX).slice(2, 6)}@test.email`;
 
 /**
  * https://firebase.google.com/docs/reference/rest/auth#section-auth-emulator-oob
@@ -97,9 +88,7 @@ export interface TestData {
   user: User;
 }
 
-export const cleanupUsers = async (testUsers: User[]): Promise<void> => {
-  await Promise.all(testUsers.map(async (usr: User): Promise<void> => deleteUser(usr)));
-};
+export { cleanupUsers };
 
 /**
  * In order to get an oobCode from the emulator we need to actually call the updateEmail method on
@@ -108,26 +97,22 @@ export const cleanupUsers = async (testUsers: User[]): Promise<void> => {
  * and return it to the test.
  */
 export const createOobCode = async (auth: Auth, actionFn: ActionFunctions): Promise<TestData> => {
-  const originalEmail = generateRandomEmail('orig');
-  const password = 'p/V8L5tk15*q';
+  const user = await createAndSignInUser(auth);
+  const originalEmail = user.email;
 
-  // Create a new user for each test so that we don't corrupt the default test users and pollute other tests.
-  await createUserWithEmailAndPassword(auth, originalEmail, password);
-  // Always sign in the user so we can return it for later cleanup to prevent cross test pollution.
-  await signInWithEmailAndPassword(auth, originalEmail, password);
-  if (!auth.currentUser) {
-    throw new Error('No Current User');
+  if (!originalEmail) {
+    throw new Error('Test User without email');
   }
 
   await (actionFn == 'sendPasswordResetEmail'
     ? sendPasswordResetEmail(auth, originalEmail)
-    : doAction(actionFn, auth.currentUser));
+    : doAction(actionFn, user));
 
   const oobCodeList = await getOobCodes();
   for (const payload of oobCodeList) {
     if (payload.email === originalEmail && payload.requestType === getRequestType(actionFn)) {
       const { oobCode } = payload;
-      return { oobCode, originalEmail, user: auth.currentUser };
+      return { oobCode, originalEmail, user };
     }
   }
 

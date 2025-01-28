@@ -15,8 +15,8 @@ import type { Observable } from 'rxjs';
 
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
-import { getErrorCode } from '../actions/error-code';
 import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
+import { getErrorCode } from '../error-code';
 
 type VerifyStatuses = 'sending' | 'sent' | 'unsent';
 

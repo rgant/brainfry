@@ -14,7 +14,7 @@ import {
 } from 'rxjs';
 import type { Observable } from 'rxjs';
 
-import { getErrorCode } from '../actions/error-code';
+import { getErrorCode } from '../error-code';
 
 export interface RecoverEmailResults extends ApplyResult {
   errorCode?: string;

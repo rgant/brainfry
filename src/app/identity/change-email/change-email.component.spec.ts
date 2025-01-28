@@ -1,12 +1,17 @@
 import { fakeAsync, TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
+import { Auth } from '@angular/fire/auth';
+import type { User } from '@angular/fire/auth';
 
-import { getCompiled, safeQuerySelector } from '@testing/utilities';
+import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
+import { DEFAULT_TEST_USER } from '@testing/constants';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
 
 import { PASSWORDS } from '../identity-forms';
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { emailControlTest, emailErrorMessagesTest, emailInputTest } from '../testing/email-field.spec';
 import { passwordControlTest, passwordErrorMessagesTest, passwordInputTest } from '../testing/password-field.spec';
+import { createAndSignInUser, generateRandomEmail, TEST_USER_PASSWORD } from '../testing/test-users.spec';
 import { ChangeEmailComponent } from './change-email.component';
 
 const emailFields = [
@@ -25,8 +30,10 @@ const emailFields = [
 type FieldSetup = typeof emailFields[number];
 
 describe('ChangeEmailComponent', (): void => {
+  let auth: Auth;
   let component: ChangeEmailComponent;
   let fixture: ComponentFixture<ChangeEmailComponent>;
+  let testUser: User;
 
   const emailFieldTests = ({ control, errorId, inputId }: FieldSetup): void => {
     it(`should configure ${control} FormControl`, (): void => {
@@ -52,12 +59,90 @@ describe('ChangeEmailComponent', (): void => {
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
       imports: [ ChangeEmailComponent ],
+      providers: [ provideOurFirebaseApp(), provideEmulatedAuth() ],
     })
       .compileComponents();
+
+    auth = TestBed.inject(Auth);
 
     fixture = TestBed.createComponent(ChangeEmailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    testUser = await createAndSignInUser(auth);
+    await fixture.whenStable();
+    fixture.detectChanges();
+  });
+
+  it('should error when invalid form is submitted', async (): Promise<void> => {
+    await expectAsync(component.onSubmit(testUser)).toBeRejectedWithError('Invalid form submitted');
+  });
+
+  it('should update email', async (): Promise<void> => {
+    const newEmail = generateRandomEmail('new'); // Generate a new email address each time for multiple test runs.
+    component.changeEmailForm.setValue({ email1: newEmail, email2: newEmail, password: TEST_USER_PASSWORD });
+
+    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+
+    const promise = component.onSubmit(testUser);
+
+    expect(component.$showForm()).withContext('$showForm').toBeFalse();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+
+    await promise;
+
+    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+  });
+
+  it('should handle reauthenticate errors', async (): Promise<void> => {
+    const newEmail = generateRandomEmail('new'); // Generate a new email address each time for multiple test runs.
+    component.changeEmailForm.setValue({ email1: newEmail, email2: newEmail, password: 'c17E5bbf9%cf' });
+
+    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+
+    const promise = component.onSubmit(testUser);
+
+    expect(component.$showForm()).withContext('$showForm').toBeFalse();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+
+    await promise;
+
+    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('auth/wrong-password');
+  });
+
+  it('should handle update email errors', async (): Promise<void> => {
+    const newEmail = DEFAULT_TEST_USER.email;
+    component.changeEmailForm.setValue({ email1: newEmail, email2: newEmail, password: TEST_USER_PASSWORD });
+
+    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+
+    const promise = component.onSubmit(testUser);
+
+    expect(component.$showForm()).withContext('$showForm').toBeFalse();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+
+    await promise;
+
+    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('auth/email-already-in-use');
+  });
+
+  it('should display current email', (): void => {
+    const compiled = getCompiled(fixture);
+    const oldEmailEl: HTMLParagraphElement = safeQuerySelector(compiled, '.form-control');
+    const { email } = testUser;
+
+    if (!email) {
+      throw new Error('Test user missing email');
+    }
+
+    expect(safeQuerySelector(oldEmailEl, 'label').textContent).toContain('Current email');
+    expect(safeQuerySelector<HTMLInputElement>(oldEmailEl, 'input').value).toContain(email);
   });
 
   for (const setup of emailFields) {
@@ -95,8 +180,13 @@ describe('ChangeEmailComponent', (): void => {
     expect(component.changeEmailForm.valid).withContext('valid').toBeTrue();
   });
 
-  it('should submit form', (): void => {
-    expect((): void => { component.onSubmit(); }).toThrowError('Invalid form submitted');
+  it('should display submit errors', (): void => {
+    component.$errorCode.set('auth/wrong-password');
+    fixture.detectChanges();
+
+    const compiled = getCompiled(fixture);
+
+    expect(safeQuerySelector(compiled, '.alert').textContent).toContain('The password is invalid or the user does not have a password.');
   });
 
   it('should configure submit button', (): void => {
@@ -114,6 +204,9 @@ describe('ChangeEmailComponent', (): void => {
 
     bttnEl.click();
 
-    expect(submitSpy).toHaveBeenCalledTimes(1);
+    // Probably becuase of the re-authentication `testUser` doesn't match user$.
+    // Properties like `reloadUserInfo.lastLoginAt`, `reloadUserInfo.lastRefreshAt`,
+    // `stsTokenManager.expirationTime`, and `metadata.lastLoginAt` all differ.
+    expect(submitSpy).toHaveBeenCalledOnceWith(jasmine.objectContaining({ uid: testUser.uid }));
   });
 });

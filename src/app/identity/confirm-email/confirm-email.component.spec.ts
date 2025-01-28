@@ -17,7 +17,6 @@ describe('ConfirmEmailComponent', (): void => {
     await TestBed.configureTestingModule({
       imports: [ ConfirmEmailComponent ],
       providers: [ provideOurFirebaseApp(), provideEmulatedAuth() ],
-      teardown: { destroyAfterEach: false },
     })
       .compileComponents();
 

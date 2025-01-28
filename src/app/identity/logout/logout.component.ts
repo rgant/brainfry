@@ -14,7 +14,6 @@ import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ RouterLink, SpinnerComponent ],
   selector: 'app-logout',
-  styleUrl: './logout.component.scss',
   templateUrl: './logout.component.html',
 })
 export class LogoutComponent {

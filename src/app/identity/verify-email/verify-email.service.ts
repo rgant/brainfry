@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { applyActionCode, Auth } from '@angular/fire/auth';
 
-import { getErrorCode } from '../actions/error-code';
+import { getErrorCode } from '../error-code';
 
 export interface VerifyEmailResult {
   continueUrl: string;
