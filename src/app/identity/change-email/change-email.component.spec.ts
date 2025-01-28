@@ -1,13 +1,13 @@
-import { fakeAsync, TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 import { Auth } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
+import { FORMS, PASSWORDS } from '@app/shared/constants';
 import { DEFAULT_TEST_USER } from '@testing/constants';
 import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
 
-import { PASSWORDS } from '../identity-forms';
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { emailControlTest, emailErrorMessagesTest, emailInputTest } from '../testing/email-field.spec';
 import { passwordControlTest, passwordErrorMessagesTest, passwordInputTest } from '../testing/password-field.spec';
@@ -79,6 +79,9 @@ describe('ChangeEmailComponent', (): void => {
   });
 
   it('should update email', async (): Promise<void> => {
+    interface ReloadUserInfo { reloadUserInfo: { lastLoginAt: number } }
+    // @ts-expect-error accessing private property for testing reauthenticateWithCredential
+    const { reloadUserInfo: { lastLoginAt: beforelastLoginAt } }: ReloadUserInfo = testUser;
     const newEmail = generateRandomEmail('new'); // Generate a new email address each time for multiple test runs.
     component.changeEmailForm.setValue({ email1: newEmail, email2: newEmail, password: TEST_USER_PASSWORD });
 
@@ -91,9 +94,13 @@ describe('ChangeEmailComponent', (): void => {
     expect(component.$errorCode()).withContext('$errorCode').toBe('');
 
     await promise;
+    // @ts-expect-error accessing private property for testing reauthenticateWithCredential
+    const { reloadUserInfo: { lastLoginAt: afterlastLoginAt } }: ReloadUserInfo = testUser;
 
     expect(component.$showForm()).withContext('$showForm').toBeTrue();
     expect(component.$errorCode()).withContext('$errorCode').toBe('');
+    expect(auth.currentUser?.email).withContext('currentUser.email').toBe(newEmail);
+    expect(afterlastLoginAt).withContext('user.lastLoginAt').toBeGreaterThan(beforelastLoginAt);
   });
 
   it('should handle reauthenticate errors', async (): Promise<void> => {
@@ -168,17 +175,37 @@ describe('ChangeEmailComponent', (): void => {
     passwordErrorMessagesTest(component.passwordCntrl, fixture, { errorsId: 'fld-password-msgs' });
   }));
 
-  it('should configure login FormGroup', (): void => {
+  it('should configure change email FormGroup', fakeAsync((): void => {
     // Default state
     // eslint-disable-next-line unicorn/no-null -- DOM forms use null
     expect(component.changeEmailForm.value).withContext('value').toEqual({ email1: null, email2: null, password: null });
     expect(component.changeEmailForm.invalid).withContext('invalid').toBeTrue();
 
+    // Emails Mismatch
+    component.changeEmailForm.setValue({ email1: '97cd@417d.83e7', email2: 'e477@4004.848b', password: 'b878b2626482067b4910' });
+    tick(FORMS.inputDebounce);
+
+    expect(component.changeEmailForm.invalid).withContext('invalid').toBeTrue();
+    expect(component.$formEmailsInvalid()).withContext('$formEmailsInvalid').toBeTrue();
+
     // Valid
     component.changeEmailForm.setValue({ email1: '464f@bf86.6c3901f06536', email2: '464f@bf86.6c3901f06536', password: 'e1bf3aff-03bd' });
 
     expect(component.changeEmailForm.valid).withContext('valid').toBeTrue();
-  });
+  }));
+
+  it('should display password match form errors', fakeAsync((): void => {
+    const compiled: HTMLElement = getCompiled(fixture);
+    const frmErrsEl: HTMLDivElement = safeQuerySelector(compiled, '#frm-msgs');
+
+    expect(frmErrsEl.querySelector('.form-alerts')).withContext('.form-alert').toBeNull();
+
+    component.changeEmailForm.setValue({ email1: '4878@4662.b551', email2: '7621@42e3.873b', password: 'e6eA3$4f134a' });
+    tick(FORMS.inputDebounce);
+    fixture.detectChanges();
+
+    expect(frmErrsEl.textContent).toContain('Emails must match.');
+  }));
 
   it('should display submit errors', (): void => {
     component.$errorCode.set('auth/wrong-password');

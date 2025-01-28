@@ -82,6 +82,7 @@ export class ChangeEmailComponent {
 
     this.$errorCode = signal<string>('');
     this.$showForm = signal<boolean>(true);
+
     // Not handling non-logged in users because the Route guards should.
     this.user$ = getUser$(this._auth);
   }

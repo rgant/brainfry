@@ -19,7 +19,9 @@ export const createAndSignInUser = async (auth: Auth): Promise<User> => {
 };
 
 const RADIX = 36; // Convert number to string using digits and lower case letters
-const LENGTH = 6;
-export const generateRandomEmail = (prefix: string): string => `${prefix}-${Math.random().toString(RADIX).slice(0, LENGTH)}@test.email`;
+const SKIP_WHOLE_NUM = 2;
+const END_INDEX = 8; // END_INDEX - SKIP_WHOLE_NUM = Total length of 6
+export const generateRandomEmail = (prefix: string): string =>
+  `${prefix}-${Math.random().toString(RADIX).slice(SKIP_WHOLE_NUM, END_INDEX)}@test.email`;
 
 export const TEST_USER_PASSWORD = 'p/V8L5tk15*q';

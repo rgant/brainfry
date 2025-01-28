@@ -5,6 +5,8 @@
       <form
         (ngSubmit)="onSubmit(user)"
         [formGroup]="changeEmailForm"
+        [attr.aria-invalid]="$formEmailsInvalid()"
+        aria-describedby="frm-msgs"
         aria-label="Change Email"
         i18n-aria-label="aria-label|Form to change email for user account@@form.role.changeEmail"
       >
@@ -119,6 +121,15 @@
             }
           </span>
         </p>
+
+        <div class="frm-alerts" id="frm-msgs">
+          @if ($formEmailsInvalid()) {
+            <span class="form-alerts" i18n="form field error message|Both email fields in form must match@@formErrors.emailsmatch">
+              Emails must match.
+            </span>
+          }
+        </div>
+
 
         @if ($errorCode(); as errorCode) {
           <p class="alert">
