@@ -51,6 +51,7 @@ export class ActionsComponent {
     this._modePaths = {
       recoverEmail: '/recover-email',
       resetPassword: '/reset-password',
+      verifyAndChangeEmail: '/verify-email',
       verifyEmail: '/verify-email',
     };
     this._router = inject(Router);

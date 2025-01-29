@@ -11,7 +11,7 @@ import {
   EmailAuthProvider,
   user as getUser$,
   reauthenticateWithCredential,
-  updateEmail,
+  verifyBeforeUpdateEmail,
 } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -30,6 +30,8 @@ type ChangeEmailFormGroup = FormGroup<{
   email2: FormControl<string | null>;
   password: FormControl<string | null>;
 }>;
+
+type VerifyStatuses = 'sending' | 'sent' | 'unsent';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,7 +53,7 @@ export class ChangeEmailComponent {
   public readonly $formEmailsInvalid: Signal<boolean>;
   public readonly $passwordCntrlErrors: Signal<ValidationErrors | undefined>;
   public readonly $passwordCntrlInvalid: Signal<boolean>;
-  public readonly $showForm: WritableSignal<boolean>;
+  public readonly $verificationStatus: WritableSignal<VerifyStatuses>;
   public readonly changeEmailForm: ChangeEmailFormGroup;
   public readonly email1Cntrl: FormControl<string | null>;
   public readonly email2Cntrl: FormControl<string | null>;
@@ -81,7 +83,7 @@ export class ChangeEmailComponent {
     this.$formEmailsInvalid = confirmMatchFormErrors(this.changeEmailForm, this.email1Cntrl, this.email2Cntrl);
 
     this.$errorCode = signal<string>('');
-    this.$showForm = signal<boolean>(true);
+    this.$verificationStatus = signal<VerifyStatuses>('unsent');
 
     // Not handling non-logged in users because the Route guards should.
     this.user$ = getUser$(this._auth);
@@ -96,19 +98,18 @@ export class ChangeEmailComponent {
       throw new Error('Invalid form submitted');
     }
 
-    this.$showForm.set(false);
     this.$errorCode.set(''); // Clear out any existing errors
+    this.$verificationStatus.set('sending');
 
     try {
       const emailCreds = EmailAuthProvider.credential(user.email, password);
       const credentials = await reauthenticateWithCredential(user, emailCreds);
-      // const credentials = await signInWithEmailAndPassword(this._auth, user.email ?? '', password);
-      await updateEmail(credentials.user, email1);
+      await verifyBeforeUpdateEmail(credentials.user, email1);
+      this.$verificationStatus.set('sent');
     } catch (err: unknown) {
       const code = getErrorCode(err);
       this.$errorCode.set(code);
+      this.$verificationStatus.set('unsent');
     }
-
-    this.$showForm.set(true);
   }
 }

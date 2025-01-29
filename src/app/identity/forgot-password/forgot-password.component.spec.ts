@@ -64,6 +64,8 @@ describe('ForgotPasswordComponent', (): void => {
     await promise;
 
     expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    // This error is only thrown because the emulator isn't setup to enable enumerated email protection.
+    // https://firebase.google.com/docs/reference/js/auth.md#sendpasswordresetemail_95b079b
     expect(component.$errorCode()).withContext('$errorCode').toBe('auth/user-not-found');
   });
 

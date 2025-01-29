@@ -68,6 +68,12 @@
         </span>
       </p>
 
+      @if ($errorCode(); as errorCode) {
+        <p class="alert">
+          <app-auth-error-messages [$code]="errorCode" />
+        </p>
+      }
+
       <p class="card-actions">
         <button
           [disabled]="loginForm.invalid"

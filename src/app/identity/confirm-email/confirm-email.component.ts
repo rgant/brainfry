@@ -46,12 +46,14 @@ export class ConfirmEmailComponent {
   public async sendConfirmEmail(user: User): Promise<void> {
     this.$errorCode.set(''); // Clear out any existing errors
     this.$verificationStatus.set('sending');
+
     try {
       await sendEmailVerification(user);
     } catch (err: unknown) {
       const code = getErrorCode(err);
       this.$errorCode.set(code);
     }
+
     this.$verificationStatus.set('sent');
   }
 }

@@ -118,6 +118,16 @@
     </ng-container>
   }
 
+  @case ('auth/invalid-credential') {
+    <ng-container
+      i18n="error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-credential"
+    >
+      The information supplied is incorrect. Please try again.
+    </ng-container>
+  }
+
   @case ('auth/password-does-not-meet-requirements') {
     <ng-container
       i18n="

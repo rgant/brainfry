@@ -1,7 +1,8 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
-import { Auth } from '@angular/fire/auth';
+import { Auth, signOut } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
+import { firstValueFrom } from 'rxjs';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
 import { FORMS, PASSWORDS } from '@app/shared/constants';
@@ -10,6 +11,7 @@ import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/ut
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { emailControlTest, emailErrorMessagesTest, emailInputTest } from '../testing/email-field.spec';
+import { findOobCode } from '../testing/oob-codes.spec';
 import { passwordControlTest, passwordErrorMessagesTest, passwordInputTest } from '../testing/password-field.spec';
 import {
   cleanupUsers,
@@ -91,65 +93,69 @@ describe('ChangeEmailComponent', (): void => {
     await expectAsync(component.onSubmit(testUser)).toBeRejectedWithError('Invalid form submitted');
   });
 
-  it('should update email', async (): Promise<void> => {
-    interface ReloadUserInfo { reloadUserInfo: { lastLoginAt: number } }
-    // @ts-expect-error accessing private property for testing reauthenticateWithCredential
-    const { reloadUserInfo: { lastLoginAt: beforelastLoginAt } }: ReloadUserInfo = testUser;
+  it('should send change email verification message', async (): Promise<void> => {
     const newEmail = generateRandomEmail('new'); // Generate a new email address each time for multiple test runs.
     component.changeEmailForm.setValue({ email1: newEmail, email2: newEmail, password: TEST_USER_PASSWORD });
 
-    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('unsent');
     expect(component.$errorCode()).withContext('$errorCode').toBe('');
 
     const promise = component.onSubmit(testUser);
 
-    expect(component.$showForm()).withContext('$showForm').toBeFalse();
+    expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('sending');
     expect(component.$errorCode()).withContext('$errorCode').toBe('');
 
     await promise;
-    // @ts-expect-error accessing private property for testing reauthenticateWithCredential
-    const { reloadUserInfo: { lastLoginAt: afterlastLoginAt } }: ReloadUserInfo = testUser;
+    const oobCode = await findOobCode(testUser.email ?? 'unknwon', 'verifyBeforeUpdateEmail');
 
-    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('sent');
     expect(component.$errorCode()).withContext('$errorCode').toBe('');
-    expect(auth.currentUser?.email).withContext('currentUser.email').toBe(newEmail);
-    expect(afterlastLoginAt).withContext('user.lastLoginAt').toBeGreaterThan(beforelastLoginAt);
+    expect(oobCode).withContext('oobCode for password reset email').toBeTruthy();
+
+    // Prevent cross test pollution because it seems users can remain logged in across tests.
+    await signOut(auth);
   });
 
   it('should handle reauthenticate errors', async (): Promise<void> => {
     const newEmail = generateRandomEmail('new'); // Generate a new email address each time for multiple test runs.
     component.changeEmailForm.setValue({ email1: newEmail, email2: newEmail, password: 'c17E5bbf9%cf' });
 
-    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('unsent');
     expect(component.$errorCode()).withContext('$errorCode').toBe('');
 
     const promise = component.onSubmit(testUser);
 
-    expect(component.$showForm()).withContext('$showForm').toBeFalse();
+    expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('sending');
     expect(component.$errorCode()).withContext('$errorCode').toBe('');
 
     await promise;
 
-    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('unsent');
     expect(component.$errorCode()).withContext('$errorCode').toBe('auth/wrong-password');
+
+    // Prevent cross test pollution because it seems users can remain logged in across tests.
+    await signOut(auth);
   });
 
   it('should handle update email errors', async (): Promise<void> => {
     const newEmail = DEFAULT_TEST_USER.email;
     component.changeEmailForm.setValue({ email1: newEmail, email2: newEmail, password: TEST_USER_PASSWORD });
 
-    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('unsent');
     expect(component.$errorCode()).withContext('$errorCode').toBe('');
 
     const promise = component.onSubmit(testUser);
 
-    expect(component.$showForm()).withContext('$showForm').toBeFalse();
+    expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('sending');
     expect(component.$errorCode()).withContext('$errorCode').toBe('');
 
     await promise;
 
-    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('unsent');
     expect(component.$errorCode()).withContext('$errorCode').toBe('auth/email-already-in-use');
+
+    // Prevent cross test pollution because it seems users can remain logged in across tests.
+    await signOut(auth);
   });
 
   it('should display current email', (): void => {
@@ -163,6 +169,22 @@ describe('ChangeEmailComponent', (): void => {
 
     expect(safeQuerySelector(oldEmailEl, 'label').textContent).toContain('Current email');
     expect(safeQuerySelector<HTMLInputElement>(oldEmailEl, 'input').value).toContain(email);
+  });
+
+  it('should display spinner while waiting for user', async (): Promise<void> => {
+    // This test is being done in reverse with the signed in state before the signed out spinner
+    // because of how the test state is setup.
+    const compiled = getCompiled(fixture);
+
+    expect(compiled.querySelector('.main-card app-spinner')).withContext('.main-card app-spinner').toBeNull();
+    expect(compiled.querySelector('form')).withContext('form').toBeTruthy();
+
+    await signOut(auth);
+    await firstValueFrom(component.user$); // Wait for the Observable to recognize that we have logged out.
+    fixture.detectChanges();
+
+    expect(compiled.querySelector('.main-card app-spinner')).withContext('.main-card app-spinner').toBeTruthy();
+    expect(compiled.querySelector('form')).withContext('form').toBeNull();
   });
 
   for (const setup of emailFields) {
@@ -248,5 +270,28 @@ describe('ChangeEmailComponent', (): void => {
     // Properties like `reloadUserInfo.lastLoginAt`, `reloadUserInfo.lastRefreshAt`,
     // `stsTokenManager.expirationTime`, and `metadata.lastLoginAt` all differ.
     expect(submitSpy).toHaveBeenCalledOnceWith(jasmine.objectContaining({ uid: testUser.uid }));
+  });
+
+  it('should display spinner while sending state', (): void => {
+    const compiled = getCompiled(fixture);
+
+    expect(compiled.querySelector('app-spinner')).withContext('app-spinner').toBeNull();
+    expect(compiled.querySelector('.main-card')).withContext('.main-card').toBeTruthy();
+
+    component.$verificationStatus.set('sending');
+    fixture.detectChanges();
+
+    expect(compiled.querySelector('app-spinner')).withContext('app-spinner').toBeTruthy();
+    expect(compiled.querySelector('.main-card')).withContext('.main-card').toBeNull();
+  });
+
+  it('should display sucess message', (): void => {
+    component.changeEmailForm.setValue({ email1: '7f89@47d3.8c5b', email2: '7f89@47d3.8c5b', password: 'd738a198-13839d04e1F8' });
+    component.$verificationStatus.set('sent');
+    fixture.detectChanges();
+
+    const compiled = getCompiled(fixture);
+
+    expect(safeQuerySelector(compiled, 'p').textContent).withContext('p').toContain('click the link in the email sent to 7f89@47d3.8c5b.');
   });
 });

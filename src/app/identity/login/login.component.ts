@@ -13,7 +13,9 @@ import { Router, RouterLink } from '@angular/router';
 
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
+import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
 import { createEmailControl, createPasswordControl, PASSWORDS } from '../identity-forms';
+import { getErrorCode } from '../error-code';
 
 type LoginFormGroup = FormGroup<{
   email: FormControl<string | null>;
@@ -22,13 +24,19 @@ type LoginFormGroup = FormGroup<{
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ ReactiveFormsModule, RouterLink, SpinnerComponent ],
+  imports: [
+    AuthErrorMessagesComponent,
+    ReactiveFormsModule,
+    RouterLink,
+    SpinnerComponent,
+  ],
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
   public readonly $emailCntrlErrors: Signal<ValidationErrors | undefined>;
   public readonly $emailCntrlInvalid: Signal<boolean>;
+  public readonly $errorCode: WritableSignal<string>;
   public readonly $passwordCntrlErrors: Signal<ValidationErrors | undefined>;
   public readonly $passwordCntrlInvalid: Signal<boolean>;
   public readonly $showForm: WritableSignal<boolean>;
@@ -54,6 +62,8 @@ export class LoginComponent {
       email: this.emailCntrl,
       password: this.passwordCntrl,
     });
+
+    this.$errorCode = signal<string>('');
   }
 
   public async onSubmit(): Promise<void> {
@@ -64,9 +74,16 @@ export class LoginComponent {
       throw new Error('Invalid form submitted');
     }
 
+    this.$errorCode.set(''); // Clear out any existing errors
     this.$showForm.set(false);
 
-    await signInWithEmailAndPassword(this._auth, email, password);
-    await this._router.navigateByUrl(this.next());
+    try {
+      await signInWithEmailAndPassword(this._auth, email, password);
+      await this._router.navigateByUrl(this.next());
+    } catch (err: unknown) {
+      const code = getErrorCode(err);
+      this.$errorCode.set(code);
+      this.$showForm.set(true);
+    }
   }
 }

@@ -29,6 +29,53 @@ describe('LoginComponent', (): void => {
     fixture.detectChanges();
   });
 
+  it('should error on submit of invalid form', async (): Promise<void> => {
+    await expectAsync(component.onSubmit()).toBeRejectedWithError('Invalid form submitted');
+  });
+
+  it('should submit form', async (): Promise<void> => {
+    const auth = TestBed.inject(Auth);
+    const router = TestBed.inject(Router);
+    const navigateSpy = spyOn(router, 'navigateByUrl').and.resolveTo(true);
+
+    // Prevent cross test pollution because it seems users can remain logged in across tests.
+    await signOut(auth);
+
+    expect(auth.currentUser).withContext('Auth.currentUser').toBeNull();
+
+    component.loginForm.setValue({ email: DEFAULT_TEST_USER.email, password: DEFAULT_TEST_USER.password });
+    await component.onSubmit();
+
+    expect(auth.currentUser?.uid).withContext('Auth.currentUser').toBe(DEFAULT_TEST_USER.userId);
+    expect(navigateSpy).withContext('navigateByUrl').toHaveBeenCalledOnceWith('/');
+
+    // Prevent cross test pollution because it seems users can remain logged in across tests.
+    await signOut(auth);
+  });
+
+  it('should handle authentication errors', async (): Promise<void> => {
+    const auth = TestBed.inject(Auth);
+
+    component.loginForm.setValue({ email: '6a08@48ea.bf11', password: 'c17E5bbf9%cf' });
+
+    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+
+    const promise = component.onSubmit();
+
+    expect(component.$showForm()).withContext('$showForm').toBeFalse();
+    expect(component.$errorCode()).withContext('$errorCode').toBe('');
+
+    await promise;
+
+    expect(component.$showForm()).withContext('$showForm').toBeTrue();
+    // This error is only thrown because the emulator isn't setup to enable enumerated email protection.
+    expect(component.$errorCode()).withContext('$errorCode').toBe('auth/user-not-found');
+
+    // Prevent cross test pollution because it seems users can remain logged in across tests.
+    await signOut(auth);
+  });
+
   it('should configure email FormControl', (): void => {
     emailControlTest(component.emailCntrl);
   });
@@ -76,28 +123,13 @@ describe('LoginComponent', (): void => {
     expect(component.loginForm.valid).withContext('valid').toBeTrue();
   });
 
-  it('should error on submit of invalid form', async (): Promise<void> => {
-    await expectAsync(component.onSubmit()).toBeRejectedWithError('Invalid form submitted');
-  });
+  it('should display submit errors', (): void => {
+    component.$errorCode.set('auth/wrong-password');
+    fixture.detectChanges();
 
-  it('should submit form', async (): Promise<void> => {
-    const auth = TestBed.inject(Auth);
-    const router = TestBed.inject(Router);
-    const navigateSpy = spyOn(router, 'navigateByUrl').and.resolveTo(true);
+    const compiled = getCompiled(fixture);
 
-    // Prevent cross test pollution because it seems users can remain logged in across tests.
-    await signOut(auth);
-
-    expect(auth.currentUser).withContext('Auth.currentUser').toBeNull();
-
-    component.loginForm.setValue({ email: DEFAULT_TEST_USER.email, password: DEFAULT_TEST_USER.password });
-    await component.onSubmit();
-
-    expect(auth.currentUser?.uid).withContext('Auth.currentUser').toBe(DEFAULT_TEST_USER.userId);
-    expect(navigateSpy).withContext('navigateByUrl').toHaveBeenCalledOnceWith('/');
-
-    // Prevent cross test pollution because it seems users can remain logged in across tests.
-    await signOut(auth);
+    expect(safeQuerySelector(compiled, '.alert').textContent).toContain('The password is invalid or the user does not have a password.');
   });
 
   it('should configure submit button', (): void => {

@@ -2,7 +2,7 @@
  * Default text for these codes come from:
  * https://github.com/firebase/firebase-js-sdk/blob/105d248bd4ddf5d38d5fa7b8a3ec57af2abf459a/packages/auth/src/core/errors.ts
  *
- * The lists below is not the correct one for the client errors!
+ * The links below are not the correct lists for the client errors!
  * https://firebase.google.com/docs/auth/admin/errors
  * https://firebase.google.com/docs/reference/node/firebase.auth.Error
  */

@@ -1,9 +1,14 @@
-import { sendEmailVerification, sendPasswordResetEmail, updateEmail } from '@angular/fire/auth';
+import {
+  sendEmailVerification,
+  sendPasswordResetEmail,
+  updateEmail,
+  verifyBeforeUpdateEmail,
+} from '@angular/fire/auth';
 import type { Auth, User } from '@angular/fire/auth';
 
 import { cleanupUsers, createAndSignInUser, generateRandomEmail } from './test-users.spec';
 
-type ActionFunctions = 'sendEmailVerification' | 'sendPasswordResetEmail' | 'updateEmail';
+type ActionFunctions = 'sendEmailVerification' | 'sendPasswordResetEmail' | 'updateEmail' | 'verifyBeforeUpdateEmail';
 
 interface EmulatorOobCodes {
   oobCodes: OoBCodePayload[];
@@ -26,6 +31,12 @@ const doAction = async (action: Omit<ActionFunctions, 'sendPasswordResetEmail'>,
     case 'updateEmail': {
       const newEmail = generateRandomEmail('new');
       await updateEmail(user, newEmail);
+      break;
+    }
+
+    case 'verifyBeforeUpdateEmail': {
+      const newEmail = generateRandomEmail('new');
+      await verifyBeforeUpdateEmail(user, newEmail);
       break;
     }
   }
@@ -78,6 +89,10 @@ const getRequestType = (action: ActionFunctions): string => {
 
     case 'updateEmail': {
       return 'RECOVER_EMAIL';
+    }
+
+    case 'verifyBeforeUpdateEmail': {
+      return 'VERIFY_AND_CHANGE_EMAIL';
     }
   }
 };
