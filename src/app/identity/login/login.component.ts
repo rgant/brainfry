@@ -14,8 +14,8 @@ import { Router, RouterLink } from '@angular/router';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
 import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
-import { createEmailControl, createPasswordControl, PASSWORDS } from '../identity-forms';
 import { getErrorCode } from '../error-code';
+import { createEmailControl, createPasswordControl, PASSWORDS } from '../identity-forms';
 
 type LoginFormGroup = FormGroup<{
   email: FormControl<string | null>;

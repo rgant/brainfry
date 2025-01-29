@@ -242,7 +242,18 @@
         <source> The email address is badly formatted. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">117,125</context>
+          <context context-type="linenumber">117,124</context>
+        </context-group>
+        <note priority="1" from="description">Friendly error message to display based on errors from backend
+        </note>
+        <note priority="1" from="meaning">error message from Firebase
+        </note>
+      </trans-unit>
+      <trans-unit id="firebase.errorMsg.invalid-credential" datatype="html">
+        <source> The information supplied is incorrect. Please try again. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
+          <context context-type="linenumber">127,135</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -253,7 +264,7 @@
         <source> The password does not meet the requirements. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">128,136</context>
+          <context context-type="linenumber">138,146</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -264,7 +275,7 @@
         <source> The action code is invalid. This can happen if the code is malformed, expired, or has already been used. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">139,146</context>
+          <context context-type="linenumber">149,156</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -275,7 +286,7 @@
         <source> The password is invalid or the user does not have a password. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">149,157</context>
+          <context context-type="linenumber">159,167</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -286,7 +297,7 @@
         <source> The format of the phone number provided is incorrect. Please enter the phone number in a format that can be parsed into E.164 format. E.164 phone numbers are written in the format [+][country code][subscriber number including area code]. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">160,169</context>
+          <context context-type="linenumber">170,179</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -297,7 +308,7 @@
         <source> The email corresponding to this action failed to send as the provided recipient email address is invalid. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">172,180</context>
+          <context context-type="linenumber">182,190</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -308,7 +319,7 @@
         <source> To send verification codes, provide a phone number for the recipient. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">183,190</context>
+          <context context-type="linenumber">193,200</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -319,7 +330,7 @@
         <source> Proof of ownership of a second factor is required to complete sign-in. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">193,201</context>
+          <context context-type="linenumber">203,211</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -330,7 +341,7 @@
         <source> An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">204,213</context>
+          <context context-type="linenumber">214,223</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -341,7 +352,7 @@
         <source> A network error (such as timeout, interrupted connection or unreachable host) has occurred. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">216,223</context>
+          <context context-type="linenumber">226,233</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -352,7 +363,7 @@
         <source> Unable to establish a connection with the popup. It may have been blocked by the browser. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">226,234</context>
+          <context context-type="linenumber">236,244</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -363,7 +374,7 @@
         <source> The popup has been closed by your before finalizing the operation. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">237,244</context>
+          <context context-type="linenumber">247,254</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -374,7 +385,7 @@
         <source> The project’s quota for this operation has been exceeded. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">247,255</context>
+          <context context-type="linenumber">257,265</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -385,7 +396,7 @@
         <source> The redirect operation has been cancelled by you before finalizing. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">258,266</context>
+          <context context-type="linenumber">268,276</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -396,7 +407,7 @@
         <source> A redirect sign-in operation is already pending. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">269,276</context>
+          <context context-type="linenumber">279,286</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -407,7 +418,7 @@
         <source> The operation has timed out. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">279,287</context>
+          <context context-type="linenumber">289,297</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -418,7 +429,7 @@
         <source> Your credentials is no longer valid. You must sign in again. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">290,297</context>
+          <context context-type="linenumber">300,307</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -429,7 +440,7 @@
         <source> We have blocked all requests from this device due to unusual activity. Try again later. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">300,307</context>
+          <context context-type="linenumber">310,317</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -440,7 +451,7 @@
         <source> The operation requires a verified email. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">310,317</context>
+          <context context-type="linenumber">320,327</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -451,7 +462,7 @@
         <source> You did not grant your application the permissions it requested. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">320,327</context>
+          <context context-type="linenumber">330,337</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -462,7 +473,7 @@
         <source> There is no user record corresponding to this identifier. The user may have been deleted. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">330,337</context>
+          <context context-type="linenumber">340,347</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -473,7 +484,7 @@
         <source> The user account has been disabled by an administrator. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">340,347</context>
+          <context context-type="linenumber">350,357</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -484,7 +495,7 @@
         <source> The supplied credentials do not correspond to the previously signed in user. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">350,357</context>
+          <context context-type="linenumber">360,367</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -495,7 +506,7 @@
         <source> The password must be 12 characters long or more. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">360,368</context>
+          <context context-type="linenumber">370,378</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -506,7 +517,7 @@
         <source> This browser is not supported or 3rd party cookies and data may be disabled. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">371,378</context>
+          <context context-type="linenumber">381,388</context>
         </context-group>
         <note priority="1" from="description">Friendly error message to display based on errors from backend
         </note>
@@ -517,7 +528,7 @@
         <source> A problem occurred. Please refresh and try again. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/auth-error-messages/auth-error-messages.component.html</context>
-          <context context-type="linenumber">380,384</context>
+          <context context-type="linenumber">390,394</context>
         </context-group>
         <note priority="1" from="description">Unknown error code
       </note>
@@ -528,16 +539,25 @@
         <source>Change your email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">3,6</context>
+          <context context-type="linenumber">4,7</context>
         </context-group>
         <note priority="1" from="description">Form to update account email</note>
         <note priority="1" from="meaning">page heading 2</note>
+      </trans-unit>
+      <trans-unit id="changeEmail.explaination" datatype="html">
+        <source> To confirm that your new email address is valid we will send an email to your new address with a verification link. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
+          <context context-type="linenumber">8,12</context>
+        </context-group>
+        <note priority="1" from="description">explain email verify before change process</note>
+        <note priority="1" from="meaning">paragraph text</note>
       </trans-unit>
       <trans-unit id="form.role.changeEmail" datatype="html">
         <source>Change Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">10,11</context>
+          <context context-type="linenumber">15,16</context>
         </context-group>
         <note priority="1" from="description">Form to change email for user account</note>
         <note priority="1" from="meaning">aria-label</note>
@@ -546,7 +566,7 @@
         <source>Current email:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">15,16</context>
+          <context context-type="linenumber">20,21</context>
         </context-group>
         <note priority="1" from="description">Current user account email</note>
         <note priority="1" from="meaning">form field label</note>
@@ -555,7 +575,7 @@
         <source>New email:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">21,23</context>
+          <context context-type="linenumber">26,28</context>
         </context-group>
         <note priority="1" from="description">Change email form new email</note>
         <note priority="1" from="meaning">form field label</note>
@@ -564,7 +584,7 @@
         <source> Please enter your new email address. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">37,40</context>
+          <context context-type="linenumber">42,45</context>
         </context-group>
         <note priority="1" from="description">Email is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -573,11 +593,11 @@
         <source> Please enter a valid email address. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">42,45</context>
+          <context context-type="linenumber">47,50</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">72,75</context>
+          <context context-type="linenumber">77,80</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/forgot-password/forgot-password.component.html</context>
@@ -594,7 +614,7 @@
         <source>Confirm email:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">51,53</context>
+          <context context-type="linenumber">56,58</context>
         </context-group>
         <note priority="1" from="description">Change email form new email</note>
         <note priority="1" from="meaning">form field label</note>
@@ -603,7 +623,7 @@
         <source> Please re-enter your new email address. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">67,70</context>
+          <context context-type="linenumber">72,75</context>
         </context-group>
         <note priority="1" from="description">Email is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -612,7 +632,7 @@
         <source> Emails must match. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">83,89</context>
+          <context context-type="linenumber">88,93</context>
         </context-group>
         <note priority="1" from="description">Both email fields in form must match</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -621,7 +641,7 @@
         <source>Password:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">89,91</context>
+          <context context-type="linenumber">94,96</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
@@ -634,7 +654,7 @@
         <source> Please enter your password. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">106,109</context>
+          <context context-type="linenumber">111,114</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
@@ -647,7 +667,7 @@
         <source> Please enter a password that contains at least <x id="INTERPOLATION" equiv-text="{{ minPasswordLength }}"/> characters and a combination of upper and lowercase letters, numbers, and symbols. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">111,112</context>
+          <context context-type="linenumber">116,117</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
@@ -680,7 +700,7 @@
         <source> Your password may not be longer than <x id="INTERPOLATION" equiv-text="{{ maxPasswordLength }}"/> characters. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">117,118</context>
+          <context context-type="linenumber">122,123</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-password/change-password.component.html</context>
@@ -713,7 +733,7 @@
         <source> Emails must match. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">128,134</context>
+          <context context-type="linenumber">133,138</context>
         </context-group>
         <note priority="1" from="description">Both email fields in form must match</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -722,10 +742,19 @@
         <source> Change email </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
-          <context context-type="linenumber">147,154</context>
+          <context context-type="linenumber">151,156</context>
         </context-group>
         <note priority="1" from="description">Change account email form submit button</note>
         <note priority="1" from="meaning">form submit button</note>
+      </trans-unit>
+      <trans-unit id="changeEmail.notification" datatype="html">
+        <source> To complete your email address change click the link in the email sent to <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION" equiv-text="{{ email1Cntrl.value }}"/><x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>. Please check your email inbox and spam folder in a few minutes. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/change-email/change-email.component.html</context>
+          <context context-type="linenumber">160,164</context>
+        </context-group>
+        <note priority="1" from="description">notify that verify email was sent</note>
+        <note priority="1" from="meaning">paragraph text</note>
       </trans-unit>
       <trans-unit id="changePassword.heading" datatype="html">
         <source>Change your password</source>
@@ -974,7 +1003,7 @@
         <source> Login </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">78,83</context>
+          <context context-type="linenumber">84,89</context>
         </context-group>
         <note priority="1" from="description">Email and password login form submit button</note>
         <note priority="1" from="meaning">form submit button</note>
@@ -983,7 +1012,7 @@
         <source> Forgot your password? </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">84,91</context>
+          <context context-type="linenumber">90,97</context>
         </context-group>
         <note priority="1" from="description">Link to page to recover password</note>
         <note priority="1" from="meaning">navigation link</note>
