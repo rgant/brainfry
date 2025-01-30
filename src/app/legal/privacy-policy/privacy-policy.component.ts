@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [ RouterLink ],
   selector: 'app-privacy-policy',
-  styleUrl: './privacy-policy.component.scss',
   templateUrl: './privacy-policy.component.html',
 })
 export class PrivacyPolicyComponent {}

@@ -6,7 +6,7 @@
         <source>Forgot Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">39</context>
         </context-group>
         <note priority="1" from="description">Send password recover email</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -15,7 +15,7 @@
         <source>Login</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">44</context>
         </context-group>
         <note priority="1" from="description">Login to application</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -24,7 +24,7 @@
         <source>Reset Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">49</context>
         </context-group>
         <note priority="1" from="description">Reset forgotten password</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -33,7 +33,7 @@
         <source>Change your email address</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">64</context>
         </context-group>
         <note priority="1" from="description">Change account email address</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -42,7 +42,7 @@
         <source>Change your password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">69</context>
         </context-group>
         <note priority="1" from="description">Change account password</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -51,16 +51,25 @@
         <source>Dashboard</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">74</context>
         </context-group>
         <note priority="1" from="description">Default page for user showing key information</note>
+        <note priority="1" from="meaning">HTML title tag</note>
+      </trans-unit>
+      <trans-unit id="htmlTitle.delete-account" datatype="html">
+        <source>Delete your account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+        <note priority="1" from="description">Delete account</note>
         <note priority="1" from="meaning">HTML title tag</note>
       </trans-unit>
       <trans-unit id="htmlTitle.logout" datatype="html">
         <source>Logout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">85</context>
         </context-group>
         <note priority="1" from="description">Logout of session</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -69,7 +78,7 @@
         <source>Your Profile</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">90</context>
         </context-group>
         <note priority="1" from="description">Page displaying your user profile</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -78,7 +87,7 @@
         <source>Confirm Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">106</context>
+          <context context-type="linenumber">112</context>
         </context-group>
         <note priority="1" from="description">Send email confirming address access</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -87,7 +96,7 @@
         <source>Privacy Policy</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">111</context>
+          <context context-type="linenumber">117</context>
         </context-group>
         <note priority="1" from="description">Legal document page</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -96,7 +105,7 @@
         <source>Recover Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">123</context>
         </context-group>
         <note priority="1" from="description">Reverts email address change</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -105,7 +114,7 @@
         <source>Terms &amp; Conditions</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">122</context>
+          <context context-type="linenumber">128</context>
         </context-group>
         <note priority="1" from="description">Legal document page</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -114,7 +123,7 @@
         <source>Verify Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">128</context>
+          <context context-type="linenumber">134</context>
         </context-group>
         <note priority="1" from="description">Marks email address is verified</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -123,7 +132,7 @@
         <source>Page Not Found</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">133</context>
+          <context context-type="linenumber">139</context>
         </context-group>
         <note priority="1" from="description">Page not found 404 error</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -601,11 +610,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">31,35</context>
+          <context context-type="linenumber">32,36</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">26,30</context>
+          <context context-type="linenumber">27,31</context>
         </context-group>
         <note priority="1" from="description">Email is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -645,7 +654,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">35,37</context>
+          <context context-type="linenumber">36,38</context>
         </context-group>
         <note priority="1" from="description">Login password input</note>
         <note priority="1" from="meaning">form field label</note>
@@ -658,7 +667,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">52,55</context>
+          <context context-type="linenumber">53,56</context>
         </context-group>
         <note priority="1" from="description">Password is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -683,7 +692,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">57,58</context>
+          <context context-type="linenumber">58,59</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/reset-password/reset-password.component.html</context>
@@ -716,7 +725,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">63,64</context>
+          <context context-type="linenumber">64,65</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/reset-password/reset-password.component.html</context>
@@ -933,11 +942,20 @@
         <note priority="1" from="description">send a verification link to user&apos;s email</note>
         <note priority="1" from="meaning">confirm email button</note>
       </trans-unit>
+      <trans-unit id="forgotPassword.header" datatype="html">
+        <source>Recover your password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">3,7</context>
+        </context-group>
+        <note priority="1" from="description">Recover forgotten password</note>
+        <note priority="1" from="meaning">page heading 2</note>
+      </trans-unit>
       <trans-unit id="form.role.forgotPassword" datatype="html">
         <source>Forgot Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">6,7</context>
+          <context context-type="linenumber">7,8</context>
         </context-group>
         <note priority="1" from="description">Form to request email to reset password of user account</note>
         <note priority="1" from="meaning">aria-label</note>
@@ -946,11 +964,11 @@
         <source>Email:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">10,12</context>
+          <context context-type="linenumber">11,13</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">5,7</context>
+          <context context-type="linenumber">6,8</context>
         </context-group>
         <note priority="1" from="description">Forgot password email input</note>
         <note priority="1" from="meaning">form field label</note>
@@ -959,11 +977,11 @@
         <source> Please enter your email address. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">26,29</context>
+          <context context-type="linenumber">27,30</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">21,24</context>
+          <context context-type="linenumber">22,25</context>
         </context-group>
         <note priority="1" from="description">Email is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
@@ -972,7 +990,7 @@
         <source> Send password reset email </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">52,56</context>
+          <context context-type="linenumber">53,57</context>
         </context-group>
         <note priority="1" from="description">Send email to user</note>
         <note priority="1" from="meaning">form submit button</note>
@@ -981,7 +999,7 @@
         <source>Return to login</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">57,63</context>
+          <context context-type="linenumber">58,64</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/reset-password/reset-password.component.html</context>
@@ -990,11 +1008,20 @@
         <note priority="1" from="description">Link to login page</note>
         <note priority="1" from="meaning">navigation link</note>
       </trans-unit>
+      <trans-unit id="loginPage.header" datatype="html">
+        <source>Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <note priority="1" from="description">Login to account</note>
+        <note priority="1" from="meaning">page heading 2</note>
+      </trans-unit>
       <trans-unit id="form.role.login" datatype="html">
         <source>Login</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">4</context>
         </context-group>
         <note priority="1" from="description">Form to login</note>
         <note priority="1" from="meaning">aria-label</note>
@@ -1003,7 +1030,7 @@
         <source> Login </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">84,89</context>
+          <context context-type="linenumber">85,90</context>
         </context-group>
         <note priority="1" from="description">Email and password login form submit button</note>
         <note priority="1" from="meaning">form submit button</note>
@@ -1012,7 +1039,7 @@
         <source> Forgot your password? </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/login/login.component.html</context>
-          <context context-type="linenumber">90,97</context>
+          <context context-type="linenumber">91,98</context>
         </context-group>
         <note priority="1" from="description">Link to page to recover password</note>
         <note priority="1" from="meaning">navigation link</note>
@@ -1189,6 +1216,51 @@
         <note priority="1" from="description">Password reset success</note>
         <note priority="1" from="meaning">page heading 2</note>
       </trans-unit>
+      <trans-unit id="userProfile.header" datatype="html">
+        <source>Your Profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/user-profile/user-profile.component.html</context>
+          <context context-type="linenumber">3,6</context>
+        </context-group>
+        <note priority="1" from="description">Update user profile</note>
+        <note priority="1" from="meaning">page heading 2</note>
+      </trans-unit>
+      <trans-unit id="form.role.updateProfile" datatype="html">
+        <source>Change Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/user-profile/user-profile.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+        <note priority="1" from="description">Form to update user profile</note>
+        <note priority="1" from="meaning">aria-label</note>
+      </trans-unit>
+      <trans-unit id="fields.displayName" datatype="html">
+        <source>Your name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/user-profile/user-profile.component.html</context>
+          <context context-type="linenumber">13,15</context>
+        </context-group>
+        <note priority="1" from="description">Profile display name field</note>
+        <note priority="1" from="meaning">form field label</note>
+      </trans-unit>
+      <trans-unit id="formErrors.displayName.required" datatype="html">
+        <source> Tell use how you would like to be addressed </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/user-profile/user-profile.component.html</context>
+          <context context-type="linenumber">28,32</context>
+        </context-group>
+        <note priority="1" from="description">Name is a required field</note>
+        <note priority="1" from="meaning">form field error message</note>
+      </trans-unit>
+      <trans-unit id="buttons.updateProfile" datatype="html">
+        <source> Update profile </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/user-profile/user-profile.component.html</context>
+          <context context-type="linenumber">49,54</context>
+        </context-group>
+        <note priority="1" from="description">update user profile</note>
+        <note priority="1" from="meaning">form submit button</note>
+      </trans-unit>
       <trans-unit id="verifyEmail.successHeader" datatype="html">
         <source> Your email has been verified! </source>
         <context-group purpose="location">
@@ -1349,6 +1421,325 @@
         </context-group>
         <note priority="1" from="description">Primary sidebar of application</note>
         <note priority="1" from="meaning">aria label</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.heading" datatype="html">
+        <source>Privacy Policy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">2,5</context>
+        </context-group>
+        <note priority="1" from="description">Privacy Policy</note>
+        <note priority="1" from="meaning">page heading 2</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.subheading.collected" datatype="html">
+        <source>Types of data we collect</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+        <note priority="1" from="description">Policy subsection</note>
+        <note priority="1" from="meaning">section heading 3</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.content.collected" datatype="html">
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> We use your personal data to provide the Brainfry service. By using Brainfry, you agree to the collection and use of information in accordance with this Privacy Policy. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> While using Brainfry, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to: <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul&gt;"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Email address<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Your name<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Links to your social media accounts<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Usage Data<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/><x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>We may also collect information that your browser sends whenever you visit this website.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">8,22</context>
+        </context-group>
+        <note priority="1" from="description">Notification of data collection policy</note>
+        <note priority="1" from="meaning">section paragraph content</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.subheading.use" datatype="html">
+        <source>Use of your personal data</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+        <note priority="1" from="description">Policy subsection</note>
+        <note priority="1" from="meaning">section heading 3</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.content.use" datatype="html">
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>Brainfry may use personal data for the following purposes:<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul&gt;"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>To provide and maintain our application<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, including to monitor the usage of our application.<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>To manage your Account:<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> to manage your registration as a user of Brainfry. The personal data you provide can give you access to different functionalities that are available to you as a registered user. <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>To contact you:<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> To contact you by email, voice or video calls, text communication, or other equivalent forms of electronic communication, such as a mobile application’s push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation. <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>To manage your requests:<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> To attend and manage your requests.<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>For other purposes<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>: We may use your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve Brainfry, products, services, marketing and your experience. <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/><x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>We may share your personal information in the following situations:<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul&gt;"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>With service providers:<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> We may share your personal information with service providers to monitor and analyze the use of Brainfry. <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>With other users:<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> when you share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside. Similarly, other users will be able to view descriptions of your activity, communicate with you and view your profile. <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>With your consent<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>: We may disclose your personal information for any other purpose with your consent.<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/><x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">28,62</context>
+        </context-group>
+        <note priority="1" from="description">Notification of data use policy</note>
+        <note priority="1" from="meaning">section paragraph content</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.subheading.retention" datatype="html">
+        <source> Retention of your personal data </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">66,68</context>
+        </context-group>
+        <note priority="1" from="description">Policy subsection</note>
+        <note priority="1" from="meaning">section heading 3</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.content.retention" datatype="html">
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> Brainfry will retain your personal data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your personal data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> Brainfry will also retain usage data for internal analysis purposes. Usage data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality, or we are legally obligated to retain this data for longer time periods. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">70,79</context>
+        </context-group>
+        <note priority="1" from="description">Notification of data retention policy</note>
+        <note priority="1" from="meaning">section paragraph content</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.subheading.transfer" datatype="html">
+        <source>Transfer of your personal data</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">83,84</context>
+        </context-group>
+        <note priority="1" from="description">Policy subsection</note>
+        <note priority="1" from="meaning">section heading 3</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.content.transfer" datatype="html">
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> Your information, including personal data, may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> Brainfry will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your personal data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">86,95</context>
+        </context-group>
+        <note priority="1" from="description">Notification of data transfer policy</note>
+        <note priority="1" from="meaning">section paragraph content</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.subheading.deletion" datatype="html">
+        <source>Delete your personal data</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">99,100</context>
+        </context-group>
+        <note priority="1" from="description">Policy subsection</note>
+        <note priority="1" from="meaning">section heading 3</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.content.deletion" datatype="html">
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>You have the right to delete the personal data that you have provided.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> Brainfry gives you the ability to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a routerLink=&quot;/delete-account&quot;&gt;"/>delete<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> certain information about you from within the application. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> You may update, amend, or delete your information at any time by signing in to your account, if you have one, and visiting the account settings section that allows you to manage your personal information. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>Please note, however, that we may need to retain certain information when we have a legal obligation or lawful basis to do so.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">101,111</context>
+        </context-group>
+        <note priority="1" from="description">Notification of data deletion policy</note>
+        <note priority="1" from="meaning">section paragraph content</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.subheading.security" datatype="html">
+        <source>Security of your personal data</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">115,116</context>
+        </context-group>
+        <note priority="1" from="description">Policy subsection</note>
+        <note priority="1" from="meaning">section heading 3</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.content.security" datatype="html">
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> The security of your personal data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal data, we cannot guarantee its absolute security. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">118,122</context>
+        </context-group>
+        <note priority="1" from="description">Notification of data security concerns</note>
+        <note priority="1" from="meaning">section paragraph content</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.subheading.children" datatype="html">
+        <source>Children’s privacy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">126,127</context>
+        </context-group>
+        <note priority="1" from="description">Policy subsection</note>
+        <note priority="1" from="meaning">section heading 3</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.content.children" datatype="html">
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> Brainfry does not permit access for anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If you are a parent or guardian and you are aware that your child has provided us with personal data, take the actions indicated in the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;#data-deletion&quot;&gt;"/>Delete your personal data<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> section to remove that data. If we become aware that we have collected personal data from anyone under the age of 13 without verification of parental consent, we may take steps to remove that information from our servers. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">129,135</context>
+        </context-group>
+        <note priority="1" from="description">Policy on content from children</note>
+        <note priority="1" from="meaning">section paragraph content</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.subheading.changes" datatype="html">
+        <source>Changes to this privacy policy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">139,140</context>
+        </context-group>
+        <note priority="1" from="description">Policy subsection</note>
+        <note priority="1" from="meaning">section heading 3</note>
+      </trans-unit>
+      <trans-unit id="privacyPage.content.changes" datatype="html">
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> We may update our privacy policy from time to time. All changes to this policy are publicly recorded in the version controlled source code <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;https://github.com/rgant/brainfry&quot;&gt;"/>repository<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> for this application. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/> You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page. <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">142,149</context>
+        </context-group>
+        <note priority="1" from="description">Notifcation of changes to privacy policy</note>
+        <note priority="1" from="meaning">section paragraph content</note>
+      </trans-unit>
+      <trans-unit id="links.returnToRoot" datatype="html">
+        <source>Return to Brainfry</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/privacy-policy/privacy-policy.component.html</context>
+          <context context-type="linenumber">152,154</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">51,54</context>
+        </context-group>
+        <note priority="1" from="description">link to root page</note>
+        <note priority="1" from="meaning">link text</note>
+      </trans-unit>
+      <trans-unit id="termsPage.heading" datatype="html">
+        <source>Terms &amp; Conditions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">2,4</context>
+        </context-group>
+        <note priority="1" from="description">Terms and Conditions</note>
+        <note priority="1" from="meaning">page heading 2</note>
+      </trans-unit>
+      <trans-unit id="termsPage.appHeading" datatype="html">
+        <source>The application</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <note priority="1" from="description">Summry of terms for the application</note>
+        <note priority="1" from="meaning">section heading 3</note>
+      </trans-unit>
+      <trans-unit id="termsPage.appTerms" datatype="html">
+        <source> This application is presented for demonstration purposes only. Access may be granted and revoked by the author or designated representatives at any time. There are no warranties express or implied. Use at your own risk. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">6,11</context>
+        </context-group>
+        <note priority="1" from="description">Terms and conditions for the use of the application</note>
+        <note priority="1" from="meaning">paragraph text</note>
+      </trans-unit>
+      <trans-unit id="termsPage.codeHeading" datatype="html">
+        <source>The code</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+        <note priority="1" from="description">Summry of terms for the code</note>
+        <note priority="1" from="meaning">section heading 3</note>
+      </trans-unit>
+      <trans-unit id="termsPage.introduction" datatype="html">
+        <source><x id="START_TAG_ABBR" ctype="x-abbr" equiv-text="&lt;abbr title=&quot;Too Long; Didn’t Read&quot; i18n-title=&quot;abbr title|chat initalizm@@termsPage.abbrTLDR&quot;&gt;"/>TL;DR<x id="CLOSE_TAG_ABBR" ctype="x-abbr" equiv-text="&lt;/abbr&gt;"/> Here’s what the license entails: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">13,16</context>
+        </context-group>
+        <note priority="1" from="description">Introduction of what is about to be summarized</note>
+        <note priority="1" from="meaning">paragraph text</note>
+      </trans-unit>
+      <trans-unit id="termsPage.abbrTLDR" datatype="html">
+        <source>Too Long; Didn’t Read</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">chat initalizm</note>
+        <note priority="1" from="meaning">abbr title</note>
+      </trans-unit>
+      <trans-unit id="termsPage.summary.modification" datatype="html">
+        <source> Anyone can copy, modify and distribute this software. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">18,20</context>
+        </context-group>
+        <note priority="1" from="description">legal summary bullet point of GPL2 license</note>
+        <note priority="1" from="meaning">list item text</note>
+      </trans-unit>
+      <trans-unit id="termsPage.summary.notice" datatype="html">
+        <source> You have to include the license and copyright notice with each and every distribution. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">21,23</context>
+        </context-group>
+        <note priority="1" from="description">legal summary bullet point of GPL2 license</note>
+        <note priority="1" from="meaning">list item text</note>
+      </trans-unit>
+      <trans-unit id="termsPage.summary.privateUse" datatype="html">
+        <source> You can use this software privately. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">24,26</context>
+        </context-group>
+        <note priority="1" from="description">legal summary bullet point of GPL2 license</note>
+        <note priority="1" from="meaning">list item text</note>
+      </trans-unit>
+      <trans-unit id="termsPage.summary.commercialUse" datatype="html">
+        <source> You can use this software for commercial purposes. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">27,29</context>
+        </context-group>
+        <note priority="1" from="description">legal summary bullet point of GPL2 license</note>
+        <note priority="1" from="meaning">list item text</note>
+      </trans-unit>
+      <trans-unit id="termsPage.summary.risks" datatype="html">
+        <source> If you dare build your business solely from this code, you risk open-sourcing the whole code base. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">30,32</context>
+        </context-group>
+        <note priority="1" from="description">legal summary bullet point of GPL2 license</note>
+        <note priority="1" from="meaning">list item text</note>
+      </trans-unit>
+      <trans-unit id="termsPage.summary.changes" datatype="html">
+        <source> If you modify it, you have to indicate changes made to the code. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">33,35</context>
+        </context-group>
+        <note priority="1" from="description">legal summary bullet point of GPL2 license</note>
+        <note priority="1" from="meaning">list item text</note>
+      </trans-unit>
+      <trans-unit id="termsPage.summary.distribution" datatype="html">
+        <source> Any modifications of this code base MUST be distributed with the same license, GPLv3. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">36,38</context>
+        </context-group>
+        <note priority="1" from="description">legal summary bullet point of GPL2 license</note>
+        <note priority="1" from="meaning">list item text</note>
+      </trans-unit>
+      <trans-unit id="termsPage.summary.warranty" datatype="html">
+        <source> This software is provided without warranty. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">39,41</context>
+        </context-group>
+        <note priority="1" from="description">legal summary bullet point of GPL2 license</note>
+        <note priority="1" from="meaning">list item text</note>
+      </trans-unit>
+      <trans-unit id="termsPage.summary.liability" datatype="html">
+        <source> The software author or license can not be held liable for any damages inflicted by the software. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">42,46</context>
+        </context-group>
+        <note priority="1" from="description">legal summary bullet point of GPL2 license</note>
+        <note priority="1" from="meaning">list item text</note>
+      </trans-unit>
+      <trans-unit id="termsPage.attribution" datatype="html">
+        <source> Summary provided by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;https://gist.github.com/kn9ts/cbe95340d29fc1aaeaa5dd5c059d2e60&quot;&gt;"/>kn9ts<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">47,48</context>
+        </context-group>
+        <note priority="1" from="description">attribution to original summary</note>
+        <note priority="1" from="meaning">small paragraph text</note>
+      </trans-unit>
+      <trans-unit id="termsPage.licenseLink" datatype="html">
+        <source>See full <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;/LICENSE&quot;&gt;"/>license<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> for details.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/legal/terms-and-conditions/terms-and-conditions.component.html</context>
+          <context context-type="linenumber">50,51</context>
+        </context-group>
+        <note priority="1" from="description">Link to full license</note>
+        <note priority="1" from="meaning">paragraph text</note>
       </trans-unit>
       <trans-unit id="pageNotFound.banner" datatype="html">
         <source>Game Over</source>

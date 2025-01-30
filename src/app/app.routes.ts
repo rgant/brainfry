@@ -8,6 +8,7 @@ import { ActionsComponent } from './identity/actions/actions.component';
 import { ChangeEmailComponent } from './identity/change-email/change-email.component';
 import { ChangePasswordComponent } from './identity/change-password/change-password.component';
 import { ConfirmEmailComponent } from './identity/confirm-email/confirm-email.component';
+import { DeleteAccountComponent } from './identity/delete-account/delete-account.component';
 import { ForgotPasswordComponent } from './identity/forgot-password/forgot-password.component';
 import { LoginComponent } from './identity/login/login.component';
 import { LogoutComponent } from './identity/logout/logout.component';
@@ -72,8 +73,13 @@ export const routes: Routes = [
         component: DashboardComponent,
         title: $localize`:HTML title tag|Default page for user showing key information@@htmlTitle.dashboard:Dashboard`,
       },
-      // Only Users with verified emails can logout. Is that the correct choice?
       {
+        path: 'delete-account',
+        component: DeleteAccountComponent,
+        title: $localize`:HTML title tag|Delete account@@htmlTitle.delete-account:Delete your account`,
+      },
+      {
+        // Only Users with verified emails can logout. Is that the correct choice?
         path: 'logout',
         component: LogoutComponent,
         title: $localize`:HTML title tag|Logout of session@@htmlTitle.logout:Logout`,

@@ -45,6 +45,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "LICENSE",
+                "input": "./",
+                "output": "/"
               }
             ],
             "browser": "src/main.ts",

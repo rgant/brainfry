@@ -88,37 +88,43 @@ a {
   }
 }
 
-h1 {
+h1,
+.heading1 {
   font-size: app.$heading-1-size;
   line-height: 1.2;
   text-wrap: balance;
 }
 
-h2 {
+h2,
+.heading2 {
   font-size: app.$heading-2-size;
   line-height: 1.2;
   text-wrap: balance;
 }
 
-h3 {
+h3,
+.heading3 {
   font-size: app.$heading-3-size;
   line-height: 1.2;
   text-wrap: balance;
 }
 
-h4 {
+h4,
+.heading4 {
   font-size: app.$heading-4-size;
   line-height: 1.2;
   text-wrap: balance;
 }
 
-h5 {
+h5,
+.heading5 {
   font-size: app.$heading-5-size;
   line-height: 1.2;
   text-wrap: balance;
 }
 
-h6 {
+h6,
+.heading6 {
   font-size: app.$heading-6-size;
   line-height: 1.2;
   text-wrap: balance;
