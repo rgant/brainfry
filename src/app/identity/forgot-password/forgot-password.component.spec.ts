@@ -97,6 +97,15 @@ describe('ForgotPasswordComponent', (): void => {
     expect(component.forgotForm.valid).withContext('valid').toBeTrue();
   });
 
+  it('should display submit errors', (): void => {
+    component.$errorCode.set('auth/user-not-found');
+    fixture.detectChanges();
+
+    const compiled = getCompiled(fixture);
+
+    expect(safeQuerySelector(compiled, '.alert').textContent).toContain('There is no user record corresponding to this identifier.');
+  });
+
   it('should configure submit button', (): void => {
     const submitSpy = spyOn(component, 'onSubmit');
     const compiled: HTMLElement = getCompiled(fixture);

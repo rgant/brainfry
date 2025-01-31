@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-delete-account',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
+  selector: 'app-delete-account',
   templateUrl: './delete-account.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DeleteAccountComponent {
 

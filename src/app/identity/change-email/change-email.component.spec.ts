@@ -111,9 +111,6 @@ describe('ChangeEmailComponent', (): void => {
     expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('sent');
     expect(component.$errorCode()).withContext('$errorCode').toBe('');
     expect(oobCode).withContext('oobCode for password reset email').toBeTruthy();
-
-    // Prevent cross test pollution because it seems users can remain logged in across tests.
-    await signOut(auth);
   });
 
   it('should handle reauthenticate errors', async (): Promise<void> => {
@@ -132,9 +129,6 @@ describe('ChangeEmailComponent', (): void => {
 
     expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('unsent');
     expect(component.$errorCode()).withContext('$errorCode').toBe('auth/wrong-password');
-
-    // Prevent cross test pollution because it seems users can remain logged in across tests.
-    await signOut(auth);
   });
 
   it('should handle update email errors', async (): Promise<void> => {
@@ -153,9 +147,6 @@ describe('ChangeEmailComponent', (): void => {
 
     expect(component.$verificationStatus()).withContext('$verificationStatus').toBe('unsent');
     expect(component.$errorCode()).withContext('$errorCode').toBe('auth/email-already-in-use');
-
-    // Prevent cross test pollution because it seems users can remain logged in across tests.
-    await signOut(auth);
   });
 
   it('should display current email', (): void => {

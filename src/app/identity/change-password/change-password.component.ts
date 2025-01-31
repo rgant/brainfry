@@ -6,18 +6,13 @@ import {
   signal,
 } from '@angular/core';
 import type { Signal, WritableSignal } from '@angular/core';
-import {
-  Auth,
-  EmailAuthProvider,
-  user as getUser$,
-  reauthenticateWithCredential,
-  updatePassword,
-} from '@angular/fire/auth';
+import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import type { FormControl, ValidationErrors } from '@angular/forms';
-import type { Observable } from 'rxjs';
 
+import { USER$ } from '@app/core/user.token';
+import type { MaybeUser$ } from '@app/core/user.token';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
 import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
@@ -58,13 +53,9 @@ export class ChangePasswordComponent {
   public readonly minPasswordLength: number = PASSWORDS.minLength;
   public readonly password1Cntrl: FormControl<string | null>;
   public readonly password2Cntrl: FormControl<string | null>;
-  public readonly user$: Observable<User | null>;
-
-  private readonly _auth: Auth;
+  public readonly user$: MaybeUser$;
 
   constructor() {
-    this._auth = inject(Auth);
-
     ({
       $errors: this.$currentPwCntrlErrors,
       $invalid: this.$currentPwCntrlInvalid,
@@ -96,7 +87,7 @@ export class ChangePasswordComponent {
     this.$showForm = signal<boolean>(true);
 
     // Not handling non-logged in users because the Route guards should.
-    this.user$ = getUser$(this._auth);
+    this.user$ = inject(USER$);
   }
 
   public async onSubmit(user: User): Promise<void> {

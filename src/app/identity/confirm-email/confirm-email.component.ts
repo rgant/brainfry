@@ -9,10 +9,11 @@ import {
   signal,
 } from '@angular/core';
 import type { WritableSignal } from '@angular/core';
-import { Auth, user as getUser$, sendEmailVerification } from '@angular/fire/auth';
+import { sendEmailVerification } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
-import type { Observable } from 'rxjs';
 
+import { USER$ } from '@app/core/user.token';
+import type { MaybeUser$ } from '@app/core/user.token';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
 import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
@@ -29,18 +30,14 @@ type VerifyStatuses = 'sending' | 'sent' | 'unsent';
 export class ConfirmEmailComponent {
   public readonly $errorCode: WritableSignal<string>;
   public readonly $verificationStatus: WritableSignal<VerifyStatuses>;
-  public readonly user$: Observable<User | null>;
-
-  private readonly _auth: Auth;
+  public readonly user$: MaybeUser$;
 
   constructor() {
-    this._auth = inject(Auth);
-
     this.$errorCode = signal<string>('');
     this.$verificationStatus = signal<VerifyStatuses>('unsent');
 
     // Not handling non-logged in users because the Route guards should.
-    this.user$ = getUser$(this._auth);
+    this.user$ = inject(USER$);
   }
 
   public async sendConfirmEmail(user: User): Promise<void> {

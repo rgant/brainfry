@@ -1,1 +1,59 @@
-<p>user-profile works!</p>
+@if (user$ | async; as user) {
+  <div class="main-card">
+    <h2 i18n="page heading 2|Update user profile@@userProfile.header">Your Profile</h2>
+    @if ($showForm()) {
+      <form
+        (ngSubmit)="onSubmit(user)"
+        [formGroup]="profileForm"
+        aria-describedby="frm-msgs"
+        aria-label="Change Password"
+        i18n-aria-label="aria-label|Form to update user profile@@form.role.updateProfile"
+      >
+        <p class="form-control">
+          <label for="fld-displayName" i18n="form field label|Profile display name field@@fields.displayName">Your name:</label>
+          <input
+            [attr.aria-invalid]="$nameCntrlInvalid()"
+            id="fld-displayName"
+            type="text"
+            aria-describedby="fld-displayName-msgs"
+            autocomplete="name"
+            formControlName="displayName"
+            required
+          >
+          <span id="fld-displayName-msgs">
+            @if ($nameCntrlErrors(); as errors) {
+              <span class="form-alerts">
+                @if (errors['required']) {
+                  <ng-container i18n="form field error message|Name is a required field@@formErrors.displayName.required">
+                    Tell use how you would like to be addressed.
+                  </ng-container>
+                }
+              </span>
+            }
+          </span>
+        </p>
+
+        @if ($errorCode(); as errorCode) {
+          <p class="alert">
+            <app-auth-error-messages [$code]="errorCode" />
+          </p>
+        }
+
+        <p class="card-actions">
+          <button
+            [disabled]="profileForm.invalid"
+            class="button"
+            type="submit"
+            i18n="form submit button|update user profile@@buttons.updateProfile"
+          >
+            Update profile
+          </button>
+        </p>
+      </form>
+    } @else {
+      <app-spinner />
+    }
+  </div>
+} @else {
+  <app-spinner />
+}

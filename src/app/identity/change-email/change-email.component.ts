@@ -6,18 +6,13 @@ import {
   signal,
 } from '@angular/core';
 import type { Signal, WritableSignal } from '@angular/core';
-import {
-  Auth,
-  EmailAuthProvider,
-  user as getUser$,
-  reauthenticateWithCredential,
-  verifyBeforeUpdateEmail,
-} from '@angular/fire/auth';
+import { EmailAuthProvider, reauthenticateWithCredential, verifyBeforeUpdateEmail } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import type { FormControl, ValidationErrors } from '@angular/forms';
-import type { Observable } from 'rxjs';
 
+import { USER$ } from '@app/core/user.token';
+import type { MaybeUser$ } from '@app/core/user.token';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
 import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
@@ -60,13 +55,9 @@ export class ChangeEmailComponent {
   public readonly maxPasswordLength: number = PASSWORDS.maxLength;
   public readonly minPasswordLength: number = PASSWORDS.minLength;
   public readonly passwordCntrl: FormControl<string | null>;
-  public readonly user$: Observable<User | null>;
-
-  private readonly _auth: Auth;
+  public readonly user$: MaybeUser$;
 
   constructor() {
-    this._auth = inject(Auth);
-
     ({ $errors: this.$email1CntrlErrors, $invalid: this.$email1CntrlInvalid, control: this.email1Cntrl } = createEmailControl());
     ({ $errors: this.$email2CntrlErrors, $invalid: this.$email2CntrlInvalid, control: this.email2Cntrl } = createEmailControl());
     ({ $errors: this.$passwordCntrlErrors, $invalid: this.$passwordCntrlInvalid, control: this.passwordCntrl } = createPasswordControl());
@@ -86,7 +77,7 @@ export class ChangeEmailComponent {
     this.$verificationStatus = signal<VerifyStatuses>('unsent');
 
     // Not handling non-logged in users because the Route guards should.
-    this.user$ = getUser$(this._auth);
+    this.user$ = inject(USER$);
   }
 
   public async onSubmit(user: User): Promise<void> {
