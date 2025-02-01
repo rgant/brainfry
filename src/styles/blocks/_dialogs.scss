@@ -1,0 +1,8 @@
+@use 'abstracts' as app;
+
+dialog {
+  min-inline-size: 24rem;
+  max-inline-size: 36rem;
+  border-color: app.$light-gray;
+  border-radius: app.$lg-border-radius;
+}

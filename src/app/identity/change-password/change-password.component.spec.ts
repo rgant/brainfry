@@ -45,7 +45,7 @@ describe('ChangePasswordComponent', (): void => {
   let testUser: User;
 
   const passwordFieldTests = ({ autoComplete, control, errorId, inputId, validateStrength }: FieldSetup): void => {
-    it(`should configure current ${control} FormControl`, fakeAsync((): void => {
+    it(`should configure ${control} FormControl`, fakeAsync((): void => {
       const cntrl = component[control];
       passwordControlTest(cntrl, validateStrength);
     }));
@@ -143,7 +143,7 @@ describe('ChangePasswordComponent', (): void => {
     expect(component.$errorCode()).withContext('$errorCode').toBe('auth/wrong-password');
   });
 
-  it('should handle update email errors', async (): Promise<void> => {
+  it('should handle update password errors', async (): Promise<void> => {
     const newPassword = 'abd2'; // Must be less than the default password policy becaues the emulator doesn't use our policy.
     component.changePasswordForm.setValue({ currentPw: TEST_USER_PASSWORD, password1: newPassword, password2: newPassword });
     // Override the field validation to force an error submit.

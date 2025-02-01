@@ -105,7 +105,6 @@ export class ChangePasswordComponent {
     try {
       const emailCreds = EmailAuthProvider.credential(user.email, currentPw);
       const credentials = await reauthenticateWithCredential(user, emailCreds);
-      // const credentials = await signInWithEmailAndPassword(this._auth, user.email ?? '', password);
       await updatePassword(credentials.user, password1);
     } catch (err: unknown) {
       const code = getErrorCode(err);

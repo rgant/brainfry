@@ -1,6 +1,7 @@
 @use 'abstracts' as app;
 
 .alert {
+  padding: app.$small-spacing;
   border: 1px solid app.$danger-color;
   border-radius: app.$border-radius;
   background-color: app.$warning-color;

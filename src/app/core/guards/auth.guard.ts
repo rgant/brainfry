@@ -1,5 +1,4 @@
 import { inject } from '@angular/core';
-import { Auth, user as getUser$ } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import type {
@@ -11,15 +10,17 @@ import type {
 import { map } from 'rxjs';
 import type { Observable } from 'rxjs';
 
+import { USER$ } from '../user.token';
+
 export const authGuard: CanActivateChildFn = (
   _childRoute: ActivatedRouteSnapshot,
   state: RouterStateSnapshot,
 ): Observable<UrlTree | true> => {
-  const auth = inject(Auth);
   const router = inject(Router);
+  const user$ = inject(USER$);
   const { url } = state;
 
-  return getUser$(auth).pipe(
+  return user$.pipe(
     map((maybeUser: User | null): UrlTree | true => {
       if (!maybeUser) {
         return router.parseUrl(`/login?next=${url}`);

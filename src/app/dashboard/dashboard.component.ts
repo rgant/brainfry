@@ -1,10 +1,10 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Auth, user } from '@angular/fire/auth';
-import type { User } from '@angular/fire/auth';
 import { map } from 'rxjs';
 import type { Observable } from 'rxjs';
 
+import { USER$ } from '@app/core/user.token';
+import type { MaybeUser } from '@app/core/user.token';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
 @Component({
@@ -17,13 +17,11 @@ import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 export class DashboardComponent {
   public readonly name$: Observable<string>;
 
-  private readonly _auth: Auth;
-
   constructor() {
-    this._auth = inject(Auth);
+    const user$ = inject(USER$);
 
-    this.name$ = user(this._auth).pipe(
-      map((maybeUser: User | null): string => maybeUser?.displayName ?? 'You'),
+    this.name$ = user$.pipe(
+      map((maybeUser: MaybeUser): string => maybeUser?.displayName ?? 'You'),
     );
   }
 }

@@ -1,19 +1,50 @@
 @use 'abstracts' as app;
 
-$disabled-color: rgba(app.$primary-color, 50%);
+$primary-disabled-color: rgba(app.$primary-color, 50%);
+$danger-disabled-color: rgba(app.$danger-color, 50%);
+$success-disabled-color: rgba(app.$success-color, 50%);
 
-.button {
+%button {
   display: inline-block;
 
   padding: app.$small-spacing app.$regular-spacing;
-  border: 1px solid app.$primary-color;
+  border: 1px solid;
   border-radius: app.$border-radius;
 
+  background-color: app.$white;
+}
+
+.button {
+  @extend %button;
+
+  border-color: app.$primary-color;
   background-color: app.$primary-color;
 
   &:disabled {
-    border-color: $disabled-color;
+    border-color: $primary-disabled-color;
     color: app.$white;
-    background-color: $disabled-color;
+    background-color: $primary-disabled-color;
+  }
+}
+
+.danger-button {
+  @extend %button;
+
+  border-color: app.$danger-color;
+  background-color: $danger-disabled-color;
+
+  &:disabled {
+    border-color: $danger-disabled-color;
+  }
+}
+
+.success-color {
+  @extend %button;
+
+  border-color: app.$success-color;
+  background-color: $success-disabled-color;
+
+  &:disabled {
+    border-color: $success-disabled-color;
   }
 }
