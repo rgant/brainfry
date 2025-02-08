@@ -43,13 +43,13 @@ export class DeleteAccountComponent {
   public readonly $passwordCntrlErrors: Signal<ValidationErrors | undefined>;
   public readonly $passwordCntrlInvalid: Signal<boolean>;
   public readonly $showForm: WritableSignal<boolean>;
-  public readonly confirmDialog: Signal<DialogRef | undefined> = viewChild<DialogRef>('confirmDialog');
   public readonly deleteAccountForm: DeleteAccountFormGroup;
   public readonly maxPasswordLength: number = PASSWORDS.maxLength;
   public readonly minPasswordLength: number = PASSWORDS.minLength;
   public readonly passwordCntrl: FormControl<string | null>;
   public readonly user$: MaybeUser$;
 
+  private readonly _$confirmDialog: Signal<DialogRef> = viewChild.required<DialogRef>('confirmDialog');
   private readonly _router: Router;
 
   constructor() {
@@ -73,10 +73,7 @@ export class DeleteAccountComponent {
   }
 
   public closeDialog(): void {
-    const dialogEl = this.confirmDialog();
-    if (!dialogEl) {
-      throw new Error('Unable to find dialog element');
-    }
+    const dialogEl = this._$confirmDialog();
     dialogEl.nativeElement.close();
   }
 
@@ -107,10 +104,7 @@ export class DeleteAccountComponent {
   }
 
   public openDialog(): void {
-    const dialogEl = this.confirmDialog();
-    if (!dialogEl) {
-      throw new Error('Unable to find dialog element');
-    }
+    const dialogEl = this._$confirmDialog();
     this.$errorCode.set(''); // Clear out any existing errors
     dialogEl.nativeElement.showModal();
   }

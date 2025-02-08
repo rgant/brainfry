@@ -1,7 +1,9 @@
 <div class="wrapper">
   <header>
-    <img class="logo" alt="" ngSrc="/imgs/logo-100.png" width="100" height="100" priority>
-    <h1 class="display" i18n="h1 display heading|Title of the application@@text.siteTitle">Brainfry Quiz</h1>
+    <a routerLink="/" class="heading-link">
+      <img class="logo" alt="" ngSrc="/imgs/logo-100.png" width="100" height="100" priority>
+      <h1 class="display" i18n="h1 display heading|Title of the application@@text.siteTitle">Brainfry Quiz</h1>
+    </a>
   </header>
   <main>
     <router-outlet />

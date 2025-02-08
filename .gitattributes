@@ -7,3 +7,4 @@
 # Disble diff for minified files
 *.min.* -diff
 
+fixtures/storage_export/blobs/** binary

@@ -14,6 +14,22 @@ summary,
   border-color: app.$danger-color;
 }
 
+// Style the fieldset border to match input borders and move the legend above the border.
+fieldset {
+  position: relative;
+
+  margin-block-start: 2.5rem;
+  padding-block-start: 1rem;
+  border: 1px solid app.$light-gray;
+  border-radius: app.$border-radius;
+}
+
+legend {
+  position: absolute;
+  inset-block-start: -1.5rem;
+  inset-inline-start: 0;
+}
+
 .form-control {
   position: relative;
 
@@ -56,4 +72,12 @@ summary,
     inline-size: 100%;
     margin-inline-start: app.$small-spacing;
   }
+}
+
+// Copied from Bootstrap v5.3 .btn-check
+// https://getbootstrap.com/docs/5.3/forms/checks-radios/#radio-toggle-buttons
+.button-radio {
+  pointer-events: none;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
 }

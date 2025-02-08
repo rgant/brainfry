@@ -1,0 +1,10 @@
+<input #photoUpload (change)="uploadFile()" accept="image/*" class="upload-inpt" type="file">
+@if (uploadPercentage$ | async; as percentage) {
+  <progress [value]="percentage.progress" max="100" >{{ percentage.progress }}%</progress>
+} @else if ($fileCount() >= maximumFiles) {
+  <a routerLink="/photos" i18n="navigation link|Page to manage profile photos@@links.manage-photos">Manage your photos</a>
+} @else {
+  <button (click)="openFilePicker()" class="info-button" i18n="button text|opens file selection UI@@buttons.uploadPhoto" type="button">
+    Upload a photo
+  </button>
+}

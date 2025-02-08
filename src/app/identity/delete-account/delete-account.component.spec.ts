@@ -210,7 +210,7 @@ describe('DeleteAccountComponent', (): void => {
   it('should configure cancel button', (): void => {
     const closeSpy = spyOn(component, 'closeDialog');
     const compiled: HTMLElement = getCompiled(fixture);
-    const bttnEl: HTMLButtonElement = safeQuerySelector(compiled, '.success-color');
+    const bttnEl: HTMLButtonElement = safeQuerySelector(compiled, '.success-button');
 
     bttnEl.click();
 

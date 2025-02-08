@@ -1,3 +1,5 @@
+@use 'abstracts' as app;
+
 :host {
   display: grid;
   grid-template-rows: [outer-start content-start] 1fr [content-end] min-content [outer-end];
@@ -12,9 +14,12 @@
   justify-content: center;
 }
 
-header {
+.heading-link {
   display: flex;
   gap: 2rem;
   align-items: center;
   justify-content: center;
+
+  color: app.$white;
+  text-decoration: none;
 }

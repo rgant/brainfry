@@ -1,9 +1,5 @@
 @use 'abstracts' as app;
 
-$primary-disabled-color: rgba(app.$primary-color, 50%);
-$danger-disabled-color: rgba(app.$danger-color, 50%);
-$success-disabled-color: rgba(app.$success-color, 50%);
-
 %button {
   display: inline-block;
 
@@ -12,6 +8,10 @@ $success-disabled-color: rgba(app.$success-color, 50%);
   border-radius: app.$border-radius;
 
   background-color: app.$white;
+
+  &:hover {
+    @include app.button-shadow();
+  }
 }
 
 .button {
@@ -21,9 +21,9 @@ $success-disabled-color: rgba(app.$success-color, 50%);
   background-color: app.$primary-color;
 
   &:disabled {
-    border-color: $primary-disabled-color;
+    border-color: app.$primary-disabled-color;
     color: app.$white;
-    background-color: $primary-disabled-color;
+    background-color: app.$primary-disabled-color;
   }
 }
 
@@ -31,20 +31,31 @@ $success-disabled-color: rgba(app.$success-color, 50%);
   @extend %button;
 
   border-color: app.$danger-color;
-  background-color: $danger-disabled-color;
+  background-color: app.$danger-disabled-color;
 
   &:disabled {
-    border-color: $danger-disabled-color;
+    border-color: app.$danger-disabled-color;
   }
 }
 
-.success-color {
+.info-button {
+  @extend %button;
+
+  border-color: app.$info-color;
+  background-color: app.$info-disabled-color;
+
+  &:disabled {
+    border-color: app.$info-disabled-color;
+  }
+}
+
+.success-button {
   @extend %button;
 
   border-color: app.$success-color;
-  background-color: $success-disabled-color;
+  background-color: app.$success-disabled-color;
 
   &:disabled {
-    border-color: $success-disabled-color;
+    border-color: app.$success-disabled-color;
   }
 }

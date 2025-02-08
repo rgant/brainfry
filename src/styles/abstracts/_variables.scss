@@ -7,8 +7,14 @@ $danger-color:     #cc2936;
 $info-color:       #a9e4ef;
 $primary-color:    #ffc05c;
 $secondary-color:  #603f8b;
-$success-color:    #0dfdc9;
+$success-color:    #4cae4f;
 $warning-color:    #f4afb4;
+
+// Used to indicate disabled or not-active states
+$danger-disabled-color:  rgba($danger-color, 50%);
+$info-disabled-color:    rgba($info-color, 50%);
+$primary-disabled-color: rgba($primary-color, 50%);
+$success-disabled-color: rgba($success-color, 50%);
 
 // Fonts
 $primary-display-font: 'Barriecito', sans-serif;

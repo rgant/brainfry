@@ -1,0 +1,50 @@
+@use 'abstracts' as app;
+
+$photo-size: 8rem;
+
+.photos {
+  display: grid;
+  grid-template-columns: [outer-start] repeat(auto-fill, $photo-size) [outer-end];
+  grid-template-rows: repeat(auto-fill, $photo-size);
+  gap: app.$regular-spacing;
+  justify-content: center;
+}
+
+.custom-url {
+  position: relative;
+  margin-block-start: 0;
+
+  input {
+    inline-size: 100%;
+  }
+}
+
+.photo-block {
+  position: relative;
+
+  inline-size: $photo-size;
+  block-size: $photo-size;
+  border: 3px solid transparent;
+  border-radius: app.$border-radius;
+
+  .button-radio:checked + & {
+    border-color: app.$success-color;
+  }
+
+  .button-radio:not(:checked) + &:hover {
+    border-color: app.$success-disabled-color;
+  }
+
+  img {
+    padding: app.$small-spacing;
+    object-fit: contain;
+  }
+}
+
+.upload-file {
+  min-block-size: $photo-size;
+}
+
+.toggle-wrap {
+  grid-column: outer-start / outer-end;
+}

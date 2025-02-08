@@ -14,6 +14,7 @@ import { LoginComponent } from './identity/login/login.component';
 import { LogoutComponent } from './identity/logout/logout.component';
 import { RecoverEmailComponent } from './identity/recover-email/recover-email.component';
 import { ResetPasswordComponent } from './identity/reset-password/reset-password.component';
+import { PhotoManagerComponent } from './identity/user-photos/photo-manager/photo-manager.component';
 import { UserProfileComponent } from './identity/user-profile/user-profile.component';
 import { VerifyEmailComponent } from './identity/verify-email/verify-email.component';
 import { CentralLayoutComponent } from './layouts/central/central.component';
@@ -83,6 +84,11 @@ export const routes: Routes = [
         path: 'logout',
         component: LogoutComponent,
         title: $localize`:HTML title tag|Logout of session@@htmlTitle.logout:Logout`,
+      },
+      {
+        path: 'photos',
+        component: PhotoManagerComponent,
+        title: $localize`:HTML title tag|Page displaying profile photo uploads@@htmlTitle.photo:Your Photos`,
       },
       {
         path: 'profile',

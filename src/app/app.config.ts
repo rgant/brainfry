@@ -18,8 +18,8 @@ import type { Firestore } from '@angular/fire/firestore';
 // import type { Functions } from '@angular/fire/functions';
 import { getPerformance, providePerformance } from '@angular/fire/performance';
 import type { FirebasePerformance } from '@angular/fire/performance';
-// import { getStorage, provideStorage } from '@angular/fire/storage';
-// import type { FirebaseStorage } from '@angular/fire/storage';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import type { FirebaseStorage } from '@angular/fire/storage';
 // import { getVertexAI, provideVertexAI } from '@angular/fire/vertexai';
 // import type { VertexAI } from '@angular/fire/vertexai';
 import {
@@ -56,7 +56,7 @@ export const appConfig: ApplicationConfig = {
         registrationStrategy: 'registerWhenStable:30000',
       },
     ),
-    // provideStorage((): FirebaseStorage => getStorage()),
+    provideStorage((): FirebaseStorage => getStorage()),
     // provideVertexAI((): VertexAI => getVertexAI()),
     provideRouter(
       routes,

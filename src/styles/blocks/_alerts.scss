@@ -1,8 +1,13 @@
 @use 'abstracts' as app;
 
-.alert {
+%alert {
   padding: app.$small-spacing;
-  border: 1px solid app.$danger-color;
   border-radius: app.$border-radius;
+}
+
+.alert {
+  @extend %alert;
+
+  border: 1px solid app.$danger-color;
   background-color: app.$warning-color;
 }

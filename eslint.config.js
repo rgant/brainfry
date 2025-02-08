@@ -866,6 +866,7 @@ module.exports = tseslint.config(
           requireDescription: true,
           requireMeaning: true,
           ignoreAttributes: [
+            'accept', // File input accept attribute
             'aria-controls',
             'aria-describedby',
             'aria-labelledby',

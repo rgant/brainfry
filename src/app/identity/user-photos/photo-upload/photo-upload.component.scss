@@ -1,0 +1,13 @@
+@use 'abstracts' as app;
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+// <input type=file> is opened through JS clicking on this hidden element
+.upload-inpt {
+  display: none;
+}

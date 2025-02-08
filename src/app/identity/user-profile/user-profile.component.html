@@ -1,9 +1,9 @@
-@if (user$ | async; as user) {
+@if (vm$ | async; as vm) {
   <div class="main-card">
     <h2 i18n="page heading 2|Update user profile@@userProfile.header">Your Profile</h2>
     @if ($showForm()) {
       <form
-        (ngSubmit)="onSubmit(user)"
+        (ngSubmit)="onSubmit(vm.user)"
         [formGroup]="profileForm"
         aria-describedby="frm-msgs"
         aria-label="Change Password"
@@ -32,6 +32,60 @@
             }
           </span>
         </p>
+
+        <fieldset class="radio-group">
+          <legend i18n="form field label|Profile photo url field@@fields.photoURL">Your photo:</legend>
+
+          @if ($showUrlInput()) {
+            <p class="custom-url">
+              <label for="fld-customUrl" i18n="form field label|Profile custom photo URL@@fields.customUrl">Link to your photo:</label>
+              <input
+                [attr.aria-invalid]="$photoUrlCntrlInvalid()"
+                id="fld-customUrl"
+                type="url"
+                aria-describedby="fld-customUrl-msgs"
+                formControlName="photoURL"
+                autocomplete="photo"
+              >
+              <span id="fld-customUrl-msgs">
+                @if ($photoUrlCntrlErrors(); as errors) {
+                  <span class="form-alerts">
+                    @if (errors['pattern']) {
+                      <ng-container i18n="form field error message|Photo URL must link to an image extension@@formErrors.photoURL.pattern">
+                        Photo URL must link to a file with an image file extension like jpeg, jpg, png, avif, webp, or gif.
+                      </ng-container>
+                    }
+                  </span>
+                }
+              </span>
+            </p>
+
+            @if (photoUrlCntrl.value && photoUrlCntrl.valid) {
+              <p class="photo-block">
+                <img [ngSrc]="photoUrlCntrl.value" [alt]="" fill>
+              </p>
+            }
+
+            <p class="toggle-wrap">
+              <button (click)="togglePhotoUrl()" class="info-button" type="button" i18n="button|change photo picker to uploaded files@@buttons.usePhotoUpload">Upload a photo</button>
+            </p>
+          } @else {
+            <div class="photos">
+              @for (item of vm.profilePhotos; track item.url; let indx = $index) {
+                <input id="fld-photoURL-{{ indx }}" [value]="item.url" formControlName="photoURL" name="photoURL" class="button-radio" type="radio">
+                <label for="fld-photoURL-{{ indx }}" class="photo-block">
+                  <img [ngSrc]="item.url" alt="" fill>
+                </label>
+              }
+
+              <app-photo-upload [$fileCount]="vm.profilePhotos.length" [uid]="vm.user.uid" class="upload-file" />
+
+              <p class="toggle-wrap">
+                <button (click)="togglePhotoUrl()" class="info-button" type="button" i18n="button|change photo picker to URL input@@buttons.usePhotoLink">Use a link to a photo</button>
+              </p>
+            </div>
+          }
+        </fieldset>
 
         @if ($errorCode(); as errorCode) {
           <p class="alert">
