@@ -8,7 +8,7 @@ import type { Observable } from 'rxjs';
 
 import { getCompiled, safeQuerySelector } from '@testing/utilities';
 
-import { mockTransfer } from '../new-photo.spec';
+import { createMockTransfer } from '../new-photo.spec';
 import { MAXIMUM_PHOTOS, UserPhotosService } from '../user-photos.service';
 import type { Progress } from '../user-photos.service';
 import { PhotoUploadComponent } from './photo-upload.component';
@@ -86,6 +86,7 @@ describe('PhotoUploadComponent', (): void => {
   it('should upload files with service', (): void => {
     const compiled = getCompiled(fixture);
     const fileInptEl: HTMLInputElement = safeQuerySelector(compiled, 'input');
+    const mockTransfer = createMockTransfer();
 
     fileInptEl.files = mockTransfer.files;
     component.uploadFile();

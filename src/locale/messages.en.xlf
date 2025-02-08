@@ -6,7 +6,7 @@
         <source>Forgot Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">40</context>
         </context-group>
         <note priority="1" from="description">Send password recover email</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -15,7 +15,7 @@
         <source>Login</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">45</context>
         </context-group>
         <note priority="1" from="description">Login to application</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -24,7 +24,7 @@
         <source>Reset Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">50</context>
         </context-group>
         <note priority="1" from="description">Reset forgotten password</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -33,7 +33,7 @@
         <source>Change your email address</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">64</context>
+          <context context-type="linenumber">65</context>
         </context-group>
         <note priority="1" from="description">Change account email address</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -42,7 +42,7 @@
         <source>Change your password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">70</context>
         </context-group>
         <note priority="1" from="description">Change account password</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -51,7 +51,7 @@
         <source>Dashboard</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">75</context>
         </context-group>
         <note priority="1" from="description">Default page for user showing key information</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -60,7 +60,7 @@
         <source>Delete your account</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">80</context>
         </context-group>
         <note priority="1" from="description">Delete account</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -69,16 +69,25 @@
         <source>Logout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">86</context>
         </context-group>
         <note priority="1" from="description">Logout of session</note>
+        <note priority="1" from="meaning">HTML title tag</note>
+      </trans-unit>
+      <trans-unit id="htmlTitle.photo" datatype="html">
+        <source>Your Photos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+        <note priority="1" from="description">Page displaying profile photo uploads</note>
         <note priority="1" from="meaning">HTML title tag</note>
       </trans-unit>
       <trans-unit id="htmlTitle.profile" datatype="html">
         <source>Your Profile</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">96</context>
         </context-group>
         <note priority="1" from="description">Page displaying your user profile</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -87,7 +96,7 @@
         <source>Confirm Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">112</context>
+          <context context-type="linenumber">118</context>
         </context-group>
         <note priority="1" from="description">Send email confirming address access</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -96,7 +105,7 @@
         <source>Privacy Policy</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">123</context>
         </context-group>
         <note priority="1" from="description">Legal document page</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -105,7 +114,7 @@
         <source>Recover Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">123</context>
+          <context context-type="linenumber">129</context>
         </context-group>
         <note priority="1" from="description">Reverts email address change</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -114,7 +123,7 @@
         <source>Terms &amp; Conditions</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">128</context>
+          <context context-type="linenumber">134</context>
         </context-group>
         <note priority="1" from="description">Legal document page</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -123,7 +132,7 @@
         <source>Verify Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">134</context>
+          <context context-type="linenumber">140</context>
         </context-group>
         <note priority="1" from="description">Marks email address is verified</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -132,7 +141,7 @@
         <source>Page Not Found</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">139</context>
+          <context context-type="linenumber">145</context>
         </context-group>
         <note priority="1" from="description">Page not found 404 error</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -959,7 +968,7 @@
           <context context-type="sourcefile">src/app/identity/confirm-email/confirm-email.component.html</context>
           <context context-type="linenumber">31,37</context>
         </context-group>
-        <note priority="1" from="description">send a verification link to user&apos;s email</note>
+        <note priority="1" from="description">send a verification link to user’s email</note>
         <note priority="1" from="meaning">action button</note>
       </trans-unit>
       <trans-unit id="deleteAccount.heading" datatype="html">
@@ -1290,6 +1299,28 @@
         <note priority="1" from="description">Password reset success</note>
         <note priority="1" from="meaning">page heading 2</note>
       </trans-unit>
+      <trans-unit id="links.manage-photos" datatype="html">
+        <source>Manage your photos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/user-photos/photo-upload/photo-upload.component.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+        <note priority="1" from="description">Page to manage profile photos</note>
+        <note priority="1" from="meaning">navigation link</note>
+      </trans-unit>
+      <trans-unit id="buttons.uploadPhoto" datatype="html">
+        <source> Upload a photo </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/user-photos/photo-upload/photo-upload.component.html</context>
+          <context context-type="linenumber">8,11</context>
+        </context-group>
+        <note priority="1" from="description">opens file selection UI</note>
+        <note priority="1" from="meaning">button text</note>
+      </trans-unit>
       <trans-unit id="userProfile.header" datatype="html">
         <source>Your Profile</source>
         <context-group purpose="location">
@@ -1326,11 +1357,56 @@
         <note priority="1" from="description">Name is a required field</note>
         <note priority="1" from="meaning">form field error message</note>
       </trans-unit>
+      <trans-unit id="fields.photoURL" datatype="html">
+        <source>Your photo:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/user-profile/user-profile.component.html</context>
+          <context context-type="linenumber">37,40</context>
+        </context-group>
+        <note priority="1" from="description">Profile photo url field</note>
+        <note priority="1" from="meaning">form field label</note>
+      </trans-unit>
+      <trans-unit id="fields.customUrl" datatype="html">
+        <source>Link to your photo:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/user-profile/user-profile.component.html</context>
+          <context context-type="linenumber">41,43</context>
+        </context-group>
+        <note priority="1" from="description">Profile custom photo URL</note>
+        <note priority="1" from="meaning">form field label</note>
+      </trans-unit>
+      <trans-unit id="formErrors.photoURL.pattern" datatype="html">
+        <source> Photo URL must link to a file with an image file extension like jpeg, jpg, png, avif, webp, or gif. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/user-profile/user-profile.component.html</context>
+          <context context-type="linenumber">55,58</context>
+        </context-group>
+        <note priority="1" from="description">Photo URL must link to an image extension</note>
+        <note priority="1" from="meaning">form field error message</note>
+      </trans-unit>
+      <trans-unit id="buttons.usePhotoUpload" datatype="html">
+        <source>Upload a photo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/user-profile/user-profile.component.html</context>
+          <context context-type="linenumber">70,74</context>
+        </context-group>
+        <note priority="1" from="description">change photo picker to uploaded files</note>
+        <note priority="1" from="meaning">button</note>
+      </trans-unit>
+      <trans-unit id="buttons.usePhotoLink" datatype="html">
+        <source>Use a link to a photo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/identity/user-profile/user-profile.component.html</context>
+          <context context-type="linenumber">84,88</context>
+        </context-group>
+        <note priority="1" from="description">change photo picker to URL input</note>
+        <note priority="1" from="meaning">button</note>
+      </trans-unit>
       <trans-unit id="buttons.updateProfile" datatype="html">
         <source> Update profile </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/identity/user-profile/user-profile.component.html</context>
-          <context context-type="linenumber">49,54</context>
+          <context context-type="linenumber">103,108</context>
         </context-group>
         <note priority="1" from="description">update user profile</note>
         <note priority="1" from="meaning">form submit button</note>
@@ -1366,7 +1442,7 @@
         <source>Brainfry Quiz</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/central/central.component.html</context>
-          <context context-type="linenumber">4,10</context>
+          <context context-type="linenumber">5,11</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
@@ -1464,7 +1540,7 @@
         <source>Change email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">29,30</context>
+          <context context-type="linenumber">30,31</context>
         </context-group>
         <note priority="1" from="description">Link to change emailp page</note>
         <note priority="1" from="meaning">navigation link</note>
@@ -1473,7 +1549,7 @@
         <source>Change password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">30,31</context>
+          <context context-type="linenumber">31,32</context>
         </context-group>
         <note priority="1" from="description">Link to change password page</note>
         <note priority="1" from="meaning">navigation link</note>
@@ -1482,7 +1558,7 @@
         <source>Delete account</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">31,32</context>
+          <context context-type="linenumber">32,33</context>
         </context-group>
         <note priority="1" from="description">Link to account deletion page</note>
         <note priority="1" from="meaning">navigation link</note>
@@ -1491,7 +1567,7 @@
         <source>Logout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layouts/header/header.component.html</context>
-          <context context-type="linenumber">32,35</context>
+          <context context-type="linenumber">33,36</context>
         </context-group>
         <note priority="1" from="description">Link to logout page</note>
         <note priority="1" from="meaning">navigation link</note>
