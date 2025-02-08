@@ -94,6 +94,17 @@ describe('PhotoUploadComponent', (): void => {
     expect(mockService.uploadPhoto).toHaveBeenCalledOnceWith(mockTransfer.files, testComponent.uid);
   });
 
+  it('should call uploadFile on input change event', (): void => {
+    const event = new Event('change');
+    const compiled = getCompiled(fixture);
+    const fileInptEl: HTMLInputElement = safeQuerySelector(compiled, 'input');
+    const uploadSpy = spyOn(component, 'uploadFile');
+
+    fileInptEl.dispatchEvent(event);
+
+    expect(uploadSpy).toHaveBeenCalledTimes(1);
+  });
+
   it('should show progress', (): void => {
     const compiled = getCompiled(fixture);
 
