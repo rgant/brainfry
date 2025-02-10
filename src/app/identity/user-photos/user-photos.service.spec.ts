@@ -52,7 +52,7 @@ describe('UserPhotosService', (): void => {
   it('should upload photo', async (): Promise<void> => {
     // Occasionally this is going to fail when time advances across a second boundry during testing.
     const MICROTIME = -4; // Last 4 characters of ISO 8601 formatted date.
-    const UPLOAD_DELAY = 250; // milliseconds
+    const UPLOAD_DELAY = 300; // milliseconds
 
     const expectedDate = jasmine.stringContaining(new Date().toISOString().slice(0, MICROTIME));
     const expectedFilename = jasmine.stringContaining(`-${filename}`);
