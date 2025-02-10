@@ -26,6 +26,7 @@ module.exports = function (config) {
           statements: 90,
         },
       },
+      // GitHub Pages will only serve HTML below the docs folder at project root.
       dir: require('path').join(__dirname, './docs/coverage'),
       reporters: [
         { type: 'html' },
