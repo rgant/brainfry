@@ -26,7 +26,7 @@ module.exports = function (config) {
           statements: 90,
         },
       },
-      dir: require('path').join(__dirname, './coverage/brainfry'),
+      dir: require('path').join(__dirname, './docs/coverage'),
       reporters: [
         { type: 'html' },
         { type: 'text-summary' },
