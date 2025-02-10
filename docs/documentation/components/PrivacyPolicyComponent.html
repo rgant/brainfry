@@ -1,0 +1,480 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>brainfry documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">brainfry documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  PrivacyPolicyComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/legal/privacy-policy/privacy-policy.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-privacy-policy</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>RouterLink</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./privacy-policy.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component } from &#x27;@angular/core&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ RouterLink ],
+  selector: &#x27;app-privacy-policy&#x27;,
+  templateUrl: &#x27;./privacy-policy.component.html&#x27;,
+})
+export class PrivacyPolicyComponent {}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;card&quot;&gt;
+  &lt;h2 class&#x3D;&quot;display&quot; i18n&#x3D;&quot;page heading 2|Privacy Policy@@privacyPage.heading&quot;&gt;Privacy Policy&lt;/h2&gt;
+
+  &lt;section aria-labelledby&#x3D;&quot;data-collected&quot;&gt;
+    &lt;h3 id&#x3D;&quot;data-collected&quot; i18n&#x3D;&quot;section heading 3|Policy subsection@@privacyPage.subheading.collected&quot;&gt;Types of data we collect&lt;/h3&gt;
+    &lt;ng-container i18n&#x3D;&quot;section paragraph content|Notification of data collection policy@@privacyPage.content.collected&quot;&gt;
+      &lt;p&gt;
+        We use your personal data to provide the Brainfry service. By using Brainfry, you agree to the collection and use of information in
+        accordance with this Privacy Policy.
+      &lt;/p&gt;
+      &lt;p&gt;
+        While using Brainfry, we may ask you to provide us with certain personally identifiable information that can be used to contact or
+        identify you. Personally identifiable information may include, but is not limited to:
+      &lt;/p&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Email address&lt;/li&gt;
+        &lt;li&gt;Your name&lt;/li&gt;
+        &lt;li&gt;Links to your social media accounts&lt;/li&gt;
+        &lt;li&gt;Usage Data&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;p&gt;We may also collect information that your browser sends whenever you visit this website.&lt;/p&gt;
+    &lt;/ng-container&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby&#x3D;&quot;data-use&quot;&gt;
+    &lt;h3 id&#x3D;&quot;data-use&quot; i18n&#x3D;&quot;section heading 3|Policy subsection@@privacyPage.subheading.use&quot;&gt;Use of your personal data&lt;/h3&gt;
+    &lt;ng-container i18n&#x3D;&quot;section paragraph content|Notification of data use policy@@privacyPage.content.use&quot;&gt;
+      &lt;p&gt;Brainfry may use personal data for the following purposes:&lt;/p&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;To provide and maintain our application&lt;/strong&gt;, including to monitor the usage of our application.&lt;/li&gt;
+        &lt;li&gt;
+          &lt;strong&gt;To manage your Account:&lt;/strong&gt; to manage your registration as a user of Brainfry. The personal data you provide can give
+          you access to different functionalities that are available to you as a registered user.
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;strong&gt;To contact you:&lt;/strong&gt; To contact you by email, voice or video calls, text communication, or other equivalent forms of
+          electronic communication, such as a mobile application’s push notifications regarding updates or informative communications
+          related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for
+          their implementation.
+        &lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;To manage your requests:&lt;/strong&gt; To attend and manage your requests.&lt;/li&gt;
+        &lt;li&gt;
+          &lt;strong&gt;For other purposes&lt;/strong&gt;: We may use your information for other purposes, such as data analysis, identifying usage
+          trends, determining the effectiveness of our promotional campaigns and to evaluate and improve Brainfry, products, services,
+          marketing and your experience.
+        &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;p&gt;We may share your personal information in the following situations:&lt;/p&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;strong&gt;With service providers:&lt;/strong&gt; We may share your personal information with service providers to monitor and analyze the
+          use of Brainfry.
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;strong&gt;With other users:&lt;/strong&gt; when you share personal information or otherwise interact in the public areas with other users,
+          such information may be viewed by all users and may be publicly distributed outside. Similarly, other users will be able to view
+          descriptions of your activity, communicate with you and view your profile.
+        &lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;With your consent&lt;/strong&gt;: We may disclose your personal information for any other purpose with your consent.&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/ng-container&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby&#x3D;&quot;data-retention&quot;&gt;
+    &lt;h3 id&#x3D;&quot;data-retention&quot; i18n&#x3D;&quot;section heading 3|Policy subsection@@privacyPage.subheading.retention&quot;&gt;
+      Retention of your personal data
+    &lt;/h3&gt;
+    &lt;ng-container i18n&#x3D;&quot;section paragraph content|Notification of data retention policy@@privacyPage.content.retention&quot;&gt;
+      &lt;p&gt;
+        Brainfry will retain your personal data only for as long as is necessary for the purposes set out in this Privacy Policy. We will
+        retain and use your personal data to the extent necessary to comply with our legal obligations (for example, if we are required to
+        retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.
+      &lt;/p&gt;
+      &lt;p&gt;
+        Brainfry will also retain usage data for internal analysis purposes. Usage data is generally retained for a shorter period of time,
+        except when this data is used to strengthen the security or to improve the functionality, or we are legally obligated to retain this
+        data for longer time periods.
+      &lt;/p&gt;
+    &lt;/ng-container&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby&#x3D;&quot;data-transfer&quot;&gt;
+    &lt;h3 id&#x3D;&quot;data-transfer&quot; i18n&#x3D;&quot;section heading 3|Policy subsection@@privacyPage.subheading.transfer&quot;&gt;Transfer of your personal data&lt;/h3&gt;
+    &lt;ng-container i18n&#x3D;&quot;section paragraph content|Notification of data transfer policy@@privacyPage.content.transfer&quot;&gt;
+      &lt;p&gt;
+        Your information, including personal data, may be transferred to — and maintained on — computers located outside of your state,
+        province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.
+      &lt;/p&gt;
+      &lt;p&gt;Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.&lt;/p&gt;
+      &lt;p&gt;
+        Brainfry will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy
+        Policy and no transfer of your personal data will take place to an organization or a country unless there are adequate controls in
+        place including the security of your data and other personal information.
+      &lt;/p&gt;
+    &lt;/ng-container&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby&#x3D;&quot;data-deletion&quot;&gt;
+    &lt;h3 id&#x3D;&quot;data-deletion&quot; i18n&#x3D;&quot;section heading 3|Policy subsection@@privacyPage.subheading.deletion&quot;&gt;Delete your personal data&lt;/h3&gt;
+    &lt;ng-container i18n&#x3D;&quot;section paragraph content|Notification of data deletion policy@@privacyPage.content.deletion&quot;&gt;
+      &lt;p&gt;You have the right to delete the personal data that you have provided.&lt;/p&gt;
+      &lt;p&gt;
+        Brainfry gives you the ability to &lt;a routerLink&#x3D;&quot;/delete-account&quot;&gt;delete&lt;/a&gt; certain information about you from within the
+        application.
+      &lt;/p&gt;
+      &lt;p&gt;
+        You may update, amend, or delete your information at any time by signing in to your account, if you have one, and visiting the
+        account settings section that allows you to manage your personal information.
+      &lt;/p&gt;
+      &lt;p&gt;Please note, however, that we may need to retain certain information when we have a legal obligation or lawful basis to do so.&lt;/p&gt;
+    &lt;/ng-container&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby&#x3D;&quot;data-security&quot;&gt;
+    &lt;h3 id&#x3D;&quot;data-security&quot; i18n&#x3D;&quot;section heading 3|Policy subsection@@privacyPage.subheading.security&quot;&gt;Security of your personal data&lt;/h3&gt;
+    &lt;ng-container i18n&#x3D;&quot;section paragraph content|Notification of data security concerns@@privacyPage.content.security&quot;&gt;
+      &lt;p&gt;
+        The security of your personal data is important to us, but remember that no method of transmission over the Internet, or method of
+        electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal data, we cannot
+        guarantee its absolute security.
+      &lt;/p&gt;
+    &lt;/ng-container&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby&#x3D;&quot;data-children&quot;&gt;
+    &lt;h2 id&#x3D;&quot;data-children&quot; i18n&#x3D;&quot;section heading 3|Policy subsection@@privacyPage.subheading.children&quot;&gt;Children’s privacy&lt;/h2&gt;
+    &lt;ng-container i18n&#x3D;&quot;section paragraph content|Policy on content from children@@privacyPage.content.children&quot;&gt;
+      &lt;p&gt;
+        Brainfry does not permit access for anyone under the age of 13. We do not knowingly collect personally identifiable information from
+        anyone under the age of 13. If you are a parent or guardian and you are aware that your child has provided us with personal data,
+        take the actions indicated in the &lt;a href&#x3D;&quot;#data-deletion&quot;&gt;Delete your personal data&lt;/a&gt; section to remove that data. If we become
+        aware that we have collected personal data from anyone under the age of 13 without verification of parental consent, we may take
+        steps to remove that information from our servers.
+      &lt;/p&gt;
+    &lt;/ng-container&gt;
+  &lt;/section&gt;
+
+  &lt;section aria-labelledby&#x3D;&quot;policy-changes&quot;&gt;
+    &lt;h2 id&#x3D;&quot;policy-changes&quot; i18n&#x3D;&quot;section heading 3|Policy subsection@@privacyPage.subheading.changes&quot;&gt;Changes to this privacy policy&lt;/h2&gt;
+    &lt;ng-container i18n&#x3D;&quot;section paragraph content|Notifcation of changes to privacy policy@@privacyPage.content.changes&quot;&gt;
+      &lt;p&gt;
+        We may update our privacy policy from time to time. All changes to this policy are publicly recorded in the version controlled
+        source code &lt;a href&#x3D;&quot;https://github.com/rgant/brainfry&quot;&gt;repository&lt;/a&gt; for this application.
+      &lt;/p&gt;
+      &lt;p&gt;
+        You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they
+        are posted on this page.
+      &lt;/p&gt;
+    &lt;/ng-container&gt;
+  &lt;/section&gt;
+
+  &lt;p&gt;&lt;a routerLink&#x3D;&quot;/&quot; i18n&#x3D;&quot;link text|link to root page@@links.returnToRoot&quot;&gt;Return to Brainfry&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="card">  <h2 class="display" i18n="page heading 2|Privacy Policy@@privacyPage.heading">Privacy Policy</h2>  <section aria-labelledby="data-collected">    <h3 id="data-collected" i18n="section heading 3|Policy subsection@@privacyPage.subheading.collected">Types of data we collect</h3>    <ng-container i18n="section paragraph content|Notification of data collection policy@@privacyPage.content.collected">      <p>        We use your personal data to provide the Brainfry service. By using Brainfry, you agree to the collection and use of information in        accordance with this Privacy Policy.      </p>      <p>        While using Brainfry, we may ask you to provide us with certain personally identifiable information that can be used to contact or        identify you. Personally identifiable information may include, but is not limited to:      </p>      <ul>        <li>Email address</li>        <li>Your name</li>        <li>Links to your social media accounts</li>        <li>Usage Data</li>      </ul>      <p>We may also collect information that your browser sends whenever you visit this website.</p>    </ng-container>  </section>  <section aria-labelledby="data-use">    <h3 id="data-use" i18n="section heading 3|Policy subsection@@privacyPage.subheading.use">Use of your personal data</h3>    <ng-container i18n="section paragraph content|Notification of data use policy@@privacyPage.content.use">      <p>Brainfry may use personal data for the following purposes:</p>      <ul>        <li><strong>To provide and maintain our application</strong>, including to monitor the usage of our application.</li>        <li>          <strong>To manage your Account:</strong> to manage your registration as a user of Brainfry. The personal data you provide can give          you access to different functionalities that are available to you as a registered user.        </li>        <li>          <strong>To contact you:</strong> To contact you by email, voice or video calls, text communication, or other equivalent forms of          electronic communication, such as a mobile application’s push notifications regarding updates or informative communications          related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for          their implementation.        </li>        <li><strong>To manage your requests:</strong> To attend and manage your requests.</li>        <li>          <strong>For other purposes</strong>: We may use your information for other purposes, such as data analysis, identifying usage          trends, determining the effectiveness of our promotional campaigns and to evaluate and improve Brainfry, products, services,          marketing and your experience.        </li>      </ul>      <p>We may share your personal information in the following situations:</p>      <ul>        <li>          <strong>With service providers:</strong> We may share your personal information with service providers to monitor and analyze the          use of Brainfry.        </li>        <li>          <strong>With other users:</strong> when you share personal information or otherwise interact in the public areas with other users,          such information may be viewed by all users and may be publicly distributed outside. Similarly, other users will be able to view          descriptions of your activity, communicate with you and view your profile.        </li>        <li><strong>With your consent</strong>: We may disclose your personal information for any other purpose with your consent.</li>      </ul>    </ng-container>  </section>  <section aria-labelledby="data-retention">    <h3 id="data-retention" i18n="section heading 3|Policy subsection@@privacyPage.subheading.retention">      Retention of your personal data    </h3>    <ng-container i18n="section paragraph content|Notification of data retention policy@@privacyPage.content.retention">      <p>        Brainfry will retain your personal data only for as long as is necessary for the purposes set out in this Privacy Policy. We will        retain and use your personal data to the extent necessary to comply with our legal obligations (for example, if we are required to        retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.      </p>      <p>        Brainfry will also retain usage data for internal analysis purposes. Usage data is generally retained for a shorter period of time,        except when this data is used to strengthen the security or to improve the functionality, or we are legally obligated to retain this        data for longer time periods.      </p>    </ng-container>  </section>  <section aria-labelledby="data-transfer">    <h3 id="data-transfer" i18n="section heading 3|Policy subsection@@privacyPage.subheading.transfer">Transfer of your personal data</h3>    <ng-container i18n="section paragraph content|Notification of data transfer policy@@privacyPage.content.transfer">      <p>        Your information, including personal data, may be transferred to — and maintained on — computers located outside of your state,        province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.      </p>      <p>Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.</p>      <p>        Brainfry will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy        Policy and no transfer of your personal data will take place to an organization or a country unless there are adequate controls in        place including the security of your data and other personal information.      </p>    </ng-container>  </section>  <section aria-labelledby="data-deletion">    <h3 id="data-deletion" i18n="section heading 3|Policy subsection@@privacyPage.subheading.deletion">Delete your personal data</h3>    <ng-container i18n="section paragraph content|Notification of data deletion policy@@privacyPage.content.deletion">      <p>You have the right to delete the personal data that you have provided.</p>      <p>        Brainfry gives you the ability to <a routerLink="/delete-account">delete</a> certain information about you from within the        application.      </p>      <p>        You may update, amend, or delete your information at any time by signing in to your account, if you have one, and visiting the        account settings section that allows you to manage your personal information.      </p>      <p>Please note, however, that we may need to retain certain information when we have a legal obligation or lawful basis to do so.</p>    </ng-container>  </section>  <section aria-labelledby="data-security">    <h3 id="data-security" i18n="section heading 3|Policy subsection@@privacyPage.subheading.security">Security of your personal data</h3>    <ng-container i18n="section paragraph content|Notification of data security concerns@@privacyPage.content.security">      <p>        The security of your personal data is important to us, but remember that no method of transmission over the Internet, or method of        electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal data, we cannot        guarantee its absolute security.      </p>    </ng-container>  </section>  <section aria-labelledby="data-children">    <h2 id="data-children" i18n="section heading 3|Policy subsection@@privacyPage.subheading.children">Children’s privacy</h2>    <ng-container i18n="section paragraph content|Policy on content from children@@privacyPage.content.children">      <p>        Brainfry does not permit access for anyone under the age of 13. We do not knowingly collect personally identifiable information from        anyone under the age of 13. If you are a parent or guardian and you are aware that your child has provided us with personal data,        take the actions indicated in the <a href="#data-deletion">Delete your personal data</a> section to remove that data. If we become        aware that we have collected personal data from anyone under the age of 13 without verification of parental consent, we may take        steps to remove that information from our servers.      </p>    </ng-container>  </section>  <section aria-labelledby="policy-changes">    <h2 id="policy-changes" i18n="section heading 3|Policy subsection@@privacyPage.subheading.changes">Changes to this privacy policy</h2>    <ng-container i18n="section paragraph content|Notifcation of changes to privacy policy@@privacyPage.content.changes">      <p>        We may update our privacy policy from time to time. All changes to this policy are publicly recorded in the version controlled        source code <a href="https://github.com/rgant/brainfry">repository</a> for this application.      </p>      <p>        You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they        are posted on this page.      </p>    </ng-container>  </section>  <p><a routerLink="/" i18n="link text|link to root page@@links.returnToRoot">Return to Brainfry</a></p></div></div>'
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'app-actions'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthErrorMessagesComponent', 'selector': 'app-auth-error-messages'},{'name': 'CentralLayoutComponent', 'selector': 'app-central-layout'},{'name': 'ChangeEmailComponent', 'selector': 'app-change-email'},{'name': 'ChangePasswordComponent', 'selector': 'app-change-password'},{'name': 'ConfirmEmailComponent', 'selector': 'app-confirm-email'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteAccountComponent', 'selector': 'app-delete-account'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutComponent', 'selector': 'app-logout'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PhotoManagerComponent', 'selector': 'app-photo-manager'},{'name': 'PhotoUploadComponent', 'selector': 'app-photo-upload'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'RecoverEmailComponent', 'selector': 'app-recover-email'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StandardLayoutComponent', 'selector': 'app-standard-layout'},{'name': 'TermsAndConditionsComponent', 'selector': 'app-terms-and-conditions'},{'name': 'TestComponent', 'selector': ''},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'VerifyEmailComponent', 'selector': 'app-verify-email'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PrivacyPolicyComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PrivacyPolicyComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

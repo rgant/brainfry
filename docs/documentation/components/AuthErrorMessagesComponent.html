@@ -1,0 +1,821 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>brainfry documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">brainfry documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  AuthErrorMessagesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/identity/auth-error-messages/auth-error-messages.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-auth-error-messages</code></td>
+            </tr>
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./auth-error-messages.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#$code" >$code</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#$code" >$code</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="$code"></a>
+                        <b>$code</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>InputSignal&lt;string&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Required : </i>&nbsp;<b>true</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/identity/auth-error-messages/auth-error-messages.component.ts:19</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$code"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>$code</b></span>
+                        <a href="#$code"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>InputSignal&lt;string&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/identity/auth-error-messages/auth-error-messages.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, input } from &#x27;@angular/core&#x27;;
+import type { InputSignal } from &#x27;@angular/core&#x27;;
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: &#x27;app-auth-error-messages&#x27;,
+  templateUrl: &#x27;./auth-error-messages.component.html&#x27;,
+})
+export class AuthErrorMessagesComponent {
+  // Linter doesn&#x27;t like aliasing inputs, but also wants Signals called in templates to be prefixed with $
+  public readonly $code: InputSignal&lt;string&gt; &#x3D; input.required();
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">@switch ($code()) {
+  @case (&#x27;auth/code-expired&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.code-expired&quot;
+    &gt;
+      The SMS code has expired. Please re-send the verification code to try again.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/cors-unsupported&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.cors-unsupported&quot;
+    &gt;
+      This browser is not supported.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/credential-already-in-use&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.credential-already-in-use&quot;
+    &gt;
+      This credential is already associated with a different user account.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/requires-recent-login&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.requires-recent-login&quot;
+    &gt;
+      This operation is sensitive and requires recent authentication. Log in again before retrying this request.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/email-change-needs-verification&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.email-change-needs-verification&quot;
+    &gt;
+      Multi-factor users must always have a verified email.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/email-already-in-use&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.email-already-in-use&quot;
+    &gt;
+      The email address is already in use by another account.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/expired-action-code&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.expired-action-code&quot;
+    &gt;
+      The action code has expired.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/cancelled-popup-request&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.cancelled-popup-request&quot;
+    &gt;
+      This operation has been cancelled due to another conflicting popup being opened.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/invalid-verification-code&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-verification-code&quot;
+    &gt;
+      The SMS verification code used to create the phone auth credential is invalid. Please resend the verification code sms and be sure to
+      use the verification code provided by the user.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/invalid-continue-uri&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-continue-uri&quot;
+    &gt;
+      The continue URL provided in the request is invalid.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/invalid-email&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-email&quot;
+    &gt;
+      The email address is badly formatted.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/invalid-credential&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-credential&quot;
+    &gt;
+      The information supplied is incorrect. Please try again.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/password-does-not-meet-requirements&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.password-does-not-meet-requirements&quot;
+    &gt;
+      The password does not meet the requirements.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/invalid-action-code&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-action-code&quot;
+    &gt;
+      The action code is invalid. This can happen if the code is malformed, expired, or has already been used.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/wrong-password&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.wrong-password&quot;
+    &gt;
+      The password is invalid or the user does not have a password.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/invalid-phone-number&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-phone-number&quot;
+    &gt;
+      The format of the phone number provided is incorrect. Please enter the phone number in a format that can be parsed into E.164 format.
+      E.164 phone numbers are written in the format [+][country code][subscriber number including area code].
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/invalid-recipient-email&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.invalid-recipient-email&quot;
+    &gt;
+      The email corresponding to this action failed to send as the provided recipient email address is invalid.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/missing-phone-number&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.missing-phone-number&quot;
+    &gt;
+      To send verification codes, provide a phone number for the recipient.
+    &lt;/ng-container&gt;
+  }
+  @case (&#x27;auth/multi-factor-auth-required&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.multi-factor-auth-required&quot;
+    &gt;
+      Proof of ownership of a second factor is required to complete sign-in.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/account-exists-with-different-credential&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.account-exists-with-different-credential&quot;
+    &gt;
+      An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this
+      email address.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/network-request-failed&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.network-request-failed&quot;
+    &gt;
+      A network error (such as timeout, interrupted connection or unreachable host) has occurred.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/popup-blocked&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.popup-blocked&quot;
+    &gt;
+      Unable to establish a connection with the popup. It may have been blocked by the browser.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/popup-closed-by-user&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.popup-closed-by-user&quot;
+    &gt;
+      The popup has been closed by your before finalizing the operation.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/quota-exceeded&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.quota-exceeded&quot;
+    &gt;
+      The project’s quota for this operation has been exceeded.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/redirect-cancelled-by-user&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.redirect-cancelled-by-user&quot;
+    &gt;
+      The redirect operation has been cancelled by you before finalizing.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/redirect-operation-pending&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.redirect-operation-pending&quot;
+    &gt;
+      A redirect sign-in operation is already pending.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/timeout&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.timeout&quot;
+    &gt;
+      The operation has timed out.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/user-token-expired&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.user-token-expired&quot;
+    &gt;
+      Your credentials is no longer valid. You must sign in again.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/too-many-requests&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.too-many-requests&quot;
+    &gt;
+      We have blocked all requests from this device due to unusual activity. Try again later.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/unverified-email&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.unverified-email&quot;
+    &gt;
+      The operation requires a verified email.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/user-cancelled&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.user-cancelled&quot;
+    &gt;
+      You did not grant your application the permissions it requested.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/user-not-found&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.user-not-found&quot;
+    &gt;
+      There is no user record corresponding to this identifier. The user may have been deleted.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/user-disabled&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.user-disabled&quot;
+    &gt;
+      The user account has been disabled by an administrator.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/user-mismatch&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.user-mismatch&quot;
+    &gt;
+      The supplied credentials do not correspond to the previously signed in user.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/weak-password&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.weak-password&quot;
+    &gt;
+      The password must be 12 characters long or more.
+    &lt;/ng-container&gt;
+  }
+
+  @case (&#x27;auth/web-storage-unsupported&#x27;) {
+    &lt;ng-container
+      i18n&#x3D;&quot;
+        error message from Firebase
+        |Friendly error message to display based on errors from backend
+        @@firebase.errorMsg.web-storage-unsupported&quot;
+    &gt;
+      This browser is not supported or 3rd party cookies and data may be disabled.
+    &lt;/ng-container&gt;
+  }
+
+  @default {
+    &lt;ng-container i18n&#x3D;&quot;error message from Firebase
+      |Unknown error code
+      @@firebase.errorMsg.invalid-recaptcha-version&quot;
+    &gt;
+      A problem occurred. Please refresh and try again.
+    &lt;/ng-container&gt;
+  }
+}
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div>@switch ($code()) {  @case (\'auth/code-expired\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.code-expired"    >      The SMS code has expired. Please re-send the verification code to try again.    </ng-container>  }  @case (\'auth/cors-unsupported\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.cors-unsupported"    >      This browser is not supported.    </ng-container>  }  @case (\'auth/credential-already-in-use\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.credential-already-in-use"    >      This credential is already associated with a different user account.    </ng-container>  }  @case (\'auth/requires-recent-login\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.requires-recent-login"    >      This operation is sensitive and requires recent authentication. Log in again before retrying this request.    </ng-container>  }  @case (\'auth/email-change-needs-verification\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.email-change-needs-verification"    >      Multi-factor users must always have a verified email.    </ng-container>  }  @case (\'auth/email-already-in-use\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.email-already-in-use"    >      The email address is already in use by another account.    </ng-container>  }  @case (\'auth/expired-action-code\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.expired-action-code"    >      The action code has expired.    </ng-container>  }  @case (\'auth/cancelled-popup-request\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.cancelled-popup-request"    >      This operation has been cancelled due to another conflicting popup being opened.    </ng-container>  }  @case (\'auth/invalid-verification-code\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.invalid-verification-code"    >      The SMS verification code used to create the phone auth credential is invalid. Please resend the verification code sms and be sure to      use the verification code provided by the user.    </ng-container>  }  @case (\'auth/invalid-continue-uri\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.invalid-continue-uri"    >      The continue URL provided in the request is invalid.    </ng-container>  }  @case (\'auth/invalid-email\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.invalid-email"    >      The email address is badly formatted.    </ng-container>  }  @case (\'auth/invalid-credential\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.invalid-credential"    >      The information supplied is incorrect. Please try again.    </ng-container>  }  @case (\'auth/password-does-not-meet-requirements\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.password-does-not-meet-requirements"    >      The password does not meet the requirements.    </ng-container>  }  @case (\'auth/invalid-action-code\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.invalid-action-code"    >      The action code is invalid. This can happen if the code is malformed, expired, or has already been used.    </ng-container>  }  @case (\'auth/wrong-password\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.wrong-password"    >      The password is invalid or the user does not have a password.    </ng-container>  }  @case (\'auth/invalid-phone-number\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.invalid-phone-number"    >      The format of the phone number provided is incorrect. Please enter the phone number in a format that can be parsed into E.164 format.      E.164 phone numbers are written in the format [+][country code][subscriber number including area code].    </ng-container>  }  @case (\'auth/invalid-recipient-email\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.invalid-recipient-email"    >      The email corresponding to this action failed to send as the provided recipient email address is invalid.    </ng-container>  }  @case (\'auth/missing-phone-number\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.missing-phone-number"    >      To send verification codes, provide a phone number for the recipient.    </ng-container>  }  @case (\'auth/multi-factor-auth-required\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.multi-factor-auth-required"    >      Proof of ownership of a second factor is required to complete sign-in.    </ng-container>  }  @case (\'auth/account-exists-with-different-credential\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.account-exists-with-different-credential"    >      An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this      email address.    </ng-container>  }  @case (\'auth/network-request-failed\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.network-request-failed"    >      A network error (such as timeout, interrupted connection or unreachable host) has occurred.    </ng-container>  }  @case (\'auth/popup-blocked\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.popup-blocked"    >      Unable to establish a connection with the popup. It may have been blocked by the browser.    </ng-container>  }  @case (\'auth/popup-closed-by-user\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.popup-closed-by-user"    >      The popup has been closed by your before finalizing the operation.    </ng-container>  }  @case (\'auth/quota-exceeded\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.quota-exceeded"    >      The project’s quota for this operation has been exceeded.    </ng-container>  }  @case (\'auth/redirect-cancelled-by-user\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.redirect-cancelled-by-user"    >      The redirect operation has been cancelled by you before finalizing.    </ng-container>  }  @case (\'auth/redirect-operation-pending\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.redirect-operation-pending"    >      A redirect sign-in operation is already pending.    </ng-container>  }  @case (\'auth/timeout\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.timeout"    >      The operation has timed out.    </ng-container>  }  @case (\'auth/user-token-expired\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.user-token-expired"    >      Your credentials is no longer valid. You must sign in again.    </ng-container>  }  @case (\'auth/too-many-requests\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.too-many-requests"    >      We have blocked all requests from this device due to unusual activity. Try again later.    </ng-container>  }  @case (\'auth/unverified-email\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.unverified-email"    >      The operation requires a verified email.    </ng-container>  }  @case (\'auth/user-cancelled\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.user-cancelled"    >      You did not grant your application the permissions it requested.    </ng-container>  }  @case (\'auth/user-not-found\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.user-not-found"    >      There is no user record corresponding to this identifier. The user may have been deleted.    </ng-container>  }  @case (\'auth/user-disabled\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.user-disabled"    >      The user account has been disabled by an administrator.    </ng-container>  }  @case (\'auth/user-mismatch\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.user-mismatch"    >      The supplied credentials do not correspond to the previously signed in user.    </ng-container>  }  @case (\'auth/weak-password\') {    <ng-container      i18n="error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.weak-password"    >      The password must be 12 characters long or more.    </ng-container>  }  @case (\'auth/web-storage-unsupported\') {    <ng-container      i18n="        error message from Firebase        |Friendly error message to display based on errors from backend        @@firebase.errorMsg.web-storage-unsupported"    >      This browser is not supported or 3rd party cookies and data may be disabled.    </ng-container>  }  @default {    <ng-container i18n="error message from Firebase      |Unknown error code      @@firebase.errorMsg.invalid-recaptcha-version"    >      A problem occurred. Please refresh and try again.    </ng-container>  }}</div>'
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'app-actions'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthErrorMessagesComponent', 'selector': 'app-auth-error-messages'},{'name': 'CentralLayoutComponent', 'selector': 'app-central-layout'},{'name': 'ChangeEmailComponent', 'selector': 'app-change-email'},{'name': 'ChangePasswordComponent', 'selector': 'app-change-password'},{'name': 'ConfirmEmailComponent', 'selector': 'app-confirm-email'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteAccountComponent', 'selector': 'app-delete-account'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutComponent', 'selector': 'app-logout'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PhotoManagerComponent', 'selector': 'app-photo-manager'},{'name': 'PhotoUploadComponent', 'selector': 'app-photo-upload'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'RecoverEmailComponent', 'selector': 'app-recover-email'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StandardLayoutComponent', 'selector': 'app-standard-layout'},{'name': 'TermsAndConditionsComponent', 'selector': 'app-terms-and-conditions'},{'name': 'TestComponent', 'selector': ''},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'VerifyEmailComponent', 'selector': 'app-verify-email'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AuthErrorMessagesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AuthErrorMessagesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -26,6 +26,9 @@
   ],
   "scripts": {
     "build": "ng build",
+    "compodoc:build": "compodoc -p tsconfig.doc.json --output ./docs/documentation/",
+    "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
+    "compodoc:serve": "compodoc -s",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "e2e": "firebase emulators:exec --ui --import ./fixtures/ --only auth,storage 'ng e2e'",
@@ -65,6 +68,7 @@
     "@angular/cli": "^19.1.6",
     "@angular/compiler-cli": "^19.1.5",
     "@angular/localize": "^19.1.5",
+    "@compodoc/compodoc": "^1.1.26",
     "@smarttools/eslint-plugin-rxjs": "^1.0.17",
     "@stylistic/eslint-plugin": "^3.1.0",
     "@stylistic/stylelint-config": "^2.0.0",

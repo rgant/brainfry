@@ -1,0 +1,747 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>brainfry documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">brainfry documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  HeaderComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/layouts/header/header.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-header</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>FaIconComponent</code>
+                            <code>NgOptimizedImage</code>
+                            <code>RouterLink</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./header.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./header.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#$showMenu" >$showMenu</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#faBars" >faBars</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#faX" >faX</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#onClick" >onClick</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#toggleMenu" >toggleMenu</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#click" >click</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="click"></a>
+                    <span class="name">
+                        <span ><b>click</b></span>
+                        <a href="#click"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>click(event: Event)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/app/layouts/header/header.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Close the menu if the user clicks on a link.</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onClick"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>onClick</b></span>
+                        <a href="#onClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onClick(event: Event)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;click&#x27;, [&#x27;$event&#x27;])<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/app/layouts/header/header.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Close the menu if the user clicks on a link.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleMenu"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>toggleMenu</b></span>
+                        <a href="#toggleMenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>toggleMenu()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/app/layouts/header/header.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets the expanded class on the .menu list, and updates aria-expanded and the icon.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$showMenu"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>$showMenu</b></span>
+                        <a href="#$showMenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;boolean&gt;(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/layouts/header/header.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="faBars"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>faBars</b></span>
+                        <a href="#faBars"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>IconDefinition</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>faBars</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/layouts/header/header.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="faX"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>faX</b></span>
+                        <a href="#faX"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>IconDefinition</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>faX</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/layouts/header/header.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgOptimizedImage } from &#x27;@angular/common&#x27;;
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+  signal,
+} from &#x27;@angular/core&#x27;;
+import type { WritableSignal } from &#x27;@angular/core&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+import { FaIconComponent } from &#x27;@fortawesome/angular-fontawesome&#x27;;
+import type { IconDefinition } from &#x27;@fortawesome/angular-fontawesome&#x27;;
+import { faBars, faX } from &#x27;@fortawesome/free-solid-svg-icons&#x27;;
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ FaIconComponent, NgOptimizedImage, RouterLink ],
+  selector: &#x27;app-header&#x27;,
+  styleUrl: &#x27;./header.component.scss&#x27;,
+  templateUrl: &#x27;./header.component.html&#x27;,
+})
+export class HeaderComponent {
+  public readonly $showMenu: WritableSignal&lt;boolean&gt; &#x3D; signal&lt;boolean&gt;(false);
+  public readonly faBars: IconDefinition &#x3D; faBars;
+  public readonly faX: IconDefinition &#x3D; faX;
+
+  /**
+   * Close the menu if the user clicks on a link.
+   */
+  @HostListener(&#x27;click&#x27;, [ &#x27;$event&#x27; ])
+  public onClick(event: Event): void {
+    const { target } &#x3D; event;
+
+    if (target instanceof HTMLAnchorElement) {
+      this.$showMenu.set(false);
+    }
+  }
+
+  /**
+   * Sets the expanded class on the .menu list, and updates aria-expanded and the icon.
+   */
+  public toggleMenu(): void {
+    const menuShown &#x3D; this.$showMenu();
+    this.$showMenu.set(!menuShown);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;header aria-label&#x3D;&quot;Main Header&quot; i18n-aria-label&#x3D;&quot;aria label|Main application header@@header.aria-label&quot;&gt;
+  &lt;a routerLink&#x3D;&quot;/&quot; class&#x3D;&quot;heading-link&quot;&gt;
+    &lt;img class&#x3D;&quot;logo&quot; alt&#x3D;&quot;&quot; ngSrc&#x3D;&quot;/imgs/logo-100.png&quot; width&#x3D;&quot;100&quot; height&#x3D;&quot;100&quot; priority&gt;
+    &lt;h1 class&#x3D;&quot;display&quot; i18n&#x3D;&quot;h1 display heading|Title of the application@@text.siteTitle&quot;&gt;Brainfry Quiz&lt;/h1&gt;
+  &lt;/a&gt;
+&lt;/header&gt;
+
+&lt;nav class&#x3D;&quot;toggle-menu&quot; aria-label&#x3D;&quot;Account Menu&quot; i18n-aria-label&#x3D;&quot;aria-label|User Account Navigation@@accountMenu.aria-label&quot;&gt;
+  &lt;button
+    (click)&#x3D;&quot;toggleMenu()&quot;
+    [attr.aria-expanded]&#x3D;&quot;$showMenu()&quot;
+    class&#x3D;&quot;toggle&quot;
+    type&#x3D;&quot;button&quot;
+    aria-controls&#x3D;&quot;account-menu&quot;
+    aria-label&#x3D;&quot;Toggle account menu&quot;
+    i18n-aria-label&#x3D;&quot;aria label text|Button to open and close user account menu@@button.accountMenu.aria-label&quot;
+  &gt;
+    &lt;fa-icon
+      [icon]&#x3D;&quot;$showMenu() ? faX : faBars&quot;
+      class&#x3D;&quot;icon&quot;
+      title&#x3D;&quot;Your account&quot;
+      i18n-title&#x3D;&quot;global navigation toogle|Opens the user menu@@button.accountMenu&quot;
+    /&gt;
+    &lt;span class&#x3D;&quot;text&quot; i18n&#x3D;&quot;global navigation toogle|Opens the user menu@@button.accountMenu&quot;&gt;Your account&lt;/span&gt;
+  &lt;/button&gt;
+
+  &lt;ul [class.expanded]&#x3D;&quot;$showMenu()&quot; class&#x3D;&quot;menu&quot; id&#x3D;&quot;account-menu&quot;&gt;
+    &lt;li&gt;&lt;a routerLink&#x3D;&quot;/profile&quot; i18n&#x3D;&quot;navigation link|Link to profile page@@links.profile&quot;&gt;Your profile&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a routerLink&#x3D;&quot;/photos&quot; i18n&#x3D;&quot;navigation link|Page to manage profile photos@@links.manage-photos&quot;&gt;Manage your photos&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a routerLink&#x3D;&quot;/change-email&quot; i18n&#x3D;&quot;navigation link|Link to change emailp page@@links.changeEmail&quot;&gt;Change email&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a routerLink&#x3D;&quot;/change-password&quot; i18n&#x3D;&quot;navigation link|Link to change password page@@links.changePassword&quot;&gt;Change password&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a routerLink&#x3D;&quot;/delete-account&quot; i18n&#x3D;&quot;navigation link|Link to account deletion page@@links.deleteAccount&quot;&gt;Delete account&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a routerLink&#x3D;&quot;/logout&quot; i18n&#x3D;&quot;navigation link|Link to logout page@@links.logout&quot;&gt;Logout&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><header aria-label="Main Header" i18n-aria-label="aria label|Main application header@@header.aria-label">  <a routerLink="/" class="heading-link">    <img class="logo" alt="" ngSrc="/imgs/logo-100.png" width="100" height="100" priority>    <h1 class="display" i18n="h1 display heading|Title of the application@@text.siteTitle">Brainfry Quiz</h1>  </a></header><nav class="toggle-menu" aria-label="Account Menu" i18n-aria-label="aria-label|User Account Navigation@@accountMenu.aria-label">  <button    (click)="toggleMenu()"    [attr.aria-expanded]="$showMenu()"    class="toggle"    type="button"    aria-controls="account-menu"    aria-label="Toggle account menu"    i18n-aria-label="aria label text|Button to open and close user account menu@@button.accountMenu.aria-label"  >    <fa-icon      [icon]="$showMenu() ? faX : faBars"      class="icon"      title="Your account"      i18n-title="global navigation toogle|Opens the user menu@@button.accountMenu"    />    <span class="text" i18n="global navigation toogle|Opens the user menu@@button.accountMenu">Your account</span>  </button>  <ul [class.expanded]="$showMenu()" class="menu" id="account-menu">    <li><a routerLink="/profile" i18n="navigation link|Link to profile page@@links.profile">Your profile</a></li>    <li><a routerLink="/photos" i18n="navigation link|Page to manage profile photos@@links.manage-photos">Manage your photos</a></li>    <li><a routerLink="/change-email" i18n="navigation link|Link to change emailp page@@links.changeEmail">Change email</a></li>    <li><a routerLink="/change-password" i18n="navigation link|Link to change password page@@links.changePassword">Change password</a></li>    <li><a routerLink="/delete-account" i18n="navigation link|Link to account deletion page@@links.deleteAccount">Delete account</a></li>    <li><a routerLink="/logout" i18n="navigation link|Link to logout page@@links.logout">Logout</a></li>  </ul></nav></div>'
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'app-actions'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthErrorMessagesComponent', 'selector': 'app-auth-error-messages'},{'name': 'CentralLayoutComponent', 'selector': 'app-central-layout'},{'name': 'ChangeEmailComponent', 'selector': 'app-change-email'},{'name': 'ChangePasswordComponent', 'selector': 'app-change-password'},{'name': 'ConfirmEmailComponent', 'selector': 'app-confirm-email'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteAccountComponent', 'selector': 'app-delete-account'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutComponent', 'selector': 'app-logout'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PhotoManagerComponent', 'selector': 'app-photo-manager'},{'name': 'PhotoUploadComponent', 'selector': 'app-photo-upload'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'RecoverEmailComponent', 'selector': 'app-recover-email'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StandardLayoutComponent', 'selector': 'app-standard-layout'},{'name': 'TermsAndConditionsComponent', 'selector': 'app-terms-and-conditions'},{'name': 'TestComponent', 'selector': ''},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'VerifyEmailComponent', 'selector': 'app-verify-email'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HeaderComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HeaderComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

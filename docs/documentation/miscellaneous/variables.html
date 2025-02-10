@@ -1,0 +1,1636 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>brainfry documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">brainfry documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#appConfig" title="src/app/app.config.ts" ><b>appConfig</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#authEmulatorConnected" title="src/testing/utilities/emulator-auth.ts" ><b>authEmulatorConnected</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-auth.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#authGuard" title="src/app/core/guards/auth.guard.ts" ><b>authGuard</b>&nbsp;&nbsp;&nbsp;(src/.../auth.guard.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#confirmMatch" title="src/app/identity/validators/confirm-match/confirm-match.validator.ts" ><b>confirmMatch</b>&nbsp;&nbsp;&nbsp;(src/.../confirm-match.validator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#confirmMatchFormErrors" title="src/app/identity/validators/confirm-match/match-error.signal.ts" ><b>confirmMatchFormErrors</b>&nbsp;&nbsp;&nbsp;(src/.../match-error.signal.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#controlErrorsSignal" title="src/app/shared/control-errors-signal.util.ts" ><b>controlErrorsSignal</b>&nbsp;&nbsp;&nbsp;(src/.../control-errors-signal.util.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#controlInvalidSignal" title="src/app/shared/control-invalid-signal.util.ts" ><b>controlInvalidSignal</b>&nbsp;&nbsp;&nbsp;(src/.../control-invalid-signal.util.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#createEmailControl" title="src/app/identity/identity-forms.ts" ><b>createEmailControl</b>&nbsp;&nbsp;&nbsp;(src/.../identity-forms.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#createPasswordControl" title="src/app/identity/identity-forms.ts" ><b>createPasswordControl</b>&nbsp;&nbsp;&nbsp;(src/.../identity-forms.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#emailVerifiedGuard" title="src/app/core/guards/email-verified.guard.ts" ><b>emailVerifiedGuard</b>&nbsp;&nbsp;&nbsp;(src/.../email-verified.guard.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ERROR_NAME" title="src/app/identity/validators/confirm-match/confirm-match.validator.ts" ><b>ERROR_NAME</b>&nbsp;&nbsp;&nbsp;(src/.../confirm-match.validator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#FORMS" title="src/app/shared/constants.ts" ><b>FORMS</b>&nbsp;&nbsp;&nbsp;(src/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getCompiled" title="src/testing/utilities/dom.ts" ><b>getCompiled</b>&nbsp;&nbsp;&nbsp;(src/.../dom.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getControlStructure" title="src/app/identity/identity-forms.ts" ><b>getControlStructure</b>&nbsp;&nbsp;&nbsp;(src/.../identity-forms.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getErrorCode" title="src/app/identity/error-code.ts" ><b>getErrorCode</b>&nbsp;&nbsp;&nbsp;(src/.../error-code.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getPasswordControlValue" title="src/app/identity/validators/passwords/util.ts" ><b>getPasswordControlValue</b>&nbsp;&nbsp;&nbsp;(src/.../util.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getState" title="src/app/identity/actions/get-state.ts" ><b>getState</b>&nbsp;&nbsp;&nbsp;(src/.../get-state.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isInvalid" title="src/app/shared/control-invalid-signal.util.ts" ><b>isInvalid</b>&nbsp;&nbsp;&nbsp;(src/.../control-invalid-signal.util.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MAXIMUM_PHOTOS" title="src/app/identity/user-photos/user-photos.service.ts" ><b>MAXIMUM_PHOTOS</b>&nbsp;&nbsp;&nbsp;(src/.../user-photos.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#noAuthGuard" title="src/app/core/guards/no-auth.guard.ts" ><b>noAuthGuard</b>&nbsp;&nbsp;&nbsp;(src/.../no-auth.guard.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#passwordFirebaseValidator" title="src/app/identity/validators/passwords/firebase.validator.ts" ><b>passwordFirebaseValidator</b>&nbsp;&nbsp;&nbsp;(src/.../firebase.validator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#PASSWORDS" title="src/app/shared/constants.ts" ><b>PASSWORDS</b>&nbsp;&nbsp;&nbsp;(src/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#passwordStrengthValidator" title="src/app/identity/validators/passwords/strength.validator.ts" ><b>passwordStrengthValidator</b>&nbsp;&nbsp;&nbsp;(src/.../strength.validator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#PHOTO_DIR" title="src/app/identity/user-photos/user-photos.service.ts" ><b>PHOTO_DIR</b>&nbsp;&nbsp;&nbsp;(src/.../user-photos.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#provideEmulatedAuth" title="src/testing/utilities/emulator-auth.ts" ><b>provideEmulatedAuth</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-auth.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#provideEmulatedStorage" title="src/testing/utilities/emulator-storage.ts" ><b>provideEmulatedStorage</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-storage.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#provideOurFirebaseApp" title="src/app/core/firebase-app.provider.ts" ><b>provideOurFirebaseApp</b>&nbsp;&nbsp;&nbsp;(src/.../firebase-app.provider.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#RADIX" title="src/app/identity/user-photos/user-photos.service.ts" ><b>RADIX</b>&nbsp;&nbsp;&nbsp;(src/.../user-photos.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#resolveValidatePassword" title="src/testing/utilities/emulator-auth.ts" ><b>resolveValidatePassword</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-auth.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ROBOTS_META" title="src/app/page-not-found/page-not-found.component.ts" ><b>ROBOTS_META</b>&nbsp;&nbsp;&nbsp;(src/.../page-not-found.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#safeQuerySelector" title="src/testing/utilities/dom.ts" ><b>safeQuerySelector</b>&nbsp;&nbsp;&nbsp;(src/.../dom.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SEND_EMAIL_DELAY" title="src/app/identity/recover-email/recover-email.service.ts" ><b>SEND_EMAIL_DELAY</b>&nbsp;&nbsp;&nbsp;(src/.../recover-email.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#setValidatePassword" title="src/testing/utilities/emulator-auth.ts" ><b>setValidatePassword</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-auth.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SKIP_WHOLE_NUM" title="src/app/identity/user-photos/user-photos.service.ts" ><b>SKIP_WHOLE_NUM</b>&nbsp;&nbsp;&nbsp;(src/.../user-photos.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#storageEmulatorConnected" title="src/testing/utilities/emulator-storage.ts" ><b>storageEmulatorConnected</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-storage.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#USER$" title="src/app/core/user.token.ts" ><b>USER$</b>&nbsp;&nbsp;&nbsp;(src/.../user.token.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#validatePasswordIsValid" title="src/testing/utilities/emulator-auth.ts" ><b>validatePasswordIsValid</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-auth.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/app/app.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appConfig"></a>
+                    <span class="name">
+                        <span ><b>appConfig</b></span>
+                        <a href="#appConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ApplicationConfig</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideOurFirebaseApp(),
+    provideAuth((): Auth &#x3D;&gt; getAuth()),
+    // provideAnalytics((): Analytics &#x3D;&gt; getAnalytics()),
+    // ScreenTrackingService,
+    // UserTrackingService,
+    // provideAppCheck((): AppCheck &#x3D;&gt; {
+    //   const provider &#x3D; new ReCaptchaEnterpriseProvider(&#x27;6LfG3rEqAAAAAK18S9UyMuK8wd3JSWjVnmDzmlrT&#x27;);
+    //   return initializeAppCheck(undefined, { isTokenAutoRefreshEnabled: true, provider });
+    // }),
+    provideFirestore((): Firestore &#x3D;&gt; getFirestore()),
+    // provideFunctions((): Functions &#x3D;&gt; getFunctions()),
+    providePerformance((): FirebasePerformance &#x3D;&gt; getPerformance()),
+    provideServiceWorker(
+      &#x27;ngsw-worker.js&#x27;,
+      {
+        enabled: !isDevMode(),
+        registrationStrategy: &#x27;registerWhenStable:30000&#x27;,
+      },
+    ),
+    provideStorage((): FirebaseStorage &#x3D;&gt; getStorage()),
+    // provideVertexAI((): VertexAI &#x3D;&gt; getVertexAI()),
+    provideRouter(
+      routes,
+      withComponentInputBinding(),
+      withInMemoryScrolling({ anchorScrolling: &#x27;enabled&#x27;, scrollPositionRestoration: &#x27;enabled&#x27; }),
+    ),
+    { provide: TitleStrategy, useClass: AppTitleStrategyService },
+  ],
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/testing/utilities/emulator-auth.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authEmulatorConnected"></a>
+                    <span class="name">
+                        <span ><b>authEmulatorConnected</b></span>
+                        <a href="#authEmulatorConnected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="provideEmulatedAuth"></a>
+                    <span class="name">
+                        <span ><b>provideEmulatedAuth</b></span>
+                        <a href="#provideEmulatedAuth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(): EnvironmentProviders &#x3D;&gt;
+  provideAuth((): Auth &#x3D;&gt; {
+    const auth &#x3D; getAuth();
+
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises -- just for testing.
+    setPersistence(auth, inMemoryPersistence);
+
+    // Connecting to the emulator multiple times for each TestBed.configureTestingModule call causes
+    // errors: auth/emulator-config-failed
+    // But only connecting once, hopefully fixes that.
+    // https://np.reddit.com/r/Firebase/comments/18s6wzp/comment/kf6w7hk/
+    if (!authEmulatorConnected) {
+      const { port } &#x3D; firebaseSettings.emulators.auth;
+      connectAuthEmulator(auth, &#x60;http://localhost:${port}&#x60;, { disableWarnings: true });
+      authEmulatorConnected &#x3D; true;
+    }
+
+    // Auth Emulator does not support testing &#x60;validatePassword&#x60;
+    // FirebaseError: Firebase: Error (auth/identitytoolkit.getpasswordpolicy-is-not-implemented-in-the-auth-emulator.)
+    // @ts-expect-error Spying on private method for testing.
+    // eslint-disable-next-line jasmine/no-unsafe-spy -- This is a jasmine helper
+    spyOn(auth, &#x27;validatePassword&#x27;).and.callFake(resolveValidatePassword);
+    setValidatePassword(true); // This global would pollute tests if not reset for every test. It is also not safe for parallel execution.
+
+    return auth;
+  })</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Provide Firebase Auth, and if not already connected to emulator then do so only the first time
+this method is called.</p>
+<p>Since the emulator does not support the calls needed to implement validatePassword, that also
+is mocked in this setup. The mock response is partly configurable using <code>setValidatePassword</code>.</p>
+<p>Note: both the singlton call to <code>connectAuthEmulator</code> and the hacky mocking of the private
+<code>validatePassword</code> method are not ideal. But what would be better designs?</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resolveValidatePassword"></a>
+                    <span class="name">
+                        <span ><b>resolveValidatePassword</b></span>
+                        <a href="#resolveValidatePassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>async (): Promise&lt;PasswordValidationStatus&gt; &#x3D;&gt;
+  // validatePasswordResponse was generated against the actual API by not spying on the
+  // &#x60;validatePassword&#x60; method and using the real Auth.
+  ({ ...validatePasswordResponse, isValid: validatePasswordIsValid })</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setValidatePassword"></a>
+                    <span class="name">
+                        <span ><b>setValidatePassword</b></span>
+                        <a href="#setValidatePassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(isValid: boolean): void &#x3D;&gt; {
+  validatePasswordIsValid &#x3D; isValid;
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets the isValid field in the mocked validatePassword response to value desired by tests.</p>
+<p>Note: this is a hack, and shows why all code needs review. But how to make a better design?</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validatePasswordIsValid"></a>
+                    <span class="name">
+                        <span ><b>validatePasswordIsValid</b></span>
+                        <a href="#validatePasswordIsValid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/guards/auth.guard.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authGuard"></a>
+                    <span class="name">
+                        <span ><b>authGuard</b></span>
+                        <a href="#authGuard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>CanActivateChildFn</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  _childRoute: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot,
+): Observable&lt;UrlTree | true&gt; &#x3D;&gt; {
+  const router &#x3D; inject(Router);
+  const user$ &#x3D; inject(USER$);
+  const { url } &#x3D; state;
+
+  return user$.pipe(
+    map((maybeUser: User | null): UrlTree | true &#x3D;&gt; {
+      if (!maybeUser) {
+        return router.parseUrl(&#x60;/login?next&#x3D;${url}&#x60;);
+      }
+
+      return true;
+    }),
+  );
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/identity/validators/confirm-match/confirm-match.validator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmMatch"></a>
+                    <span class="name">
+                        <span ><b>confirmMatch</b></span>
+                        <a href="#confirmMatch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(password1: string, password2: string): ValidatorFn &#x3D;&gt;
+  // control: AbstractControl is required by the type ValidatorFn, but the actual expected type is FormGroup.
+  (formGrp: AbstractControl): ValidationErrors | null &#x3D;&gt; {
+    if (!(formGrp instanceof FormGroup)) {
+      throw new TypeError(&#x27;Control must be an instance of FormGroup.&#x27;);
+    }
+
+    const control1 &#x3D; formGrp.get(password1);
+    const control2 &#x3D; formGrp.get(password2);
+
+    if (!control1) {
+      throw new Error(&#x60;Cannot find FormControl named &#x27;${password1}&#x27;.&#x60;);
+    }
+    if (!control2) {
+      throw new Error(&#x60;Cannot find FormControl named &#x27;${password2}&#x27;.&#x60;);
+    }
+
+    // eslint-disable-next-line unicorn/no-null -- ValidatorFn returns null
+    return control1.value &#x3D;&#x3D;&#x3D; control2.value ? null : { [ERROR_NAME]: true };
+  }</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Usage:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">  new FormGroup(
+   {
+     password1: new FormControl(null, [ Validators.required, Validators.minLength(num), Validators.maxLength(num) ]),
+     password2: new FormControl(null, [ Validators.required, Validators.minLength(num), Validators.maxLength(num) ]),
+   },
+   { validators: confirmMatch(&#39;password1&#39;, &#39;password2&#39;) },
+ );</code></pre></div></div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ERROR_NAME"></a>
+                    <span class="name">
+                        <span ><b>ERROR_NAME</b></span>
+                        <a href="#ERROR_NAME"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;confirmmatch&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/identity/validators/confirm-match/match-error.signal.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmMatchFormErrors"></a>
+                    <span class="name">
+                        <span ><b>confirmMatchFormErrors</b></span>
+                        <a href="#confirmMatchFormErrors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(form: FormGroup, control1: FormControl, control2: FormControl): Signal&lt;boolean&gt; &#x3D;&gt; {
+  const initialValue: boolean &#x3D; form.invalid &amp;&amp; control1.valid &amp;&amp; control2.valid &amp;&amp; form.errors?.[ERROR_NAME] !&#x3D; undefined;
+
+  const formStatus$: Observable&lt;boolean&gt; &#x3D; form.statusChanges.pipe(
+    // Wait for input to stop before displaying error messages
+    debounceTime(FORMS.inputDebounce),
+    map((status: FormControlStatus): boolean &#x3D;&gt; {
+      const { errors } &#x3D; form;
+      if (status &#x3D;&#x3D;&#x3D; &#x27;INVALID&#x27; &amp;&amp; control1.valid &amp;&amp; control2.valid &amp;&amp; errors) {
+        return errors[ERROR_NAME] !&#x3D; undefined;
+      }
+      return false;
+    }),
+  );
+
+  return toSignal(formStatus$, { initialValue });
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Only display the confirmmatch error if the two controls are valid, and the form has the error.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/shared/control-errors-signal.util.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="controlErrorsSignal"></a>
+                    <span class="name">
+                        <span ><b>controlErrorsSignal</b></span>
+                        <a href="#controlErrorsSignal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(control: AbstractControl): Signal&lt;ValidationErrors | undefined&gt; &#x3D;&gt; {
+  // Only care about dirty controls for purposes of displaying validation error messages.
+  const controlDirty$: Observable&lt;boolean&gt; &#x3D; control.events.pipe(
+    filter((event: ControlEvent&lt;unknown&gt;): event is PristineChangeEvent &#x3D;&gt; event instanceof PristineChangeEvent),
+    map((event: PristineChangeEvent): boolean &#x3D;&gt; !event.pristine),
+  );
+
+  // When status is INVALID emit control.errors, otherwise undefined
+  const controlStatus$: Observable&lt;ValidationErrors | undefined&gt; &#x3D; control.statusChanges.pipe(
+    // Wait for input to stop before displaying error messages
+    debounceTime(FORMS.inputDebounce),
+    map((status: FormControlStatus): ValidationErrors | undefined &#x3D;&gt; {
+      const { errors } &#x3D; control;
+      if (status &#x3D;&#x3D;&#x3D; &#x27;INVALID&#x27; &amp;&amp; errors) {
+        return errors;
+      }
+      return undefined;
+    }),
+  );
+
+  // Combine the Observables so that ValidationErrors are emitted only when the control is dirty.
+  const controlErrors$: Observable&lt;ValidationErrors | undefined&gt; &#x3D; combineLatest({
+    /* eslint-disable rxjs/finnish */
+    dirty: controlDirty$,
+    errors: controlStatus$,
+  }).pipe(
+    map(({ dirty, errors }: CombinedObs): ValidationErrors | undefined &#x3D;&gt; {
+      if (dirty) {
+        return errors;
+      }
+
+      return undefined;
+    }),
+  );
+
+  return toSignal(controlErrors$);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/shared/control-invalid-signal.util.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="controlInvalidSignal"></a>
+                    <span class="name">
+                        <span ><b>controlInvalidSignal</b></span>
+                        <a href="#controlInvalidSignal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(control: AbstractControl): Signal&lt;boolean&gt; &#x3D;&gt; {
+  const defaultProperties: ControlProperties &#x3D; {
+    dirty: control.dirty,
+    invalid: control.invalid,
+    touched: control.touched,
+  };
+  const initialValue &#x3D; isInvalid(defaultProperties);
+
+  const controlEvents$: Observable&lt;boolean&gt; &#x3D; control.events.pipe(
+    scan(
+      (current: ControlProperties, event: ControlEvent&lt;unknown&gt;): ControlProperties &#x3D;&gt; {
+        if (event instanceof PristineChangeEvent) {
+          return { ...current, dirty: !event.pristine };
+        }
+
+        if (event instanceof TouchedChangeEvent) {
+          return { ...current, touched: event.touched };
+        }
+
+        if (event instanceof StatusChangeEvent) {
+          return { ...current, invalid: event.status &#x3D;&#x3D;&#x3D; &#x27;INVALID&#x27; };
+        }
+
+        return current;
+      },
+      defaultProperties,
+    ),
+    map((properties: ControlProperties): boolean &#x3D;&gt; isInvalid(properties)),
+    distinctUntilChanged(),
+  );
+
+  return toSignal(controlEvents$, { initialValue });
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isInvalid"></a>
+                    <span class="name">
+                        <span ><b>isInvalid</b></span>
+                        <a href="#isInvalid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(properties: ControlProperties): boolean &#x3D;&gt; {
+  let invalid &#x3D; true;
+
+  for (const val of Object.values(properties)) {
+    invalid &amp;&amp;&#x3D; Boolean(val);
+  }
+
+  return invalid;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/identity/identity-forms.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createEmailControl"></a>
+                    <span class="name">
+                        <span ><b>createEmailControl</b></span>
+                        <a href="#createEmailControl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(): ControlStruct&lt;FormControl&gt; &#x3D;&gt; {
+  // eslint-disable-next-line unicorn/no-null -- DOM forms use null
+  const control &#x3D; new FormControl&lt;string | null&gt;(null, [ Validators.required, Validators.email ]);
+  return getControlStructure(control);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createPasswordControl"></a>
+                    <span class="name">
+                        <span ><b>createPasswordControl</b></span>
+                        <a href="#createPasswordControl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(isNewPassword: boolean &#x3D; false): ControlStruct&lt;FormControl&gt; &#x3D;&gt; {
+  const control &#x3D; new FormControl&lt;string | null&gt;(
+    null, // eslint-disable-line unicorn/no-null -- DOM forms use null
+    [
+      Validators.required,
+      Validators.minLength(PASSWORDS.minLength),
+      Validators.maxLength(PASSWORDS.maxLength),
+    ],
+  );
+
+  if (isNewPassword) {
+    control.addValidators(passwordStrengthValidator);
+    control.addAsyncValidators(passwordFirebaseValidator());
+  }
+
+  return getControlStructure(control);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getControlStructure"></a>
+                    <span class="name">
+                        <span ><b>getControlStructure</b></span>
+                        <a href="#getControlStructure"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&lt;T extends AbstractControl&gt;(control: T): ControlStruct&lt;T&gt; &#x3D;&gt; {
+  const $invalid &#x3D; controlInvalidSignal(control);
+  const $errors &#x3D; controlErrorsSignal(control);
+
+  return { $errors, $invalid, control };
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/guards/email-verified.guard.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emailVerifiedGuard"></a>
+                    <span class="name">
+                        <span ><b>emailVerifiedGuard</b></span>
+                        <a href="#emailVerifiedGuard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>CanActivateChildFn</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  _childRoute: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot,
+): Observable&lt;UrlTree | boolean&gt; &#x3D;&gt; {
+  const router &#x3D; inject(Router);
+  const user$ &#x3D; inject(USER$);
+  const { url } &#x3D; state;
+
+  return user$.pipe(
+    map((maybeUser: User | null): UrlTree | boolean &#x3D;&gt; {
+      if (!maybeUser) {
+        return false;
+      }
+
+      if (!maybeUser.emailVerified) {
+        return router.parseUrl(&#x60;/confirm-email?next&#x3D;${url}&#x60;);
+      }
+
+      return true;
+    }),
+  );
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/shared/constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FORMS"></a>
+                    <span class="name">
+                        <span ><b>FORMS</b></span>
+                        <a href="#FORMS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  /**
+   * Input event delay for form fields to prevent an event on every keystroke. Milliseconds
+   */
+  inputDebounce: 1000,
+} as const</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PASSWORDS"></a>
+                    <span class="name">
+                        <span ><b>PASSWORDS</b></span>
+                        <a href="#PASSWORDS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  /**
+   * Glyphs, Firebase default maximum
+   */
+  maxLength: 4096,
+
+  /**
+   * Glyphs, nominally secure length
+   */
+  minLength: 12,
+
+  /**
+   * Password strength as computed by check-password-strength library.
+   * https://github.com/deanilvincent/check-password-strength?tab&#x3D;readme-ov-file#result
+   */
+  minStrength: 2,
+} as const</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This should match <a href="/docs/firebase-manual-config.md#update-the-configuration">Password Policy</a></p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/testing/utilities/dom.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCompiled"></a>
+                    <span class="name">
+                        <span ><b>getCompiled</b></span>
+                        <a href="#getCompiled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&lt;T&gt;(fixture: ComponentFixture&lt;T&gt;): HTMLElement &#x3D;&gt; {
+  const compiled: unknown &#x3D; fixture.nativeElement;
+
+  if (!(compiled instanceof HTMLElement)) {
+    throw new TypeError(&#x27;Expected fixture.nativeElement to be instance of HTMLElement&#x27;);
+  }
+
+  return compiled;
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handle type safety to get fixture native element.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="safeQuerySelector"></a>
+                    <span class="name">
+                        <span ><b>safeQuerySelector</b></span>
+                        <a href="#safeQuerySelector"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&lt;T extends Element&gt;(parentElement: HTMLElement, query: string): T &#x3D;&gt; {
+  const element: T | null &#x3D; parentElement.querySelector&lt;T&gt;(query);
+
+  if (element &#x3D;&#x3D;&#x3D; null) {
+    throw new TypeError(&#x27;Query returned null&#x27;);
+  }
+
+  return element;
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Safely query the DOM handling nulls.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/identity/error-code.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getErrorCode"></a>
+                    <span class="name">
+                        <span ><b>getErrorCode</b></span>
+                        <a href="#getErrorCode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(err: unknown): string &#x3D;&gt; {
+  if (err instanceof FirebaseError) {
+    return err.code;
+  }
+  if (err instanceof Error) {
+    return err.message;
+  }
+
+  console.error(&#x27;Unknown Error&#x27;, err);
+  return &#x27;unknown&#x27;;
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>TypeScript/linters want caught errors to be of type unknown. So this function handles checking
+for FirebaseError and extracting the code, or the message from plain Errors.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/identity/validators/passwords/util.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPasswordControlValue"></a>
+                    <span class="name">
+                        <span ><b>getPasswordControlValue</b></span>
+                        <a href="#getPasswordControlValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(control: AbstractControl&lt;unknown&gt;): string | null &#x3D;&gt; {
+  const { value } &#x3D; control;
+
+  // Like Validators.email, rely on Validators.required to check for blank passwords.
+  if (value &#x3D;&#x3D; undefined || value &#x3D;&#x3D;&#x3D; &#x27;&#x27;) {
+    return null; // eslint-disable-line unicorn/no-null -- ValidatorFn returns null
+  }
+
+  if (typeof value !&#x3D;&#x3D; &#x27;string&#x27;) {
+    throw new TypeError(&#x60;Invalid Control Value Type: &#x27;${typeof value}&#x27;&#x60;);
+  }
+
+  return value;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/identity/actions/get-state.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getState"></a>
+                    <span class="name">
+                        <span ><b>getState</b></span>
+                        <a href="#getState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(maybeNavigation: Navigation | null): Partial&lt;ActionCodeState&gt; &#x3D;&gt;
+  maybeNavigation?.extras.state ?? {}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get the ActionCodeState from the Navigation extras state, if we can.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/identity/user-photos/user-photos.service.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MAXIMUM_PHOTOS"></a>
+                    <span class="name">
+                        <span ><b>MAXIMUM_PHOTOS</b></span>
+                        <a href="#MAXIMUM_PHOTOS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>6</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PHOTO_DIR"></a>
+                    <span class="name">
+                        <span ><b>PHOTO_DIR</b></span>
+                        <a href="#PHOTO_DIR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;profile-photos&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RADIX"></a>
+                    <span class="name">
+                        <span ><b>RADIX</b></span>
+                        <a href="#RADIX"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>36</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SKIP_WHOLE_NUM"></a>
+                    <span class="name">
+                        <span ><b>SKIP_WHOLE_NUM</b></span>
+                        <a href="#SKIP_WHOLE_NUM"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>2</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/guards/no-auth.guard.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="noAuthGuard"></a>
+                    <span class="name">
+                        <span ><b>noAuthGuard</b></span>
+                        <a href="#noAuthGuard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>CanActivateChildFn</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  childRoute: ActivatedRouteSnapshot,
+  _state: RouterStateSnapshot,
+): Observable&lt;UrlTree | true&gt; &#x3D;&gt; {
+  const router &#x3D; inject(Router);
+  /** Navigate to the &#x60;next&#x60; query parameter if set, else to the root and allow default redirectTo Route to decide initial destination. */
+  const nextUrl &#x3D; childRoute.queryParamMap.get(&#x27;next&#x27;) ?? &#x27;/&#x27;;
+  const user$ &#x3D; inject(USER$);
+
+  return user$.pipe(
+    map((maybeUser: User | null): UrlTree | true &#x3D;&gt; {
+      if (maybeUser) {
+        return router.parseUrl(nextUrl);
+      }
+
+      return true;
+    }),
+  );
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/identity/validators/passwords/firebase.validator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordFirebaseValidator"></a>
+                    <span class="name">
+                        <span ><b>passwordFirebaseValidator</b></span>
+                        <a href="#passwordFirebaseValidator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(): AsyncValidatorFn &#x3D;&gt; {
+  const auth: Auth &#x3D; inject(Auth);
+
+  return async (control: AbstractControl&lt;unknown&gt;): Promise&lt;ValidationErrors | null&gt; &#x3D;&gt; {
+    const value &#x3D; getPasswordControlValue(control);
+
+    // Like Validators.email, rely on Validators.required to check for blank passwords.
+    if (value &#x3D;&#x3D; undefined) {
+      return null; // eslint-disable-line unicorn/no-null -- ValidatorFn returns null
+    }
+
+    // Opened an issue about this being necessary: https://github.com/angular/angularfire/issues/3614
+    const { passwordPolicy: _, ...status } &#x3D; await validatePassword(auth, value);
+
+    return status.isValid ? null : { firebasevalidator: status }; // eslint-disable-line unicorn/no-null -- ValidatorFn returns null
+  };
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Validate against the Firebase Project Authentication Password Policy.</p>
+<p>Note: This validator will be called on every InputEvent/Control.valueChange event after the sync
+validators pass. But Firebase Auth caches the password policy fetch request so the first time is
+the only remote request and so it is safe to not throttle this validator. Not that there is a
+clean way to throttle AsyncValidatorFns :-(</p>
+<p>Note: at this time there is no actual need for this because the policy only enforces length and
+other Validators already check for that. However it is nice to know how to do this.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/identity/validators/passwords/strength.validator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordStrengthValidator"></a>
+                    <span class="name">
+                        <span ><b>passwordStrengthValidator</b></span>
+                        <a href="#passwordStrengthValidator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ValidatorFn</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(control: AbstractControl&lt;unknown&gt;): ValidationErrors | null &#x3D;&gt; {
+  const value &#x3D; getPasswordControlValue(control);
+
+  // Like Validators.email, rely on Validators.required to check for blank passwords.
+  if (value &#x3D;&#x3D; undefined) {
+    return null; // eslint-disable-line unicorn/no-null -- ValidatorFn returns null
+  }
+
+  const strength &#x3D; passwordStrength(value);
+  return strength.id &lt; PASSWORDS.minStrength ? { passwordstrength: strength.value } : null; // eslint-disable-line unicorn/no-null
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/testing/utilities/emulator-storage.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="provideEmulatedStorage"></a>
+                    <span class="name">
+                        <span ><b>provideEmulatedStorage</b></span>
+                        <a href="#provideEmulatedStorage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(): EnvironmentProviders &#x3D;&gt;
+  provideStorage((): FirebaseStorage &#x3D;&gt; {
+    const storage &#x3D; getStorage();
+
+    // Connecting to the emulator multiple times for each TestBed.configureTestingModule call causes
+    // errors, but only connecting once, hopefully fixes that.
+    // https://np.reddit.com/r/Firebase/comments/18s6wzp/comment/kf6w7hk/
+    if (!storageEmulatorConnected) {
+      const { port } &#x3D; firebaseSettings.emulators.storage;
+      connectStorageEmulator(storage, &#x27;localhost&#x27;, port);
+      storageEmulatorConnected &#x3D; true;
+    }
+
+    return storage;
+  })</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="storageEmulatorConnected"></a>
+                    <span class="name">
+                        <span ><b>storageEmulatorConnected</b></span>
+                        <a href="#storageEmulatorConnected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/firebase-app.provider.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="provideOurFirebaseApp"></a>
+                    <span class="name">
+                        <span ><b>provideOurFirebaseApp</b></span>
+                        <a href="#provideOurFirebaseApp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(): EnvironmentProviders &#x3D;&gt;
+  provideFirebaseApp(
+    (): FirebaseApp &#x3D;&gt;
+      initializeApp({
+        apiKey: &#x27;AIzaSyB75fqz0szrfVCLvpil9_t9UPQlLYplNcI&#x27;,
+        appId: &#x27;1:207926801743:web:e1402f665312fb7ab0813a&#x27;,
+        authDomain: &#x27;brainfry-app.firebaseapp.com&#x27;,
+        messagingSenderId: &#x27;207926801743&#x27;,
+        projectId: &#x27;brainfry-app&#x27;,
+        storageBucket: &#x27;brainfry-app.appspot.com&#x27;,
+      }),
+  )</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/page-not-found/page-not-found.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROBOTS_META"></a>
+                    <span class="name">
+                        <span ><b>ROBOTS_META</b></span>
+                        <a href="#ROBOTS_META"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MetaDefinition</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  content: &#x27;noindex, nofollow&#x27;,
+  name: &#x27;robots&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/identity/recover-email/recover-email.service.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SEND_EMAIL_DELAY"></a>
+                    <span class="name">
+                        <span ><b>SEND_EMAIL_DELAY</b></span>
+                        <a href="#SEND_EMAIL_DELAY"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>500</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/user.token.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER$"></a>
+                    <span class="name">
+                        <span ><b>USER$</b></span>
+                        <a href="#USER$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new InjectionToken&lt;MaybeUser$&gt;(
+  &#x27;USER$&#x27;,
+  { factory: (): MaybeUser$ &#x3D;&gt; user(inject(Auth)) },
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

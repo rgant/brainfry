@@ -1,0 +1,1184 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>brainfry documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">brainfry documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  UserProfileComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/identity/user-profile/user-profile.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-user-profile</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>AsyncPipe</code>
+                                <code><a href="../components/AuthErrorMessagesComponent.html" target="_self" >AuthErrorMessagesComponent</a></code>
+                            <code>NgOptimizedImage</code>
+                                <code><a href="../components/PhotoUploadComponent.html" target="_self" >PhotoUploadComponent</a></code>
+                            <code>ReactiveFormsModule</code>
+                                <code><a href="../components/SpinnerComponent.html" target="_self" >SpinnerComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./user-profile.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./user-profile.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_userPhotoService" >_userPhotoService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#$errorCode" >$errorCode</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#$nameCntrlErrors" >$nameCntrlErrors</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#$nameCntrlInvalid" >$nameCntrlInvalid</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#$photoUrlCntrlErrors" >$photoUrlCntrlErrors</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#$photoUrlCntrlInvalid" >$photoUrlCntrlInvalid</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#$showForm" >$showForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#$showUrlInput" >$showUrlInput</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#nameCntrl" >nameCntrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#photoUrlCntrl" >photoUrlCntrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#profileForm" >profileForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#vm$" >vm$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#onSubmit" >onSubmit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#togglePhotoUrl" >togglePhotoUrl</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:82</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>onSubmit</b></span>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onSubmit(user: User)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="137"
+                                    class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:137</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Update the Firebase User profile data.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user</td>
+                                            <td>
+                                                        <code>User</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="togglePhotoUrl"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>togglePhotoUrl</b></span>
+                        <a href="#togglePhotoUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>togglePhotoUrl()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="166"
+                                    class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:166</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Toggle the UI to set the photoURL manually to a remote URL or to picking from a list of uploaded
+profile photos in Firebase Storage.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_userPhotoService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_userPhotoService</b></span>
+                        <a href="#_userPhotoService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/UserPhotosService.html" target="_self" >UserPhotosService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$errorCode"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>$errorCode</b></span>
+                        <a href="#$errorCode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;string&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$nameCntrlErrors"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>$nameCntrlErrors</b></span>
+                        <a href="#$nameCntrlErrors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;ValidationErrors | undefined&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$nameCntrlInvalid"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>$nameCntrlInvalid</b></span>
+                        <a href="#$nameCntrlInvalid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$photoUrlCntrlErrors"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>$photoUrlCntrlErrors</b></span>
+                        <a href="#$photoUrlCntrlErrors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;ValidationErrors | undefined&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$photoUrlCntrlInvalid"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>$photoUrlCntrlInvalid</b></span>
+                        <a href="#$photoUrlCntrlInvalid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Signal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$showForm"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>$showForm</b></span>
+                        <a href="#$showForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$showUrlInput"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>$showUrlInput</b></span>
+                        <a href="#$showUrlInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nameCntrl"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>nameCntrl</b></span>
+                        <a href="#nameCntrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormControl&lt;string | null&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="photoUrlCntrl"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>photoUrlCntrl</b></span>
+                        <a href="#photoUrlCntrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormControl&lt;string | null&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="profileForm"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>profileForm</b></span>
+                        <a href="#profileForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#ProfileFormGroup" target="_self" >ProfileFormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="vm$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>vm$</b></span>
+                        <a href="#vm$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ViewModel.html" target="_self" >Observable&lt;ViewModel&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/identity/user-profile/user-profile.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AsyncPipe, NgOptimizedImage } from &#x27;@angular/common&#x27;;
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from &#x27;@angular/core&#x27;;
+import type { Signal, WritableSignal } from &#x27;@angular/core&#x27;;
+import { updateProfile } from &#x27;@angular/fire/auth&#x27;;
+import type { User } from &#x27;@angular/fire/auth&#x27;;
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from &#x27;@angular/forms&#x27;;
+import type { ValidationErrors } from &#x27;@angular/forms&#x27;;
+import {
+  filter,
+  map,
+  switchMap,
+  tap,
+} from &#x27;rxjs&#x27;;
+import type { Observable } from &#x27;rxjs&#x27;;
+
+import { USER$ } from &#x27;@app/core/user.token&#x27;;
+import type { MaybeUser } from &#x27;@app/core/user.token&#x27;;
+import { controlErrorsSignal } from &#x27;@app/shared/control-errors-signal.util&#x27;;
+import { controlInvalidSignal } from &#x27;@app/shared/control-invalid-signal.util&#x27;;
+import { SpinnerComponent } from &#x27;@app/shared/spinner/spinner.component&#x27;;
+
+import { AuthErrorMessagesComponent } from &#x27;../auth-error-messages/auth-error-messages.component&#x27;;
+import { getErrorCode } from &#x27;../error-code&#x27;;
+import { PhotoUploadComponent } from &#x27;../user-photos/photo-upload/photo-upload.component&#x27;;
+import { UserPhotosService } from &#x27;../user-photos/user-photos.service&#x27;;
+import type { Photo } from &#x27;../user-photos/user-photos.service&#x27;;
+
+type ProfileFormGroup &#x3D; FormGroup&lt;{
+  displayName: FormControl&lt;string | null&gt;;
+  photoURL: FormControl&lt;string | null&gt;;
+}&gt;;
+
+interface ViewModel {
+  profilePhotos: Photo[];
+  user: User;
+}
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    AsyncPipe,
+    AuthErrorMessagesComponent,
+    NgOptimizedImage,
+    PhotoUploadComponent,
+    ReactiveFormsModule,
+    SpinnerComponent,
+  ],
+  selector: &#x27;app-user-profile&#x27;,
+  styleUrl: &#x27;./user-profile.component.scss&#x27;,
+  templateUrl: &#x27;./user-profile.component.html&#x27;,
+})
+export class UserProfileComponent {
+  public readonly $errorCode: WritableSignal&lt;string&gt;;
+  public readonly $nameCntrlErrors: Signal&lt;ValidationErrors | undefined&gt;;
+  public readonly $nameCntrlInvalid: Signal&lt;boolean&gt;;
+  public readonly $photoUrlCntrlErrors: Signal&lt;ValidationErrors | undefined&gt;;
+  public readonly $photoUrlCntrlInvalid: Signal&lt;boolean&gt;;
+  public readonly $showForm: WritableSignal&lt;boolean&gt;;
+  public readonly $showUrlInput: WritableSignal&lt;boolean&gt;;
+  public readonly nameCntrl: FormControl&lt;string | null&gt;;
+  public readonly photoUrlCntrl: FormControl&lt;string | null&gt;;
+  public readonly profileForm: ProfileFormGroup;
+  public readonly vm$: Observable&lt;ViewModel&gt;;
+
+  private readonly _userPhotoService: UserPhotosService;
+
+  constructor() {
+    this._userPhotoService &#x3D; inject(UserPhotosService);
+
+    this.nameCntrl &#x3D; new FormControl&lt;string | null&gt;(null, Validators.required); // eslint-disable-line unicorn/no-null -- Forms use null
+    this.$nameCntrlErrors &#x3D; controlErrorsSignal(this.nameCntrl);
+    this.$nameCntrlInvalid &#x3D; controlInvalidSignal(this.nameCntrl);
+
+    // eslint-disable-next-line unicorn/no-null -- Forms use null
+    this.photoUrlCntrl &#x3D; new FormControl&lt;string | null&gt;(null, Validators.pattern(/\.(?:avif|gif|jpe?g|png|webp)(?:\?.*)?$/u));
+    this.$photoUrlCntrlErrors &#x3D; controlErrorsSignal(this.photoUrlCntrl);
+    this.$photoUrlCntrlInvalid &#x3D; controlInvalidSignal(this.photoUrlCntrl);
+
+    this.profileForm &#x3D; new FormGroup({
+      displayName: this.nameCntrl,
+      photoURL: this.photoUrlCntrl,
+    });
+
+    this.$errorCode &#x3D; signal&lt;string&gt;(&#x27;&#x27;);
+    this.$showForm &#x3D; signal&lt;boolean&gt;(false);
+    this.$showUrlInput &#x3D; signal&lt;boolean&gt;(true);
+
+    // Not handling non-logged in users because the Route guards should.
+    this.vm$ &#x3D; inject(USER$).pipe(
+      filter((user: MaybeUser): user is User &#x3D;&gt; user !&#x3D; undefined),
+      tap({
+        next: (user: User): void &#x3D;&gt; {
+          this.profileForm.patchValue(user);
+          this.$showForm.set(true);
+        },
+      }),
+      switchMap((user: User): Observable&lt;ViewModel&gt; &#x3D;&gt; {
+        const { photoURL, uid } &#x3D; user;
+
+        return this._userPhotoService.getProfilePhotos(uid).pipe(
+          map((profilePhotos: Photo[]): ViewModel &#x3D;&gt; {
+            for (const photo of profilePhotos) {
+              if (photo.url &#x3D;&#x3D;&#x3D; photoURL) {
+                // Show the upload photo UI instead since that is what was used.
+                this.$showUrlInput.set(false);
+                break;
+              }
+            }
+
+            return { profilePhotos, user };
+          }),
+        );
+      }),
+    );
+  }
+
+  /**
+   * Update the Firebase User profile data.
+   */
+  public async onSubmit(user: User): Promise&lt;void&gt; {
+    const { displayName, photoURL } &#x3D; this.profileForm.value;
+
+    // Validators prevent email1 or password being falsey, but TypeScript doesn&#x27;t know that.
+    if (this.profileForm.invalid || !displayName) {
+      throw new Error(&#x27;Invalid form submitted&#x27;);
+    }
+
+    this.$showForm.set(false);
+    this.$errorCode.set(&#x27;&#x27;); // Clear out any existing errors
+
+    try {
+      // It appears that the types for photoURL are incorrect and you must use an empty string
+      // instead of null to clear the value. https://stackoverflow.com/questions/71047275/setting-a-firebase-user-photourl-value-to-null
+      // auth/invalid-json-payload-received.-/photourl-must-be-string
+      const safePhotoURL &#x3D; photoURL ?? &#x27;&#x27;;
+      await updateProfile(user, { displayName, photoURL: safePhotoURL });
+    } catch (err: unknown) {
+      const code &#x3D; getErrorCode(err);
+      this.$errorCode.set(code);
+    }
+
+    this.$showForm.set(true);
+  }
+
+  /**
+   * Toggle the UI to set the photoURL manually to a remote URL or to picking from a list of uploaded
+   * profile photos in Firebase Storage.
+   */
+  public togglePhotoUrl(): void {
+    this.$showUrlInput.update((showUrl: boolean): boolean &#x3D;&gt; !showUrl);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">@if (vm$ | async; as vm) {
+  &lt;div class&#x3D;&quot;main-card&quot;&gt;
+    &lt;h2 i18n&#x3D;&quot;page heading 2|Update user profile@@userProfile.header&quot;&gt;Your Profile&lt;/h2&gt;
+    @if ($showForm()) {
+      &lt;form
+        (ngSubmit)&#x3D;&quot;onSubmit(vm.user)&quot;
+        [formGroup]&#x3D;&quot;profileForm&quot;
+        aria-describedby&#x3D;&quot;frm-msgs&quot;
+        aria-label&#x3D;&quot;Change Password&quot;
+        i18n-aria-label&#x3D;&quot;aria-label|Form to update user profile@@form.role.updateProfile&quot;
+      &gt;
+        &lt;p class&#x3D;&quot;form-control&quot;&gt;
+          &lt;label for&#x3D;&quot;fld-displayName&quot; i18n&#x3D;&quot;form field label|Profile display name field@@fields.displayName&quot;&gt;Your name:&lt;/label&gt;
+          &lt;input
+            [attr.aria-invalid]&#x3D;&quot;$nameCntrlInvalid()&quot;
+            id&#x3D;&quot;fld-displayName&quot;
+            type&#x3D;&quot;text&quot;
+            aria-describedby&#x3D;&quot;fld-displayName-msgs&quot;
+            autocomplete&#x3D;&quot;name&quot;
+            formControlName&#x3D;&quot;displayName&quot;
+            required
+          &gt;
+          &lt;span id&#x3D;&quot;fld-displayName-msgs&quot;&gt;
+            @if ($nameCntrlErrors(); as errors) {
+              &lt;span class&#x3D;&quot;form-alerts&quot;&gt;
+                @if (errors[&#x27;required&#x27;]) {
+                  &lt;ng-container i18n&#x3D;&quot;form field error message|Name is a required field@@formErrors.displayName.required&quot;&gt;
+                    Tell use how you would like to be addressed.
+                  &lt;/ng-container&gt;
+                }
+              &lt;/span&gt;
+            }
+          &lt;/span&gt;
+        &lt;/p&gt;
+
+        &lt;fieldset class&#x3D;&quot;radio-group&quot;&gt;
+          &lt;legend i18n&#x3D;&quot;form field label|Profile photo url field@@fields.photoURL&quot;&gt;Your photo:&lt;/legend&gt;
+
+          @if ($showUrlInput()) {
+            &lt;p class&#x3D;&quot;custom-url&quot;&gt;
+              &lt;label for&#x3D;&quot;fld-customUrl&quot; i18n&#x3D;&quot;form field label|Profile custom photo URL@@fields.customUrl&quot;&gt;Link to your photo:&lt;/label&gt;
+              &lt;input
+                [attr.aria-invalid]&#x3D;&quot;$photoUrlCntrlInvalid()&quot;
+                id&#x3D;&quot;fld-customUrl&quot;
+                type&#x3D;&quot;url&quot;
+                aria-describedby&#x3D;&quot;fld-customUrl-msgs&quot;
+                formControlName&#x3D;&quot;photoURL&quot;
+                autocomplete&#x3D;&quot;photo&quot;
+              &gt;
+              &lt;span id&#x3D;&quot;fld-customUrl-msgs&quot;&gt;
+                @if ($photoUrlCntrlErrors(); as errors) {
+                  &lt;span class&#x3D;&quot;form-alerts&quot;&gt;
+                    @if (errors[&#x27;pattern&#x27;]) {
+                      &lt;ng-container i18n&#x3D;&quot;form field error message|Photo URL must link to an image extension@@formErrors.photoURL.pattern&quot;&gt;
+                        Photo URL must link to a file with an image file extension like jpeg, jpg, png, avif, webp, or gif.
+                      &lt;/ng-container&gt;
+                    }
+                  &lt;/span&gt;
+                }
+              &lt;/span&gt;
+            &lt;/p&gt;
+
+            @if (photoUrlCntrl.value &amp;&amp; photoUrlCntrl.valid) {
+              &lt;p class&#x3D;&quot;photo-block&quot;&gt;
+                &lt;img [ngSrc]&#x3D;&quot;photoUrlCntrl.value&quot; [alt]&#x3D;&quot;&quot; fill&gt;
+              &lt;/p&gt;
+            }
+
+            &lt;p class&#x3D;&quot;toggle-wrap&quot;&gt;
+              &lt;button (click)&#x3D;&quot;togglePhotoUrl()&quot; class&#x3D;&quot;info-button&quot; type&#x3D;&quot;button&quot; i18n&#x3D;&quot;button|change photo picker to uploaded files@@buttons.usePhotoUpload&quot;&gt;Upload a photo&lt;/button&gt;
+            &lt;/p&gt;
+          } @else {
+            &lt;div class&#x3D;&quot;photos&quot;&gt;
+              @for (item of vm.profilePhotos; track item.url; let indx &#x3D; $index) {
+                &lt;input id&#x3D;&quot;fld-photoURL-{{ indx }}&quot; [value]&#x3D;&quot;item.url&quot; formControlName&#x3D;&quot;photoURL&quot; name&#x3D;&quot;photoURL&quot; class&#x3D;&quot;button-radio&quot; type&#x3D;&quot;radio&quot;&gt;
+                &lt;label for&#x3D;&quot;fld-photoURL-{{ indx }}&quot; class&#x3D;&quot;photo-block&quot;&gt;
+                  &lt;img [ngSrc]&#x3D;&quot;item.url&quot; alt&#x3D;&quot;&quot; fill&gt;
+                &lt;/label&gt;
+              }
+
+              &lt;app-photo-upload [$fileCount]&#x3D;&quot;vm.profilePhotos.length&quot; [uid]&#x3D;&quot;vm.user.uid&quot; class&#x3D;&quot;upload-file&quot; /&gt;
+
+              &lt;p class&#x3D;&quot;toggle-wrap&quot;&gt;
+                &lt;button (click)&#x3D;&quot;togglePhotoUrl()&quot; class&#x3D;&quot;info-button&quot; type&#x3D;&quot;button&quot; i18n&#x3D;&quot;button|change photo picker to URL input@@buttons.usePhotoLink&quot;&gt;Use a link to a photo&lt;/button&gt;
+              &lt;/p&gt;
+            &lt;/div&gt;
+          }
+        &lt;/fieldset&gt;
+
+        @if ($errorCode(); as errorCode) {
+          &lt;p class&#x3D;&quot;alert&quot;&gt;
+            &lt;app-auth-error-messages [$code]&#x3D;&quot;errorCode&quot; /&gt;
+          &lt;/p&gt;
+        }
+
+        &lt;p class&#x3D;&quot;card-actions&quot;&gt;
+          &lt;button
+            [disabled]&#x3D;&quot;profileForm.invalid&quot;
+            class&#x3D;&quot;button&quot;
+            type&#x3D;&quot;submit&quot;
+            i18n&#x3D;&quot;form submit button|update user profile@@buttons.updateProfile&quot;
+          &gt;
+            Update profile
+          &lt;/button&gt;
+        &lt;/p&gt;
+      &lt;/form&gt;
+    } @else {
+      &lt;app-spinner /&gt;
+    }
+  &lt;/div&gt;
+} @else {
+  &lt;app-spinner /&gt;
+}
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div>@if (vm$ | async; as vm) {  <div class="main-card">    <h2 i18n="page heading 2|Update user profile@@userProfile.header">Your Profile</h2>    @if ($showForm()) {      <form        (ngSubmit)="onSubmit(vm.user)"        [formGroup]="profileForm"        aria-describedby="frm-msgs"        aria-label="Change Password"        i18n-aria-label="aria-label|Form to update user profile@@form.role.updateProfile"      >        <p class="form-control">          <label for="fld-displayName" i18n="form field label|Profile display name field@@fields.displayName">Your name:</label>          <input            [attr.aria-invalid]="$nameCntrlInvalid()"            id="fld-displayName"            type="text"            aria-describedby="fld-displayName-msgs"            autocomplete="name"            formControlName="displayName"            required          >          <span id="fld-displayName-msgs">            @if ($nameCntrlErrors(); as errors) {              <span class="form-alerts">                @if (errors[\'required\']) {                  <ng-container i18n="form field error message|Name is a required field@@formErrors.displayName.required">                    Tell use how you would like to be addressed.                  </ng-container>                }              </span>            }          </span>        </p>        <fieldset class="radio-group">          <legend i18n="form field label|Profile photo url field@@fields.photoURL">Your photo:</legend>          @if ($showUrlInput()) {            <p class="custom-url">              <label for="fld-customUrl" i18n="form field label|Profile custom photo URL@@fields.customUrl">Link to your photo:</label>              <input                [attr.aria-invalid]="$photoUrlCntrlInvalid()"                id="fld-customUrl"                type="url"                aria-describedby="fld-customUrl-msgs"                formControlName="photoURL"                autocomplete="photo"              >              <span id="fld-customUrl-msgs">                @if ($photoUrlCntrlErrors(); as errors) {                  <span class="form-alerts">                    @if (errors[\'pattern\']) {                      <ng-container i18n="form field error message|Photo URL must link to an image extension@@formErrors.photoURL.pattern">                        Photo URL must link to a file with an image file extension like jpeg, jpg, png, avif, webp, or gif.                      </ng-container>                    }                  </span>                }              </span>            </p>            @if (photoUrlCntrl.value && photoUrlCntrl.valid) {              <p class="photo-block">                <img [ngSrc]="photoUrlCntrl.value" [alt]="" fill>              </p>            }            <p class="toggle-wrap">              <button (click)="togglePhotoUrl()" class="info-button" type="button" i18n="button|change photo picker to uploaded files@@buttons.usePhotoUpload">Upload a photo</button>            </p>          } @else {            <div class="photos">              @for (item of vm.profilePhotos; track item.url; let indx = $index) {                <input id="fld-photoURL-{{ indx }}" [value]="item.url" formControlName="photoURL" name="photoURL" class="button-radio" type="radio">                <label for="fld-photoURL-{{ indx }}" class="photo-block">                  <img [ngSrc]="item.url" alt="" fill>                </label>              }              <app-photo-upload [$fileCount]="vm.profilePhotos.length" [uid]="vm.user.uid" class="upload-file" />              <p class="toggle-wrap">                <button (click)="togglePhotoUrl()" class="info-button" type="button" i18n="button|change photo picker to URL input@@buttons.usePhotoLink">Use a link to a photo</button>              </p>            </div>          }        </fieldset>        @if ($errorCode(); as errorCode) {          <p class="alert">            <app-auth-error-messages [$code]="errorCode" />          </p>        }        <p class="card-actions">          <button            [disabled]="profileForm.invalid"            class="button"            type="submit"            i18n="form submit button|update user profile@@buttons.updateProfile"          >            Update profile          </button>        </p>      </form>    } @else {      <app-spinner />    }  </div>} @else {  <app-spinner />}</div>'
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'app-actions'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthErrorMessagesComponent', 'selector': 'app-auth-error-messages'},{'name': 'CentralLayoutComponent', 'selector': 'app-central-layout'},{'name': 'ChangeEmailComponent', 'selector': 'app-change-email'},{'name': 'ChangePasswordComponent', 'selector': 'app-change-password'},{'name': 'ConfirmEmailComponent', 'selector': 'app-confirm-email'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteAccountComponent', 'selector': 'app-delete-account'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutComponent', 'selector': 'app-logout'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PhotoManagerComponent', 'selector': 'app-photo-manager'},{'name': 'PhotoUploadComponent', 'selector': 'app-photo-upload'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'RecoverEmailComponent', 'selector': 'app-recover-email'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StandardLayoutComponent', 'selector': 'app-standard-layout'},{'name': 'TermsAndConditionsComponent', 'selector': 'app-terms-and-conditions'},{'name': 'TestComponent', 'selector': ''},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'VerifyEmailComponent', 'selector': 'app-verify-email'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'UserProfileComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'UserProfileComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

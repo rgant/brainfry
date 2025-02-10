@@ -16,3 +16,8 @@ Specific documentation for specialized tasks involved in setting up this project
 Code coverage is setup in [karma.conf.js](/karma.conf.js). (Which was exported
 using `ng generate config karma`.) The output is put into `./docs/coverage`, and
 then served via [GitHub Pages](https://rgant.github.io/brainfry/coverage/index.html).
+
+## Generated Code Documentation
+
+Using Compodoc to generate documenation from the source code. It is also served
+through [GitHub Pages](https://rgant.github.io/brainfry/documentation/index.html).
