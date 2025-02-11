@@ -150,6 +150,7 @@
                 "input": "public"
               }
             ],
+            "codeCoverageExclude": ["src/**/testing/**/*"],
             "inlineStyleLanguage": "scss",
             "karmaConfig": "karma.conf.js",
             "polyfills": [

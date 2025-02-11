@@ -60,6 +60,20 @@ describe('RecoverEmailService', (): void => {
     });
   });
 
+  it('should error when called with falsy oobCode', (done: DoneFn): void => {
+    service.recoverEmail$('', DELAY_FOR_TESTING).subscribe({
+      complete: done,
+      error: fail,
+      next: (data: RecoverEmailResults): void => {
+        expect(data).withContext('RecoverEmailResults').toEqual({
+          errorCode: 'oobCode not found',
+          passwordResetSent: false,
+          successful: false,
+        });
+      },
+    });
+  });
+
   // Cannot get `fakeAsync` testing to work with `checkActionCode` and `applyActionCode`.
   // This causes a FirebaseError auth/network-request-failed, but would be a better test with the delay.
   // eslint-disable-next-line jasmine/no-disabled-tests -- keeping this around in case I want to try again.

@@ -94,6 +94,15 @@ describe('PhotoUploadComponent', (): void => {
     expect(mockService.uploadPhoto).toHaveBeenCalledOnceWith(mockTransfer.files, testComponent.uid);
   });
 
+  it('should throw error if input is not file type', (): void => {
+    const compiled = getCompiled(fixture);
+    const fileInptEl: HTMLInputElement = safeQuerySelector(compiled, 'input');
+
+    fileInptEl.type = 'text';
+
+    expect((): void => { component.uploadFile(); }).toThrowError('photoUpload input is not of type file');
+  });
+
   it('should call uploadFile on input change event', (): void => {
     const event = new Event('change');
     const compiled = getCompiled(fixture);

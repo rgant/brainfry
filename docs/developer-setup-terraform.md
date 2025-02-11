@@ -21,8 +21,10 @@ gcloud config set project $FIREBASE_PROJECT_ID
 
 Initialize Terraform:
 
+Also updates the providers which probably doesn't hurt.
+
 ```sh
-terraform init -backend-config="bucket=terraform-state-${FIREBASE_PROJECT_ID}"
+terraform init -backend-config="bucket=terraform-state-${FIREBASE_PROJECT_ID}" -upgrade
 ```
 
 > [!NOTE]

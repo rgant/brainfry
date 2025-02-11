@@ -7,4 +7,5 @@
 # Disble diff for minified files
 *.min.* -diff
 
-fixtures/storage_export/blobs/** binary
+fixtures/firebase-emulator/firestore_export/** binary
+fixtures/firebase-emulator/storage_export/blobs/** binary

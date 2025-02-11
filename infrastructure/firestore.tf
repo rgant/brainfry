@@ -33,3 +33,58 @@ resource "google_firestore_database" "default" {
     google_project_service.firestore
   ]
 }
+
+# Load initial data to firestore
+resource "google_firestore_document" "sports_category" {
+  provider    = google-beta
+  project     = google_firebase_project.default.project
+  database    = google_firestore_database.default.name
+  collection  = "quiz_question_categories"
+  document_id = "8tgZqIu9k98s1LaWKErP"
+  fields      = "{\"createdAt\":{\"timestampValue\":\"2025-02-11T14:19:12Z\"},\"default\":{\"booleanValue\":true},\"label\":{\"stringValue\":\"Sports & Leisure\"},\"updatedAt\":{\"timestampValue\":\"2025-02-11T14:19:12Z\"}}"
+}
+
+resource "google_firestore_document" "people_category" {
+  provider    = google-beta
+  project     = google_firebase_project.default.project
+  database    = google_firestore_database.default.name
+  collection  = "quiz_question_categories"
+  document_id = "CKwlxa8xBxMTNMQBzj10"
+  fields      = "{\"createdAt\":{\"timestampValue\":\"2025-02-11T14:18:59Z\"},\"default\":{\"booleanValue\":true},\"label\":{\"stringValue\":\"People & Places\"},\"updatedAt\":{\"timestampValue\":\"2025-02-11T14:18:59Z\"}}"
+}
+
+resource "google_firestore_document" "history_category" {
+  provider    = google-beta
+  project     = google_firebase_project.default.project
+  database    = google_firestore_database.default.name
+  collection  = "quiz_question_categories"
+  document_id = "eh2X9egFSub8BN0St0ZI"
+  fields      = "{\"createdAt\":{\"timestampValue\":\"2025-02-11T14:18:42Z\"},\"default\":{\"booleanValue\":true},\"label\":{\"stringValue\":\"History\"},\"updatedAt\":{\"timestampValue\":\"2025-02-11T14:18:42Z\"}}"
+}
+
+resource "google_firestore_document" "science_category" {
+  provider    = google-beta
+  project     = google_firebase_project.default.project
+  database    = google_firestore_database.default.name
+  collection  = "quiz_question_categories"
+  document_id = "rdhMOi1uMFJ24kYCdvhe"
+  fields      = "{\"createdAt\":{\"timestampValue\":\"2025-02-11T14:18:28Z\"},\"default\":{\"booleanValue\":true},\"label\":{\"stringValue\":\"Science & Nature\"},\"updatedAt\":{\"timestampValue\":\"2025-02-11T14:18:28Z\"}}"
+}
+
+resource "google_firestore_document" "entertainment_category" {
+  provider    = google-beta
+  project     = google_firebase_project.default.project
+  database    = google_firestore_database.default.name
+  collection  = "quiz_question_categories"
+  document_id = "tmn0MpYZz9rraM6zZODQ"
+  fields      = "{\"createdAt\":{\"timestampValue\":\"2025-02-11T14:18:12Z\"},\"default\":{\"booleanValue\":true},\"label\":{\"stringValue\":\"Arts & Entertainment\"},\"updatedAt\":{\"timestampValue\":\"2025-02-11T14:18:12Z\"}}"
+}
+
+resource "google_firestore_document" "general_category" {
+  provider    = google-beta
+  project     = google_firebase_project.default.project
+  database    = google_firestore_database.default.name
+  collection  = "quiz_question_categories"
+  document_id = "v7QR79VdH62T7cNikGwF"
+  fields      = "{\"createdAt\":{\"timestampValue\":\"2025-02-11T14:17:57Z\"},\"default\":{\"booleanValue\":true},\"label\":{\"stringValue\":\"General Knowledge\"},\"updatedAt\":{\"timestampValue\":\"2025-02-11T14:17:57Z\"}}"
+}
