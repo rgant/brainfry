@@ -36,6 +36,7 @@ module.exports = tseslint.config(
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
+      reportUnusedInlineConfigs: 'error',
     },
     processor: angular.processInlineTemplates,
     plugins: {
