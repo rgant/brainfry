@@ -1,7 +1,3 @@
-/**
- * Self handle Firebase Authentication Actions
- * https://firebase.google.com/docs/auth/custom-email-handler
- */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -19,12 +15,23 @@ import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
  * https://firebase.google.com/docs/reference/js/auth.actioncodeurl
  */
 export interface ActionCodeState {
+  /** We may include a next url when verifying email. */
   continueUrl?: string;
+  /** Currently not used, but the language code of the email sent to with the oobCode. */
   lang?: string;
+  /** Action to be performed by the oobCode. */
   mode: string;
+  /** Out of Band Code to perform sensitive Authentication action. */
   oobCode: string;
 }
 
+/**
+ * Self handle Firebase Authentication Actions
+ * https://firebase.google.com/docs/auth/custom-email-handler
+ *
+ * Strips the query string parameters from the URL and stores them in the Router state for the
+ * specific Components to handle.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ SpinnerComponent ],
@@ -32,15 +39,26 @@ export interface ActionCodeState {
   template: '<app-spinner class="modal-block" />',
 })
 export class ActionsComponent {
+  /** Query parameter from Firebase Authentication link. */
   public readonly continueUrl: InputSignal<string | undefined> = input<string>();
+  /** Query parameter from Firebase Authentication link. */
   public readonly lang: InputSignal<string | undefined> = input<string>();
+  /** Query parameter from Firebase Authentication link. */
   public readonly mode: InputSignal<string | undefined> = input<string>();
+  /** Query parameter from Firebase Authentication link. */
   public readonly oobCode: InputSignal<string | undefined> = input<string>();
 
   private readonly _$actionState: Signal<Partial<ActionCodeState>>;
   private readonly _modePaths: Record<string, string>;
   private readonly _router: Router;
 
+  /**
+   * Collects the Firebase action codes from the URL query parameters and stores them in the router
+   * state.
+   * Maps Firebase action mode to our specific Components for handling the sensitive actions.
+   * Replaces this URL in the history stack to prevent reverse navigation from attepting to apply
+   * the code again.
+   */
   constructor() {
     this._$actionState = computed((): Partial<ActionCodeState> => ({
       continueUrl: this.continueUrl(),

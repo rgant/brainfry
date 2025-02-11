@@ -126,6 +126,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Angular AbstractControl properties that are used to determine if the control should signal an
+invalid state.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -200,6 +208,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Control value has been modified.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -233,6 +247,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Control value fails validation.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -266,6 +286,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Control has been focused in the view.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -280,12 +306,22 @@ import type { AbstractControl, ControlEvent } from &#x27;@angular/forms&#x27;;
 import { distinctUntilChanged, map, scan } from &#x27;rxjs&#x27;;
 import type { Observable } from &#x27;rxjs&#x27;;
 
+/**
+ * Angular AbstractControl properties that are used to determine if the control should signal an
+ * invalid state.
+ */
 interface ControlProperties {
+  /** Control value has been modified. */
   dirty: boolean;
+  /** Control value fails validation. */
   invalid: boolean;
+  /** Control has been focused in the view. */
   touched: boolean;
 }
 
+/**
+ * When all the ControlProperties are true then the Control is invalid.
+ */
 const isInvalid &#x3D; (properties: ControlProperties): boolean &#x3D;&gt; {
   let invalid &#x3D; true;
 
@@ -296,6 +332,16 @@ const isInvalid &#x3D; (properties: ControlProperties): boolean &#x3D;&gt; {
   return invalid;
 };
 
+/**
+ * Create an Angular Signal that flags as modified and invalid based on the Control properties.
+ *
+ * 1. Invalid - the value fails validation checks.
+ * 2. Dirty - the value is different from the initial value.
+ * 3. Touched - the Control has been focused during the current view.
+ *
+ * This ensures that the aria-invalid attribute is only set on Controls that the user has interacted
+ * with.
+ */
 export const controlInvalidSignal &#x3D; (control: AbstractControl): Signal&lt;boolean&gt; &#x3D;&gt; {
   const defaultProperties: ControlProperties &#x3D; {
     dirty: control.dirty,

@@ -1,9 +1,12 @@
 import { FormGroup } from '@angular/forms';
 import type { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
+/** ValidationError property name for `confirmMatch` Validator. */
 export const ERROR_NAME = 'confirmmatch';
 
 /**
+ * Requires that two controls have the same value to validate the FormGroup.
+ *
  * Usage:
  * ```
  *   new FormGroup(

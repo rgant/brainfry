@@ -20,12 +20,18 @@ import { getErrorCode } from '../error-code';
 import { createPasswordControl, PASSWORDS } from '../identity-forms';
 import { confirmMatch, confirmMatchFormErrors } from '../validators/confirm-match';
 
+/**
+ * Collects the User's current password and their new password with confirmation.
+ */
 type ChangePasswordFormGroup = FormGroup<{
   currentPw: FormControl<string | null>;
   password1: FormControl<string | null>;
   password2: FormControl<string | null>;
 }>;
 
+/**
+ * Form to change User's password using the current password.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -38,18 +44,29 @@ type ChangePasswordFormGroup = FormGroup<{
   templateUrl: './change-password.component.html',
 })
 export class ChangePasswordComponent {
+  /** Errors specifically for the current password field. */
   public readonly $currentPwCntrlErrors: Signal<ValidationErrors | undefined>;
+  /** Aria-invalid attribute for the current password field. */
   public readonly $currentPwCntrlInvalid: Signal<boolean>;
+  /** Firebase response error code. */
   public readonly $errorCode: WritableSignal<string>;
+  /** Aria-invalid attribute for the form. */
   public readonly $formPasswordsInvalid: Signal<boolean>;
+  /** Errors specifically for the first new password field. */
   public readonly $password1CntrlErrors: Signal<ValidationErrors | undefined>;
+  /** Aria-invalid attribute for the first new password field. */
   public readonly $password1CntrlInvalid: Signal<boolean>;
+  /** Errors specifically for the second new password field. */
   public readonly $password2CntrlErrors: Signal<ValidationErrors | undefined>;
+  /** Aria-invalid attribute for the second new password field. */
   public readonly $password2CntrlInvalid: Signal<boolean>;
+  /** Toggle showing the form and spinner */
   public readonly $showForm: WritableSignal<boolean>;
   public readonly changePasswordForm: ChangePasswordFormGroup;
   public readonly currentPwCntrl: FormControl<string | null>;
+  /** Used in error message for password maximum length. */
   public readonly maxPasswordLength: number = PASSWORDS.maxLength;
+  /** Used in error message for password minimum length. */
   public readonly minPasswordLength: number = PASSWORDS.minLength;
   public readonly password1Cntrl: FormControl<string | null>;
   public readonly password2Cntrl: FormControl<string | null>;
@@ -90,10 +107,14 @@ export class ChangePasswordComponent {
     this.user$ = inject(USER$);
   }
 
+  /**
+   * Re-authenticates use using the submitted current password, and then updates the password using
+   * the new password from the form.
+   */
   public async onSubmit(user: User): Promise<void> {
     const { currentPw, password1 } = this.changePasswordForm.value;
 
-    // Validators prevent email1 or password being falsey, but TypeScript doesn't know that.
+    // Validators prevent email1 or password being falsy, but TypeScript doesn't know that.
     // Additionally, all users are expected to have an email address.
     if (this.changePasswordForm.invalid || !currentPw || !password1 || !user.email) {
       throw new Error('Invalid form submitted');

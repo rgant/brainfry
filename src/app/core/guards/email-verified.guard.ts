@@ -12,6 +12,11 @@ import type { Observable } from 'rxjs';
 
 import { USER$ } from '../user.token';
 
+/**
+ * Requires that there be a currently logged in user with a verified email to navigate to certain
+ * routes. Otherwise redirects the visitor to the ConfirmEmailComponent to send a verification email.
+ * Can be used for both CanActivate and CanActivateChild guards.
+ */
 export const emailVerifiedGuard: CanActivateChildFn = (
   _childRoute: ActivatedRouteSnapshot,
   state: RouterStateSnapshot,

@@ -12,6 +12,10 @@ import type { Observable } from 'rxjs';
 
 import { USER$ } from '../user.token';
 
+/**
+ * Requires that there be a currently logged in user to navigate to certain routes.
+ * Can be used for both CanActivate and CanActivateChild guards.
+ */
 export const authGuard: CanActivateChildFn = (
   _childRoute: ActivatedRouteSnapshot,
   state: RouterStateSnapshot,

@@ -2,7 +2,11 @@ import type { EnvironmentProviders } from '@angular/core';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import type { FirebaseApp } from '@angular/fire/app';
 
-// Both app.config.ts and some tests need to provide the FirebaseApp
+/**
+ * Initializes the Firebase App using our configuration for the project.
+ *
+ * Both app.config.ts and the tests need to provide the FirebaseApp.
+ */
 export const provideOurFirebaseApp = (): EnvironmentProviders =>
   provideFirebaseApp(
     (): FirebaseApp =>

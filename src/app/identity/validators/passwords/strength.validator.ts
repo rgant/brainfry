@@ -5,6 +5,9 @@ import { PASSWORDS } from '@app/shared/constants';
 
 import { getPasswordControlValue } from './util';
 
+/**
+ * Validator for new password complexity based on [check-password-strength](https://github.com/deanilvincent/check-password-strength)
+ */
 export const passwordStrengthValidator: ValidatorFn = (control: AbstractControl<unknown>): ValidationErrors | null => {
   const value = getPasswordControlValue(control);
 

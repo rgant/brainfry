@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Primary header for standard views of logged in users. Contains the user account menu and logo.</p>
+
+    </p>
 
 
 
@@ -286,8 +293,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/layouts/header/header.component.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="36"
+                                    class="link-to-prism">src/app/layouts/header/header.component.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -337,8 +344,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/layouts/header/header.component.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="36"
+                                    class="link-to-prism">src/app/layouts/header/header.component.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -408,8 +415,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/app/layouts/header/header.component.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/layouts/header/header.component.ts:47</a></div>
                         </td>
                     </tr>
 
@@ -459,10 +466,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/layouts/header/header.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/layouts/header/header.component.ts:26</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Toggles the collapsible User Account menu.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -492,10 +505,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/layouts/header/header.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/layouts/header/header.component.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Hamburger icon for the User Accounts menu in mobile view.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -525,10 +544,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/layouts/header/header.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/layouts/header/header.component.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Close icon for User Accounts menu.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -551,6 +576,9 @@ import { FaIconComponent } from &#x27;@fortawesome/angular-fontawesome&#x27;;
 import type { IconDefinition } from &#x27;@fortawesome/angular-fontawesome&#x27;;
 import { faBars, faX } from &#x27;@fortawesome/free-solid-svg-icons&#x27;;
 
+/**
+ * Primary header for standard views of logged in users. Contains the user account menu and logo.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ FaIconComponent, NgOptimizedImage, RouterLink ],
@@ -559,8 +587,11 @@ import { faBars, faX } from &#x27;@fortawesome/free-solid-svg-icons&#x27;;
   templateUrl: &#x27;./header.component.html&#x27;,
 })
 export class HeaderComponent {
+  /** Toggles the collapsible User Account menu. */
   public readonly $showMenu: WritableSignal&lt;boolean&gt; &#x3D; signal&lt;boolean&gt;(false);
+  /** Hamburger icon for the User Accounts menu in mobile view. */
   public readonly faBars: IconDefinition &#x3D; faBars;
+  /** Close icon for User Accounts menu. */
   public readonly faX: IconDefinition &#x3D; faX;
 
   /**
@@ -652,7 +683,7 @@ export class HeaderComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><header aria-label="Main Header" i18n-aria-label="aria label|Main application header@@header.aria-label">  <a routerLink="/" class="heading-link">    <img class="logo" alt="" ngSrc="/imgs/logo-100.png" width="100" height="100" priority>    <h1 class="display" i18n="h1 display heading|Title of the application@@text.siteTitle">Brainfry Quiz</h1>  </a></header><nav class="toggle-menu" aria-label="Account Menu" i18n-aria-label="aria-label|User Account Navigation@@accountMenu.aria-label">  <button    (click)="toggleMenu()"    [attr.aria-expanded]="$showMenu()"    class="toggle"    type="button"    aria-controls="account-menu"    aria-label="Toggle account menu"    i18n-aria-label="aria label text|Button to open and close user account menu@@button.accountMenu.aria-label"  >    <fa-icon      [icon]="$showMenu() ? faX : faBars"      class="icon"      title="Your account"      i18n-title="global navigation toogle|Opens the user menu@@button.accountMenu"    />    <span class="text" i18n="global navigation toogle|Opens the user menu@@button.accountMenu">Your account</span>  </button>  <ul [class.expanded]="$showMenu()" class="menu" id="account-menu">    <li><a routerLink="/profile" i18n="navigation link|Link to profile page@@links.profile">Your profile</a></li>    <li><a routerLink="/photos" i18n="navigation link|Page to manage profile photos@@links.manage-photos">Manage your photos</a></li>    <li><a routerLink="/change-email" i18n="navigation link|Link to change emailp page@@links.changeEmail">Change email</a></li>    <li><a routerLink="/change-password" i18n="navigation link|Link to change password page@@links.changePassword">Change password</a></li>    <li><a routerLink="/delete-account" i18n="navigation link|Link to account deletion page@@links.deleteAccount">Delete account</a></li>    <li><a routerLink="/logout" i18n="navigation link|Link to logout page@@links.logout">Logout</a></li>  </ul></nav></div>'
-    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'app-actions'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthErrorMessagesComponent', 'selector': 'app-auth-error-messages'},{'name': 'CentralLayoutComponent', 'selector': 'app-central-layout'},{'name': 'ChangeEmailComponent', 'selector': 'app-change-email'},{'name': 'ChangePasswordComponent', 'selector': 'app-change-password'},{'name': 'ConfirmEmailComponent', 'selector': 'app-confirm-email'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteAccountComponent', 'selector': 'app-delete-account'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutComponent', 'selector': 'app-logout'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PhotoManagerComponent', 'selector': 'app-photo-manager'},{'name': 'PhotoUploadComponent', 'selector': 'app-photo-upload'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'RecoverEmailComponent', 'selector': 'app-recover-email'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StandardLayoutComponent', 'selector': 'app-standard-layout'},{'name': 'TermsAndConditionsComponent', 'selector': 'app-terms-and-conditions'},{'name': 'TestComponent', 'selector': ''},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'VerifyEmailComponent', 'selector': 'app-verify-email'}];
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'app-actions'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthErrorMessagesComponent', 'selector': 'app-auth-error-messages'},{'name': 'CentralLayoutComponent', 'selector': 'app-central-layout'},{'name': 'ChangeEmailComponent', 'selector': 'app-change-email'},{'name': 'ChangePasswordComponent', 'selector': 'app-change-password'},{'name': 'ConfirmEmailComponent', 'selector': 'app-confirm-email'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteAccountComponent', 'selector': 'app-delete-account'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutComponent', 'selector': 'app-logout'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PhotoManagerComponent', 'selector': 'app-photo-manager'},{'name': 'PhotoUploadComponent', 'selector': 'app-photo-upload'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'RecoverEmailComponent', 'selector': 'app-recover-email'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StandardLayoutComponent', 'selector': 'app-standard-layout'},{'name': 'TermsAndConditionsComponent', 'selector': 'app-terms-and-conditions'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'VerifyEmailComponent', 'selector': 'app-verify-email'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HeaderComponent'};
 </script>

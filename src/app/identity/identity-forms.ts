@@ -8,6 +8,9 @@ import { controlInvalidSignal } from '@app/shared/control-invalid-signal.util';
 
 import { passwordFirebaseValidator, passwordStrengthValidator } from './validators/passwords';
 
+/**
+ * Pair control with Angular Signals for handling validation in the template.
+ */
 const getControlStructure = <T extends AbstractControl>(control: T): ControlStruct<T> => {
   const $invalid = controlInvalidSignal(control);
   const $errors = controlErrorsSignal(control);
@@ -17,12 +20,21 @@ const getControlStructure = <T extends AbstractControl>(control: T): ControlStru
 
 export { PASSWORDS };
 
+/**
+ * For each Identity Control generate two Signals for error handling.
+ */
 export interface ControlStruct<T extends AbstractControl = FormControl> {
+  /** Returns errors for the control, but only when the control is dirty. */
   $errors: Signal<ValidationErrors | undefined>;
+  /** Flag for aria-invalid, but only when the control is modified, invalid, and interacted with. */
   $invalid: Signal<boolean>;
+  /** Identity control. */
   control: T;
 }
 
+/**
+ * Emails are required and must be a valid email address.
+ */
 export const createEmailControl = (): ControlStruct<FormControl> => {
   // eslint-disable-next-line unicorn/no-null -- DOM forms use null
   const control = new FormControl<string | null>(null, [ Validators.required, Validators.email ]);
@@ -30,6 +42,7 @@ export const createEmailControl = (): ControlStruct<FormControl> => {
 };
 
 /**
+ * Passwords are required and have length requirements. Complexity is required for new password fields.
  * @param isNewPassword - Adds extra validators to control when being used to create a new password.
  *                      Note: this should only be used on the first password field, not the confirm
  *                      field.

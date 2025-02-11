@@ -3,9 +3,13 @@ import { Title } from '@angular/platform-browser';
 import { TitleStrategy } from '@angular/router';
 import type { RouterStateSnapshot } from '@angular/router';
 
+/**
+ * Sets the current HTML page title using the title value from the route.
+ */
 @Injectable({ providedIn: 'root' })
 export class AppTitleStrategyService extends TitleStrategy {
-  private readonly _baseTitle: string; // Title tag content from index.html
+  /** Title tag content from index.html */
+  private readonly _baseTitle: string;
   private readonly _title: Title;
 
   constructor() {
@@ -15,6 +19,10 @@ export class AppTitleStrategyService extends TitleStrategy {
     this._baseTitle = this._title.getTitle();
   }
 
+  /**
+   * Sets the current title for the page from the route, suffixing with the value in the title
+   * element in index.html.
+   */
   public updateTitle(snapshot: RouterStateSnapshot): void {
     const pageTitle = this.buildTitle(snapshot);
     if (pageTitle == undefined) {

@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Wrapper for verifying an email with Firebase. This is mostly just to make unit testing easier.</p>
+
+            </p>
 
 
 
@@ -197,15 +204,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="19"
-                                    class="link-to-prism">src/app/identity/verify-email/verify-email.service.ts:19</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">src/app/identity/verify-email/verify-email.service.ts:29</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>This is mostly just to make unit testing easier.</p>
+                        <div class="io-description"><p>Apply the oobCode to verify the user account&#39;s email address.
+Catches errors and wraps in the results interface for use in the template.</p>
 </div>
 
                             <div class="io-description">
@@ -296,7 +304,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/identity/verify-email/verify-email.service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/identity/verify-email/verify-email.service.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -314,18 +322,28 @@ import { applyActionCode, Auth } from &#x27;@angular/fire/auth&#x27;;
 
 import { getErrorCode } from &#x27;../error-code&#x27;;
 
+/**
+ * Results of verifying an email address with Firebase.
+ */
 export interface VerifyEmailResult {
+  /** Destination after verifying email. */
   continueUrl: string;
+  /** Error that prevented verification, if verfied is false. */
   errorCode?: string;
+  /** Was the email verified successfully. */
   verified: boolean;
 }
 
+/**
+ * Wrapper for verifying an email with Firebase. This is mostly just to make unit testing easier.
+ */
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class VerifyEmailService {
   private readonly _auth: Auth &#x3D; inject(Auth);
 
   /**
-   * This is mostly just to make unit testing easier.
+   * Apply the oobCode to verify the user account&#x27;s email address.
+   * Catches errors and wraps in the results interface for use in the template.
    */
   public async verifyEmail(oobCode: string | undefined, continueUrl: string &#x3D; &#x27;/&#x27;): Promise&lt;VerifyEmailResult&gt; {
     if (oobCode) {

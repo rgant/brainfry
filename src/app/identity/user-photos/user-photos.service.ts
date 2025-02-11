@@ -23,26 +23,43 @@ import {
 } from 'rxjs';
 import type { Observable } from 'rxjs';
 
+/**
+ * Firebase storage file
+ */
 export interface Photo {
+  /** Need the file metadata to sort by time. */
   metadata: FullMetadata;
+  /** Special download URL for file based on storage.rules. */
   url: string;
 }
 
+/**
+ * Upload progress to Firebase Storage
+ */
 export interface Progress {
+  /** Upload precentage between 0% and 100% */
   progress: number;
+  /** Not used, but part of the rxfire interface */
   snapshot: UploadTaskSnapshot;
 }
 
-export const MAXIMUM_PHOTOS = 6; // Total allowed uploaded profile photos.
+/** Total allowed uploaded profile photos. */
+export const MAXIMUM_PHOTOS = 6;
+/** Directory below UID directory for files. */
 const PHOTO_DIR = 'profile-photos';
-const RADIX = 36; // letters and numbers
+/** Represent random number using letters and numbers. */
+const RADIX = 36;
+/** Remove the whole number and decimal point from Math.random */
 const SKIP_WHOLE_NUM = 2;
 
+/**
+ * Specific handling for Firebase storage of user profile photos.
+ */
 @Injectable({ providedIn: 'root' })
 export class UserPhotosService {
   /**
    * Track the percentage uploaded of `uploadPhoto`.
-   * Idea here is that while falsey (before first emit, when emitting undefined) then the template
+   * Idea here is that while falsy (before first emit, when emitting undefined) then the template
    * will show an `@else` branch for file picker UI. But while uploading it will emit progress for
    * use in a progress meter.
    * To automatically refresh the uploaded profile photos from `getProfilePhotos` this must be
@@ -50,8 +67,10 @@ export class UserPhotosService {
    */
   public readonly uploadPercentage$: Observable<Progress | undefined>;
 
+  /** Emits whenever a new profile photo is uploaded to re-fetch the list of all photos for the User. */
   private readonly _refreshFilesSubject$: BehaviorSubject<void>;
   private readonly _storage: Storage = inject(Storage);
+  /** Triggers `uploadPercentage$` to track a new upload task. */
   private readonly _taskSubject$: Subject<UploadTask>;
 
   constructor() {
@@ -63,7 +82,7 @@ export class UserPhotosService {
         // First emit the upload progress as a percentage.
         // https://github.com/FirebaseExtended/rxfire/blob/b91f358e2c13c6bf33fb4a540e3963c3902a62b1/storage/index.ts#L115
         percentage(task).pipe(
-          // Then when complete (100% progress), emit undefined to reset the Observable to falsey.
+          // Then when complete (100% progress), emit undefined to reset the Observable to falsy.
           endWith(undefined),
           // Inform `getProfilePhotos` that there are new files to fetch since storage doesn't stream StorageReferences.
           finalize((): void => { this._refreshFilesSubject$.next(); }),

@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Handles both recovering email oobCodes and sending the password reset email afterwards.</p>
+
+            </p>
 
 
 
@@ -206,8 +213,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="70"
-                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:70</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:80</a></div>
                         </td>
                     </tr>
 
@@ -279,8 +286,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="91"
-                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:91</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:101</a></div>
                         </td>
                     </tr>
 
@@ -352,8 +359,8 @@ If the send email fails for some reason, just return false.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -462,7 +469,7 @@ restored address in case of account compromise.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:43</a></div>
                         </td>
                     </tr>
 
@@ -493,18 +500,28 @@ import type { Observable } from &#x27;rxjs&#x27;;
 
 import { getErrorCode } from &#x27;../error-code&#x27;;
 
+/** Combined model of email recovery results and sending password reset. */
 export interface RecoverEmailResults extends ApplyResult {
+  /** Firebase response error code, if any. */
   errorCode?: string;
+  /** Indicates if the password reset email was sent on succesful email recovery. */
   passwordResetSent: boolean;
 }
 
+/** Results of email recovery. */
 interface ApplyResult {
+  /** User original email address to be recovered, from Firebase oobCode. */
   restoredEmail?: string;
+  /** Results of applying the oobCode to recover the account&#x27;s original email address. */
   successful: boolean;
 }
 
-export const SEND_EMAIL_DELAY &#x3D; 500; // milliseconds
+/** Sending the password reset email needs to wait until Firebase recognizes the email recovery. Milliseconds */
+export const SEND_EMAIL_DELAY &#x3D; 500;
 
+/**
+ * Handles both recovering email oobCodes and sending the password reset email afterwards.
+ */
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class RecoverEmailService {
   private readonly _auth: Auth &#x3D; inject(Auth);

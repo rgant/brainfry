@@ -1,6 +1,3 @@
-/**
- * Sends the user an email to confirm access to the email address.
- */
 import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -18,9 +15,11 @@ import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
 import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
 import { getErrorCode } from '../error-code';
+import type { SendVerifyEmailStatuses } from './send-confirm-email';
 
-type VerifyStatuses = 'sending' | 'sent' | 'unsent';
-
+/**
+ * Sends the user an email to confirm access to the email address.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ AsyncPipe, AuthErrorMessagesComponent, SpinnerComponent ],
@@ -28,18 +27,24 @@ type VerifyStatuses = 'sending' | 'sent' | 'unsent';
   templateUrl: './confirm-email.component.html',
 })
 export class ConfirmEmailComponent {
+  /** Firebase response error code */
   public readonly $errorCode: WritableSignal<string>;
-  public readonly $verificationStatus: WritableSignal<VerifyStatuses>;
+  /** Triggers different stages in the view for email verification sending. */
+  public readonly $verificationStatus: WritableSignal<SendVerifyEmailStatuses>;
+  /** Currently logged in Firebase User. */
   public readonly user$: MaybeUser$;
 
   constructor() {
     this.$errorCode = signal<string>('');
-    this.$verificationStatus = signal<VerifyStatuses>('unsent');
+    this.$verificationStatus = signal<SendVerifyEmailStatuses>('unsent');
 
     // Not handling non-logged in users because the Route guards should.
     this.user$ = inject(USER$);
   }
 
+  /**
+   * Sends email to User's email address in Firebase Authentication to verify control of the address.
+   */
   public async sendConfirmEmail(user: User): Promise<void> {
     this.$errorCode.set(''); // Clear out any existing errors
     this.$verificationStatus.set('sending');

@@ -16,11 +16,15 @@ import { confirmMatch, confirmMatchFormErrors } from '../validators/confirm-matc
 import { ResetPasswordService } from './reset-password.service';
 import type { ResetPasswordResults } from './reset-password.service';
 
+/** Collect and confirm a new password for user's account. */
 type ResetPasswordFormGroup = FormGroup<{
   password1: FormControl<string | null>;
   password2: FormControl<string | null>;
 }>;
 
+/**
+ * Collects and confirm new password to recover user's account with Firebase Authentication.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -34,21 +38,33 @@ type ResetPasswordFormGroup = FormGroup<{
   templateUrl: './reset-password.component.html',
 })
 export class ResetPasswordComponent {
+  /** Form level aria-invalid. */
   public readonly $formPasswordsInvalid: Signal<boolean>;
+  /** Errors specific to first password field. */
   public readonly $password1CntrlErrors: Signal<ValidationErrors | undefined>;
+  /** Aria-invalid attribute for first password field. */
   public readonly $password1CntrlInvalid: Signal<boolean>;
+  /** Errors specific to second password field. */
   public readonly $password2CntrlErrors: Signal<ValidationErrors | undefined>;
+  /** Aria-invalid attribute for second password field */
   public readonly $password2CntrlInvalid: Signal<boolean>;
+  /** Used in error message for password maximum length. */
   public readonly maxPasswordLength: number = PASSWORDS.maxLength;
+  /** Used in error message for password minimum length. */
   public readonly minPasswordLength: number = PASSWORDS.minLength;
   public readonly password1Cntrl: FormControl<string | null>;
   public readonly password2Cntrl: FormControl<string | null>;
   public readonly resetPasswordForm: ResetPasswordFormGroup;
+  /** Verification of password reset oobCode. */
   public readonly vm$: Observable<ResetPasswordResults>;
 
   private readonly _router: Router;
   private readonly _service: ResetPasswordService;
 
+  /**
+   * Gets the current navigation statically to obtain the oobCode from Firebase needed to reset the
+   * User's password.
+   */
   constructor() {
     this._router = inject(Router);
     this._service = inject(ResetPasswordService);
@@ -78,6 +94,9 @@ export class ResetPasswordComponent {
     this.vm$ = this._service.resetPassword$(oobCode);
   }
 
+  /**
+   * Replace the user's password with the new password from the form.
+   */
   public onSubmit(): void {
     const { password1 } = this.resetPasswordForm.value;
 

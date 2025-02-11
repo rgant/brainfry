@@ -115,9 +115,6 @@
                             <a href="#appConfig" title="src/app/app.config.ts" ><b>appConfig</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.ts)</a>
                         </li>
                         <li>
-                            <a href="#authEmulatorConnected" title="src/testing/utilities/emulator-auth.ts" ><b>authEmulatorConnected</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-auth.ts)</a>
-                        </li>
-                        <li>
                             <a href="#authGuard" title="src/app/core/guards/auth.guard.ts" ><b>authGuard</b>&nbsp;&nbsp;&nbsp;(src/.../auth.guard.ts)</a>
                         </li>
                         <li>
@@ -146,9 +143,6 @@
                         </li>
                         <li>
                             <a href="#FORMS" title="src/app/shared/constants.ts" ><b>FORMS</b>&nbsp;&nbsp;&nbsp;(src/.../constants.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#getCompiled" title="src/testing/utilities/dom.ts" ><b>getCompiled</b>&nbsp;&nbsp;&nbsp;(src/.../dom.ts)</a>
                         </li>
                         <li>
                             <a href="#getControlStructure" title="src/app/identity/identity-forms.ts" ><b>getControlStructure</b>&nbsp;&nbsp;&nbsp;(src/.../identity-forms.ts)</a>
@@ -184,43 +178,22 @@
                             <a href="#PHOTO_DIR" title="src/app/identity/user-photos/user-photos.service.ts" ><b>PHOTO_DIR</b>&nbsp;&nbsp;&nbsp;(src/.../user-photos.service.ts)</a>
                         </li>
                         <li>
-                            <a href="#provideEmulatedAuth" title="src/testing/utilities/emulator-auth.ts" ><b>provideEmulatedAuth</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-auth.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#provideEmulatedStorage" title="src/testing/utilities/emulator-storage.ts" ><b>provideEmulatedStorage</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-storage.ts)</a>
-                        </li>
-                        <li>
                             <a href="#provideOurFirebaseApp" title="src/app/core/firebase-app.provider.ts" ><b>provideOurFirebaseApp</b>&nbsp;&nbsp;&nbsp;(src/.../firebase-app.provider.ts)</a>
                         </li>
                         <li>
                             <a href="#RADIX" title="src/app/identity/user-photos/user-photos.service.ts" ><b>RADIX</b>&nbsp;&nbsp;&nbsp;(src/.../user-photos.service.ts)</a>
                         </li>
                         <li>
-                            <a href="#resolveValidatePassword" title="src/testing/utilities/emulator-auth.ts" ><b>resolveValidatePassword</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-auth.ts)</a>
-                        </li>
-                        <li>
                             <a href="#ROBOTS_META" title="src/app/page-not-found/page-not-found.component.ts" ><b>ROBOTS_META</b>&nbsp;&nbsp;&nbsp;(src/.../page-not-found.component.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#safeQuerySelector" title="src/testing/utilities/dom.ts" ><b>safeQuerySelector</b>&nbsp;&nbsp;&nbsp;(src/.../dom.ts)</a>
                         </li>
                         <li>
                             <a href="#SEND_EMAIL_DELAY" title="src/app/identity/recover-email/recover-email.service.ts" ><b>SEND_EMAIL_DELAY</b>&nbsp;&nbsp;&nbsp;(src/.../recover-email.service.ts)</a>
                         </li>
                         <li>
-                            <a href="#setValidatePassword" title="src/testing/utilities/emulator-auth.ts" ><b>setValidatePassword</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-auth.ts)</a>
-                        </li>
-                        <li>
                             <a href="#SKIP_WHOLE_NUM" title="src/app/identity/user-photos/user-photos.service.ts" ><b>SKIP_WHOLE_NUM</b>&nbsp;&nbsp;&nbsp;(src/.../user-photos.service.ts)</a>
                         </li>
                         <li>
-                            <a href="#storageEmulatorConnected" title="src/testing/utilities/emulator-storage.ts" ><b>storageEmulatorConnected</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-storage.ts)</a>
-                        </li>
-                        <li>
                             <a href="#USER$" title="src/app/core/user.token.ts" ><b>USER$</b>&nbsp;&nbsp;&nbsp;(src/.../user.token.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#validatePasswordIsValid" title="src/testing/utilities/emulator-auth.ts" ><b>validatePasswordIsValid</b>&nbsp;&nbsp;&nbsp;(src/.../emulator-auth.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -285,157 +258,12 @@
                     </td>
                 </tr>
 
-
-        </tbody>
-    </table>
-</section>
-    <h3>src/testing/utilities/emulator-auth.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="authEmulatorConnected"></a>
-                    <span class="name">
-                        <span ><b>authEmulatorConnected</b></span>
-                        <a href="#authEmulatorConnected"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="provideEmulatedAuth"></a>
-                    <span class="name">
-                        <span ><b>provideEmulatedAuth</b></span>
-                        <a href="#provideEmulatedAuth"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>(): EnvironmentProviders &#x3D;&gt;
-  provideAuth((): Auth &#x3D;&gt; {
-    const auth &#x3D; getAuth();
-
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises -- just for testing.
-    setPersistence(auth, inMemoryPersistence);
-
-    // Connecting to the emulator multiple times for each TestBed.configureTestingModule call causes
-    // errors: auth/emulator-config-failed
-    // But only connecting once, hopefully fixes that.
-    // https://np.reddit.com/r/Firebase/comments/18s6wzp/comment/kf6w7hk/
-    if (!authEmulatorConnected) {
-      const { port } &#x3D; firebaseSettings.emulators.auth;
-      connectAuthEmulator(auth, &#x60;http://localhost:${port}&#x60;, { disableWarnings: true });
-      authEmulatorConnected &#x3D; true;
-    }
-
-    // Auth Emulator does not support testing &#x60;validatePassword&#x60;
-    // FirebaseError: Firebase: Error (auth/identitytoolkit.getpasswordpolicy-is-not-implemented-in-the-auth-emulator.)
-    // @ts-expect-error Spying on private method for testing.
-    // eslint-disable-next-line jasmine/no-unsafe-spy -- This is a jasmine helper
-    spyOn(auth, &#x27;validatePassword&#x27;).and.callFake(resolveValidatePassword);
-    setValidatePassword(true); // This global would pollute tests if not reset for every test. It is also not safe for parallel execution.
-
-    return auth;
-  })</code>
-                    </td>
-                </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Provide Firebase Auth, and if not already connected to emulator then do so only the first time
-this method is called.</p>
-<p>Since the emulator does not support the calls needed to implement validatePassword, that also
-is mocked in this setup. The mock response is partly configurable using <code>setValidatePassword</code>.</p>
-<p>Note: both the singlton call to <code>connectAuthEmulator</code> and the hacky mocking of the private
-<code>validatePassword</code> method are not ideal. But what would be better designs?</p>
+                    <div class="io-description"><p>Setup global dependencies for the application.</p>
 </div>
                 </td>
             </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="resolveValidatePassword"></a>
-                    <span class="name">
-                        <span ><b>resolveValidatePassword</b></span>
-                        <a href="#resolveValidatePassword"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>async (): Promise&lt;PasswordValidationStatus&gt; &#x3D;&gt;
-  // validatePasswordResponse was generated against the actual API by not spying on the
-  // &#x60;validatePassword&#x60; method and using the real Auth.
-  ({ ...validatePasswordResponse, isValid: validatePasswordIsValid })</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="setValidatePassword"></a>
-                    <span class="name">
-                        <span ><b>setValidatePassword</b></span>
-                        <a href="#setValidatePassword"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>(isValid: boolean): void &#x3D;&gt; {
-  validatePasswordIsValid &#x3D; isValid;
-}</code>
-                    </td>
-                </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Sets the isValid field in the mocked validatePassword response to value desired by tests.</p>
-<p>Note: this is a hack, and shows why all code needs review. But how to make a better design?</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="validatePasswordIsValid"></a>
-                    <span class="name">
-                        <span ><b>validatePasswordIsValid</b></span>
-                        <a href="#validatePasswordIsValid"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>true</code>
-                    </td>
-                </tr>
-
 
         </tbody>
     </table>
@@ -482,6 +310,13 @@ is mocked in this setup. The mock response is partly configurable using <code>se
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Requires that there be a currently logged in user to navigate to certain routes.
+Can be used for both CanActivate and CanActivateChild guards.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -526,7 +361,8 @@ is mocked in this setup. The mock response is partly configurable using <code>se
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Usage:</p>
+                    <div class="io-description"><p>Requires that two controls have the same value to validate the FormGroup.</p>
+<p>Usage:</p>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-none">  new FormGroup(
    {
      password1: new FormControl(null, [ Validators.required, Validators.minLength(num), Validators.maxLength(num) ]),
@@ -562,6 +398,12 @@ is mocked in this setup. The mock response is partly configurable using <code>se
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>ValidationError property name for <code>confirmMatch</code> Validator.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -666,6 +508,13 @@ is mocked in this setup. The mock response is partly configurable using <code>se
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates an Angular Signal that emits the validation errors for a Control only when the Control is
+also modified (dirty).</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -721,6 +570,19 @@ is mocked in this setup. The mock response is partly configurable using <code>se
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Create an Angular Signal that flags as modified and invalid based on the Control properties.</p>
+<ol>
+<li>Invalid - the value fails validation checks.</li>
+<li>Dirty - the value is different from the initial value.</li>
+<li>Touched - the Control has been focused during the current view.</li>
+</ol>
+<p>This ensures that the aria-invalid attribute is only set on Controls that the user has interacted
+with.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -749,6 +611,12 @@ is mocked in this setup. The mock response is partly configurable using <code>se
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>When all the ControlProperties are true then the Control is invalid.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -776,6 +644,12 @@ is mocked in this setup. The mock response is partly configurable using <code>se
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Emails are required and must be a valid email address.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -812,6 +686,12 @@ is mocked in this setup. The mock response is partly configurable using <code>se
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Passwords are required and have length requirements. Complexity is required for new password fields.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -837,6 +717,12 @@ is mocked in this setup. The mock response is partly configurable using <code>se
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Pair control with Angular Signals for handling validation in the template.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -887,6 +773,14 @@ is mocked in this setup. The mock response is partly configurable using <code>se
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Requires that there be a currently logged in user with a verified email to navigate to certain
+routes. Otherwise redirects the visitor to the ConfirmEmailComponent to send a verification email.
+Can be used for both CanActivate and CanActivateChild guards.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -907,14 +801,18 @@ is mocked in this setup. The mock response is partly configurable using <code>se
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
-  /**
-   * Input event delay for form fields to prevent an event on every keystroke. Milliseconds
-   */
+  /** Input event delay for form fields to prevent an event on every keystroke. Milliseconds */
   inputDebounce: 1000,
 } as const</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Common settings for forms.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -932,14 +830,10 @@ is mocked in this setup. The mock response is partly configurable using <code>se
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
-  /**
-   * Glyphs, Firebase default maximum
-   */
+  /** Glyphs, Firebase default maximum */
   maxLength: 4096,
 
-  /**
-   * Glyphs, nominally secure length
-   */
+  /** Glyphs, nominally secure length */
   minLength: 12,
 
   /**
@@ -954,77 +848,6 @@ is mocked in this setup. The mock response is partly configurable using <code>se
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>This should match <a href="/docs/firebase-manual-config.md#update-the-configuration">Password Policy</a></p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-</section>
-    <h3>src/testing/utilities/dom.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getCompiled"></a>
-                    <span class="name">
-                        <span ><b>getCompiled</b></span>
-                        <a href="#getCompiled"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&lt;T&gt;(fixture: ComponentFixture&lt;T&gt;): HTMLElement &#x3D;&gt; {
-  const compiled: unknown &#x3D; fixture.nativeElement;
-
-  if (!(compiled instanceof HTMLElement)) {
-    throw new TypeError(&#x27;Expected fixture.nativeElement to be instance of HTMLElement&#x27;);
-  }
-
-  return compiled;
-}</code>
-                    </td>
-                </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Handle type safety to get fixture native element.</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="safeQuerySelector"></a>
-                    <span class="name">
-                        <span ><b>safeQuerySelector</b></span>
-                        <a href="#safeQuerySelector"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&lt;T extends Element&gt;(parentElement: HTMLElement, query: string): T &#x3D;&gt; {
-  const element: T | null &#x3D; parentElement.querySelector&lt;T&gt;(query);
-
-  if (element &#x3D;&#x3D;&#x3D; null) {
-    throw new TypeError(&#x27;Query returned null&#x27;);
-  }
-
-  return element;
-}</code>
-                    </td>
-                </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Safely query the DOM handling nulls.</p>
 </div>
                 </td>
             </tr>
@@ -1104,6 +927,12 @@ for FirebaseError and extracting the code, or the message from plain Errors.</p>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Safely extract the value from a control, expecting it to be a string or nullish.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1163,6 +992,12 @@ for FirebaseError and extracting the code, or the message from plain Errors.</p>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Total allowed uploaded profile photos.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1189,6 +1024,12 @@ for FirebaseError and extracting the code, or the message from plain Errors.</p>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Directory below UID directory for files.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1215,6 +1056,12 @@ for FirebaseError and extracting the code, or the message from plain Errors.</p>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Represent random number using letters and numbers.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1241,6 +1088,12 @@ for FirebaseError and extracting the code, or the message from plain Errors.</p>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Remove the whole number and decimal point from Math.random</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1271,7 +1124,7 @@ for FirebaseError and extracting the code, or the message from plain Errors.</p>
   _state: RouterStateSnapshot,
 ): Observable&lt;UrlTree | true&gt; &#x3D;&gt; {
   const router &#x3D; inject(Router);
-  /** Navigate to the &#x60;next&#x60; query parameter if set, else to the root and allow default redirectTo Route to decide initial destination. */
+  // Navigate to the &#x60;next&#x60; query parameter if set, else to the root and allow default redirectTo Route to decide initial destination.
   const nextUrl &#x3D; childRoute.queryParamMap.get(&#x27;next&#x27;) ?? &#x27;/&#x27;;
   const user$ &#x3D; inject(USER$);
 
@@ -1288,6 +1141,14 @@ for FirebaseError and extracting the code, or the message from plain Errors.</p>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Requires that there not be a currently logged in user to navigate to certain routes.
+For example, routes that are for logging in and recovering accounts.
+Can be used for both CanActivate and CanActivateChild guards.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1378,63 +1239,12 @@ other Validators already check for that. However it is nice to know how to do th
                     </td>
                 </tr>
 
-
-        </tbody>
-    </table>
-</section>
-    <h3>src/testing/utilities/emulator-storage.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="provideEmulatedStorage"></a>
-                    <span class="name">
-                        <span ><b>provideEmulatedStorage</b></span>
-                        <a href="#provideEmulatedStorage"><span class="icon ion-ios-link"></span></a>
-                    </span>
+                    <div class="io-description"><p>Validator for new password complexity based on <a href="https://github.com/deanilvincent/check-password-strength">check-password-strength</a></p>
+</div>
                 </td>
             </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>(): EnvironmentProviders &#x3D;&gt;
-  provideStorage((): FirebaseStorage &#x3D;&gt; {
-    const storage &#x3D; getStorage();
-
-    // Connecting to the emulator multiple times for each TestBed.configureTestingModule call causes
-    // errors, but only connecting once, hopefully fixes that.
-    // https://np.reddit.com/r/Firebase/comments/18s6wzp/comment/kf6w7hk/
-    if (!storageEmulatorConnected) {
-      const { port } &#x3D; firebaseSettings.emulators.storage;
-      connectStorageEmulator(storage, &#x27;localhost&#x27;, port);
-      storageEmulatorConnected &#x3D; true;
-    }
-
-    return storage;
-  })</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="storageEmulatorConnected"></a>
-                    <span class="name">
-                        <span ><b>storageEmulatorConnected</b></span>
-                        <a href="#storageEmulatorConnected"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
-
 
         </tbody>
     </table>
@@ -1469,6 +1279,13 @@ other Validators already check for that. However it is nice to know how to do th
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Initializes the Firebase App using our configuration for the project.</p>
+<p>Both app.config.ts and the tests need to provide the FirebaseApp.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1497,10 +1314,16 @@ other Validators already check for that. However it is nice to know how to do th
                         <i>Default value : </i><code>{
   content: &#x27;noindex, nofollow&#x27;,
   name: &#x27;robots&#x27;,
-}</code>
+} as const</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Block robots from indexing the 404 page.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1530,6 +1353,12 @@ other Validators already check for that. However it is nice to know how to do th
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sending the password reset email needs to wait until Firebase recognizes the email recovery. Milliseconds</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1556,6 +1385,12 @@ other Validators already check for that. However it is nice to know how to do th
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable of yhe currently logged in Firebase User, or else null.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>

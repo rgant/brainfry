@@ -12,32 +12,46 @@ import type { Observable } from 'rxjs';
 
 import { getErrorCode } from '../error-code';
 
+/** Combined results of all possible password verfication and confirmation paths. */
 export type ResetPasswordResults = PasswordResetSuccess | ShowForm | VerifiedFailed | undefined;
 
+/** Combined end results of password confirmation */
 type ConfirmResult = PasswordResetSuccess | ShowForm;
 
-// Final state after resetting password
+/** Final state after resetting password. */
 interface PasswordResetSuccess {
-  errorCode: undefined; // This makes the template type checker happier
+  /** This makes the template type checker happy. */
+  errorCode: undefined;
+  /** On success hide the form and show the success message. */
   showForm: false;
 }
 
-// Verified Success & Password Reset Failure
+/** Verified success & password reset failure. */
 interface ShowForm {
+  /** User email address to reset password for, from Firebase oobCode. */
   email: string;
+  /** Firebase response error code, if any. */
   errorCode?: string;
+  /** Display the reset password form to collect and confirm the new password. */
   showForm: true;
 }
 
-// Code Verification Failed
+/** Code verification failed. */
 interface VerifiedFailed {
-  email: undefined; // This makes the type checker happier in the destructuring
+  /** This makes the type checker happy during destructuring. */
+  email: undefined;
+  /** Firebase response error code. */
   errorCode: string;
+  /** On Firebase error hide the form and show the error message. */
   showForm: false;
 }
 
+/** Combined end results of possword verification. */
 type VerifiedResult = ShowForm | VerifiedFailed;
 
+/**
+ * Handles both password reset oobCode verification, and password reset confirmation.
+ */
 @Injectable({ providedIn: 'root' })
 export class ResetPasswordService {
   private readonly _auth: Auth = inject(Auth);

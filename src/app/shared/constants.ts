@@ -1,7 +1,8 @@
+/**
+ * Common settings for forms.
+ */
 export const FORMS = {
-  /**
-   * Input event delay for form fields to prevent an event on every keystroke. Milliseconds
-   */
+  /** Input event delay for form fields to prevent an event on every keystroke. Milliseconds */
   inputDebounce: 1000,
 } as const;
 
@@ -9,14 +10,10 @@ export const FORMS = {
  * This should match [Password Policy](/docs/firebase-manual-config.md#update-the-configuration)
  */
 export const PASSWORDS = {
-  /**
-   * Glyphs, Firebase default maximum
-   */
+  /** Glyphs, Firebase default maximum */
   maxLength: 4096,
 
-  /**
-   * Glyphs, nominally secure length
-   */
+  /** Glyphs, nominally secure length */
   minLength: 12,
 
   /**

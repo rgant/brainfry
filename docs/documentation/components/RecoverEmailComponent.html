@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Reverts Firebase User email change.</p>
+
+    </p>
 
 
 
@@ -230,10 +237,17 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/identity/recover-email/recover-email.component.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/identity/recover-email/recover-email.component.ts:35</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Gets the current navigation statically to obtain the oobCode from Firebase needed to recover
+the previous email address for the User.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -269,7 +283,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/identity/recover-email/recover-email.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/identity/recover-email/recover-email.component.ts:34</a></div>
                         </td>
                     </tr>
 
@@ -297,7 +311,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/identity/recover-email/recover-email.component.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/identity/recover-email/recover-email.component.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -325,10 +339,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/identity/recover-email/recover-email.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/identity/recover-email/recover-email.component.ts:32</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable wrapper around the template that performs the actual email recovery and displays the
+results.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -350,6 +371,9 @@ import { AuthErrorMessagesComponent } from &#x27;../auth-error-messages/auth-err
 import { RecoverEmailService } from &#x27;./recover-email.service&#x27;;
 import type { RecoverEmailResults } from &#x27;./recover-email.service&#x27;;
 
+/**
+ * Reverts Firebase User email change.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -362,11 +386,19 @@ import type { RecoverEmailResults } from &#x27;./recover-email.service&#x27;;
   templateUrl: &#x27;./recover-email.component.html&#x27;,
 })
 export class RecoverEmailComponent {
+  /**
+   * Observable wrapper around the template that performs the actual email recovery and displays the
+   * results.
+   */
   public readonly vm$: Observable&lt;RecoverEmailResults&gt;;
 
   private readonly _router: Router;
   private readonly _service: RecoverEmailService;
 
+  /**
+   * Gets the current navigation statically to obtain the oobCode from Firebase needed to recover
+   * the previous email address for the User.
+   */
   constructor() {
     this._router &#x3D; inject(Router);
     this._service &#x3D; inject(RecoverEmailService);
@@ -458,7 +490,7 @@ export class RecoverEmailComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div>@if (vm$ | async; as vm) {  <div class="card">    @if (vm.successful) {      <h2 i18n="page heading 2|Successful restoration of previous email for account@@recoverEmail.successHeader">        Your email has been restored!      </h2>      @if (vm.restoredEmail) {        <p i18n="paragraph|Specific email for account restored@@recoverEmail.restoredEmail">          Your email has been restored to {{ vm.restoredEmail }}.        </p>      }      @if (vm.passwordResetSent) {        <p i18n="paragraph|Notice that a password reset email was also sent@@recoverEmail.passwordResetSent">          Additionally we have sent you a link to reset your password in the event your account was compromised.        </p>      } @else {        <p          i18n="paragraph with link            |Could not automatically reset password, so suggest user do so manually            @@recoverEmail.passwordResetNotSent"        >          In the event your account was compromised, please          <a routerLink="/forgot-password">reset your password</a>.        </p>      }      <a        class="button"        routerLink="/"        i18n="navigation link button styled|Return to default page to either login again or go to dashboard@@link.continue"      >        Continue      </a>    } @else {      <h2 i18n="page heading 2|Failed restoration of previous email for account@@recoverEmail.failureHeader">        There was a problem with your restoration link      </h2>      <p class="alert">        <app-auth-error-messages [$code]="vm.errorCode ?? \'unknown\'" />      </p>      <p i18n="paragraph|Suggest contacting support@@recoverEmail.contact">        Please        <a href="mailto:rob@brainfry-app.web.app?subject=recover+email">contact support</a>        for assistance.      </p>    }  </div>} @else {  <app-spinner />}</div>'
-    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'app-actions'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthErrorMessagesComponent', 'selector': 'app-auth-error-messages'},{'name': 'CentralLayoutComponent', 'selector': 'app-central-layout'},{'name': 'ChangeEmailComponent', 'selector': 'app-change-email'},{'name': 'ChangePasswordComponent', 'selector': 'app-change-password'},{'name': 'ConfirmEmailComponent', 'selector': 'app-confirm-email'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteAccountComponent', 'selector': 'app-delete-account'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutComponent', 'selector': 'app-logout'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PhotoManagerComponent', 'selector': 'app-photo-manager'},{'name': 'PhotoUploadComponent', 'selector': 'app-photo-upload'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'RecoverEmailComponent', 'selector': 'app-recover-email'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StandardLayoutComponent', 'selector': 'app-standard-layout'},{'name': 'TermsAndConditionsComponent', 'selector': 'app-terms-and-conditions'},{'name': 'TestComponent', 'selector': ''},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'VerifyEmailComponent', 'selector': 'app-verify-email'}];
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'app-actions'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthErrorMessagesComponent', 'selector': 'app-auth-error-messages'},{'name': 'CentralLayoutComponent', 'selector': 'app-central-layout'},{'name': 'ChangeEmailComponent', 'selector': 'app-change-email'},{'name': 'ChangePasswordComponent', 'selector': 'app-change-password'},{'name': 'ConfirmEmailComponent', 'selector': 'app-confirm-email'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteAccountComponent', 'selector': 'app-delete-account'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutComponent', 'selector': 'app-logout'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PhotoManagerComponent', 'selector': 'app-photo-manager'},{'name': 'PhotoUploadComponent', 'selector': 'app-photo-upload'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'RecoverEmailComponent', 'selector': 'app-recover-email'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StandardLayoutComponent', 'selector': 'app-standard-layout'},{'name': 'TermsAndConditionsComponent', 'selector': 'app-terms-and-conditions'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'VerifyEmailComponent', 'selector': 'app-verify-email'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RecoverEmailComponent'};
 </script>

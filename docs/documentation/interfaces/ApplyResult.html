@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Results of email recovery.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -200,6 +207,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>User original email address to be recovered, from Firebase oobCode.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -233,6 +246,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Results of applying the oobCode to recover the account&#39;s original email address.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -258,18 +277,28 @@ import type { Observable } from &#x27;rxjs&#x27;;
 
 import { getErrorCode } from &#x27;../error-code&#x27;;
 
+/** Combined model of email recovery results and sending password reset. */
 export interface RecoverEmailResults extends ApplyResult {
+  /** Firebase response error code, if any. */
   errorCode?: string;
+  /** Indicates if the password reset email was sent on succesful email recovery. */
   passwordResetSent: boolean;
 }
 
+/** Results of email recovery. */
 interface ApplyResult {
+  /** User original email address to be recovered, from Firebase oobCode. */
   restoredEmail?: string;
+  /** Results of applying the oobCode to recover the account&#x27;s original email address. */
   successful: boolean;
 }
 
-export const SEND_EMAIL_DELAY &#x3D; 500; // milliseconds
+/** Sending the password reset email needs to wait until Firebase recognizes the email recovery. Milliseconds */
+export const SEND_EMAIL_DELAY &#x3D; 500;
 
+/**
+ * Handles both recovering email oobCodes and sending the password reset email afterwards.
+ */
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class RecoverEmailService {
   private readonly _auth: Auth &#x3D; inject(Auth);

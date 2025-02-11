@@ -220,6 +220,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>We may include a next url when verifying email.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -258,6 +264,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Currently not used, but the language code of the email sent to with the oobCode.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -291,6 +303,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Action to be performed by the oobCode.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -324,6 +342,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Out of Band Code to perform sensitive Authentication action.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -348,12 +372,23 @@ import { SpinnerComponent } from &#x27;@app/shared/spinner/spinner.component&#x2
  * https://firebase.google.com/docs/reference/js/auth.actioncodeurl
  */
 export interface ActionCodeState {
+  /** We may include a next url when verifying email. */
   continueUrl?: string;
+  /** Currently not used, but the language code of the email sent to with the oobCode. */
   lang?: string;
+  /** Action to be performed by the oobCode. */
   mode: string;
+  /** Out of Band Code to perform sensitive Authentication action. */
   oobCode: string;
 }
 
+/**
+ * Self handle Firebase Authentication Actions
+ * https://firebase.google.com/docs/auth/custom-email-handler
+ *
+ * Strips the query string parameters from the URL and stores them in the Router state for the
+ * specific Components to handle.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ SpinnerComponent ],
@@ -361,15 +396,26 @@ export interface ActionCodeState {
   template: &#x27;&lt;app-spinner class&#x3D;&quot;modal-block&quot; /&gt;&#x27;,
 })
 export class ActionsComponent {
+  /** Query parameter from Firebase Authentication link. */
   public readonly continueUrl: InputSignal&lt;string | undefined&gt; &#x3D; input&lt;string&gt;();
+  /** Query parameter from Firebase Authentication link. */
   public readonly lang: InputSignal&lt;string | undefined&gt; &#x3D; input&lt;string&gt;();
+  /** Query parameter from Firebase Authentication link. */
   public readonly mode: InputSignal&lt;string | undefined&gt; &#x3D; input&lt;string&gt;();
+  /** Query parameter from Firebase Authentication link. */
   public readonly oobCode: InputSignal&lt;string | undefined&gt; &#x3D; input&lt;string&gt;();
 
   private readonly _$actionState: Signal&lt;Partial&lt;ActionCodeState&gt;&gt;;
   private readonly _modePaths: Record&lt;string, string&gt;;
   private readonly _router: Router;
 
+  /**
+   * Collects the Firebase action codes from the URL query parameters and stores them in the router
+   * state.
+   * Maps Firebase action mode to our specific Components for handling the sensitive actions.
+   * Replaces this URL in the history stack to prevent reverse navigation from attepting to apply
+   * the code again.
+   */
   constructor() {
     this._$actionState &#x3D; computed((): Partial&lt;ActionCodeState&gt; &#x3D;&gt; ({
       continueUrl: this.continueUrl(),

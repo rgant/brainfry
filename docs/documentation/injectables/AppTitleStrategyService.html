@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Sets the current HTML page title using the title value from the route.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -189,7 +196,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/core/app-title-strategy.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/core/app-title-strategy.service.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -224,14 +231,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="18"
-                                    class="link-to-prism">src/app/core/app-title-strategy.service.ts:18</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/app/core/app-title-strategy.service.ts:26</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Sets the current title for the page from the route, suffixing with the value in the title
+element in index.html.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -298,10 +308,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/core/app-title-strategy.service.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/core/app-title-strategy.service.ts:12</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Title tag content from index.html</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -326,7 +342,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/core/app-title-strategy.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/core/app-title-strategy.service.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -344,9 +360,13 @@ import { Title } from &#x27;@angular/platform-browser&#x27;;
 import { TitleStrategy } from &#x27;@angular/router&#x27;;
 import type { RouterStateSnapshot } from &#x27;@angular/router&#x27;;
 
+/**
+ * Sets the current HTML page title using the title value from the route.
+ */
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class AppTitleStrategyService extends TitleStrategy {
-  private readonly _baseTitle: string; // Title tag content from index.html
+  /** Title tag content from index.html */
+  private readonly _baseTitle: string;
   private readonly _title: Title;
 
   constructor() {
@@ -356,6 +376,10 @@ export class AppTitleStrategyService extends TitleStrategy {
     this._baseTitle &#x3D; this._title.getTitle();
   }
 
+  /**
+   * Sets the current title for the page from the route, suffixing with the value in the title
+   * element in index.html.
+   */
   public updateTitle(snapshot: RouterStateSnapshot): void {
     const pageTitle &#x3D; this.buildTitle(snapshot);
     if (pageTitle &#x3D;&#x3D; undefined) {

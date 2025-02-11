@@ -13,8 +13,12 @@ import type { Observable } from 'rxjs';
 import { MAXIMUM_PHOTOS, UserPhotosService } from '../user-photos.service';
 import type { Progress } from '../user-photos.service';
 
+/** Template reference to HTML input type=file */
 type FileInputRef = ElementRef<HTMLInputElement>;
 
+/**
+ * Handles Firebase User profile photo upload to Firebase Storage.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ AsyncPipe, RouterLink ],
@@ -23,9 +27,16 @@ type FileInputRef = ElementRef<HTMLInputElement>;
   templateUrl: './photo-upload.component.html',
 })
 export class PhotoUploadComponent {
+  /** Current number of files uploaded, from parent Component. */
   public readonly $fileCount: InputSignal<number> = input.required();
+  /** Global maximum number of photos allowed for User. */
   public readonly maximumFiles: number = MAXIMUM_PHOTOS;
+  /** Current user ID, from parent Component. */
   public readonly uid: InputSignal<string> = input.required();
+  /**
+   * Tracks the upload progress. Once complete emits a falsy value to clear progress bar and
+   * re-display upload button.
+   */
   public readonly uploadPercentage$: Observable<Progress | undefined>;
 
   private readonly _$fileInput: Signal<FileInputRef> = viewChild.required<FileInputRef>('photoUpload');

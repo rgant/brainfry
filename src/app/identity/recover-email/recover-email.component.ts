@@ -10,6 +10,9 @@ import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-me
 import { RecoverEmailService } from './recover-email.service';
 import type { RecoverEmailResults } from './recover-email.service';
 
+/**
+ * Reverts Firebase User email change.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -22,11 +25,19 @@ import type { RecoverEmailResults } from './recover-email.service';
   templateUrl: './recover-email.component.html',
 })
 export class RecoverEmailComponent {
+  /**
+   * Observable wrapper around the template that performs the actual email recovery and displays the
+   * results.
+   */
   public readonly vm$: Observable<RecoverEmailResults>;
 
   private readonly _router: Router;
   private readonly _service: RecoverEmailService;
 
+  /**
+   * Gets the current navigation statically to obtain the oobCode from Firebase needed to recover
+   * the previous email address for the User.
+   */
   constructor() {
     this._router = inject(Router);
     this._service = inject(RecoverEmailService);

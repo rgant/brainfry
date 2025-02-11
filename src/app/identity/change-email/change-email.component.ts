@@ -1,3 +1,4 @@
+/* eslint-disable import-x/max-dependencies -- 11 dependencies */
 import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -16,18 +17,22 @@ import type { MaybeUser$ } from '@app/core/user.token';
 import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
 
 import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
+import type { SendVerifyEmailStatuses } from '../confirm-email/send-confirm-email';
 import { getErrorCode } from '../error-code';
 import { createEmailControl, createPasswordControl, PASSWORDS } from '../identity-forms';
 import { confirmMatch, confirmMatchFormErrors } from '../validators/confirm-match';
 
+/** Collects the new email with confirmation and the current password. */
 type ChangeEmailFormGroup = FormGroup<{
   email1: FormControl<string | null>;
   email2: FormControl<string | null>;
   password: FormControl<string | null>;
 }>;
 
-type VerifyStatuses = 'sending' | 'sent' | 'unsent';
-
+/**
+ * Form for user to change their email address with Firebase Authentication. The new email address
+ * must be verified by clicking a link and applying an oobCode before it actually updates.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -40,19 +45,30 @@ type VerifyStatuses = 'sending' | 'sent' | 'unsent';
   templateUrl: './change-email.component.html',
 })
 export class ChangeEmailComponent {
+  /** Errors specific to the first new email field. */
   public readonly $email1CntrlErrors: Signal<ValidationErrors | undefined>;
+  /** Aria-invalid attribute for the first new email field. */
   public readonly $email1CntrlInvalid: Signal<boolean>;
+  /** Errors specific to the second new email field. */
   public readonly $email2CntrlErrors: Signal<ValidationErrors | undefined>;
+  /** Aria-invalid attribute for the second new email field. */
   public readonly $email2CntrlInvalid: Signal<boolean>;
+  /** Firebase response error code. */
   public readonly $errorCode: WritableSignal<string>;
+  /** Aria-invalid attribute for the form validation. */
   public readonly $formEmailsInvalid: Signal<boolean>;
+  /** Errors specific to the current password field. */
   public readonly $passwordCntrlErrors: Signal<ValidationErrors | undefined>;
+  /** Aria-invalid attribute for the current password field. */
   public readonly $passwordCntrlInvalid: Signal<boolean>;
-  public readonly $verificationStatus: WritableSignal<VerifyStatuses>;
+  /** Cycles through the process of sending a verification email to set the new email address for the User. */
+  public readonly $verificationStatus: WritableSignal<SendVerifyEmailStatuses>;
   public readonly changeEmailForm: ChangeEmailFormGroup;
   public readonly email1Cntrl: FormControl<string | null>;
   public readonly email2Cntrl: FormControl<string | null>;
+  /** Used in error message for password maximum length. */
   public readonly maxPasswordLength: number = PASSWORDS.maxLength;
+  /** Used in error message for password minimum length. */
   public readonly minPasswordLength: number = PASSWORDS.minLength;
   public readonly passwordCntrl: FormControl<string | null>;
   public readonly user$: MaybeUser$;
@@ -74,16 +90,21 @@ export class ChangeEmailComponent {
     this.$formEmailsInvalid = confirmMatchFormErrors(this.changeEmailForm, this.email1Cntrl, this.email2Cntrl);
 
     this.$errorCode = signal<string>('');
-    this.$verificationStatus = signal<VerifyStatuses>('unsent');
+    this.$verificationStatus = signal<SendVerifyEmailStatuses>('unsent');
 
     // Not handling non-logged in users because the Route guards should.
     this.user$ = inject(USER$);
   }
 
+  /**
+   * Re-authenticates the current user using the submitted password then sends an email to the new
+   * address to confirm ownership. Clicking the link in the email will apply the oobCode using
+   * VerifyEmailComponent.
+   */
   public async onSubmit(user: User): Promise<void> {
     const { email1, password } = this.changeEmailForm.value;
 
-    // Validators prevent email1 or password being falsey, but TypeScript doesn't know that.
+    // Validators prevent email1 or password being falsy, but TypeScript doesn't know that.
     // Additionally, all users are expected to have an email address.
     if (this.changeEmailForm.invalid || !email1 || !password || !user.email) {
       throw new Error('Invalid form submitted');

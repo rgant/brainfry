@@ -34,6 +34,9 @@ import { routes } from './app.routes';
 import { AppTitleStrategyService } from './core/app-title-strategy.service';
 import { provideOurFirebaseApp } from './core/firebase-app.provider';
 
+/**
+ * Setup global dependencies for the application.
+ */
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),

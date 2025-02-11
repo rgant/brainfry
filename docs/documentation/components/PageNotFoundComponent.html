@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Wildcard catchall route component for paths that do not match configured routes.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -273,14 +280,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="24"
-                                    class="link-to-prism">src/app/page-not-found/page-not-found.component.ts:24</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="36"
+                                    class="link-to-prism">src/app/page-not-found/page-not-found.component.ts:36</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Remove the robot blocking meta tag from the HTML Head when this Component is no longer the
+routed Component.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -312,14 +322,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/page-not-found/page-not-found.component.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/app/page-not-found/page-not-found.component.ts:46</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Prevent robots from indexing this soft 404 page. Note that this probably is only necessary
+with SSR or JavaScript executing web crawlers.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -361,10 +374,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/page-not-found/page-not-found.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/page-not-found/page-not-found.component.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Angular service to manage Meta tags. <a href="https://angular.dev/api/platform-browser/Meta">https://angular.dev/api/platform-browser/Meta</a></p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -393,10 +412,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/page-not-found/page-not-found.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/page-not-found/page-not-found.component.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Reference to the meta tag created OnInit to be removed OnDestroy.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -413,11 +438,17 @@ import { Meta } from &#x27;@angular/platform-browser&#x27;;
 import type { MetaDefinition } from &#x27;@angular/platform-browser&#x27;;
 import { RouterLink } from &#x27;@angular/router&#x27;;
 
+/**
+ * Block robots from indexing the 404 page.
+ */
 export const ROBOTS_META: MetaDefinition &#x3D; {
   content: &#x27;noindex, nofollow&#x27;,
   name: &#x27;robots&#x27;,
-};
+} as const;
 
+/**
+ * Wildcard catchall route component for paths that do not match configured routes.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ NgOptimizedImage, RouterLink ],
@@ -426,18 +457,26 @@ export const ROBOTS_META: MetaDefinition &#x3D; {
   templateUrl: &#x27;./page-not-found.component.html&#x27;,
 })
 export class PageNotFoundComponent implements OnDestroy, OnInit {
+  /** Angular service to manage Meta tags. https://angular.dev/api/platform-browser/Meta */
   private readonly _metaService: Meta &#x3D; inject(Meta);
+  /** Reference to the meta tag created OnInit to be removed OnDestroy. */
   private _robotsTag: HTMLMetaElement | null &#x3D; null; // eslint-disable-line unicorn/no-null -- DOM uses null
 
+  /**
+   * Remove the robot blocking meta tag from the HTML Head when this Component is no longer the
+   * routed Component.
+   */
   public ngOnDestroy(): void {
     if (this._robotsTag) {
       this._metaService.removeTagElement(this._robotsTag);
     }
   }
 
+  /**
+   * Prevent robots from indexing this soft 404 page. Note that this probably is only necessary
+   * with SSR or JavaScript executing web crawlers.
+   */
   public ngOnInit(): void {
-    // Prevent robots from indexing this soft 404 page. Note that this probably is only necessary
-    // with SSR or JavaScript executing web crawlers.
     this._robotsTag &#x3D; this._metaService.addTag(ROBOTS_META);
   }
 }
@@ -487,7 +526,7 @@ export class PageNotFoundComponent implements OnDestroy, OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><p class="banner" i18n="text banner|Banner text for 404 not found page@@pageNotFound.banner">Game Over</p><div class="card">  <h2 i18n="page heading 2|Amusing text refering to losing a game@@pageNotFound.header">Oops, we lost (this page)!</h2>  <p i18n="paragraph|Suggest contacting support@@pageNotFound.contact">    How did you get here anyway?    <a href="mailto:rob@brainfry-app.web.app?subject=404">Contact Support</a>  </p>  <a routerLink="/dashboard" i18n="link text|Navigate back to dashboard page@@links.backToDashboard">Go back to dashboard</a></div><div class="logo">  <img alt="" ngSrc="/imgs/logo-260.png" width="260" height="260" priority></div></div>'
-    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'app-actions'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthErrorMessagesComponent', 'selector': 'app-auth-error-messages'},{'name': 'CentralLayoutComponent', 'selector': 'app-central-layout'},{'name': 'ChangeEmailComponent', 'selector': 'app-change-email'},{'name': 'ChangePasswordComponent', 'selector': 'app-change-password'},{'name': 'ConfirmEmailComponent', 'selector': 'app-confirm-email'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteAccountComponent', 'selector': 'app-delete-account'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutComponent', 'selector': 'app-logout'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PhotoManagerComponent', 'selector': 'app-photo-manager'},{'name': 'PhotoUploadComponent', 'selector': 'app-photo-upload'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'RecoverEmailComponent', 'selector': 'app-recover-email'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StandardLayoutComponent', 'selector': 'app-standard-layout'},{'name': 'TermsAndConditionsComponent', 'selector': 'app-terms-and-conditions'},{'name': 'TestComponent', 'selector': ''},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'VerifyEmailComponent', 'selector': 'app-verify-email'}];
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'app-actions'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthErrorMessagesComponent', 'selector': 'app-auth-error-messages'},{'name': 'CentralLayoutComponent', 'selector': 'app-central-layout'},{'name': 'ChangeEmailComponent', 'selector': 'app-change-email'},{'name': 'ChangePasswordComponent', 'selector': 'app-change-password'},{'name': 'ConfirmEmailComponent', 'selector': 'app-confirm-email'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteAccountComponent', 'selector': 'app-delete-account'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutComponent', 'selector': 'app-logout'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PhotoManagerComponent', 'selector': 'app-photo-manager'},{'name': 'PhotoUploadComponent', 'selector': 'app-photo-upload'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'RecoverEmailComponent', 'selector': 'app-recover-email'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StandardLayoutComponent', 'selector': 'app-standard-layout'},{'name': 'TermsAndConditionsComponent', 'selector': 'app-terms-and-conditions'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'VerifyEmailComponent', 'selector': 'app-verify-email'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PageNotFoundComponent'};
 </script>

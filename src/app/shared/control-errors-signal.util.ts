@@ -17,11 +17,20 @@ import type { Observable } from 'rxjs';
 
 import { FORMS } from './constants';
 
+/**
+ * `combinedLatest` output from inner AbstractControl Observables.
+ */
 interface CombinedObs {
+  /** Indicates that the Control value has been modified by the user. */
   dirty: boolean;
+  /** If the Control is invalid then contains the ValidationErrors, otherwise `undefined`. */
   errors: ValidationErrors | undefined;
 }
 
+/**
+ * Creates an Angular Signal that emits the validation errors for a Control only when the Control is
+ * also modified (dirty).
+ */
 export const controlErrorsSignal = (control: AbstractControl): Signal<ValidationErrors | undefined> => {
   // Only care about dirty controls for purposes of displaying validation error messages.
   const controlDirty$: Observable<boolean> = control.events.pipe(

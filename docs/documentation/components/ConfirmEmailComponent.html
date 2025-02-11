@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Sends the user an email to confirm access to the email address.</p>
+
+    </p>
 
 
 
@@ -245,7 +252,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/identity/confirm-email/confirm-email.component.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/identity/confirm-email/confirm-email.component.ts:35</a></div>
                             </td>
                         </tr>
 
@@ -285,14 +292,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/app/identity/confirm-email/confirm-email.component.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/identity/confirm-email/confirm-email.component.ts:48</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Sends email to User&#39;s email address in Firebase Authentication to verify control of the address.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -363,6 +372,12 @@
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Firebase response error code</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -381,16 +396,22 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>WritableSignal&lt;VerifyStatuses&gt;</code>
+                        <i>Type : </i>    <code>WritableSignal&lt;SendVerifyEmailStatuses&gt;</code>
 
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/identity/confirm-email/confirm-email.component.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/identity/confirm-email/confirm-email.component.ts:33</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Triggers different stages in the view for email verification sending.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -415,10 +436,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/identity/confirm-email/confirm-email.component.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/identity/confirm-email/confirm-email.component.ts:35</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Currently logged in Firebase User.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -445,9 +472,11 @@ import { SpinnerComponent } from &#x27;@app/shared/spinner/spinner.component&#x2
 
 import { AuthErrorMessagesComponent } from &#x27;../auth-error-messages/auth-error-messages.component&#x27;;
 import { getErrorCode } from &#x27;../error-code&#x27;;
+import type { SendVerifyEmailStatuses } from &#x27;./send-confirm-email&#x27;;
 
-type VerifyStatuses &#x3D; &#x27;sending&#x27; | &#x27;sent&#x27; | &#x27;unsent&#x27;;
-
+/**
+ * Sends the user an email to confirm access to the email address.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ AsyncPipe, AuthErrorMessagesComponent, SpinnerComponent ],
@@ -455,18 +484,24 @@ type VerifyStatuses &#x3D; &#x27;sending&#x27; | &#x27;sent&#x27; | &#x27;unsent
   templateUrl: &#x27;./confirm-email.component.html&#x27;,
 })
 export class ConfirmEmailComponent {
+  /** Firebase response error code */
   public readonly $errorCode: WritableSignal&lt;string&gt;;
-  public readonly $verificationStatus: WritableSignal&lt;VerifyStatuses&gt;;
+  /** Triggers different stages in the view for email verification sending. */
+  public readonly $verificationStatus: WritableSignal&lt;SendVerifyEmailStatuses&gt;;
+  /** Currently logged in Firebase User. */
   public readonly user$: MaybeUser$;
 
   constructor() {
     this.$errorCode &#x3D; signal&lt;string&gt;(&#x27;&#x27;);
-    this.$verificationStatus &#x3D; signal&lt;VerifyStatuses&gt;(&#x27;unsent&#x27;);
+    this.$verificationStatus &#x3D; signal&lt;SendVerifyEmailStatuses&gt;(&#x27;unsent&#x27;);
 
     // Not handling non-logged in users because the Route guards should.
     this.user$ &#x3D; inject(USER$);
   }
 
+  /**
+   * Sends email to User&#x27;s email address in Firebase Authentication to verify control of the address.
+   */
   public async sendConfirmEmail(user: User): Promise&lt;void&gt; {
     this.$errorCode.set(&#x27;&#x27;); // Clear out any existing errors
     this.$verificationStatus.set(&#x27;sending&#x27;);
@@ -554,7 +589,7 @@ export class ConfirmEmailComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div>@if (user$ | async; as user) {  <div class="main-card">    <h2 i18n="page heading 2|Confirm that email address is controled by user@@confirmEmail.header">Confirm email address</h2>    <p i18n="paragraph text|explain email confirmation process@@confirmEmail.explaination">      To confirm that your email address is valid we need to send an email to      <strong>{{ user.email }}</strong>      with a verification link.    </p>    @let status = $verificationStatus();    @if (status === \'sent\') {      @if ($errorCode(); as errorCode) {        <p class="alert">          <app-auth-error-messages [$code]="errorCode" />        </p>      } @else {        <p i18n="paragraph text|notify that verify email was sent@@confirmEmail.notification">          A verification email has been sent to          <strong>{{ user.email }}</strong>.          Please check your email inbox and spam folder in a few minutes.        </p>      }    }    <p class="card-actions">      <button (click)="sendConfirmEmail(user)" [disabled]="status === \'sending\'" class="button" type="button">        @if (status === \'sent\') {          <ng-container i18n="action button|send a verification link again@@confirmEmail.button.reconfirm">            Resend verification email          </ng-container>        } @else {          <ng-container i18n="action button|send a verification link to user’s email@@confirmEmail.button">            Send verification email          </ng-container>        }      </button>    </p>  </div>} @else {  <app-spinner />}</div>'
-    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'app-actions'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthErrorMessagesComponent', 'selector': 'app-auth-error-messages'},{'name': 'CentralLayoutComponent', 'selector': 'app-central-layout'},{'name': 'ChangeEmailComponent', 'selector': 'app-change-email'},{'name': 'ChangePasswordComponent', 'selector': 'app-change-password'},{'name': 'ConfirmEmailComponent', 'selector': 'app-confirm-email'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteAccountComponent', 'selector': 'app-delete-account'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutComponent', 'selector': 'app-logout'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PhotoManagerComponent', 'selector': 'app-photo-manager'},{'name': 'PhotoUploadComponent', 'selector': 'app-photo-upload'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'RecoverEmailComponent', 'selector': 'app-recover-email'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StandardLayoutComponent', 'selector': 'app-standard-layout'},{'name': 'TermsAndConditionsComponent', 'selector': 'app-terms-and-conditions'},{'name': 'TestComponent', 'selector': ''},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'VerifyEmailComponent', 'selector': 'app-verify-email'}];
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'app-actions'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthErrorMessagesComponent', 'selector': 'app-auth-error-messages'},{'name': 'CentralLayoutComponent', 'selector': 'app-central-layout'},{'name': 'ChangeEmailComponent', 'selector': 'app-change-email'},{'name': 'ChangePasswordComponent', 'selector': 'app-change-password'},{'name': 'ConfirmEmailComponent', 'selector': 'app-confirm-email'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteAccountComponent', 'selector': 'app-delete-account'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutComponent', 'selector': 'app-logout'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PhotoManagerComponent', 'selector': 'app-photo-manager'},{'name': 'PhotoUploadComponent', 'selector': 'app-photo-upload'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'RecoverEmailComponent', 'selector': 'app-recover-email'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StandardLayoutComponent', 'selector': 'app-standard-layout'},{'name': 'TermsAndConditionsComponent', 'selector': 'app-terms-and-conditions'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'VerifyEmailComponent', 'selector': 'app-verify-email'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ConfirmEmailComponent'};
 </script>

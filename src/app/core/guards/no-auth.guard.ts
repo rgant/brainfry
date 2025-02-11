@@ -12,12 +12,17 @@ import type { Observable } from 'rxjs';
 
 import { USER$ } from '../user.token';
 
+/**
+ * Requires that there not be a currently logged in user to navigate to certain routes.
+ * For example, routes that are for logging in and recovering accounts.
+ * Can be used for both CanActivate and CanActivateChild guards.
+ */
 export const noAuthGuard: CanActivateChildFn = (
   childRoute: ActivatedRouteSnapshot,
   _state: RouterStateSnapshot,
 ): Observable<UrlTree | true> => {
   const router = inject(Router);
-  /** Navigate to the `next` query parameter if set, else to the root and allow default redirectTo Route to decide initial destination. */
+  // Navigate to the `next` query parameter if set, else to the root and allow default redirectTo Route to decide initial destination.
   const nextUrl = childRoute.queryParamMap.get('next') ?? '/';
   const user$ = inject(USER$);
 

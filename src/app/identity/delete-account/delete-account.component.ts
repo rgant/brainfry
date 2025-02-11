@@ -21,12 +21,18 @@ import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-me
 import { getErrorCode } from '../error-code';
 import { createPasswordControl, PASSWORDS } from '../identity-forms';
 
+/** Deleting a Firebase User requires a recent authentication. */
 type DeleteAccountFormGroup = FormGroup<{
   password: FormControl<string | null>;
 }>;
 
+/** Template reference to HTML dialog element. */
 type DialogRef = ElementRef<HTMLDialogElement>;
 
+/**
+ * Two step process to delete a User's account in Firebase Authentication. First button opens a
+ * dialog where the User enters their password and confirms account deletion.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -39,12 +45,18 @@ type DialogRef = ElementRef<HTMLDialogElement>;
   templateUrl: './delete-account.component.html',
 })
 export class DeleteAccountComponent {
+  /** Errors from Firebase, displayed after the dialog is closed. */
   public readonly $errorCode: WritableSignal<string>;
+  /** Errors specific to the password field. */
   public readonly $passwordCntrlErrors: Signal<ValidationErrors | undefined>;
+  /** Aria-invalid attribute for the password field. */
   public readonly $passwordCntrlInvalid: Signal<boolean>;
+  /** Toggle showing view and the spinner. */
   public readonly $showForm: WritableSignal<boolean>;
   public readonly deleteAccountForm: DeleteAccountFormGroup;
+  /** Used in error message for password maximum length. */
   public readonly maxPasswordLength: number = PASSWORDS.maxLength;
+  /** Used in error message for password minimum length. */
   public readonly minPasswordLength: number = PASSWORDS.minLength;
   public readonly passwordCntrl: FormControl<string | null>;
   public readonly user$: MaybeUser$;
@@ -72,16 +84,23 @@ export class DeleteAccountComponent {
     this.user$ = inject(USER$);
   }
 
+  /**
+   * Closes the HTML Dialog element without deleting the account.
+   */
   public closeDialog(): void {
     const dialogEl = this._$confirmDialog();
     dialogEl.nativeElement.close();
   }
 
+  /**
+   * Re-authenticates the User using their password from the form, and then deletes the User in
+   * Firebase Authentication.
+   */
   public async deleteAcount(user: User): Promise<void> {
     // The dialog automatically closes on submit. event.preventDefault() and event.stopPropagation() do not prevent that.
     const { password } = this.deleteAccountForm.value;
 
-    // Validators prevent email1 or password being falsey, but TypeScript doesn't know that.
+    // Validators prevent email1 or password being falsy, but TypeScript doesn't know that.
     // Additionally, all users are expected to have an email address.
     if (this.deleteAccountForm.invalid || !password || !user.email) {
       throw new Error('Invalid form submitted');
@@ -103,6 +122,9 @@ export class DeleteAccountComponent {
     this.$showForm.set(true);
   }
 
+  /**
+   * Opens the HTML Dialog containing the delete account form.
+   */
   public openDialog(): void {
     const dialogEl = this._$confirmDialog();
     this.$errorCode.set(''); // Clear out any existing errors

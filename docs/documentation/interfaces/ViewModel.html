@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Template model data</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -194,6 +201,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>List of photos uploaded to Firebase storage for the user&#39;s profile</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -227,6 +240,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Firebase User object</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -271,16 +290,28 @@ import { PhotoUploadComponent } from &#x27;../user-photos/photo-upload/photo-upl
 import { UserPhotosService } from &#x27;../user-photos/user-photos.service&#x27;;
 import type { Photo } from &#x27;../user-photos/user-photos.service&#x27;;
 
+/**
+ * Angular FormGroup for Firebase [updateProfile](https://firebase.google.com/docs/reference/node/firebase.User#updateprofile)
+ * parameters.
+ */
 type ProfileFormGroup &#x3D; FormGroup&lt;{
   displayName: FormControl&lt;string | null&gt;;
   photoURL: FormControl&lt;string | null&gt;;
 }&gt;;
 
+/**
+ * Template model data
+ */
 interface ViewModel {
+  /** List of photos uploaded to Firebase storage for the user&#x27;s profile */
   profilePhotos: Photo[];
+  /** Firebase User object */
   user: User;
 }
 
+/**
+ * Form to manage Firebase User profile.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -296,16 +327,28 @@ interface ViewModel {
   templateUrl: &#x27;./user-profile.component.html&#x27;,
 })
 export class UserProfileComponent {
+  /** Error codes from &#x60;updateProfile&#x60; when form is submitted. */
   public readonly $errorCode: WritableSignal&lt;string&gt;;
+  /** Error messages specific for the displayName field. */
   public readonly $nameCntrlErrors: Signal&lt;ValidationErrors | undefined&gt;;
+  /** Aria-invalid attribute for displayName field. */
   public readonly $nameCntrlInvalid: Signal&lt;boolean&gt;;
+  /** Error messages specific for the photoURL field (custom URL entry). */
   public readonly $photoUrlCntrlErrors: Signal&lt;ValidationErrors | undefined&gt;;
+  /** Aria-invalid attribute for photoURL field. */
   public readonly $photoUrlCntrlInvalid: Signal&lt;boolean&gt;;
+  /** Toggle spinner and HTML Form display. */
   public readonly $showForm: WritableSignal&lt;boolean&gt;;
+  /** Toggle photoURL URL input and upload file interface. */
   public readonly $showUrlInput: WritableSignal&lt;boolean&gt;;
   public readonly nameCntrl: FormControl&lt;string | null&gt;;
   public readonly photoUrlCntrl: FormControl&lt;string | null&gt;;
   public readonly profileForm: ProfileFormGroup;
+  /**
+   * Collect the current User and profile photos uploaded to Firebase storage. Initalize &#x60;profileForm&#x60;
+   * with data from Firebase User, and determine if photoURL is an uploaded file. If so, default the
+   * interace to uploads instead of the URL.
+   */
   public readonly vm$: Observable&lt;ViewModel&gt;;
 
   private readonly _userPhotoService: UserPhotosService;
@@ -342,7 +385,8 @@ export class UserProfileComponent {
       }),
       switchMap((user: User): Observable&lt;ViewModel&gt; &#x3D;&gt; {
         const { photoURL, uid } &#x3D; user;
-
+        // Get uploads for this user, and then identify if the User#photoURL is one of the uploaded
+        // files.
         return this._userPhotoService.getProfilePhotos(uid).pipe(
           map((profilePhotos: Photo[]): ViewModel &#x3D;&gt; {
             for (const photo of profilePhotos) {
@@ -366,7 +410,7 @@ export class UserProfileComponent {
   public async onSubmit(user: User): Promise&lt;void&gt; {
     const { displayName, photoURL } &#x3D; this.profileForm.value;
 
-    // Validators prevent email1 or password being falsey, but TypeScript doesn&#x27;t know that.
+    // Validators prevent email1 or password being falsy, but TypeScript doesn&#x27;t know that.
     if (this.profileForm.invalid || !displayName) {
       throw new Error(&#x27;Invalid form submitted&#x27;);
     }

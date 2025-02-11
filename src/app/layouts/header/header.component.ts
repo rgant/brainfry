@@ -11,6 +11,9 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import type { IconDefinition } from '@fortawesome/angular-fontawesome';
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * Primary header for standard views of logged in users. Contains the user account menu and logo.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ FaIconComponent, NgOptimizedImage, RouterLink ],
@@ -19,8 +22,11 @@ import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
+  /** Toggles the collapsible User Account menu. */
   public readonly $showMenu: WritableSignal<boolean> = signal<boolean>(false);
+  /** Hamburger icon for the User Accounts menu in mobile view. */
   public readonly faBars: IconDefinition = faBars;
+  /** Close icon for User Accounts menu. */
   public readonly faX: IconDefinition = faX;
 
   /**

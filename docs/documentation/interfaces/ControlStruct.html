@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>For each Identity Control generate two Signals for error handling.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -200,6 +207,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Returns errors for the control, but only when the control is dirty.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -233,6 +246,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Flag for aria-invalid, but only when the control is modified, invalid, and interacted with.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -266,6 +285,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Identity control.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -283,6 +308,9 @@ import { controlInvalidSignal } from &#x27;@app/shared/control-invalid-signal.ut
 
 import { passwordFirebaseValidator, passwordStrengthValidator } from &#x27;./validators/passwords&#x27;;
 
+/**
+ * Pair control with Angular Signals for handling validation in the template.
+ */
 const getControlStructure &#x3D; &lt;T extends AbstractControl&gt;(control: T): ControlStruct&lt;T&gt; &#x3D;&gt; {
   const $invalid &#x3D; controlInvalidSignal(control);
   const $errors &#x3D; controlErrorsSignal(control);
@@ -292,12 +320,21 @@ const getControlStructure &#x3D; &lt;T extends AbstractControl&gt;(control: T): 
 
 export { PASSWORDS };
 
+/**
+ * For each Identity Control generate two Signals for error handling.
+ */
 export interface ControlStruct&lt;T extends AbstractControl &#x3D; FormControl&gt; {
+  /** Returns errors for the control, but only when the control is dirty. */
   $errors: Signal&lt;ValidationErrors | undefined&gt;;
+  /** Flag for aria-invalid, but only when the control is modified, invalid, and interacted with. */
   $invalid: Signal&lt;boolean&gt;;
+  /** Identity control. */
   control: T;
 }
 
+/**
+ * Emails are required and must be a valid email address.
+ */
 export const createEmailControl &#x3D; (): ControlStruct&lt;FormControl&gt; &#x3D;&gt; {
   // eslint-disable-next-line unicorn/no-null -- DOM forms use null
   const control &#x3D; new FormControl&lt;string | null&gt;(null, [ Validators.required, Validators.email ]);
@@ -305,6 +342,7 @@ export const createEmailControl &#x3D; (): ControlStruct&lt;FormControl&gt; &#x3
 };
 
 /**
+ * Passwords are required and have length requirements. Complexity is required for new password fields.
  * @param isNewPassword - Adds extra validators to control when being used to create a new password.
  *                      Note: this should only be used on the first password field, not the confirm
  *                      field.

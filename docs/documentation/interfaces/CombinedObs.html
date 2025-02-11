@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p><code>combinedLatest</code> output from inner AbstractControl Observables.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -194,6 +201,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Indicates that the Control value has been modified by the user.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -227,6 +240,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>If the Control is invalid then contains the ValidationErrors, otherwise <code>undefined</code>.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -253,11 +272,20 @@ import type { Observable } from &#x27;rxjs&#x27;;
 
 import { FORMS } from &#x27;./constants&#x27;;
 
+/**
+ * &#x60;combinedLatest&#x60; output from inner AbstractControl Observables.
+ */
 interface CombinedObs {
+  /** Indicates that the Control value has been modified by the user. */
   dirty: boolean;
+  /** If the Control is invalid then contains the ValidationErrors, otherwise &#x60;undefined&#x60;. */
   errors: ValidationErrors | undefined;
 }
 
+/**
+ * Creates an Angular Signal that emits the validation errors for a Control only when the Control is
+ * also modified (dirty).
+ */
 export const controlErrorsSignal &#x3D; (control: AbstractControl): Signal&lt;ValidationErrors | undefined&gt; &#x3D;&gt; {
   // Only care about dirty controls for purposes of displaying validation error messages.
   const controlDirty$: Observable&lt;boolean&gt; &#x3D; control.events.pipe(

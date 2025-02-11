@@ -17,11 +17,15 @@ import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-me
 import { getErrorCode } from '../error-code';
 import { createEmailControl, createPasswordControl, PASSWORDS } from '../identity-forms';
 
+/** Email & password credentials for Authentication */
 type LoginFormGroup = FormGroup<{
   email: FormControl<string | null>;
   password: FormControl<string | null>;
 }>;
 
+/**
+ * Email and password login form.
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -34,17 +38,28 @@ type LoginFormGroup = FormGroup<{
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
+  /** Errors specific to the email field. */
   public readonly $emailCntrlErrors: Signal<ValidationErrors | undefined>;
+  /** Aria-invalid attribute for email field. */
   public readonly $emailCntrlInvalid: Signal<boolean>;
+  /** Login form error response code. */
   public readonly $errorCode: WritableSignal<string>;
+  /** Errors specific to the password field. */
   public readonly $passwordCntrlErrors: Signal<ValidationErrors | undefined>;
+  /** Aria-invalid attribute for password field. */
   public readonly $passwordCntrlInvalid: Signal<boolean>;
+  /** Toggle Login form and spinner. */
   public readonly $showForm: WritableSignal<boolean>;
   public readonly emailCntrl: FormControl<string | null>;
   public readonly loginForm: LoginFormGroup;
+  /** Used in error message for password maximum length. */
   public readonly maxPasswordLength: number = PASSWORDS.maxLength;
+  /** Used in error message for password minimum length. */
   public readonly minPasswordLength: number = PASSWORDS.minLength;
-  // Navigate to root to allow default redirectTo Route to decide initial destination unless the `next` query parameter is set.
+  /**
+   * Navigate to root to allow default redirectTo Route to decide initial destination unless the
+   * `next` query parameter is set.
+   */
   public readonly next: InputSignal<string> = input<string>('/');
   public readonly passwordCntrl: FormControl<string | null>;
 
@@ -66,10 +81,13 @@ export class LoginComponent {
     this.$errorCode = signal<string>('');
   }
 
+  /**
+   * Login using credentials and then redirect to next view.
+   */
   public async onSubmit(): Promise<void> {
     const { email, password } = this.loginForm.value;
 
-    // Validators prevent email or password being falsey, but TypeScript doesn't know that.
+    // Validators prevent email or password being falsy, but TypeScript doesn't know that.
     if (this.loginForm.invalid || !email || !password) {
       throw new Error('Invalid form submitted');
     }

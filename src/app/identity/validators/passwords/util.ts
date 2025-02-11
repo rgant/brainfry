@@ -1,5 +1,9 @@
 import type { AbstractControl } from '@angular/forms';
 
+/**
+ * Safely extract the value from a control, expecting it to be a string or nullish.
+ * @throws TypeError - Control value is not nullish and not a string.
+ */
 export const getPasswordControlValue = (control: AbstractControl<unknown>): string | null => {
   const { value } = control;
 

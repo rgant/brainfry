@@ -26,9 +26,9 @@
   ],
   "scripts": {
     "build": "ng build",
-    "compodoc:build": "compodoc -p tsconfig.doc.json --output ./docs/documentation/",
-    "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
-    "compodoc:serve": "compodoc -s",
+    "compodoc:build": "compodoc",
+    "compodoc:build-and-serve": "compodoc --serve --watch",
+    "compodoc:serve": "compodoc --serve",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "e2e": "firebase emulators:exec --ui --import ./fixtures/ --only auth,storage 'ng e2e'",

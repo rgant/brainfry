@@ -3,18 +3,28 @@ import { applyActionCode, Auth } from '@angular/fire/auth';
 
 import { getErrorCode } from '../error-code';
 
+/**
+ * Results of verifying an email address with Firebase.
+ */
 export interface VerifyEmailResult {
+  /** Destination after verifying email. */
   continueUrl: string;
+  /** Error that prevented verification, if verfied is false. */
   errorCode?: string;
+  /** Was the email verified successfully. */
   verified: boolean;
 }
 
+/**
+ * Wrapper for verifying an email with Firebase. This is mostly just to make unit testing easier.
+ */
 @Injectable({ providedIn: 'root' })
 export class VerifyEmailService {
   private readonly _auth: Auth = inject(Auth);
 
   /**
-   * This is mostly just to make unit testing easier.
+   * Apply the oobCode to verify the user account's email address.
+   * Catches errors and wraps in the results interface for use in the template.
    */
   public async verifyEmail(oobCode: string | undefined, continueUrl: string = '/'): Promise<VerifyEmailResult> {
     if (oobCode) {
