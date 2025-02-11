@@ -6,8 +6,8 @@ import { FORMS, PASSWORDS } from '@app/shared/constants';
 import { getCompiled, safeQuerySelector, setValidatePassword } from '@testing/utilities';
 
 interface PasswordErrorMessagesTestOptions {
-  errorsId: string;
-  isNewPassword?: boolean;
+  readonly errorsId: string;
+  readonly isNewPassword?: boolean;
 }
 
 /**

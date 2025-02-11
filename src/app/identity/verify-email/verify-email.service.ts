@@ -8,11 +8,11 @@ import { getErrorCode } from '../error-code';
  */
 export interface VerifyEmailResult {
   /** Destination after verifying email. */
-  continueUrl: string;
+  readonly continueUrl: string;
   /** Error that prevented verification, if verfied is false. */
-  errorCode?: string;
+  readonly errorCode?: string;
   /** Was the email verified successfully. */
-  verified: boolean;
+  readonly verified: boolean;
 }
 
 /**

@@ -277,9 +277,9 @@ import { FORMS } from &#x27;./constants&#x27;;
  */
 interface CombinedObs {
   /** Indicates that the Control value has been modified by the user. */
-  dirty: boolean;
+  readonly dirty: boolean;
   /** If the Control is invalid then contains the ValidationErrors, otherwise &#x60;undefined&#x60;. */
-  errors: ValidationErrors | undefined;
+  readonly errors: ValidationErrors | undefined;
 }
 
 /**

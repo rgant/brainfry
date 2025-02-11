@@ -321,29 +321,29 @@ type ConfirmResult &#x3D; PasswordResetSuccess | ShowForm;
 /** Final state after resetting password. */
 interface PasswordResetSuccess {
   /** This makes the template type checker happy. */
-  errorCode: undefined;
+  readonly errorCode: undefined;
   /** On success hide the form and show the success message. */
-  showForm: false;
+  readonly showForm: false;
 }
 
 /** Verified success &amp; password reset failure. */
 interface ShowForm {
   /** User email address to reset password for, from Firebase oobCode. */
-  email: string;
+  readonly email: string;
   /** Firebase response error code, if any. */
-  errorCode?: string;
+  readonly errorCode?: string;
   /** Display the reset password form to collect and confirm the new password. */
-  showForm: true;
+  readonly showForm: true;
 }
 
 /** Code verification failed. */
 interface VerifiedFailed {
   /** This makes the type checker happy during destructuring. */
-  email: undefined;
+  readonly email: undefined;
   /** Firebase response error code. */
-  errorCode: string;
+  readonly errorCode: string;
   /** On Firebase error hide the form and show the error message. */
-  showForm: false;
+  readonly showForm: false;
 }
 
 /** Combined end results of possword verification. */

@@ -56,9 +56,9 @@ type ProfileFormGroup = FormGroup<{
  */
 interface ViewModel {
   /** List of photos uploaded to Firebase storage for the user's profile */
-  profilePhotos: Photo[];
+  readonly profilePhotos: readonly Photo[];
   /** Firebase User object */
-  user: User;
+  readonly user: User;
 }
 
 /**

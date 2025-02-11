@@ -19,17 +19,17 @@ import { getErrorCode } from '../error-code';
 /** Combined model of email recovery results and sending password reset. */
 export interface RecoverEmailResults extends ApplyResult {
   /** Firebase response error code, if any. */
-  errorCode?: string;
+  readonly errorCode?: string;
   /** Indicates if the password reset email was sent on succesful email recovery. */
-  passwordResetSent: boolean;
+  readonly passwordResetSent: boolean;
 }
 
 /** Results of email recovery. */
 interface ApplyResult {
   /** User original email address to be recovered, from Firebase oobCode. */
-  restoredEmail?: string;
+  readonly restoredEmail?: string;
   /** Results of applying the oobCode to recover the account's original email address. */
-  successful: boolean;
+  readonly successful: boolean;
 }
 
 /** Sending the password reset email needs to wait until Firebase recognizes the email recovery. Milliseconds */

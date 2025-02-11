@@ -11,14 +11,14 @@ import { cleanupUsers, createAndSignInUser, generateRandomEmail } from './test-u
 type ActionFunctions = 'sendEmailVerification' | 'sendPasswordResetEmail' | 'updateEmail' | 'verifyBeforeUpdateEmail';
 
 interface EmulatorOobCodes {
-  oobCodes: OoBCodePayload[];
+  readonly oobCodes: readonly OoBCodePayload[];
 }
 
 interface OoBCodePayload {
-  email: string; // The original email, to be restored.
-  oobCode: string; // Code we need for testing.
-  oobLink: string; // Link that would have been sent to the user. Not used.
-  requestType: string; // The type of action to perform.
+  readonly email: string; // The original email, to be restored.
+  readonly oobCode: string; // Code we need for testing.
+  readonly oobLink: string; // Link that would have been sent to the user. Not used.
+  readonly requestType: string; // The type of action to perform.
 }
 
 const doAction = async (action: Omit<ActionFunctions, 'sendPasswordResetEmail'>, user: User): Promise<void> => {
@@ -45,7 +45,7 @@ const doAction = async (action: Omit<ActionFunctions, 'sendPasswordResetEmail'>,
 /**
  * https://firebase.google.com/docs/reference/rest/auth#section-auth-emulator-oob
  */
-const getOobCodes = async (): Promise<OoBCodePayload[]> => {
+const getOobCodes = async (): Promise<readonly OoBCodePayload[]> => {
   const response = await fetch('http://localhost:9099/emulator/v1/projects/brainfry-app/oobCodes');
   if (response.ok) {
     /* eslint-disable @stylistic/max-len */
@@ -98,9 +98,9 @@ const getRequestType = (action: ActionFunctions): string => {
 };
 
 export interface TestData {
-  oobCode: string;
-  originalEmail: string;
-  user: User;
+  readonly oobCode: string;
+  readonly originalEmail: string;
+  readonly user: User;
 }
 
 export { cleanupUsers };

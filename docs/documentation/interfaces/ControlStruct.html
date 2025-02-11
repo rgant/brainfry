@@ -325,11 +325,11 @@ export { PASSWORDS };
  */
 export interface ControlStruct&lt;T extends AbstractControl &#x3D; FormControl&gt; {
   /** Returns errors for the control, but only when the control is dirty. */
-  $errors: Signal&lt;ValidationErrors | undefined&gt;;
+  readonly $errors: Signal&lt;ValidationErrors | undefined&gt;;
   /** Flag for aria-invalid, but only when the control is modified, invalid, and interacted with. */
-  $invalid: Signal&lt;boolean&gt;;
+  readonly $invalid: Signal&lt;boolean&gt;;
   /** Identity control. */
-  control: T;
+  readonly control: T;
 }
 
 /**

@@ -28,9 +28,9 @@ import type { Observable } from 'rxjs';
  */
 export interface Photo {
   /** Need the file metadata to sort by time. */
-  metadata: FullMetadata;
+  readonly metadata: FullMetadata;
   /** Special download URL for file based on storage.rules. */
-  url: string;
+  readonly url: string;
 }
 
 /**
@@ -38,9 +38,9 @@ export interface Photo {
  */
 export interface Progress {
   /** Upload precentage between 0% and 100% */
-  progress: number;
+  readonly progress: number;
   /** Not used, but part of the rxfire interface */
-  snapshot: UploadTaskSnapshot;
+  readonly snapshot: UploadTaskSnapshot;
 }
 
 /** Total allowed uploaded profile photos. */

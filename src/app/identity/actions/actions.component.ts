@@ -16,14 +16,25 @@ import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
  */
 export interface ActionCodeState {
   /** We may include a next url when verifying email. */
-  continueUrl?: string;
+  readonly continueUrl?: string;
   /** Currently not used, but the language code of the email sent to with the oobCode. */
-  lang?: string;
+  readonly lang?: string;
   /** Action to be performed by the oobCode. */
-  mode: string;
+  readonly mode: string;
   /** Out of Band Code to perform sensitive Authentication action. */
-  oobCode: string;
+  readonly oobCode: string;
 }
+
+/**
+ * Firebase Action continueUrl is fully qualified. If it has a value convert it into a relative URL.
+ */
+const cleanUrl = (continueUrl: string | undefined): string | undefined => {
+  if (continueUrl) {
+    const url = new URL(continueUrl);
+    return `${url.pathname}${url.search}${url.hash}`;
+  }
+  return undefined;
+};
 
 /**
  * Self handle Firebase Authentication Actions
@@ -61,7 +72,7 @@ export class ActionsComponent {
    */
   constructor() {
     this._$actionState = computed((): Partial<ActionCodeState> => ({
-      continueUrl: this.continueUrl(),
+      continueUrl: cleanUrl(this.continueUrl()),
       lang: this.lang(),
       mode: this.mode(),
       oobCode: this.oobCode(),
@@ -77,11 +88,6 @@ export class ActionsComponent {
     // eslint-disable-next-line @typescript-eslint/no-misused-promises -- This works, for now, but perhaps not in the future!
     effect(async (): Promise<void> => {
       const state = this._$actionState();
-
-      if (state.continueUrl) {
-        const url = new URL(state.continueUrl);
-        state.continueUrl = `${url.pathname}${url.search}${url.hash}`;
-      }
 
       if (state.mode && state.oobCode) {
         const path = this._modePaths[state.mode];

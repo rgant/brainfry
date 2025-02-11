@@ -118,6 +118,9 @@
                             <a href="#authGuard" title="src/app/core/guards/auth.guard.ts" ><b>authGuard</b>&nbsp;&nbsp;&nbsp;(src/.../auth.guard.ts)</a>
                         </li>
                         <li>
+                            <a href="#cleanUrl" title="src/app/identity/actions/actions.component.ts" ><b>cleanUrl</b>&nbsp;&nbsp;&nbsp;(src/.../actions.component.ts)</a>
+                        </li>
+                        <li>
                             <a href="#confirmMatch" title="src/app/identity/validators/confirm-match/confirm-match.validator.ts" ><b>confirmMatch</b>&nbsp;&nbsp;&nbsp;(src/.../confirm-match.validator.ts)</a>
                         </li>
                         <li>
@@ -314,6 +317,41 @@
                 <td class="col-md-4">
                     <div class="io-description"><p>Requires that there be a currently logged in user to navigate to certain routes.
 Can be used for both CanActivate and CanActivateChild guards.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/identity/actions/actions.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cleanUrl"></a>
+                    <span class="name">
+                        <span ><b>cleanUrl</b></span>
+                        <a href="#cleanUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(continueUrl: string | undefined): string | undefined &#x3D;&gt; {
+  if (continueUrl) {
+    const url &#x3D; new URL(continueUrl);
+    return &#x60;${url.pathname}${url.search}${url.hash}&#x60;;
+  }
+  return undefined;
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Firebase Action continueUrl is fully qualified. If it has a value convert it into a relative URL.</p>
 </div>
                 </td>
             </tr>
