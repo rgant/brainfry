@@ -57,7 +57,14 @@ No modules.
 | [google-beta_google_firebase_project.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebase_project) | resource |
 | [google-beta_google_firebase_storage_bucket.default-bucket](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebase_storage_bucket) | resource |
 | [google-beta_google_firebase_web_app.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firebase_web_app) | resource |
+| [google-beta_google_firestore_backup_schedule.daily-backup](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firestore_backup_schedule) | resource |
 | [google-beta_google_firestore_database.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firestore_database) | resource |
+| [google-beta_google_firestore_document.entertainment_category](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firestore_document) | resource |
+| [google-beta_google_firestore_document.general_category](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firestore_document) | resource |
+| [google-beta_google_firestore_document.history_category](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firestore_document) | resource |
+| [google-beta_google_firestore_document.people_category](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firestore_document) | resource |
+| [google-beta_google_firestore_document.science_category](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firestore_document) | resource |
+| [google-beta_google_firestore_document.sports_category](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_firestore_document) | resource |
 | [google-beta_google_identity_platform_config.auth](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_identity_platform_config) | resource |
 | [google-beta_google_project.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project) | resource |
 | [google-beta_google_project_service.appcheck](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
