@@ -21,3 +21,8 @@ then served via [GitHub Pages](https://rgant.github.io/brainfry/coverage/index.h
 
 Using Compodoc to generate documenation from the source code. It is also served
 through [GitHub Pages](https://rgant.github.io/brainfry/documentation/index.html).
+
+> [!TIP]
+> This project is overly documented for educational purposes. Unless you are
+> building a library it is probably not necessary to include documentation in
+> your web application.
