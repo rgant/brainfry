@@ -38,7 +38,7 @@ resource "google_identity_platform_config" "auth" {
 
   client {
     permissions {
-      disabled_user_signup = !var.allow_user_signup
+      disabled_user_signup   = !var.allow_user_signup
       disabled_user_deletion = !var.allow_user_deletion
     }
   }

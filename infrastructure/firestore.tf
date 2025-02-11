@@ -26,12 +26,27 @@ resource "google_firestore_database" "default" {
 
   # "FIRESTORE_NATIVE" is required to use Firestore with Firebase SDKs,
   # authentication, and Firebase Security Rules.
-  type             = "FIRESTORE_NATIVE"
-  concurrency_mode = "OPTIMISTIC"
+  type                              = "FIRESTORE_NATIVE"
+  concurrency_mode                  = "OPTIMISTIC"
+  point_in_time_recovery_enablement = "POINT_IN_TIME_RECOVERY_ENABLED"
+  delete_protection_state           = "DELETE_PROTECTION_ENABLED"
+  deletion_policy                   = "DELETE"
 
   depends_on = [
     google_project_service.firestore
   ]
+}
+
+resource "google_firestore_backup_schedule" "daily-backup" {
+  provider = google-beta
+  project  = google_firebase_project.default.project
+  database = google_firestore_database.default.name
+
+  retention = "8467200s" // 14 weeks (maximum possible retention)
+
+  weekly_recurrence {
+    day = "SUNDAY"
+  }
 }
 
 # Load initial data to firestore
