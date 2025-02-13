@@ -23,6 +23,9 @@ import { StandardLayoutComponent } from './layouts/standard/standard.component';
 import type { PrivacyPolicyComponent } from './legal/privacy-policy/privacy-policy.component';
 import type { TermsAndConditionsComponent } from './legal/terms-and-conditions/terms-and-conditions.component';
 import type { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { QuizEditorComponent } from './quizzes/editor/editor.component';
+import { QuizListComponent } from './quizzes/list/list.component';
+import { QuizPresenterComponent } from './quizzes/presenter/presenter.component';
 
 export const routes: Routes = [
   // Needs to be a destination inside authenticated area.
@@ -94,6 +97,28 @@ export const routes: Routes = [
           return mod.DeleteAccountComponent;
         },
         title: $localize`:HTML title tag|Delete account@@htmlTitle.delete-account:Delete your account`,
+      },
+      {
+        path: 'quizzes',
+
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            component: QuizListComponent,
+            title: $localize`:HTML title tag|List of quizzes available to the user@@htmlTitle.quizzes:Quizzes`,
+          },
+          {
+            path: ':id/edit',
+            component: QuizEditorComponent,
+            title: $localize`:HTML title tag|Edit a quiz@@htmlTitle.quizzes.edit:Quiz Editor`,
+          },
+          {
+            path: ':id/present',
+            component: QuizPresenterComponent,
+            title: $localize`:HTML title tag|Present a quiz@@htmlTitle.quizzes.present:Quiz Presenter`,
+          },
+        ],
       },
       {
         // Only Users with verified emails can logout. Is that the correct choice?

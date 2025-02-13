@@ -1,0 +1,42 @@
+@if (vm$ | async; as vm) {
+  <h2 i18n="page heading 2|List available quizzes@@quizzesPage.header">Your Quizzes</h2>
+
+  <button
+    (click)="createNewQuiz(vm.user.uid)"
+    class="button"
+    type="button"
+    i18n="Create quiz button|Create a new quiz@@quizzesPage.createButton"
+  >
+    Create a new quiz
+  </button>
+
+  @if (vm.quizzes.length > 0) {
+    <ol>
+      @for (quiz of vm.quizzes; track quiz.id) {
+        <li>
+          {{ quiz.title }}
+          <small i18n="small text|Short date and time when quiz was last modified@@quiz.updatedDate">
+            (Updated {{ quiz.updatedAt | date:'short' }})
+          </small>
+          @if (quiz.owner === vm.user.uid) {
+            <a [routerLink]="[ quiz.id, 'edit' ]" i18n="link text|Edit your quiz@@quiz.edit">Edit</a>
+          } @else {
+            <span i18n="span text|Quiz not owned by current user@@quiz.sharedLabel">(shared with you)</span>
+            &ngsp;
+            <a [routerLink]="[ quiz.id, 'present' ]" i18n="link text|View shared quiz@@quiz.view">View</a>
+          }
+        </li>
+      }
+    </ol>
+  } @else {
+    <p class="alert-info" i18n="info alert paragraph|Inform user that there are no quizzes to list currently@@quizzesPage.emptyList">
+      You have no quizzes available currently
+    </p>
+  }
+} @else {
+  <app-spinner />
+}
+
+@if ($blockWindow()) {
+  <app-spinner class="modal-blocker" />
+}

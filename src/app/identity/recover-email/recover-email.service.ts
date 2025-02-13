@@ -60,8 +60,9 @@ export class RecoverEmailService {
         const passwordResetSent = await this._sendPasswordResetEmail(result.restoredEmail);
         return { ...result, passwordResetSent };
       }),
+      // Using `err` here trips promise/prefer-await-to-callbacks, but other names don't
       catchError((problem: unknown): Observable<RecoverEmailResults> => {
-        console.error('RecoverEmailComponent', problem);
+        console.error('RecoverEmailService', problem);
 
         return of({
           errorCode: getErrorCode(problem),
@@ -104,7 +105,7 @@ export class RecoverEmailService {
         await sendPasswordResetEmail(this._auth, restoredEmail);
         return true;
       } catch (err: unknown) {
-        console.error('RecoverEmailComponent#_sendPasswordResetEmail', err);
+        console.error('RecoverEmailService#_sendPasswordResetEmail', err);
       }
     }
     return false;

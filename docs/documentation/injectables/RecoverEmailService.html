@@ -213,8 +213,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="80"
-                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:80</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:81</a></div>
                         </td>
                     </tr>
 
@@ -286,8 +286,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="101"
-                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:101</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:102</a></div>
                         </td>
                     </tr>
 
@@ -544,8 +544,9 @@ export class RecoverEmailService {
         const passwordResetSent &#x3D; await this._sendPasswordResetEmail(result.restoredEmail);
         return { ...result, passwordResetSent };
       }),
+      // Using &#x60;err&#x60; here trips promise/prefer-await-to-callbacks, but other names don&#x27;t
       catchError((problem: unknown): Observable&lt;RecoverEmailResults&gt; &#x3D;&gt; {
-        console.error(&#x27;RecoverEmailComponent&#x27;, problem);
+        console.error(&#x27;RecoverEmailService&#x27;, problem);
 
         return of({
           errorCode: getErrorCode(problem),
@@ -588,7 +589,7 @@ export class RecoverEmailService {
         await sendPasswordResetEmail(this._auth, restoredEmail);
         return true;
       } catch (err: unknown) {
-        console.error(&#x27;RecoverEmailComponent#_sendPasswordResetEmail&#x27;, err);
+        console.error(&#x27;RecoverEmailService#_sendPasswordResetEmail&#x27;, err);
       }
     }
     return false;

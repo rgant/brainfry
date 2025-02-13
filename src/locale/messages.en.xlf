@@ -6,7 +6,7 @@
         <source>Forgot Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">47</context>
         </context-group>
         <note priority="1" from="description">Send password recover email</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -15,7 +15,7 @@
         <source>Login</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <note priority="1" from="description">Login to application</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -24,7 +24,7 @@
         <source>Reset Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <note priority="1" from="description">Reset forgotten password</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -33,7 +33,7 @@
         <source>Change your email address</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">78</context>
         </context-group>
         <note priority="1" from="description">Change account email address</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -42,7 +42,7 @@
         <source>Change your password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">86</context>
         </context-group>
         <note priority="1" from="description">Change account password</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -51,7 +51,7 @@
         <source>Dashboard</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">75</context>
+          <context context-type="linenumber">91</context>
         </context-group>
         <note priority="1" from="description">Default page for user showing key information</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -60,16 +60,43 @@
         <source>Delete your account</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">99</context>
         </context-group>
         <note priority="1" from="description">Delete account</note>
+        <note priority="1" from="meaning">HTML title tag</note>
+      </trans-unit>
+      <trans-unit id="htmlTitle.quizzes" datatype="html">
+        <source>Quizzes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">109</context>
+        </context-group>
+        <note priority="1" from="description">List of quizzes available to the user</note>
+        <note priority="1" from="meaning">HTML title tag</note>
+      </trans-unit>
+      <trans-unit id="htmlTitle.quizzes.edit" datatype="html">
+        <source>Quiz Editor</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+        <note priority="1" from="description">Edit a quiz</note>
+        <note priority="1" from="meaning">HTML title tag</note>
+      </trans-unit>
+      <trans-unit id="htmlTitle.quizzes.present" datatype="html">
+        <source>Quiz Presenter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">119</context>
+        </context-group>
+        <note priority="1" from="description">Present a quiz</note>
         <note priority="1" from="meaning">HTML title tag</note>
       </trans-unit>
       <trans-unit id="htmlTitle.logout" datatype="html">
         <source>Logout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">130</context>
         </context-group>
         <note priority="1" from="description">Logout of session</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -78,7 +105,7 @@
         <source>Your Photos</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">91</context>
+          <context context-type="linenumber">138</context>
         </context-group>
         <note priority="1" from="description">Page displaying profile photo uploads</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -87,7 +114,7 @@
         <source>Your Profile</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">96</context>
+          <context context-type="linenumber">146</context>
         </context-group>
         <note priority="1" from="description">Page displaying your user profile</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -96,7 +123,7 @@
         <source>Confirm Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">118</context>
+          <context context-type="linenumber">174</context>
         </context-group>
         <note priority="1" from="description">Send email confirming address access</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -105,7 +132,7 @@
         <source>Privacy Policy</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">123</context>
+          <context context-type="linenumber">182</context>
         </context-group>
         <note priority="1" from="description">Legal document page</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -114,7 +141,7 @@
         <source>Recover Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">129</context>
+          <context context-type="linenumber">191</context>
         </context-group>
         <note priority="1" from="description">Reverts email address change</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -123,7 +150,7 @@
         <source>Terms &amp; Conditions</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">134</context>
+          <context context-type="linenumber">199</context>
         </context-group>
         <note priority="1" from="description">Legal document page</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -132,7 +159,7 @@
         <source>Verify Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">140</context>
+          <context context-type="linenumber">208</context>
         </context-group>
         <note priority="1" from="description">Marks email address is verified</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -141,7 +168,7 @@
         <source>Page Not Found</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">145</context>
+          <context context-type="linenumber">216</context>
         </context-group>
         <note priority="1" from="description">Page not found 404 error</note>
         <note priority="1" from="meaning">HTML title tag</note>
@@ -1581,6 +1608,15 @@
         <note priority="1" from="description">Primary sidebar of application</note>
         <note priority="1" from="meaning">aria label</note>
       </trans-unit>
+      <trans-unit id="links.quizzes" datatype="html">
+        <source>Quizzes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">4,8</context>
+        </context-group>
+        <note priority="1" from="description">Link to quizzes area</note>
+        <note priority="1" from="meaning">navigation link</note>
+      </trans-unit>
       <trans-unit id="privacyPage.heading" datatype="html">
         <source>Privacy Policy</source>
         <context-group purpose="location">
@@ -1926,6 +1962,69 @@
         </context-group>
         <note priority="1" from="description">Suggest contacting support</note>
         <note priority="1" from="meaning">paragraph</note>
+      </trans-unit>
+      <trans-unit id="quizzesPage.header" datatype="html">
+        <source>Your Quizzes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/quizzes/list/list.component.html</context>
+          <context context-type="linenumber">2,6</context>
+        </context-group>
+        <note priority="1" from="description">List available quizzes</note>
+        <note priority="1" from="meaning">page heading 2</note>
+      </trans-unit>
+      <trans-unit id="quizzesPage.createButton" datatype="html">
+        <source> Create a new quiz </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/quizzes/list/list.component.html</context>
+          <context context-type="linenumber">10,15</context>
+        </context-group>
+        <note priority="1" from="description">Create a new quiz</note>
+        <note priority="1" from="meaning">Create quiz button</note>
+      </trans-unit>
+      <trans-unit id="quiz.updatedDate" datatype="html">
+        <source> (Updated <x id="INTERPOLATION" equiv-text="{{ quiz.updatedAt | date:&apos;short&apos; }}"/>) </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/quizzes/list/list.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+        <note priority="1" from="description">Short date and time when quiz was last modified</note>
+        <note priority="1" from="meaning">small text</note>
+      </trans-unit>
+      <trans-unit id="quiz.edit" datatype="html">
+        <source>Edit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/quizzes/list/list.component.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+        <note priority="1" from="description">Edit your quiz</note>
+        <note priority="1" from="meaning">link text</note>
+      </trans-unit>
+      <trans-unit id="quiz.sharedLabel" datatype="html">
+        <source>(shared with you)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/quizzes/list/list.component.html</context>
+          <context context-type="linenumber">24,26</context>
+        </context-group>
+        <note priority="1" from="description">Quiz not owned by current user</note>
+        <note priority="1" from="meaning">span text</note>
+      </trans-unit>
+      <trans-unit id="quiz.view" datatype="html">
+        <source>View</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/quizzes/list/list.component.html</context>
+          <context context-type="linenumber">27,31</context>
+        </context-group>
+        <note priority="1" from="description">View shared quiz</note>
+        <note priority="1" from="meaning">link text</note>
+      </trans-unit>
+      <trans-unit id="quizzesPage.emptyList" datatype="html">
+        <source> You have no quizzes available currently </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/quizzes/list/list.component.html</context>
+          <context context-type="linenumber">33,41</context>
+        </context-group>
+        <note priority="1" from="description">Inform user that there are no quizzes to list currently</note>
+        <note priority="1" from="meaning">info alert paragraph</note>
       </trans-unit>
       <trans-unit id="text.loading" datatype="html">
         <source>Loading…</source>

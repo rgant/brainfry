@@ -77,7 +77,7 @@ describe('VerifyEmailComponent', (): void => {
 
   it('should use continueUrl', async (): Promise<void> => {
     const expectedCode = '3e343528-ca59-4bed-9b16-38d709e8fa8c';
-    const expectedUrl = '/quizes/1';
+    const expectedUrl = '/quizzes/1';
 
     setupFixture(expectedCode, expectedUrl);
     resolveVerifyEmail({

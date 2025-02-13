@@ -7,6 +7,7 @@ import type { Observable } from 'rxjs';
 export type MaybeUser = User | null;
 /** Observable of MaybeUser */
 export type MaybeUser$ = Observable<MaybeUser>;
+export type { User };
 
 /**
  * Observable of yhe currently logged in Firebase User, or else null.

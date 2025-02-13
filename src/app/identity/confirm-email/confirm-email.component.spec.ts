@@ -76,7 +76,7 @@ describe('ConfirmEmailComponent', (): void => {
     expect(compiled.querySelector('.main-card')).withContext('.main-card').toBeNull();
 
     await signInWithEmailAndPassword(auth, UNVERIFIED_TEST_USER.email, UNVERIFIED_TEST_USER.password);
-    // Sometimes the tests fail because it doesn't wait for the Observable to emit
+    // Sometimes this test fails because it doesn't wait for the Observable to emit
     await firstValueFrom(component.user$);
     fixture.detectChanges();
 

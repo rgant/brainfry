@@ -256,7 +256,6 @@ import {
 } from &#x27;@angular/core&#x27;;
 import type { Signal, WritableSignal } from &#x27;@angular/core&#x27;;
 import { updateProfile } from &#x27;@angular/fire/auth&#x27;;
-import type { User } from &#x27;@angular/fire/auth&#x27;;
 import {
   FormControl,
   FormGroup,
@@ -273,7 +272,7 @@ import {
 import type { Observable } from &#x27;rxjs&#x27;;
 
 import { USER$ } from &#x27;@app/core/user.token&#x27;;
-import type { MaybeUser } from &#x27;@app/core/user.token&#x27;;
+import type { MaybeUser, User } from &#x27;@app/core/user.token&#x27;;
 import { controlErrorsSignal } from &#x27;@app/shared/control-errors-signal.util&#x27;;
 import { controlInvalidSignal } from &#x27;@app/shared/control-invalid-signal.util&#x27;;
 import { SpinnerComponent } from &#x27;@app/shared/spinner/spinner.component&#x27;;

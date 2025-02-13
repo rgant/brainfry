@@ -61,6 +61,9 @@ describe('RecoverEmailService', (): void => {
   });
 
   it('should error when called with falsy oobCode', (done: DoneFn): void => {
+    const expectedError = new Error('oobCode not found');
+    const consoleSpy = spyOn(console, 'error');
+
     service.recoverEmail$('', DELAY_FOR_TESTING).subscribe({
       complete: done,
       error: fail,
@@ -70,6 +73,8 @@ describe('RecoverEmailService', (): void => {
           passwordResetSent: false,
           successful: false,
         });
+
+        expect(consoleSpy).toHaveBeenCalledOnceWith('RecoverEmailService', expectedError);
       },
     });
   });
@@ -108,7 +113,7 @@ describe('RecoverEmailService', (): void => {
           successful: false,
         });
 
-        expect(consoleSpy).toHaveBeenCalledOnceWith('RecoverEmailComponent', expectedError);
+        expect(consoleSpy).toHaveBeenCalledOnceWith('RecoverEmailService', expectedError);
       },
     });
   });

@@ -36,3 +36,12 @@ script for `firebase emulator:exec`.
 There is also `npm run test:once` for single test runs including code coverage.
 And there is `npm run test:export` which will update the `fixtures/` directory
 in the project root with the final state of the Firebase Emulator on exit.
+
+> [!TIP]
+> Updating `firestore.rules` or `storage.rules` will cause the emulator to update:
+> ```
+> i  firestore: Change detected, updating rules...
+> ✔  firestore: Rules updated.
+> ```
+> But it will not cause the Angular test suite to re-run. So you will need to
+> refresh the test browser window after editing rules.

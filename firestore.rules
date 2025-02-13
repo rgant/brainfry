@@ -1,10 +1,21 @@
 rules_version = '2';
 
-// Allow read/write access on all documents to any user signed in to the application
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if request.auth != null;
+    // Default read allowed if signed in
+    match /actions/{document=**} {
+      allow read: if request.auth != null;
+    }
+
+    // https://firebase.google.com/docs/firestore/solutions/role-based-access
+    match /quizzes/{document=**} {
+      allow read: if request.auth.uid == resource.data.owner || resource.data.shared;
+      // If you create a quiz, you must set yourself as the owner.
+      allow create: if request.auth.uid == request.resource.data.owner;
+      // Only the owner may delete a quiz
+      allow delete: if request.auth.uid == resource.data.owner;
+      // The owner may update anything about the quiz except the owner.
+      allow update: if request.auth.uid == resource.data.owner && request.resource.data.owner == resource.data.owner;
     }
   }
 }

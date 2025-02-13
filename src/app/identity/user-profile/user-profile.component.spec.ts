@@ -271,6 +271,15 @@ describe('UserProfileComponent', (): void => {
     expect(errorsEl.querySelector('.form-alerts')).withContext('.form-alerts').toBeNull();
   }));
 
+  /*
+   * When running the whole test suite this test produces noise in the console log from NgOptimizedImage:
+   * > NG02952: The NgOptimizedImage directive (activated on an <img> element with the
+   * > `ngSrc="http://localhost:9877/imgs/logo-260.png"`) has detected that the height of the
+   * > fill-mode image is zero. This is likely because the containing element does not have the CSS
+   * > 'position' property set to one of the following: "relative", "fixed", or "absolute". To fix
+   * > this problem, make sure the container element has the CSS 'position' property defined and the
+   * > height of the element is not zero.
+   */
   it('should show photo url image', (): void => {
     const expectedUrl = 'http://localhost:9877/imgs/logo-260.png';
 
@@ -309,6 +318,16 @@ describe('UserProfileComponent', (): void => {
     expect(compiled.querySelector('.photos')).withContext('.photos').toBeTruthy();
   });
 
+  /*
+   * When running the whole test suite this test produces noise in the console log from NgOptimizedImage:
+   * > NG02952: The NgOptimizedImage directive (activated on an <img> element with the
+   * > `ngSrc="http://localhost:9877/imgs/logo-260.png"`) has detected that the height of the
+   * > fill-mode image is zero. This is likely because the containing element does not have the CSS
+   * > 'position' property set to one of the following: "relative", "fixed", or "absolute". To fix
+   * > this problem, make sure the container element has the CSS 'position' property defined and the
+   * > height of the element is not zero.
+   * Frequently 3 times for each expected photo
+   */
   it('should display upload photos interface', (): void => {
     const expectedImg = 'http://localhost:9877/imgs/logo-260.png';
     const mockPhotos = [

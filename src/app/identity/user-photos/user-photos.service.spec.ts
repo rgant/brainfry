@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { bufferTime, firstValueFrom } from 'rxjs';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
@@ -47,6 +47,9 @@ describe('UserPhotosService', (): void => {
 
       updatedAt = Number(photoUpdatedAt);
     }
+
+    // Prevent cross test pollution because it seems users can remain logged in across tests.
+    await signOut(auth);
   }, SLOW_TEST_TIMEOUT);
 
   it('should upload photo', async (): Promise<void> => {

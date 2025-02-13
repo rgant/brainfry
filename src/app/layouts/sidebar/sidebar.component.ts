@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 /**
  * Application menu sidebar for logged in vies. Contains links to primary application features, user
@@ -6,6 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
  */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ RouterLink ],
   selector: 'app-sidebar',
   styleUrl: './sidebar.component.scss',
   templateUrl: './sidebar.component.html',

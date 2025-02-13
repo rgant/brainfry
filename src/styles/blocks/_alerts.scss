@@ -11,3 +11,10 @@
   border: 1px solid app.$danger-color;
   background-color: app.$warning-color;
 }
+
+.alert-info {
+  @extend %alert;
+
+  border: 1px solid app.$info-color;
+  background-color: app.$info-disabled-color;
+}

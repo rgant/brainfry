@@ -36,7 +36,7 @@
     inset-block: 0;
     inset-inline: 0;
 
-    background-color: rgba(app.$light-gray, 10%);
+    background-color: rgba(app.$light-gray, 20%);
 
     @include app.z-index('overlay');
   }

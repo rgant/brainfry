@@ -113,6 +113,15 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/PrivacyPolicyComponent.html" data-type="entity-link" >PrivacyPolicyComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/QuizEditorComponent.html" data-type="entity-link" >QuizEditorComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/QuizListComponent.html" data-type="entity-link" >QuizListComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/QuizPresenterComponent.html" data-type="entity-link" >QuizPresenterComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/RecoverEmailComponent.html" data-type="entity-link" >RecoverEmailComponent</a>
                             </li>
                             <li class="link">
@@ -148,6 +157,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
                                     <a href="injectables/AppTitleStrategyService.html" data-type="entity-link" >AppTitleStrategyService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/QuizService.html" data-type="entity-link" >QuizService</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/RecoverEmailService.html" data-type="entity-link" >RecoverEmailService</a>
@@ -196,6 +208,15 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/Progress.html" data-type="entity-link" >Progress</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/Quiz.html" data-type="entity-link" >Quiz</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/QuizModel.html" data-type="entity-link" >QuizModel</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/QuizPayload.html" data-type="entity-link" >QuizPayload</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/RecoverEmailResults.html" data-type="entity-link" >RecoverEmailResults</a>
                             </li>
                             <li class="link">
@@ -209,6 +230,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/ViewModel.html" data-type="entity-link" >ViewModel</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ViewModel-1.html" data-type="entity-link" >ViewModel</a>
                             </li>
                         </ul>
                     </li>
