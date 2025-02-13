@@ -14,6 +14,7 @@ import type { CollectionReference, DocumentData } from '@angular/fire/firestore'
 import { first, firstValueFrom } from 'rxjs';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
+import { USER$ } from '@app/core/user.token';
 import { DEFAULT_TEST_USER, TEST_DATES, UNVERIFIED_TEST_USER } from '@testing/constants';
 import { provideEmulatedAuth, provideEmulatedFirestore } from '@testing/utilities';
 
@@ -50,8 +51,9 @@ describe('QuizService', (): void => {
     return snapshot.data();
   };
 
-  afterEach(async (): Promise<void> => {
+  afterEach((): void => {
     // Uninstall so other tests aren't impacted by the mock clock.
+    // It appears that uninstalling the clock after each test can messup the emulator
     jasmine.clock().uninstall();
 
     // For some reason signing out in this suite causes failures.
@@ -72,8 +74,11 @@ describe('QuizService', (): void => {
   });
 
   beforeEach(async (): Promise<void> => {
+    const user$ = TestBed.inject(USER$);
+
     // Security rules require authentication to access firestore.
     await signInWithEmailAndPassword(auth, DEFAULT_TEST_USER.email, DEFAULT_TEST_USER.password);
+    await firstValueFrom(user$);
   });
 
   it('should create a new Quiz', async (): Promise<void> => {
