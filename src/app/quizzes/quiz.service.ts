@@ -29,10 +29,10 @@ import type { Observable } from 'rxjs';
 
 /** Public interface for Quiz objects outside of this Service. */
 export interface Quiz extends QuizPayload {
-  /** Original creation date, not to be modified. */
-  readonly createdAt: Date;
   /** DocumentReference id for tracking unique objects. */
   readonly id: string;
+  /** Original creation date, not to be modified. */
+  readonly createdAt: Date;
   /** Modification date, updated automatically by the converter. */
   readonly updatedAt: Date;
 }

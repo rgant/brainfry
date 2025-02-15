@@ -90,8 +90,8 @@ export class NoRulesFirestore {
   }
 
   private async _withNoRulesContext<T>(implementation: (noRulesContext: RulesTestContext) => Promise<T>): Promise<T> {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
     // @ts-expect-error needs lib es2024
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
     const { promise, reject, resolve }: WithResolvers<T> = Promise.withResolvers();
 
     const callbackPromise = async (noRulesContext: RulesTestContext): Promise<void> => {

@@ -213,8 +213,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="81"
-                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:81</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="82"
+                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:82</a></div>
                         </td>
                     </tr>
 
@@ -286,8 +286,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="102"
-                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:102</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="103"
+                                    class="link-to-prism">src/app/identity/recover-email/recover-email.service.ts:103</a></div>
                         </td>
                     </tr>
 
@@ -511,7 +511,7 @@ export interface RecoverEmailResults extends ApplyResult {
 /** Results of email recovery. */
 interface ApplyResult {
   /** User original email address to be recovered, from Firebase oobCode. */
-  readonly restoredEmail?: string;
+  readonly restoredEmail: string | undefined;
   /** Results of applying the oobCode to recover the account&#x27;s original email address. */
   readonly successful: boolean;
 }
@@ -551,6 +551,7 @@ export class RecoverEmailService {
         return of({
           errorCode: getErrorCode(problem),
           passwordResetSent: false,
+          restoredEmail: undefined,
           successful: false,
         });
       }),

@@ -360,8 +360,13 @@ the code again.</p>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>InputSignal&lt;string | undefined&gt;</code>
+                        <i>Type : </i>    <code>InputSignal&lt;string&gt;</code>
 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Required : </i>&nbsp;<b>true</b>
                     </td>
                 </tr>
                         <tr>
@@ -387,8 +392,13 @@ the code again.</p>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>InputSignal&lt;string | undefined&gt;</code>
+                        <i>Type : </i>    <code>InputSignal&lt;string&gt;</code>
 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Required : </i>&nbsp;<b>true</b>
                     </td>
                 </tr>
                         <tr>
@@ -581,7 +591,7 @@ the code again.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>InputSignal&lt;string | undefined&gt;</code>
+                        <i>Type : </i>    <code>InputSignal&lt;string&gt;</code>
 
                     </td>
                 </tr>
@@ -615,7 +625,7 @@ the code again.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>InputSignal&lt;string | undefined&gt;</code>
+                        <i>Type : </i>    <code>InputSignal&lt;string&gt;</code>
 
                     </td>
                 </tr>
@@ -658,11 +668,11 @@ import { SpinnerComponent } from &#x27;@app/shared/spinner/spinner.component&#x2
  */
 export interface ActionCodeState {
   /** We may include a next url when verifying email. */
-  readonly continueUrl?: string;
+  readonly continueUrl: string | undefined;
   /** Currently not used, but the language code of the email sent to with the oobCode. */
-  readonly lang?: string;
+  readonly lang: string | undefined;
   /** Action to be performed by the oobCode. */
-  readonly mode: string;
+  readonly mode: string | undefined;
   /** Out of Band Code to perform sensitive Authentication action. */
   readonly oobCode: string;
 }
@@ -697,9 +707,9 @@ export class ActionsComponent {
   /** Query parameter from Firebase Authentication link. */
   public readonly lang: InputSignal&lt;string | undefined&gt; &#x3D; input&lt;string&gt;();
   /** Query parameter from Firebase Authentication link. */
-  public readonly mode: InputSignal&lt;string | undefined&gt; &#x3D; input&lt;string&gt;();
+  public readonly mode: InputSignal&lt;string&gt; &#x3D; input.required&lt;string&gt;();
   /** Query parameter from Firebase Authentication link. */
-  public readonly oobCode: InputSignal&lt;string | undefined&gt; &#x3D; input&lt;string&gt;();
+  public readonly oobCode: InputSignal&lt;string&gt; &#x3D; input.required&lt;string&gt;();
 
   private readonly _$actionState: Signal&lt;Partial&lt;ActionCodeState&gt;&gt;;
   private readonly _modePaths: Record&lt;string, string&gt;;

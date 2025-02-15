@@ -16,6 +16,7 @@ const { createTypeScriptImportResolver } = require('eslint-import-resolver-types
 module.exports = tseslint.config(
   {
     files: ['**/*.ts'],
+    ignores: ['cypress/**/*.ts'],
     extends: [
       eslint.configs.all,
       stylistic.configs['all-flat'],
@@ -713,16 +714,17 @@ module.exports = tseslint.config(
       'perfectionist/sort-interfaces': [
         'error',
         {
+          customGroups: [
+            {
+               groupName: 'top',
+               selector: 'property',
+               elementNamePattern: '^id$',
+            },
+          ],
           ignoreCase: false,
           groups: [
-            {
-              groupName: 'index',
-              elementNamePattern: '*: *', // index signature e.g. `[preference: string]`
-            },
-            {
-              groupName: 'id',
-              elementNamePattern: 'id',
-            },
+            'index-signature',
+            'top',
             'unknown',
           ],
           partitionByNewLine: true,
@@ -841,7 +843,12 @@ module.exports = tseslint.config(
   },
   {
     files: ['**/*.html'],
-    ignores: ['cypress/**/*.html', 'dist/**/*.html', 'src/index.html'],
+    ignores: [
+      'cypress/**/*.html',
+      'docs/**/*.html',
+      'dist/**/*.html',
+      'src/index.html',
+    ],
     extends: [angular.configs.templateAll],
     rules: {
       '@angular-eslint/template/attributes-order': [
