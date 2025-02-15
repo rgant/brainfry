@@ -10,20 +10,64 @@ import type { DocumentData, WithFieldValue } from '@angular/fire/firestore';
 import { initializeTestEnvironment } from '@firebase/rules-unit-testing';
 import type { RulesTestContext, RulesTestEnvironment } from '@firebase/rules-unit-testing';
 
+import firebaseSettings from '../../firebase.json';
 import type { PromiseRejecter, PromiseResolver } from './promise-methods';
 
+/** Keys for the emulators objects in firebase.json */
+type EmulatorKeys = Exclude<keyof typeof firebaseSettings.emulators, 'singleProjectMode'>;
+
+/** Settings for TestEnvironmentConfig / Firebase Emulators Config */
+interface HostAndPort {
+  host: string;
+  port: number;
+}
+
+/** Because we aren't `target`ing `es2024` in tsconfig we need to provide types for Promise.withResolvers. */
 interface WithResolvers<T> {
   promise: Promise<T>;
   reject: PromiseRejecter;
   resolve: PromiseResolver<T>;
 }
 
+/** Emulators run on localhost IP by default. */
+const LOCALHOST = '127.0.0.1';
+
+/** Gets the configuration for an emulator from firebase.json emulators. */
+const getHostAndPort = (key: EmulatorKeys): HostAndPort => {
+  const config: { host?: string; port: number } = firebaseSettings.emulators[key];
+  return {
+    host: config.host ?? LOCALHOST,
+    port: config.port,
+  };
+};
+
+/**
+ * Owner level access to the Firestore emulator to access documents in testing without firestore.rules
+ * applying.
+ */
 export class NoRulesFirestore {
   constructor(
     public readonly collectionName: string,
     public readonly testEnv: RulesTestEnvironment,
   ) {}
 
+  /**
+   * Should be called in a `beforeAll` in a test suite:
+   *
+   * ```ts
+   * beforeAll(async (): Promise<void> => {
+   *   ownerFirestore = NoRulesFirestore.initialize(COLLECTION_NAME);
+   * });
+   * ```
+   *
+   * Also remember to cleanup:
+   *
+   * ```
+   * afterAll(async (): Promise<void> => {
+   *  await ownerFirestore.testEnv.cleanup();
+   * });
+   * ```
+   */
   public static async initialize(collectionName: string): Promise<NoRulesFirestore> {
     const testEnv = await initializeTestEnvironment({
       // @firebase/rules-unit-testing assumes it is running in a node.js environment, but Angular
@@ -34,27 +78,27 @@ export class NoRulesFirestore {
       // that will actually be picked up by webpack you need to run `ng cache clean` after every
       // change.
       database: {
-        host: '125.0.0.1',
+        // Not actually using the Realtime Database
+        host: LOCALHOST,
         port: 9000,
       },
-      firestore: {
-        host: '127.0.0.1',
-        port: 8080,
-      },
+      firestore: getHostAndPort('firestore'),
       hub: {
-        host: '127.0.0.1',
+        // `firebase emulators:exec --import ./fixtures/firebase-emulator/ --only auth,firestore,storage 'env' | grep FIREBASE_EMULATOR_HUB`
+        host: LOCALHOST,
         port: 4400,
       },
       projectId: 'brainfry-app',
-      storage: {
-        host: '127.0.0.1',
-        port: 9199,
-      },
+      storage: getHostAndPort('storage'),
     });
 
     return new NoRulesFirestore(collectionName, testEnv);
   }
 
+  /**
+   * Create a new document in Firestore as the owner without applying rules.
+   * @returns - The new Document ID.
+   */
   public async createDocument(payload: DocumentData): Promise<string> {
     return this._withNoRulesContext(async (noRulesContext: RulesTestContext): Promise<string> => {
       const db = noRulesContext.firestore();
@@ -64,6 +108,10 @@ export class NoRulesFirestore {
     });
   }
 
+  /**
+   * Delete a document in Firestore as the owner without applying rules.
+   * @param id - Document ID
+   */
   public async deleteDocument(id: string): Promise<void> {
     return this._withNoRulesContext(async (noRulesContext: RulesTestContext): Promise<void> => {
       const db = noRulesContext.firestore();
@@ -72,6 +120,12 @@ export class NoRulesFirestore {
     });
   }
 
+  /**
+   * Read a document in Firestore as the owner without applying rules.
+   * @param id - Document ID
+   * @returns - The document data, or undefined if it doesn't exist. Note that with rules missing
+   *            documents would throw exceptions.
+   */
   public async fetchDocument(id: string): Promise<DocumentData | undefined> {
     return this._withNoRulesContext(async (noRulesContext: RulesTestContext): Promise<DocumentData | undefined> => {
       const db = noRulesContext.firestore();
@@ -81,6 +135,11 @@ export class NoRulesFirestore {
     });
   }
 
+  /**
+   * Update a document in Firestore as the owner without applying rules.
+   * @param id - Document ID
+   * @param payload - The changes to the document, possibly including FieldValues.
+   */
   public async updateDocument(id: string, payload: WithFieldValue<DocumentData>): Promise<void> {
     return this._withNoRulesContext(async (noRulesContext: RulesTestContext): Promise<void> => {
       const db = noRulesContext.firestore();
@@ -89,6 +148,16 @@ export class NoRulesFirestore {
     });
   }
 
+  /**
+   * Handles running the Firestore operations inside of the No Rules Context. `@firebase/rules-unit-testing`
+   * makes this extra complicated because it fears developers using this in production. So instead
+   * they have made testing harder. Which is not a trade off I would have made.
+   *
+   * Note, it would be nice if `implementation`'s parameter was the Firestore database object instead
+   * of the RulesTestContext. But that requires access to the `firebase.firestore.Firestore` type,
+   * and I don't know how to import that directly. The type from `@angular/fire/firestore` is not
+   * compatible.
+   */
   private async _withNoRulesContext<T>(implementation: (noRulesContext: RulesTestContext) => Promise<T>): Promise<T> {
     // @ts-expect-error needs lib es2024
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call

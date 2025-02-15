@@ -21,7 +21,7 @@ import { DEFAULT_TEST_USER_QUIZZES } from './testing/quizzes.spec';
 describe('QuizService', (): void => {
   let auth: Auth;
   let service: QuizService;
-  let testEnv: NoRulesFirestore;
+  let ownerFirestore: NoRulesFirestore;
 
   const createTestQuiz = async (): Promise<string> => {
     const payload: Omit<Quiz, 'id'> = {
@@ -32,11 +32,11 @@ describe('QuizService', (): void => {
       updatedAt: TEST_DATES.past,
     };
 
-    return testEnv.createDocument(payload);
+    return ownerFirestore.createDocument(payload);
   };
 
   afterAll(async (): Promise<void> => {
-    await testEnv.testEnv.cleanup();
+    await ownerFirestore.testEnv.cleanup();
   });
 
   afterEach(async (): Promise<void> => {
@@ -49,7 +49,7 @@ describe('QuizService', (): void => {
   });
 
   beforeAll(async (): Promise<void> => {
-    testEnv = await NoRulesFirestore.initialize(COLLECTION_NAME);
+    ownerFirestore = await NoRulesFirestore.initialize(COLLECTION_NAME);
   });
 
   beforeEach((): void => {
@@ -73,7 +73,7 @@ describe('QuizService', (): void => {
 
     expect(id).toBeTruthy();
 
-    const newQuiz = await testEnv.fetchDocument(id);
+    const newQuiz = await ownerFirestore.fetchDocument(id);
 
     expect(newQuiz).toEqual({
       createdAt: TEST_DATES.nowTs,
@@ -84,7 +84,7 @@ describe('QuizService', (): void => {
     });
 
     // Don't cross pollute other tests
-    await testEnv.deleteDocument(id);
+    await ownerFirestore.deleteDocument(id);
   }, SLOW_TEST_TIMEOUT);
 
   it('should delete a quiz by id', async (): Promise<void> => {
@@ -92,7 +92,7 @@ describe('QuizService', (): void => {
 
     await service.delete(testId);
 
-    await expectAsync(testEnv.fetchDocument(testId)).toBeResolvedTo(undefined);
+    await expectAsync(ownerFirestore.fetchDocument(testId)).toBeResolvedTo(undefined);
   }, SLOW_TEST_TIMEOUT);
 
   it('should get quiz owned by current user', (done: DoneFn): void => {
@@ -165,8 +165,8 @@ describe('QuizService', (): void => {
   it('should emit an empty list when no accessible quizzes for the user', async (): Promise<void> => {
     await signOut(auth);
     // Unshare the default test quizzes
-    await testEnv.updateDocument('SouPDVoZKCT3086dCrej', { shared: false });
-    await testEnv.updateDocument('xc50KpHTzIe0174GW9rm', { shared: false });
+    await ownerFirestore.updateDocument('SouPDVoZKCT3086dCrej', { shared: false });
+    await ownerFirestore.updateDocument('xc50KpHTzIe0174GW9rm', { shared: false });
 
     const testUser = await createAndSignInUser(auth);
     // Because of caching (I think) this sometimes emits the wrong number of items.
@@ -177,8 +177,8 @@ describe('QuizService', (): void => {
     expect(quizzes).toEqual([]);
 
     // Don't cross pollute other tests
-    await testEnv.updateDocument('SouPDVoZKCT3086dCrej', { shared: true });
-    await testEnv.updateDocument('xc50KpHTzIe0174GW9rm', { shared: true });
+    await ownerFirestore.updateDocument('SouPDVoZKCT3086dCrej', { shared: true });
+    await ownerFirestore.updateDocument('xc50KpHTzIe0174GW9rm', { shared: true });
     await cleanupUsers(auth, [ testUser ]);
   }, SLOW_TEST_TIMEOUT);
 
@@ -187,7 +187,7 @@ describe('QuizService', (): void => {
 
     await service.update(testId, { title: 'Modified' });
 
-    const testQuiz = await testEnv.fetchDocument(testId);
+    const testQuiz = await ownerFirestore.fetchDocument(testId);
 
     expect(testQuiz).toEqual({
       createdAt: TEST_DATES.pastTs,
@@ -198,7 +198,7 @@ describe('QuizService', (): void => {
     });
 
     // Don't cross pollute other tests
-    await testEnv.deleteDocument(testId);
+    await ownerFirestore.deleteDocument(testId);
   }, SLOW_TEST_TIMEOUT);
 
   it('should require ownership to update', async (): Promise<void> => {
@@ -211,6 +211,6 @@ describe('QuizService', (): void => {
     await expectAsync(updatePromise).toBeRejectedWithError(FirebaseError, /evaluation error/u);
 
     // Don't cross pollute other tests
-    await testEnv.deleteDocument(testId);
+    await ownerFirestore.deleteDocument(testId);
   }, SLOW_TEST_TIMEOUT);
 });
