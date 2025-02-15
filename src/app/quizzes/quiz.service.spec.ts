@@ -1,17 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { FirebaseError } from '@angular/fire/app';
 import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
-import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  getDoc,
-  updateDoc,
-} from '@angular/fire/firestore';
-import type { DocumentData } from '@angular/fire/firestore';
-import { initializeTestEnvironment } from '@firebase/rules-unit-testing';
-import type { RulesTestContext, RulesTestEnvironment } from '@firebase/rules-unit-testing';
 import { first, firstValueFrom } from 'rxjs';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
@@ -22,7 +11,7 @@ import {
   TEST_DATES,
   UNVERIFIED_TEST_USER,
 } from '@testing/constants';
-import type { PromiseResolver } from '@testing/promise-methods';
+import { NoRulesFirestore } from '@testing/firestore-data';
 import { provideEmulatedAuth, provideEmulatedFirestore } from '@testing/utilities';
 
 import { COLLECTION_NAME, QuizService } from './quiz.service';
@@ -32,7 +21,7 @@ import { DEFAULT_TEST_USER_QUIZZES } from './testing/quizzes.spec';
 describe('QuizService', (): void => {
   let auth: Auth;
   let service: QuizService;
-  let testEnv: RulesTestEnvironment;
+  let testEnv: NoRulesFirestore;
 
   const createTestQuiz = async (): Promise<string> => {
     const payload: Omit<Quiz, 'id'> = {
@@ -43,52 +32,11 @@ describe('QuizService', (): void => {
       updatedAt: TEST_DATES.past,
     };
 
-    let docIdResolver: PromiseResolver<string>;
-    const docIdPromise = new Promise<string>((resolve: PromiseResolver<string>): void => {
-      docIdResolver = resolve;
-    });
-
-    await testEnv.withSecurityRulesDisabled(async (noRulesContext: RulesTestContext): Promise<void> => {
-      const db = noRulesContext.firestore();
-      const collectionRef = collection(db, COLLECTION_NAME);
-      const docRef = await addDoc(collectionRef, payload);
-      docIdResolver(docRef.id);
-    });
-
-    return docIdPromise;
-  };
-
-  const deleteTestQuiz = async (id: string): Promise<void> => {
-    await testEnv.withSecurityRulesDisabled(async (noRulesContext: RulesTestContext): Promise<void> => {
-      const db = noRulesContext.firestore();
-      const documentRef = doc(db, COLLECTION_NAME, id);
-      await deleteDoc(documentRef);
-    });
-  };
-
-  const getTestQuiz = async (id: string): Promise<DocumentData | undefined> => {
-    let data: DocumentData | undefined;
-
-    await testEnv.withSecurityRulesDisabled(async (noRulesContext: RulesTestContext): Promise<void> => {
-      const db = noRulesContext.firestore();
-      const documentRef = doc(db, COLLECTION_NAME, id);
-      const snapshot = await getDoc(documentRef);
-      data = snapshot.data();
-    });
-
-    return data;
-  };
-
-  const updateTestQuiz = async (id: string, payload: Partial<Quiz>): Promise<void> => {
-    await testEnv.withSecurityRulesDisabled(async (noRulesContext: RulesTestContext): Promise<void> => {
-      const db = noRulesContext.firestore();
-      const documentRef = doc(db, COLLECTION_NAME, id);
-      await updateDoc(documentRef, payload);
-    });
+    return testEnv.createDocument(payload);
   };
 
   afterAll(async (): Promise<void> => {
-    await testEnv.cleanup();
+    await testEnv.testEnv.cleanup();
   });
 
   afterEach(async (): Promise<void> => {
@@ -101,32 +49,7 @@ describe('QuizService', (): void => {
   });
 
   beforeAll(async (): Promise<void> => {
-    testEnv = await initializeTestEnvironment({
-      // @firebase/rules-unit-testing assumes it is running in a node.js environment, but Angular
-      // is running in a browser with webpack and so `process is not defined` will be thrown here
-      // unless _every_ configuration is set so the code doesn't try to load one using environment
-      // variables.
-      // Also note that in order to add debugging statements to node_modules/@firebase/rules-unit-testing/dist/esm/index.esm.js
-      // that will actually be picked up by webpack you need to run `ng cache clean` after every
-      // change.
-      database: {
-        host: '125.0.0.1',
-        port: 9000,
-      },
-      firestore: {
-        host: '127.0.0.1',
-        port: 8080,
-      },
-      hub: {
-        host: '127.0.0.1',
-        port: 4400,
-      },
-      projectId: 'brainfry-app',
-      storage: {
-        host: '127.0.0.1',
-        port: 9199,
-      },
-    });
+    testEnv = await NoRulesFirestore.initialize(COLLECTION_NAME);
   });
 
   beforeEach((): void => {
@@ -150,7 +73,7 @@ describe('QuizService', (): void => {
 
     expect(id).toBeTruthy();
 
-    const newQuiz = await getTestQuiz(id);
+    const newQuiz = await testEnv.fetchDocument(id);
 
     expect(newQuiz).toEqual({
       createdAt: TEST_DATES.nowTs,
@@ -161,7 +84,7 @@ describe('QuizService', (): void => {
     });
 
     // Don't cross pollute other tests
-    await deleteTestQuiz(id);
+    await testEnv.deleteDocument(id);
   }, SLOW_TEST_TIMEOUT);
 
   it('should delete a quiz by id', async (): Promise<void> => {
@@ -169,7 +92,7 @@ describe('QuizService', (): void => {
 
     await service.delete(testId);
 
-    await expectAsync(getTestQuiz(testId)).toBeResolvedTo(undefined);
+    await expectAsync(testEnv.fetchDocument(testId)).toBeResolvedTo(undefined);
   }, SLOW_TEST_TIMEOUT);
 
   it('should get quiz owned by current user', (done: DoneFn): void => {
@@ -242,8 +165,8 @@ describe('QuizService', (): void => {
   it('should emit an empty list when no accessible quizzes for the user', async (): Promise<void> => {
     await signOut(auth);
     // Unshare the default test quizzes
-    await updateTestQuiz('SouPDVoZKCT3086dCrej', { shared: false });
-    await updateTestQuiz('xc50KpHTzIe0174GW9rm', { shared: false });
+    await testEnv.updateDocument('SouPDVoZKCT3086dCrej', { shared: false });
+    await testEnv.updateDocument('xc50KpHTzIe0174GW9rm', { shared: false });
 
     const testUser = await createAndSignInUser(auth);
     // Because of caching (I think) this sometimes emits the wrong number of items.
@@ -254,8 +177,8 @@ describe('QuizService', (): void => {
     expect(quizzes).toEqual([]);
 
     // Don't cross pollute other tests
-    await updateTestQuiz('SouPDVoZKCT3086dCrej', { shared: true });
-    await updateTestQuiz('xc50KpHTzIe0174GW9rm', { shared: true });
+    await testEnv.updateDocument('SouPDVoZKCT3086dCrej', { shared: true });
+    await testEnv.updateDocument('xc50KpHTzIe0174GW9rm', { shared: true });
     await cleanupUsers(auth, [ testUser ]);
   }, SLOW_TEST_TIMEOUT);
 
@@ -264,7 +187,7 @@ describe('QuizService', (): void => {
 
     await service.update(testId, { title: 'Modified' });
 
-    const testQuiz = await getTestQuiz(testId);
+    const testQuiz = await testEnv.fetchDocument(testId);
 
     expect(testQuiz).toEqual({
       createdAt: TEST_DATES.pastTs,
@@ -275,7 +198,7 @@ describe('QuizService', (): void => {
     });
 
     // Don't cross pollute other tests
-    await deleteTestQuiz(testId);
+    await testEnv.deleteDocument(testId);
   }, SLOW_TEST_TIMEOUT);
 
   it('should require ownership to update', async (): Promise<void> => {
@@ -288,6 +211,6 @@ describe('QuizService', (): void => {
     await expectAsync(updatePromise).toBeRejectedWithError(FirebaseError, /evaluation error/u);
 
     // Don't cross pollute other tests
-    await deleteTestQuiz(testId);
+    await testEnv.deleteDocument(testId);
   }, SLOW_TEST_TIMEOUT);
 });
