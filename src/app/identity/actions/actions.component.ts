@@ -16,11 +16,11 @@ import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
  */
 export interface ActionCodeState {
   /** We may include a next url when verifying email. */
-  readonly continueUrl?: string;
+  readonly continueUrl: string | undefined;
   /** Currently not used, but the language code of the email sent to with the oobCode. */
-  readonly lang?: string;
+  readonly lang: string | undefined;
   /** Action to be performed by the oobCode. */
-  readonly mode: string;
+  readonly mode: string | undefined;
   /** Out of Band Code to perform sensitive Authentication action. */
   readonly oobCode: string;
 }
@@ -55,9 +55,9 @@ export class ActionsComponent {
   /** Query parameter from Firebase Authentication link. */
   public readonly lang: InputSignal<string | undefined> = input<string>();
   /** Query parameter from Firebase Authentication link. */
-  public readonly mode: InputSignal<string | undefined> = input<string>();
+  public readonly mode: InputSignal<string> = input.required<string>();
   /** Query parameter from Firebase Authentication link. */
-  public readonly oobCode: InputSignal<string | undefined> = input<string>();
+  public readonly oobCode: InputSignal<string> = input.required<string>();
 
   private readonly _$actionState: Signal<Partial<ActionCodeState>>;
   private readonly _modePaths: Record<string, string>;

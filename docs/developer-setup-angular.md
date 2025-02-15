@@ -33,6 +33,10 @@ The test suite uses the Firebase Emulator for tests. So you _cannot_ use `ng tes
 directly. Instead use `npm run test` which will run `ng test` as an executable
 script for `firebase emulator:exec`.
 
+> [!TIP]
+> See [Firebase Init](firebase-init.md) and [Java Install](developer-java-install.md)
+> for a bit more information about setting up the emulators.
+
 There is also `npm run test:once` for single test runs including code coverage.
 And there is `npm run test:export` which will update the `fixtures/` directory
 in the project root with the final state of the Firebase Emulator on exit.

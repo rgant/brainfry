@@ -81,6 +81,7 @@ describe('RecoverEmailComponent', (): void => {
 
     viewModelSubject$.next({
       passwordResetSent: true,
+      restoredEmail: undefined,
       successful: true,
     });
     fixture.detectChanges();
@@ -101,6 +102,7 @@ describe('RecoverEmailComponent', (): void => {
 
     viewModelSubject$.next({
       passwordResetSent: false,
+      restoredEmail: undefined,
       successful: true,
     });
     fixture.detectChanges();
@@ -127,6 +129,7 @@ describe('RecoverEmailComponent', (): void => {
     viewModelSubject$.next({
       errorCode: 'auth/expired-action-code',
       passwordResetSent: false,
+      restoredEmail: undefined,
       successful: false,
     });
     fixture.detectChanges();

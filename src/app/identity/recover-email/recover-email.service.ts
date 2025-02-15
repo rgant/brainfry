@@ -27,7 +27,7 @@ export interface RecoverEmailResults extends ApplyResult {
 /** Results of email recovery. */
 interface ApplyResult {
   /** User original email address to be recovered, from Firebase oobCode. */
-  readonly restoredEmail?: string;
+  readonly restoredEmail: string | undefined;
   /** Results of applying the oobCode to recover the account's original email address. */
   readonly successful: boolean;
 }
@@ -67,6 +67,7 @@ export class RecoverEmailService {
         return of({
           errorCode: getErrorCode(problem),
           passwordResetSent: false,
+          restoredEmail: undefined,
           successful: false,
         });
       }),

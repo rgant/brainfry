@@ -71,6 +71,7 @@ describe('RecoverEmailService', (): void => {
         expect(data).withContext('RecoverEmailResults').toEqual({
           errorCode: 'oobCode not found',
           passwordResetSent: false,
+          restoredEmail: undefined,
           successful: false,
         });
 
@@ -110,6 +111,7 @@ describe('RecoverEmailService', (): void => {
         expect(data).withContext('RecoverEmailResults').toEqual({
           errorCode: 'auth/invalid-action-code',
           passwordResetSent: false,
+          restoredEmail: undefined,
           successful: false,
         });
 

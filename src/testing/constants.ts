@@ -1,5 +1,9 @@
 import { Timestamp } from '@angular/fire/firestore';
 
+// When running in --no-watch mode the emulator can be significantly slower. So the delays in this
+// suite are manually adjusted to give likely passing conditions.
+export const SLOW_TEST_TIMEOUT = 500;
+
 export const DEFAULT_TEST_USER = {
   email: '556e@411e.89a6',
   password: 'b567CCe6-86f(8b36#26b',

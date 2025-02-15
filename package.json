@@ -39,7 +39,7 @@
     "stylelint": "stylelint --quiet-deprecation-warnings src/",
     "test": "firebase emulators:exec --ui --import ./fixtures/firebase-emulator/ --only auth,firestore,storage 'ng test'",
     "test:export": "firebase emulators:start --import ./fixtures/firebase-emulator/ --export-on-exit ./fixtures/firebase-emulator/ --only auth,firestore,storage",
-    "test:once": "firebase emulators:exec --ui --import ./fixtures/firebase-emulator/ --only auth,firestore,storage 'ng test --no-watch --code-coverage'",
+    "test:once": "firebase emulators:exec --import ./fixtures/firebase-emulator/ --only auth,firestore,storage 'ng test --no-watch --code-coverage'",
     "watch": "ng build --watch --configuration development"
   },
   "dependencies": {
@@ -69,6 +69,7 @@
     "@angular/compiler-cli": "^19.1.6",
     "@angular/localize": "^19.1.6",
     "@compodoc/compodoc": "^1.1.26",
+    "@firebase/rules-unit-testing": "^4.0.1",
     "@smarttools/eslint-plugin-rxjs": "^1.0.17",
     "@stylistic/eslint-plugin": "^3.1.0",
     "@stylistic/stylelint-config": "^2.0.0",

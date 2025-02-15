@@ -562,7 +562,14 @@ module.exports = tseslint.config(
       'import-x/no-empty-named-blocks': 'error',
       'import-x/no-extraneous-dependencies': [
         'error',
-        { devDependencies: ['cypress.config.ts', 'cypress/**/*.ts', '**/*.spec.ts'] },
+        {
+          devDependencies: [
+            '**/*.spec.ts',
+            '**/testing/**/*.ts',
+            'cypress.config.ts',
+            'cypress/**/*.ts',
+          ],
+        },
       ],
       'import-x/no-import-module-exports': 'error',
       'import-x/no-mutable-exports': 'error',

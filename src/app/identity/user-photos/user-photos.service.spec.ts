@@ -3,7 +3,7 @@ import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { bufferTime, firstValueFrom } from 'rxjs';
 
 import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { DEFAULT_TEST_USER } from '@testing/constants';
+import { DEFAULT_TEST_USER, SLOW_TEST_TIMEOUT } from '@testing/constants';
 import { provideEmulatedAuth, provideEmulatedStorage } from '@testing/utilities';
 
 import { createAndSignInUser } from '../testing/test-users.spec';
@@ -11,13 +11,37 @@ import { createMockTransfer, filename } from './new-photo.spec';
 import { UserPhotosService } from './user-photos.service';
 import type { Photo, Progress } from './user-photos.service';
 
+/**
+ * Since we cannot control the Firebase Storage Emulator's clock, use this custom AsymmetricMatcher
+ * to ensure that dates are within the range.
+ *
+ * @param beforeTs - should be `Date.now()` called _before_ the promise is created.
+ * @param afterTs - should be `Date.now()` called _after_ the promise resolves.
+ */
+const betweenTimes = (beforeTs: number, afterTs: number): jasmine.AsymmetricMatcher<string> => ({
+  /**
+   * Ensures the test date is between before and after.
+   * @param testDateStr - ISO formatted date string from the Firebase Storage Metadata.
+   */
+  asymmetricMatch: (testDateStr: string): boolean => {
+    const testTs = new Date(testDateStr).getTime();
+    return beforeTs <= testTs && testTs <= afterTs;
+  },
+
+  /**
+   * Used for the error message.
+   * Example:
+   * ```
+   * Expected $[0].metadata.timeCreated = '2025-02-14T20:18:08.111Z' to equal
+   *   <betweenTimes 2025-02-14T20:18:08.222Z and 2025-02-14T20:18:08.333Z>.
+   * ```
+   */
+  jasmineToString: (): string => `<betweenTimes ${new Date(beforeTs).toISOString()} and ${new Date(afterTs).toISOString()}>`,
+});
+
 describe('UserPhotosService', (): void => {
   let auth: Auth;
   let service: UserPhotosService;
-
-  // When running in --no-watch mode the emulator can be significantly slower. So the delays in this
-  // suite are manually adjusted to give likely passing conditions.
-  const SLOW_TEST_TIMEOUT = 2000;
 
   beforeEach((): void => {
     TestBed.configureTestingModule({
@@ -53,11 +77,8 @@ describe('UserPhotosService', (): void => {
   }, SLOW_TEST_TIMEOUT);
 
   it('should upload photo', async (): Promise<void> => {
-    // Occasionally this is going to fail when time advances across a second boundry during testing.
-    const MICROTIME = -4; // Last 4 characters of ISO 8601 formatted date.
     const UPLOAD_DELAY = 300; // milliseconds
 
-    const expectedDate = jasmine.stringContaining(new Date().toISOString().slice(0, MICROTIME));
     const expectedFilename = jasmine.stringContaining(`-${filename}`);
     const expectedSize = 673_859;
 
@@ -67,11 +88,14 @@ describe('UserPhotosService', (): void => {
     const photosPromise: Promise<Photo[][]> = firstValueFrom(service.getProfilePhotos(testUser.uid).pipe(bufferTime(UPLOAD_DELAY)));
     const progressPromise: Promise<Array<Progress | undefined>> = firstValueFrom(service.uploadPercentage$.pipe(bufferTime(UPLOAD_DELAY)));
     const mockTransfer = createMockTransfer();
+    const beforeTs = Date.now();
 
     service.uploadPhoto(mockTransfer.files, testUser.uid);
 
     const progress = await progressPromise;
     const [ originalPhotoList, newPhotosList ] = await photosPromise;
+    const afterTs = Date.now();
+    const expectedDate = betweenTimes(beforeTs, afterTs);
 
     // List of photos should be refreshed on upload
     expect(originalPhotoList).withContext('original photo list').toEqual([]);
