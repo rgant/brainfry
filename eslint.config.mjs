@@ -1,32 +1,32 @@
 // @ts-check
-const eslint = require('@eslint/js');
-const tseslint = require('typescript-eslint');
-const angular = require('angular-eslint');
-const importx = require('eslint-plugin-import-x');
-const jasmine = require('eslint-plugin-jasmine');
-const perfectionist = require('eslint-plugin-perfectionist');
-const pluginPromise = require('eslint-plugin-promise');
-const preferArrow = require('eslint-plugin-prefer-arrow-functions');
-const rxjs = require('@smarttools/eslint-plugin-rxjs');
-const stylistic = require('@stylistic/eslint-plugin');
-const tsdoc = require('eslint-plugin-tsdoc');
-const unicorn = require('eslint-plugin-unicorn');
-const { createTypeScriptImportResolver } = require('eslint-import-resolver-typescript');
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import angular from 'angular-eslint';
+import importx from 'eslint-plugin-import-x';
+import jasmine from 'eslint-plugin-jasmine';
+import perfectionist from 'eslint-plugin-perfectionist';
+import pluginPromise from 'eslint-plugin-promise';
+import preferArrow from 'eslint-plugin-prefer-arrow-functions';
+import rxjs from '@smarttools/eslint-plugin-rxjs';
+import stylistic from '@stylistic/eslint-plugin';
+import tsdoc from 'eslint-plugin-tsdoc';
+import unicorn from 'eslint-plugin-unicorn';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
-module.exports = tseslint.config(
+export default tseslint.config(
   {
     files: ['**/*.ts'],
     ignores: ['cypress/**/*.ts'],
     extends: [
       eslint.configs.all,
-      stylistic.configs['all-flat'],
+      stylistic.configs['all'],
       tseslint.configs.all,
       importx.flatConfigs.recommended,
       importx.flatConfigs.typescript,
       pluginPromise.configs['flat/recommended'],
       perfectionist.configs['recommended-natural'],
       rxjs.configs.recommended,
-      unicorn.configs['flat/all'],
+      unicorn.configs['all'],
       angular.configs.tsAll,
     ],
     languageOptions: {
