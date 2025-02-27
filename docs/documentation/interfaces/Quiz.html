@@ -313,7 +313,6 @@ import {
   deleteDoc,
   doc,
   docData,
-  FieldValue,
   Firestore,
   or,
   orderBy,
@@ -322,16 +321,12 @@ import {
   updateDoc,
   where,
 } from &#x27;@angular/fire/firestore&#x27;;
-import type {
-  CollectionReference,
-  FirestoreDataConverter,
-  QueryDocumentSnapshot,
-  SetOptions,
-  SnapshotOptions,
-  WithFieldValue,
-} from &#x27;@angular/fire/firestore&#x27;;
+import type { CollectionReference, WithFieldValue } from &#x27;@angular/fire/firestore&#x27;;
 import { catchError, of } from &#x27;rxjs&#x27;;
 import type { Observable } from &#x27;rxjs&#x27;;
+
+import { quizConverter } from &#x27;./converter&#x27;;
+import type { QuizModel } from &#x27;./converter&#x27;;
 
 /** Public interface for Quiz objects outside of this Service. */
 export interface Quiz extends QuizPayload {
@@ -343,16 +338,8 @@ export interface Quiz extends QuizPayload {
   readonly updatedAt: Date;
 }
 
-/** Firestore DocumentData compatible model for the database. */
-interface QuizModel extends QuizPayload {
-  /** Original creation date, not to be modified. */
-  readonly createdAt: Timestamp;
-  /** Modification date, updated automatically by the converter. */
-  readonly updatedAt: Timestamp;
-}
-
 /** Quiz fields that can be altered by Users. */
-interface QuizPayload {
+export interface QuizPayload {
   /** User ID of Quiz creator. */
   readonly owner: string;
   /** Quizzes that are shared with other users. */
@@ -360,61 +347,6 @@ interface QuizPayload {
   /** Display title, automatically set for new  Quiz, but can be modified. */
   readonly title: string;
 }
-
-/**
- * FirestoreDataConverter uses WithFieldValue for toFirestore, which climbs inside of the Date object
- * and messes with all of the type signatures. So this method is over engineered to try and handle
- * that unlikely case that the date is neither a FieldValue nor a Date.
- */
-const timestampFromDate &#x3D; (date: FieldValue | WithFieldValue&lt;Date&gt;): FieldValue | WithFieldValue&lt;Timestamp&gt; &#x3D;&gt; {
-  if (date instanceof FieldValue) {
-    return date;
-  }
-  if (date instanceof Date) {
-    return Timestamp.fromDate(date);
-  }
-  // This will never be thrown since the &#x60;date&#x60; value is either a Date or a FieldValue (unless
-  // something goes terribly wrong). I opened a ticket about how &#x60;WithFieldValue&#x60; mangles inner class
-  // types: https://github.com/googleapis/nodejs-firestore/issues/2291
-  throw new TypeError(&#x60;Unknown type ${typeof date}&#x60;);
-};
-
-/**
- * In order to set the types correctly on the CollectionReference we need to use a FirestoreDataConverter
- * to manipulate the types.
- *
- * At the same time we can perform other actions like converting Timestamps to Dates and adding the
- * document id.
- */
-const converter: FirestoreDataConverter&lt;Quiz, QuizModel&gt; &#x3D; {
-  /**
-   * Convert the model from the database into the type expected by consumers.
-   * Timestamps should all be converted into Dates.
-   * Add the Document ID.
-   */
-  fromFirestore: (snapshot: QueryDocumentSnapshot&lt;QuizModel&gt;, options: SnapshotOptions): Quiz &#x3D;&gt; {
-    const data &#x3D; snapshot.data(options);
-    return {
-      ...data,
-      id: snapshot.id,
-      createdAt: data.createdAt.toDate(),
-      updatedAt: data.updatedAt.toDate(),
-    };
-  },
-
-  /**
-   * This is a much less useful converter as it doesn&#x27;t apply to updateDoc.
-   * It&#x27;s only purpose is to change the Type, if it wasn&#x27;t here then things would work better but
-   */
-  toFirestore: (quiz: WithFieldValue&lt;Quiz&gt;, _options?: SetOptions): WithFieldValue&lt;QuizModel&gt; &#x3D;&gt; {
-    const payload: WithFieldValue&lt;QuizModel&gt; &#x3D; {
-      ...quiz,
-      createdAt: timestampFromDate(quiz.createdAt),
-      updatedAt: timestampFromDate(quiz.updatedAt),
-    };
-    return payload;
-  },
-};
 
 // Only exported for testing.
 export const COLLECTION_NAME &#x3D; &#x27;quizzes&#x27;;
@@ -430,11 +362,11 @@ export const COLLECTION_NAME &#x3D; &#x27;quizzes&#x27;;
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class QuizService {
   private readonly _firestore: Firestore;
-  private readonly _quizCollection: CollectionReference&lt;Quiz, QuizModel&gt;;
+  private readonly _quizCollection: CollectionReference&lt;Quiz, WithFieldValue&lt;QuizModel&gt;&gt;;
 
   constructor() {
     this._firestore &#x3D; inject(Firestore);
-    this._quizCollection &#x3D; collection(this._firestore, COLLECTION_NAME).withConverter(converter);
+    this._quizCollection &#x3D; collection(this._firestore, COLLECTION_NAME).withConverter(quizConverter);
   }
 
   /**
