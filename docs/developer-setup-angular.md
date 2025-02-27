@@ -43,9 +43,11 @@ in the project root with the final state of the Firebase Emulator on exit.
 
 > [!TIP]
 > Updating `firestore.rules` or `storage.rules` will cause the emulator to update:
-> ```
+>
+> ```text
 > i  firestore: Change detected, updating rules...
 > ✔  firestore: Rules updated.
 > ```
+>
 > But it will not cause the Angular test suite to re-run. So you will need to
 > refresh the test browser window after editing rules.

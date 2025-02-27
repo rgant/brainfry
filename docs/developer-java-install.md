@@ -11,7 +11,7 @@ java -XshowSettings:properties -version
 
 Which outputs something like:
 
-```
+```text
 Property settings:
     file.encoding = UTF-8
     file.separator = /

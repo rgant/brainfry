@@ -3,7 +3,7 @@
 Something happened when I ran `ng add @angular/fire` and I don't think the init
 fully worked. So this is a record of my manual running of the command:
 
-```
+```text
 $ firebase init
 
      ######## #### ########  ######## ########     ###     ######  ########

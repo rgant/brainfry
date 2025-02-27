@@ -32,16 +32,16 @@ document for details on how to manage these.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | >= 6.15.0 |
-| <a name="requirement_time"></a> [time](#requirement\_time) | 0.12.1 |
+| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | >= 6.20.0 |
+| <a name="requirement_time"></a> [time](#requirement\_time) | >= 0.12.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | >= 6.15.0 |
-| <a name="provider_google-beta.no_user_project_override"></a> [google-beta.no\_user\_project\_override](#provider\_google-beta.no\_user\_project\_override) | >= 6.15.0 |
-| <a name="provider_time"></a> [time](#provider\_time) | 0.12.1 |
+| <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | >= 6.20.0 |
+| <a name="provider_google-beta.no_user_project_override"></a> [google-beta.no\_user\_project\_override](#provider\_google-beta.no\_user\_project\_override) | >= 6.20.0 |
+| <a name="provider_time"></a> [time](#provider\_time) | >= 0.12.1 |
 
 ## Modules
 
@@ -75,7 +75,7 @@ No modules.
 | [google-beta_google_project_service.recaptcha_enterprise](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
 | [google-beta_google_project_service.storage](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_project_service) | resource |
 | [google-beta_google_recaptcha_enterprise_key.primary](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_recaptcha_enterprise_key) | resource |
-| [time_sleep.wait_30s](https://registry.terraform.io/providers/hashicorp/time/0.12.1/docs/resources/sleep) | resource |
+| [time_sleep.wait_30s](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/sleep) | resource |
 | [google-beta_google_firebase_web_app_config.default](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/data-sources/google_firebase_web_app_config) | data source |
 
 ## Inputs
@@ -95,5 +95,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_web_app_config"></a> [web\_app\_config](#output\_web\_app\_config) | n/a |
+| <a name="output_web_app_config"></a> [web\_app\_config](#output\_web\_app\_config) | The Firebase project configuration |
 <!-- END_TF_DOCS -->

@@ -1,6 +1,6 @@
 # Firebase Hosting Config
 
-```
+```text
 $ firebase init hosting
 
      ######## #### ########  ######## ########     ###     ######  ########

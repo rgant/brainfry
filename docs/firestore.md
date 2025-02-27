@@ -8,6 +8,6 @@ those files to setup Firestore.
 
 To update the indexes from production:
 
-```
+```sh
 firebase firestore:indexes > firestore.indexes.json
 ```
