@@ -77,6 +77,7 @@ export class NoRulesFirestore {
       // Also note that in order to add debugging statements to node_modules/@firebase/rules-unit-testing/dist/esm/index.esm.js
       // that will actually be picked up by webpack you need to run `ng cache clean` after every
       // change.
+      // Appears unlikely the tool will support browsers: https://github.com/firebase/firebase-js-sdk/issues/8795
       database: {
         // Not actually using the Realtime Database
         host: LOCALHOST,

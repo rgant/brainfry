@@ -5,6 +5,7 @@ data "google_firebase_web_app_config" "default" {
 }
 
 output "web_app_config" {
+  description = "The Firebase project configuration"
   value = {
     projectId         = google_firebase_project.default.project
     appId             = google_firebase_web_app.default.app_id

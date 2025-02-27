@@ -1,17 +1,17 @@
 // @ts-check
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import rxjs from '@smarttools/eslint-plugin-rxjs';
+import stylistic from '@stylistic/eslint-plugin';
 import angular from 'angular-eslint';
 import importx from 'eslint-plugin-import-x';
 import jasmine from 'eslint-plugin-jasmine';
 import perfectionist from 'eslint-plugin-perfectionist';
-import pluginPromise from 'eslint-plugin-promise';
 import preferArrow from 'eslint-plugin-prefer-arrow-functions';
-import rxjs from '@smarttools/eslint-plugin-rxjs';
-import stylistic from '@stylistic/eslint-plugin';
+import pluginPromise from 'eslint-plugin-promise';
 import tsdoc from 'eslint-plugin-tsdoc';
-import unicorn from 'eslint-plugin-unicorn';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import eslintPluginUnicorn from 'eslint-plugin-unicorn';
+import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
@@ -23,10 +23,10 @@ export default tseslint.config(
       tseslint.configs.all,
       importx.flatConfigs.recommended,
       importx.flatConfigs.typescript,
-      pluginPromise.configs['flat/recommended'],
       perfectionist.configs['recommended-natural'],
+      pluginPromise.configs['flat/recommended'],
       rxjs.configs.recommended,
-      unicorn.configs['all'],
+      eslintPluginUnicorn.configs.all,
       angular.configs.tsAll,
     ],
     languageOptions: {
@@ -41,7 +41,6 @@ export default tseslint.config(
     },
     processor: angular.processInlineTemplates,
     plugins: {
-      '@stylistic': stylistic,
       preferArrow,
       rxjs,
       tsdoc,

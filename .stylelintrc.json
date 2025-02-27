@@ -20,6 +20,7 @@
     "stylelint-no-unsupported-browser-features",
     "stylelint-plugin-defensive-css",
     "stylelint-plugin-logical-css",
+    "stylelint-selector-tag-no-without-class",
     "stylelint-use-nesting"
   ],
   "reportNeedlessDisables": true,
@@ -57,6 +58,7 @@
         "severity": "warning"
       }
     ],
+    "plugin/selector-tag-no-without-class": ["div", "span"],
     "plugin/stylelint-no-indistinguishable-colors": true,
     "plugin/use-defensive-css": true,
     "plugin/use-logical-properties-and-values": true,

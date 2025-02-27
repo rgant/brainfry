@@ -1,6 +1,5 @@
 {
   "name": "BrainFry",
-  "short_name": "BrainFry",
   "theme_color": "#ffc05c",
   "background_color": "#603f8b",
   "display": "standalone",
@@ -8,18 +7,18 @@
   "start_url": "./",
   "icons": [
     {
-      "src": "icons/icon-192x192.png",
+      "src": "/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icons/icon-mask.png",
+      "src": "/icons/icon-mask.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "icons/icon-512x512.png",
+      "src": "/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
