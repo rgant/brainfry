@@ -31,6 +31,8 @@
     "compodoc:serve": "compodoc --serve",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
+    "predeploy": "npm run build",
+    "deploy": "firebase deploy --only hosting",
     "e2e": "firebase emulators:exec --ui --import ./fixtures/firebase-emulator/ --only auth,firestore,storage 'ng e2e'",
     "i18n": "ng extract-i18n --out-file=messages.en.xlf --output-path=src/locale/",
     "lint": "ng lint",
@@ -39,8 +41,8 @@
     "stylelint": "stylelint --quiet-deprecation-warnings src/",
     "test": "firebase emulators:exec --ui --import ./fixtures/firebase-emulator/ --only auth,firestore,storage 'ng test'",
     "test:export": "firebase emulators:start --import ./fixtures/firebase-emulator/ --export-on-exit ./fixtures/firebase-emulator/ --only auth,firestore,storage",
-    "posttest:once": "./scripts/check-coverages-changes.sh",
     "test:once": "firebase emulators:exec --import ./fixtures/firebase-emulator/ --only auth,firestore,storage 'ng test --no-watch --code-coverage'",
+    "posttest:once": "./scripts/check-coverages-changes.sh",
     "watch": "ng build --watch --configuration development"
   },
   "dependencies": {
