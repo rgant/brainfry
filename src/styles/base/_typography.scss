@@ -69,7 +69,6 @@ html {
   }
 }
 
-// stylelint-disable-next-line plugin/no-unsupported-browser-features -- stylistic change that can be skip in unsupported browsers
 ::selection {
   text-shadow: none;
   background: rgba(app.$primary-color, 40%);
