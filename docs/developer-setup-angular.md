@@ -51,3 +51,17 @@ in the project root with the final state of the Firebase Emulator on exit.
 >
 > But it will not cause the Angular test suite to re-run. So you will need to
 > refresh the test browser window after editing rules.
+
+## Updating Dependencies
+
+First use `ng update` to see what Angular updates are available. This may also
+update some of your `ng add` dependencies like `@angular/fire`. However it generally
+does not update workspace dependencies like `rxjs` or `typescript`.
+
+Use `npm outdated` to see all the possible updates for the dependencies being used.
+Generally you can run `npm update <dependency>` for the "Wanted" column changes
+that fit within the `package.json` version selectors. Before doing so for any
+Angular workspace dependencies you should check what the version of Angular (&
+CLI) you are using wants. You can check the current released [workspace
+dependencies](https://github.com/angular/angular-cli/blob/19.2.0/packages/schematics/angular/utility/latest-versions/package.json)
+for Angular CLI to know what is approved for updating.
