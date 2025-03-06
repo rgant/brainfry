@@ -4,7 +4,7 @@
 # Attempting to have only `main.tf` file in the root for cleanliness.
 
 terraform {
-  required_version = ">= 1.0"
+  required_version = ">= 1.11"
 
   backend "gcs" {} # Manually configured because variables are not allowed. See README.md
 }

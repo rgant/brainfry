@@ -7,12 +7,12 @@ data "google_firebase_web_app_config" "default" {
 output "web_app_config" {
   description = "The Firebase project configuration"
   value = {
-    projectId         = google_firebase_project.default.project
-    appId             = google_firebase_web_app.default.app_id
     apiKey            = data.google_firebase_web_app_config.default.api_key
+    appId             = google_firebase_web_app.default.app_id
     authDomain        = data.google_firebase_web_app_config.default.auth_domain
-    storageBucket     = lookup(data.google_firebase_web_app_config.default, "storage_bucket", "")
-    messagingSenderId = lookup(data.google_firebase_web_app_config.default, "messaging_sender_id", "")
     measurementId     = lookup(data.google_firebase_web_app_config.default, "measurement_id", "")
+    messagingSenderId = lookup(data.google_firebase_web_app_config.default, "messaging_sender_id", "")
+    projectId         = google_firebase_project.default.project
+    storageBucket     = lookup(data.google_firebase_web_app_config.default, "storage_bucket", "")
   }
 }

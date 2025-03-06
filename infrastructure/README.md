@@ -31,17 +31,17 @@ document for details on how to manage these.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | >= 6.20.0 |
-| <a name="requirement_time"></a> [time](#requirement\_time) | >= 0.12.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.11 |
+| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | >= 6.24.0 |
+| <a name="requirement_time"></a> [time](#requirement\_time) | >= 0.13.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | >= 6.20.0 |
-| <a name="provider_google-beta.no_user_project_override"></a> [google-beta.no\_user\_project\_override](#provider\_google-beta.no\_user\_project\_override) | >= 6.20.0 |
-| <a name="provider_time"></a> [time](#provider\_time) | >= 0.12.1 |
+| <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | >= 6.24.0 |
+| <a name="provider_google-beta.no_user_project_override"></a> [google-beta.no\_user\_project\_override](#provider\_google-beta.no\_user\_project\_override) | >= 6.24.0 |
+| <a name="provider_time"></a> [time](#provider\_time) | >= 0.13.0 |
 
 ## Modules
 
