@@ -4,10 +4,10 @@ import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { provideRouter, Router } from '@angular/router';
 import { firstValueFrom, Subject } from 'rxjs';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { USER$ } from '@app/core/user.token';
-import { DEFAULT_TEST_USER } from '@testing/constants';
-import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { USER$ } from '~/app/core/user.token';
+import { DEFAULT_TEST_USER } from '~/testing/constants';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '~/testing/utilities';
 
 import { QuizService } from '../quiz.service';
 import type { Quiz } from '../quiz.service';

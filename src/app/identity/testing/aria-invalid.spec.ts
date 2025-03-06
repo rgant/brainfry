@@ -1,7 +1,7 @@
 import type { ComponentFixture } from '@angular/core/testing';
 import type { FormControl } from '@angular/forms';
 
-import { getCompiled, safeQuerySelector } from '@testing/utilities';
+import { getCompiled, safeQuerySelector } from '~/testing/utilities';
 
 export const ariaInvalidTest = (
   control: FormControl<string | null>,

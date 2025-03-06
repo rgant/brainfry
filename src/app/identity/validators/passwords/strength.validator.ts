@@ -1,7 +1,7 @@
 import type { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { passwordStrength } from 'check-password-strength';
 
-import { PASSWORDS } from '@app/shared/constants';
+import { PASSWORDS } from '~/app/shared/constants';
 
 import { getPasswordControlValue } from './util';
 

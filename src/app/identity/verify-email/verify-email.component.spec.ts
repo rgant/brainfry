@@ -3,8 +3,8 @@ import type { ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideRouter, Router, RouterLink } from '@angular/router';
 
-import type { PromiseResolver } from '@testing/promise-methods';
-import { getCompiled, safeQuerySelector } from '@testing/utilities';
+import type { PromiseResolver } from '~/testing/promise-methods';
+import { getCompiled, safeQuerySelector } from '~/testing/utilities';
 
 import { createMockNavigation } from '../testing/create-mock-navigation.spec';
 import { VerifyEmailComponent } from './verify-email.component';

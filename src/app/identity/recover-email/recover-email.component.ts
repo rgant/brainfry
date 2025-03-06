@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import type { Observable } from 'rxjs';
 
-import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
+import { SpinnerComponent } from '~/app/shared/spinner/spinner.component';
 
 import { getState } from '../actions/get-state';
 import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';

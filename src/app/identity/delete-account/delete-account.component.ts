@@ -13,9 +13,9 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import type { FormControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { USER$ } from '@app/core/user.token';
-import type { MaybeUser$ } from '@app/core/user.token';
-import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
+import { USER$ } from '~/app/core/user.token';
+import type { MaybeUser$ } from '~/app/core/user.token';
+import { SpinnerComponent } from '~/app/shared/spinner/spinner.component';
 
 import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
 import { getErrorCode } from '../error-code';

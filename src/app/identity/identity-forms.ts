@@ -2,9 +2,9 @@ import type { Signal } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import type { AbstractControl, ValidationErrors } from '@angular/forms';
 
-import { PASSWORDS } from '@app/shared/constants';
-import { controlErrorsSignal } from '@app/shared/control-errors-signal.util';
-import { controlInvalidSignal } from '@app/shared/control-invalid-signal.util';
+import { PASSWORDS } from '~/app/shared/constants';
+import { controlErrorsSignal } from '~/app/shared/control-errors-signal.util';
+import { controlInvalidSignal } from '~/app/shared/control-invalid-signal.util';
 
 import { passwordFirebaseValidator, passwordStrengthValidator } from './validators/passwords';
 

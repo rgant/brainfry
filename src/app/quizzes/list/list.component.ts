@@ -10,9 +10,9 @@ import { Router, RouterLink } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
 import type { Observable } from 'rxjs';
 
-import { USER$ } from '@app/core/user.token';
-import type { MaybeUser, User } from '@app/core/user.token';
-import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
+import { USER$ } from '~/app/core/user.token';
+import type { MaybeUser, User } from '~/app/core/user.token';
+import { SpinnerComponent } from '~/app/shared/spinner/spinner.component';
 
 import { QuizService } from '../quiz.service';
 import type { Quiz } from '../quiz.service';

@@ -1,4 +1,4 @@
-import uploadFileJson from '@app/../../fixtures/assets/istockphoto-825319358-2048x2048.jpg.json';
+import uploadFileJson from '~/../fixtures/assets/istockphoto-825319358-2048x2048.jpg.json';
 
 export const createMockTransfer = (): DataTransfer => {
   const mockTransfer = new DataTransfer();

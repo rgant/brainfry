@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router, withComponentInputBinding } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 
-import { TestComponent } from '@testing/test.component';
+import { TestComponent } from '~/testing/test.component';
 
 import { ActionsComponent } from './actions.component';
 import type { ActionCodeState } from './actions.component';

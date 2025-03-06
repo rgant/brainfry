@@ -9,9 +9,9 @@ import type { WritableSignal } from '@angular/core';
 import { sendEmailVerification } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 
-import { USER$ } from '@app/core/user.token';
-import type { MaybeUser$ } from '@app/core/user.token';
-import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
+import { USER$ } from '~/app/core/user.token';
+import type { MaybeUser$ } from '~/app/core/user.token';
+import { SpinnerComponent } from '~/app/shared/spinner/spinner.component';
 
 import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
 import { getErrorCode } from '../error-code';

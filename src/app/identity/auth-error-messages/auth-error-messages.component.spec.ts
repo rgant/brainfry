@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 
-import { getCompiled } from '@testing/utilities';
+import { getCompiled } from '~/testing/utilities';
 
 import { AuthErrorMessagesComponent } from './auth-error-messages.component';
 

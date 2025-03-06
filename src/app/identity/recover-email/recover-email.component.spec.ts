@@ -3,7 +3,7 @@ import type { ComponentFixture } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
-import { getCompiled, safeQuerySelector } from '@testing/utilities';
+import { getCompiled, safeQuerySelector } from '~/testing/utilities';
 
 import { createMockNavigation } from '../testing/create-mock-navigation.spec';
 import { RecoverEmailComponent } from './recover-email.component';

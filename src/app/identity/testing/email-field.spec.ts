@@ -2,8 +2,8 @@ import { tick } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 import type { FormControl } from '@angular/forms';
 
-import { FORMS } from '@app/shared/constants';
-import { getCompiled, safeQuerySelector } from '@testing/utilities';
+import { FORMS } from '~/app/shared/constants';
+import { getCompiled, safeQuerySelector } from '~/testing/utilities';
 
 export const emailControlTest = (emailControl: FormControl): void => {
   // Default state

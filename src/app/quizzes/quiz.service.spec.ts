@@ -3,16 +3,16 @@ import { FirebaseError } from '@angular/fire/app';
 import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { first, firstValueFrom } from 'rxjs';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { cleanupUsers, createAndSignInUser } from '@app/identity/testing/test-users.spec';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { cleanupUsers, createAndSignInUser } from '~/app/identity/testing/test-users.spec';
 import {
   DEFAULT_TEST_USER,
   SLOW_TEST_TIMEOUT,
   TEST_DATES,
   UNVERIFIED_TEST_USER,
-} from '@testing/constants';
-import { NoRulesFirestore } from '@testing/firestore-data';
-import { provideEmulatedAuth, provideEmulatedFirestore } from '@testing/utilities';
+} from '~/testing/constants';
+import { NoRulesFirestore } from '~/testing/firestore-data';
+import { provideEmulatedAuth, provideEmulatedFirestore } from '~/testing/utilities';
 
 import { COLLECTION_NAME, QuizService } from './quiz.service';
 import type { Quiz } from './quiz.service';

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { provideEmulatedAuth } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { provideEmulatedAuth } from '~/testing/utilities';
 
 import { createEmailControl, createPasswordControl } from './identity-forms';
 import type { ControlStruct } from './identity-forms';

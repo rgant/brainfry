@@ -8,7 +8,7 @@ import { Title } from '@angular/platform-browser';
 import { provideRouter, TitleStrategy } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 
-import { TestComponent } from '@testing/test.component';
+import { TestComponent } from '~/testing/test.component';
 
 import { AppTitleStrategyService } from './app-title-strategy.service';
 

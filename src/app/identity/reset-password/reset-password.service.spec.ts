@@ -3,8 +3,8 @@ import { Auth } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 import { bufferCount, first, skip } from 'rxjs';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { provideEmulatedAuth } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { provideEmulatedAuth } from '~/testing/utilities';
 
 import { cleanupUsers, createOobCode } from '../testing/oob-codes.spec';
 import { ResetPasswordService } from './reset-password.service';

@@ -2,9 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { bufferTime, firstValueFrom } from 'rxjs';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { DEFAULT_TEST_USER, SLOW_TEST_TIMEOUT } from '@testing/constants';
-import { provideEmulatedAuth, provideEmulatedStorage } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { DEFAULT_TEST_USER, SLOW_TEST_TIMEOUT } from '~/testing/constants';
+import { provideEmulatedAuth, provideEmulatedStorage } from '~/testing/utilities';
 
 import { createAndSignInUser } from '../testing/test-users.spec';
 import { createMockTransfer, filename } from './new-photo.spec';

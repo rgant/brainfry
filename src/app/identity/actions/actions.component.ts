@@ -9,7 +9,7 @@ import {
 import type { InputSignal, Signal } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
+import { SpinnerComponent } from '~/app/shared/spinner/spinner.component';
 
 /**
  * https://firebase.google.com/docs/reference/js/auth.actioncodeurl

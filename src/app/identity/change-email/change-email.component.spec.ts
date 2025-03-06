@@ -4,10 +4,10 @@ import { Auth, signOut } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 import { firstValueFrom } from 'rxjs';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { FORMS, PASSWORDS } from '@app/shared/constants';
-import { DEFAULT_TEST_USER } from '@testing/constants';
-import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { FORMS, PASSWORDS } from '~/app/shared/constants';
+import { DEFAULT_TEST_USER } from '~/testing/constants';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '~/testing/utilities';
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { emailControlTest, emailErrorMessagesTest, emailInputTest } from '../testing/email-field.spec';

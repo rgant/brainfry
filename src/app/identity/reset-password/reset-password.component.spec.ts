@@ -3,9 +3,9 @@ import type { ComponentFixture } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { FORMS, PASSWORDS } from '@app/shared/constants';
-import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { FORMS, PASSWORDS } from '~/app/shared/constants';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '~/testing/utilities';
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { createMockNavigation } from '../testing/create-mock-navigation.spec';

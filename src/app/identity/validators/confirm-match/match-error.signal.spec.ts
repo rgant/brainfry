@@ -2,7 +2,7 @@ import type { Signal } from '@angular/core';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormControl, FormGroup } from '@angular/forms';
 
-import { FORMS } from '@app/shared/constants';
+import { FORMS } from '~/app/shared/constants';
 
 import { confirmMatchFormErrors } from './match-error.signal';
 

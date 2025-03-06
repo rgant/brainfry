@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { Auth } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { provideEmulatedAuth } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { provideEmulatedAuth } from '~/testing/utilities';
 
 import { cleanupUsers, createOobCode } from '../testing/oob-codes.spec';
 import { VerifyEmailService } from './verify-email.service';

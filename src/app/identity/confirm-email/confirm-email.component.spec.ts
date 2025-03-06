@@ -3,9 +3,9 @@ import type { ComponentFixture } from '@angular/core/testing';
 import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { firstValueFrom } from 'rxjs';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { UNVERIFIED_TEST_USER } from '@testing/constants';
-import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { UNVERIFIED_TEST_USER } from '~/testing/constants';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '~/testing/utilities';
 
 import { ConfirmEmailComponent } from './confirm-email.component';
 

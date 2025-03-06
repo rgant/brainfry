@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { provideEmulatedAuth } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { provideEmulatedAuth } from '~/testing/utilities';
 
 import { DashboardComponent } from './dashboard.component';
 

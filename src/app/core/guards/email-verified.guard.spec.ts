@@ -3,10 +3,10 @@ import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { provideRouter, Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { DEFAULT_TEST_USER, UNVERIFIED_TEST_USER } from '@testing/constants';
-import { TestComponent } from '@testing/test.component';
-import { provideEmulatedAuth } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { DEFAULT_TEST_USER, UNVERIFIED_TEST_USER } from '~/testing/constants';
+import { TestComponent } from '~/testing/test.component';
+import { provideEmulatedAuth } from '~/testing/utilities';
 
 import { emailVerifiedGuard } from './email-verified.guard';
 

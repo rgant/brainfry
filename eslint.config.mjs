@@ -704,10 +704,6 @@ export default tseslint.config(
             'object',
             'unknown',
           ],
-          internalPattern: [
-            '^@app/.*',
-            '^@testing/.*',
-          ],
         },
       ],
       'perfectionist/sort-interfaces': [

@@ -8,8 +8,8 @@ import { FirebaseError } from '@angular/fire/app';
 import { Auth } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { provideEmulatedAuth } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { provideEmulatedAuth } from '~/testing/utilities';
 
 import { cleanupUsers, createOobCode } from '../testing/oob-codes.spec';
 import { RecoverEmailService, SEND_EMAIL_DELAY } from './recover-email.service';

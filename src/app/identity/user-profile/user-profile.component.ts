@@ -29,11 +29,11 @@ import {
 } from 'rxjs';
 import type { Observable } from 'rxjs';
 
-import { USER$ } from '@app/core/user.token';
-import type { MaybeUser, User } from '@app/core/user.token';
-import { controlErrorsSignal } from '@app/shared/control-errors-signal.util';
-import { controlInvalidSignal } from '@app/shared/control-invalid-signal.util';
-import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
+import { USER$ } from '~/app/core/user.token';
+import type { MaybeUser, User } from '~/app/core/user.token';
+import { controlErrorsSignal } from '~/app/shared/control-errors-signal.util';
+import { controlInvalidSignal } from '~/app/shared/control-invalid-signal.util';
+import { SpinnerComponent } from '~/app/shared/spinner/spinner.component';
 
 import { AuthErrorMessagesComponent } from '../auth-error-messages/auth-error-messages.component';
 import { getErrorCode } from '../error-code';

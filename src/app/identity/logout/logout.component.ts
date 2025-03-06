@@ -8,7 +8,7 @@ import type { WritableSignal } from '@angular/core';
 import { Auth, signOut } from '@angular/fire/auth';
 import { Router, RouterLink } from '@angular/router';
 
-import { SpinnerComponent } from '@app/shared/spinner/spinner.component';
+import { SpinnerComponent } from '~/app/shared/spinner/spinner.component';
 
 /**
  * Form to logout current user's session with Firebase Authentication.

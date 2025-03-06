@@ -4,8 +4,8 @@ import { Auth } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 import { provideRouter, Router } from '@angular/router';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '~/testing/utilities';
 
 import { PASSWORDS } from '../identity-forms';
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';

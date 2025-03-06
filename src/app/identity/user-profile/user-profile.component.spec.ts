@@ -5,10 +5,10 @@ import type { User } from '@angular/fire/auth';
 import { Subject } from 'rxjs';
 import type { Observable } from 'rxjs';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { USER$ } from '@app/core/user.token';
-import { FORMS } from '@app/shared/constants';
-import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { USER$ } from '~/app/core/user.token';
+import { FORMS } from '~/app/shared/constants';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '~/testing/utilities';
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { cleanupUsers, createAndSignInUser } from '../testing/test-users.spec';

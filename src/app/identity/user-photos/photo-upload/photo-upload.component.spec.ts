@@ -6,7 +6,7 @@ import { provideRouter } from '@angular/router';
 import { Subject } from 'rxjs';
 import type { Observable } from 'rxjs';
 
-import { getCompiled, safeQuerySelector } from '@testing/utilities';
+import { getCompiled, safeQuerySelector } from '~/testing/utilities';
 
 import { createMockTransfer } from '../new-photo.spec';
 import { MAXIMUM_PHOTOS, UserPhotosService } from '../user-photos.service';

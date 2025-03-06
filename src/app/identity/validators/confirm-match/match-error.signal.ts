@@ -4,7 +4,7 @@ import type { FormControl, FormControlStatus, FormGroup } from '@angular/forms';
 import { debounceTime, map } from 'rxjs';
 import type { Observable } from 'rxjs';
 
-import { FORMS } from '@app/shared/constants';
+import { FORMS } from '~/app/shared/constants';
 
 import { ERROR_NAME } from './confirm-match.validator';
 

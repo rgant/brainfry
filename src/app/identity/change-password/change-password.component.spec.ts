@@ -3,9 +3,9 @@ import type { ComponentFixture } from '@angular/core/testing';
 import { Auth } from '@angular/fire/auth';
 import type { User } from '@angular/fire/auth';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { FORMS, PASSWORDS } from '@app/shared/constants';
-import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { FORMS, PASSWORDS } from '~/app/shared/constants';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '~/testing/utilities';
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { passwordControlTest, passwordErrorMessagesTest, passwordInputTest } from '../testing/password-field.spec';

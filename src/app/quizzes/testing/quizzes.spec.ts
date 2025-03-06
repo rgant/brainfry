@@ -1,4 +1,4 @@
-import { DEFAULT_TEST_USER, UNVERIFIED_TEST_USER } from '@testing/constants';
+import { DEFAULT_TEST_USER, UNVERIFIED_TEST_USER } from '~/testing/constants';
 
 import type { Quiz } from '../quiz.service';
 

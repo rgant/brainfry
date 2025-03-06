@@ -2,9 +2,9 @@ import { fakeAsync, TestBed } from '@angular/core/testing';
 import type { ComponentFixture } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
-import { provideOurFirebaseApp } from '@app/core/firebase-app.provider';
-import { DEFAULT_TEST_USER } from '@testing/constants';
-import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '@testing/utilities';
+import { provideOurFirebaseApp } from '~/app/core/firebase-app.provider';
+import { DEFAULT_TEST_USER } from '~/testing/constants';
+import { getCompiled, provideEmulatedAuth, safeQuerySelector } from '~/testing/utilities';
 
 import { ariaInvalidTest } from '../testing/aria-invalid.spec';
 import { emailControlTest, emailErrorMessagesTest, emailInputTest } from '../testing/email-field.spec';
