@@ -26,6 +26,8 @@
   ],
   "scripts": {
     "build": "ng build",
+    "postbuild": "npm run compodoc:build",
+    "clean-coverage": "./scripts/check-coverages-changes.sh",
     "compodoc:build": "compodoc",
     "compodoc:build-and-serve": "compodoc --serve --watch",
     "compodoc:serve": "compodoc --serve",
@@ -34,15 +36,15 @@
     "predeploy": "npm run build",
     "deploy": "firebase deploy --only hosting",
     "e2e": "firebase emulators:exec --ui --import ./fixtures/firebase-emulator/ --only auth,firestore,storage 'ng e2e'",
+    "emulator:exec": "firebase emulators:exec --ui --import ./fixtures/firebase-emulator/ --only auth,firestore,storage",
     "i18n": "ng extract-i18n --out-file=messages.en.xlf --output-path=src/locale/",
     "lint": "ng lint",
     "ng": "ng",
     "start": "ng serve",
     "stylelint": "stylelint --quiet-deprecation-warnings src/",
-    "test": "firebase emulators:exec --ui --import ./fixtures/firebase-emulator/ --only auth,firestore,storage 'ng test'",
+    "test": "npm run emulator:exec 'ng test'",
     "test:export": "firebase emulators:start --import ./fixtures/firebase-emulator/ --export-on-exit ./fixtures/firebase-emulator/ --only auth,firestore,storage",
-    "test:once": "firebase emulators:exec --import ./fixtures/firebase-emulator/ --only auth,firestore,storage 'ng test --no-watch --code-coverage'",
-    "posttest:once": "./scripts/check-coverages-changes.sh",
+    "test:once": "npm run emulator:exec 'ng test --no-watch --code-coverage'; r=$?; npm run clean-coverage; exit $r",
     "watch": "ng build --watch --configuration development"
   },
   "dependencies": {
