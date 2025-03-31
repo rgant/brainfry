@@ -71,9 +71,9 @@
             </p>
           } @else {
             <div class="photos">
-              @for (item of vm.profilePhotos; track item.url; let indx = $index) {
-                <input id="fld-photoURL-{{ indx }}" [value]="item.url" formControlName="photoURL" name="photoURL" class="button-radio" type="radio">
-                <label for="fld-photoURL-{{ indx }}" class="photo-block">
+              @for (item of vm.profilePhotos; track item.url) {
+                <input [value]="item.url" id="fld-photoURL-{{ $index }}" formControlName="photoURL" name="photoURL" class="button-radio" type="radio">
+                <label for="fld-photoURL-{{ $index }}" class="photo-block">
                   <img [ngSrc]="item.url" alt="" fill>
                 </label>
               }
