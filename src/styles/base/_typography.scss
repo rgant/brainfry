@@ -60,7 +60,7 @@
 
 html {
   font-size: .75em;
-  // stylelint-disable-next-line plugin/no-unsupported-browser-features -- stylistic change that can be skip in unsupported browsers
+  // stylelint-disable-next-line plugin/no-unsupported-browser-features -- stylistic change that can be skipped in unsupported browsers
   text-decoration-thickness: 8%; // Sets the thickness as a percentage of the font size
   text-underline-position: under; // Places underlines below the descenders
 
@@ -69,6 +69,7 @@ html {
   }
 }
 
+// stylelint-disable-next-line plugin/no-unsupported-browser-features -- stylistic change that can be skipped in unsupported browsers
 ::selection {
   text-shadow: none;
   background: rgba(app.$primary-color, 40%);
