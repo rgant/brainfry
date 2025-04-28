@@ -81,7 +81,7 @@ This should re-output the config JSON and confirm the changes.
 
 These settings can be managed through the [RESTful API](https://cloud.google.com/identity-platform/docs/reference/rest/v2/Config#sendemail)
 
-The ket for this configuration is `notifications.sendEmail`.
+The key for this configuration is `notifications.sendEmail`.
 
 ```sh
 curl -X PATCH -d '{"notification":{"sendEmail":{"callbackUri":"https://'"${FIREBASE_PROJECT_ID}"'.web.app/actions"}}}' \

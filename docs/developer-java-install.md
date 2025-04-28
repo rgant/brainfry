@@ -1,7 +1,7 @@
 # Java Runtime for Firebase Emulators
 
 `firebase-tools` emulators use Java. Not sure what happens if you don't have Java
-installed already when you initalize the emulators: `firebase init emulators`.
+installed already when you initialize the emulators: `firebase init emulators`.
 
 ## Figure out what version of Java you have installed
 
