@@ -981,15 +981,15 @@ type ChangeEmailFormGroup &#x3D; FormGroup&lt;{
  * must be verified by clicking a link and applying an oobCode before it actually updates.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: &#x27;app-change-email&#x27;,
   imports: [
     AsyncPipe,
     AuthErrorMessagesComponent,
     ReactiveFormsModule,
     SpinnerComponent,
   ],
-  selector: &#x27;app-change-email&#x27;,
   templateUrl: &#x27;./change-email.component.html&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangeEmailComponent {
   /** Errors specific to the first new email field. */

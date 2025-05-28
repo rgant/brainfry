@@ -7,11 +7,11 @@ import { RouterLink } from '@angular/router';
  * Links to the legal pages for the application and displays the copyright notice.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ DatePipe, RouterLink ],
   selector: 'app-footer',
-  styleUrl: './footer.component.scss',
+  imports: [ DatePipe, RouterLink ],
   templateUrl: './footer.component.html',
+  styleUrl: './footer.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
   /**

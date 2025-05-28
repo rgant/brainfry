@@ -8,11 +8,11 @@ import type { MaybeUser } from '~/app/core/user.token';
 import { SpinnerComponent } from '~/app/shared/spinner/spinner.component';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ AsyncPipe, SpinnerComponent ],
   selector: 'app-dashboard',
-  styleUrl: './dashboard.component.scss',
+  imports: [ AsyncPipe, SpinnerComponent ],
   templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent {
   public readonly name$: Observable<string>;

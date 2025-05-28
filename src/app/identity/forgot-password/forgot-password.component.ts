@@ -23,15 +23,15 @@ type ForgotFormGroup = FormGroup<{ email: FormControl<string | null> }>;
  * Sends email to reset password for a user's account.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-forgot-password',
   imports: [
     AuthErrorMessagesComponent,
     ReactiveFormsModule,
     RouterLink,
     SpinnerComponent,
   ],
-  selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ForgotPasswordComponent {
   /** Errors specific to the email field. */

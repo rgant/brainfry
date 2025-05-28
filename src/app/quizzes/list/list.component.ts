@@ -23,16 +23,16 @@ interface ViewModel {
 }
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-list',
   imports: [
     AsyncPipe,
     DatePipe,
     SpinnerComponent,
     RouterLink,
   ],
-  selector: 'app-list',
-  styleUrl: './list.component.scss',
   templateUrl: './list.component.html',
+  styleUrl: './list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizListComponent {
   /** Displays a modal spinner while creating a new Quiz. */

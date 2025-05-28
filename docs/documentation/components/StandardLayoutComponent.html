@@ -217,16 +217,16 @@ import { SidebarComponent } from &#x27;../sidebar/sidebar.component&#x27;;
  * content containing a sidebar and the main content area.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: &#x27;app-standard-layout&#x27;,
   imports: [
     FooterComponent,
     HeaderComponent,
     RouterOutlet,
     SidebarComponent,
   ],
-  selector: &#x27;app-standard-layout&#x27;,
-  styleUrl: &#x27;./standard.component.scss&#x27;,
   templateUrl: &#x27;./standard.component.html&#x27;,
+  styleUrl: &#x27;./standard.component.scss&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StandardLayoutComponent {}
 </code></pre>

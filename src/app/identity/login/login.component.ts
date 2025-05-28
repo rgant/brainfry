@@ -27,15 +27,15 @@ type LoginFormGroup = FormGroup<{
  * Email and password login form.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-login',
   imports: [
     AuthErrorMessagesComponent,
     ReactiveFormsModule,
     RouterLink,
     SpinnerComponent,
   ],
-  selector: 'app-login',
   templateUrl: './login.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
   /** Errors specific to the email field. */

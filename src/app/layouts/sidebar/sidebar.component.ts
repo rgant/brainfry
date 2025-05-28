@@ -6,10 +6,10 @@ import { RouterLink } from '@angular/router';
  * account features should be linked from the accounts menu in the header.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ RouterLink ],
   selector: 'app-sidebar',
-  styleUrl: './sidebar.component.scss',
+  imports: [ RouterLink ],
   templateUrl: './sidebar.component.html',
+  styleUrl: './sidebar.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {}

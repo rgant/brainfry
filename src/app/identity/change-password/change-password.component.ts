@@ -33,15 +33,15 @@ type ChangePasswordFormGroup = FormGroup<{
  * Form to change User's password using the current password.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-change-password',
   imports: [
     AsyncPipe,
     AuthErrorMessagesComponent,
     ReactiveFormsModule,
     SpinnerComponent,
   ],
-  selector: 'app-change-password',
   templateUrl: './change-password.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangePasswordComponent {
   /** Errors specifically for the current password field. */

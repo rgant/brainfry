@@ -697,11 +697,11 @@ type FileInputRef &#x3D; ElementRef&lt;HTMLInputElement&gt;;
  * Handles Firebase User profile photo upload to Firebase Storage.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ AsyncPipe, RouterLink ],
   selector: &#x27;app-photo-upload&#x27;,
-  styleUrl: &#x27;./photo-upload.component.scss&#x27;,
+  imports: [ AsyncPipe, RouterLink ],
   templateUrl: &#x27;./photo-upload.component.html&#x27;,
+  styleUrl: &#x27;./photo-upload.component.scss&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PhotoUploadComponent {
   /** Current number of files uploaded, from parent Component. */

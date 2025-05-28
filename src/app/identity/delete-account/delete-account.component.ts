@@ -34,15 +34,15 @@ type DialogRef = ElementRef<HTMLDialogElement>;
  * dialog where the User enters their password and confirms account deletion.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-delete-account',
   imports: [
     AsyncPipe,
     AuthErrorMessagesComponent,
     ReactiveFormsModule,
     SpinnerComponent,
   ],
-  selector: 'app-delete-account',
   templateUrl: './delete-account.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeleteAccountComponent {
   /** Errors from Firebase, displayed after the dialog is closed. */

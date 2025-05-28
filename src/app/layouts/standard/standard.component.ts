@@ -11,15 +11,15 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
  * content containing a sidebar and the main content area.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-standard-layout',
   imports: [
     FooterComponent,
     HeaderComponent,
     RouterOutlet,
     SidebarComponent,
   ],
-  selector: 'app-standard-layout',
-  styleUrl: './standard.component.scss',
   templateUrl: './standard.component.html',
+  styleUrl: './standard.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StandardLayoutComponent {}

@@ -13,15 +13,15 @@ import type { VerifyEmailResult } from './verify-email.service';
  * Marks the user's email as verified.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-verify-email',
   imports: [
     AsyncPipe,
     AuthErrorMessagesComponent,
     SpinnerComponent,
     RouterLink,
   ],
-  selector: 'app-verify-email',
   templateUrl: './verify-email.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VerifyEmailComponent {
   /**

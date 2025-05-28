@@ -12,9 +12,9 @@ import { RouterLink } from '@angular/router';
  * Based off this [online tool's](https://app.termsfeed.com/download/9bce549e-b5ec-4e05-acd7-8fa53c7fa497) output.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ RouterLink ],
   selector: 'app-privacy-policy',
+  imports: [ RouterLink ],
   templateUrl: './privacy-policy.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PrivacyPolicyComponent {}

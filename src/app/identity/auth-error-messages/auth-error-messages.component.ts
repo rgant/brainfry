@@ -10,9 +10,9 @@ import type { InputSignal } from '@angular/core';
  * https://firebase.google.com/docs/reference/node/firebase.auth.Error
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-auth-error-messages',
   templateUrl: './auth-error-messages.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthErrorMessagesComponent {
   /** Firebase Error code */

@@ -208,10 +208,10 @@ import { RouterLink } from &#x27;@angular/router&#x27;;
  * outlining the rights and responsibilities of both the website owner and the user.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ RouterLink ],
   selector: &#x27;app-terms-and-conditions&#x27;,
+  imports: [ RouterLink ],
   templateUrl: &#x27;./terms-and-conditions.component.html&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TermsAndConditionsComponent {}
 </code></pre>

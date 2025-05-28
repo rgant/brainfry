@@ -374,15 +374,15 @@ import type { VerifyEmailResult } from &#x27;./verify-email.service&#x27;;
  * Marks the user&#x27;s email as verified.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: &#x27;app-verify-email&#x27;,
   imports: [
     AsyncPipe,
     AuthErrorMessagesComponent,
     SpinnerComponent,
     RouterLink,
   ],
-  selector: &#x27;app-verify-email&#x27;,
   templateUrl: &#x27;./verify-email.component.html&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VerifyEmailComponent {
   /**

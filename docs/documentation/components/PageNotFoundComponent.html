@@ -450,11 +450,11 @@ export const ROBOTS_META: MetaDefinition &#x3D; {
  * Wildcard catchall route component for paths that do not match configured routes.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ NgOptimizedImage, RouterLink ],
   selector: &#x27;app-page-not-found&#x27;,
-  styleUrl: &#x27;./page-not-found.component.scss&#x27;,
+  imports: [ NgOptimizedImage, RouterLink ],
   templateUrl: &#x27;./page-not-found.component.html&#x27;,
+  styleUrl: &#x27;./page-not-found.component.scss&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageNotFoundComponent implements OnDestroy, OnInit {
   /** Angular service to manage Meta tags. https://angular.dev/api/platform-browser/Meta */

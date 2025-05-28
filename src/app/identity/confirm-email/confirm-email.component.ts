@@ -21,10 +21,10 @@ import type { SendVerifyEmailStatuses } from './send-confirm-email';
  * Sends the user an email to confirm access to the email address.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ AsyncPipe, AuthErrorMessagesComponent, SpinnerComponent ],
   selector: 'app-confirm-email',
+  imports: [ AsyncPipe, AuthErrorMessagesComponent, SpinnerComponent ],
   templateUrl: './confirm-email.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmEmailComponent {
   /** Firebase response error code */

@@ -8,9 +8,9 @@ import { RouterLink } from '@angular/router';
  * outlining the rights and responsibilities of both the website owner and the user.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ RouterLink ],
   selector: 'app-terms-and-conditions',
+  imports: [ RouterLink ],
   templateUrl: './terms-and-conditions.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TermsAndConditionsComponent {}

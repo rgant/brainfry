@@ -1,12 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
   selector: 'app-photo-manager',
-  styleUrl: './photo-manager.component.scss',
+  imports: [],
   templateUrl: './photo-manager.component.html',
+  styleUrl: './photo-manager.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PhotoManagerComponent {
-
-}
+export class PhotoManagerComponent {}

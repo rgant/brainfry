@@ -728,14 +728,63 @@ export default tseslint.config(
       'perfectionist/sort-intersection-types': 'off', // use @typescript-eslint/sort-type-constituents instead
       'perfectionist/sort-objects': [
         'error',
+        // Configuration for decorator objects - don't sort them (handled by angular-eslint)
         {
-          customGroups: {
-            children: '^children$', // Angular Routes
-            deps: '^deps$', // Angular providers
-            id: '^id$',
-            path: '^path(Match)?$', // Angular Routes
+          type: 'unsorted',
+          useConfigurationIf: {
+            callingFunctionNamePattern: '^(?:Component|Injectable|Directive|Pipe|NgModule|Input|Output|ViewChild|ViewChildren|ContentChild|ContentChildren|HostBinding|HostListener)$',
+          }
+        },
+        // Configuration specifically for Angular Routes
+        {
+          customGroups: [
+            {
+              groupName: 'route-path',
+              elementNamePattern: '^path(Match)?$'
+            },
+            {
+              groupName: 'route-children',
+              elementNamePattern: '^children$'
+            }
+          ],
+          groups: [
+            'route-path',     // path, pathMatch first
+            'unknown',        // All other route properties
+            'route-children'  // children last
+          ],
+          partitionByComment: true,
+          useConfigurationIf: {
+            allNamesMatchPattern: '^(path|pathMatch|redirectTo|component|loadComponent|loadChildren|children|canActivate|canActivateChild|canDeactivate|canMatch|resolve|data|title|matcher)$',
           },
-          groups: ['id', 'path', 'unknown', 'children', 'deps'],
+        },
+        // Configuration specifically for Angular Providers
+        {
+          customGroups: [
+            {
+              groupName: 'provider-deps',
+              elementNamePattern: '^deps$',
+            }
+          ],
+          groups: [
+            'unknown',       // All provider properties
+            'provider-deps'  // deps last
+          ],
+          useConfigurationIf: {
+            allNamesMatchPattern: '^(provide|useClass|useFactory|useValue|useExisting|deps|multi)$',
+          },
+        },
+        // Fallback configuration for all other objects
+        {
+          customGroups: [
+            {
+              groupName: 'id',
+              elementNamePattern: '^id$',
+            },
+          ],
+          groups: [
+            'id',      // Always first if present
+            'unknown', // Everything else alphabetically
+          ],
           partitionByComment: true,
         }
       ],

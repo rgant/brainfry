@@ -44,10 +44,10 @@ const cleanUrl = (continueUrl: string | undefined): string | undefined => {
  * specific Components to handle.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ SpinnerComponent ],
   selector: 'app-actions',
+  imports: [ SpinnerComponent ],
   template: '<app-spinner class="modal-block" />',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActionsComponent {
   /** Query parameter from Firebase Authentication link. */

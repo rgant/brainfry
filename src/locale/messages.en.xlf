@@ -173,6 +173,15 @@
         <note priority="1" from="description">Page not found 404 error</note>
         <note priority="1" from="meaning">HTML title tag</note>
       </trans-unit>
+      <trans-unit id="dashboard.heading" datatype="html">
+        <source>Hello <x id="INTERPOLATION" equiv-text="{{ name }}"/>!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">2,4</context>
+        </context-group>
+        <note priority="1" from="description">greeting to user</note>
+        <note priority="1" from="meaning">page heading 2</note>
+      </trans-unit>
       <trans-unit id="firebase.errorMsg.code-expired" datatype="html">
         <source> The SMS code has expired. Please re-send the verification code to try again. </source>
         <context-group purpose="location">

@@ -881,15 +881,15 @@ type DialogRef &#x3D; ElementRef&lt;HTMLDialogElement&gt;;
  * dialog where the User enters their password and confirms account deletion.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: &#x27;app-delete-account&#x27;,
   imports: [
     AsyncPipe,
     AuthErrorMessagesComponent,
     ReactiveFormsModule,
     SpinnerComponent,
   ],
-  selector: &#x27;app-delete-account&#x27;,
   templateUrl: &#x27;./delete-account.component.html&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeleteAccountComponent {
   /** Errors from Firebase, displayed after the dialog is closed. */

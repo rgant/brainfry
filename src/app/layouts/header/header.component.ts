@@ -15,11 +15,11 @@ import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
  * Primary header for standard views of logged in users. Contains the user account menu and logo.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ FaIconComponent, NgOptimizedImage, RouterLink ],
   selector: 'app-header',
-  styleUrl: './header.component.scss',
+  imports: [ FaIconComponent, NgOptimizedImage, RouterLink ],
   templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
   /** Toggles the collapsible User Account menu. */

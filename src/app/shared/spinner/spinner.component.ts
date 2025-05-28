@@ -6,9 +6,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
  * Source: https://github.com/n3r4zzurr0/svg-spinners/blob/main/svg-css/blocks-shuffle-3.svg
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-spinner',
-  styleUrl: './spinner.component.scss',
   templateUrl: './spinner.component.svg',
+  styleUrl: './spinner.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpinnerComponent {}

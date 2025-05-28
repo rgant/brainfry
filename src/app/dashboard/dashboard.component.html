@@ -1,5 +1,5 @@
 @if (name$ | async; as name) {
-  <h2>Hello {{ name }}!</h2>
+  <h2 i18n="page heading 2|greeting to user@@dashboard.heading">Hello {{ name }}!</h2>
 } @else {
   <app-spinner />
 }

@@ -375,15 +375,15 @@ import type { RecoverEmailResults } from &#x27;./recover-email.service&#x27;;
  * Reverts Firebase User email change.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: &#x27;app-recover-email&#x27;,
   imports: [
     AsyncPipe,
     AuthErrorMessagesComponent,
     RouterLink,
     SpinnerComponent,
   ],
-  selector: &#x27;app-recover-email&#x27;,
   templateUrl: &#x27;./recover-email.component.html&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecoverEmailComponent {
   /**

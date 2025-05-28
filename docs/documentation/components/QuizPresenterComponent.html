@@ -189,15 +189,13 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component } from &#x27;@angular/core&#x27;;
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
   selector: &#x27;app-presenter&#x27;,
-  styleUrl: &#x27;./presenter.component.scss&#x27;,
+  imports: [],
   templateUrl: &#x27;./presenter.component.html&#x27;,
+  styleUrl: &#x27;./presenter.component.scss&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class QuizPresenterComponent {
-
-}
+export class QuizPresenterComponent {}
 </code></pre>
     </div>
 

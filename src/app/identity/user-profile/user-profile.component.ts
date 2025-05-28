@@ -64,7 +64,7 @@ interface ViewModel {
  * Form to manage Firebase User profile.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-user-profile',
   imports: [
     AsyncPipe,
     AuthErrorMessagesComponent,
@@ -73,9 +73,9 @@ interface ViewModel {
     ReactiveFormsModule,
     SpinnerComponent,
   ],
-  selector: 'app-user-profile',
-  styleUrl: './user-profile.component.scss',
   templateUrl: './user-profile.component.html',
+  styleUrl: './user-profile.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserProfileComponent {
   /** Error codes from `updateProfile` when form is submitted. */

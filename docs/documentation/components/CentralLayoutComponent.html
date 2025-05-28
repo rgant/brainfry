@@ -214,16 +214,16 @@ import { FooterComponent } from &#x27;../footer/footer.component&#x27;;
  * Centers all content into the middle of the screen. Dhould be used for single purpose pages.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: &#x27;app-central-layout&#x27;,
   imports: [
     FooterComponent,
     NgOptimizedImage,
     RouterLink,
     RouterOutlet,
   ],
-  selector: &#x27;app-central-layout&#x27;,
-  styleUrl: &#x27;./central.component.scss&#x27;,
   templateUrl: &#x27;./central.component.html&#x27;,
+  styleUrl: &#x27;./central.component.scss&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CentralLayoutComponent {}
 </code></pre>

@@ -284,11 +284,11 @@ import type { MaybeUser } from &#x27;~/app/core/user.token&#x27;;
 import { SpinnerComponent } from &#x27;~/app/shared/spinner/spinner.component&#x27;;
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ AsyncPipe, SpinnerComponent ],
   selector: &#x27;app-dashboard&#x27;,
-  styleUrl: &#x27;./dashboard.component.scss&#x27;,
+  imports: [ AsyncPipe, SpinnerComponent ],
   templateUrl: &#x27;./dashboard.component.html&#x27;,
+  styleUrl: &#x27;./dashboard.component.scss&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent {
   public readonly name$: Observable&lt;string&gt;;
@@ -306,7 +306,7 @@ export class DashboardComponent {
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">@if (name$ | async; as name) {
-  &lt;h2&gt;Hello {{ name }}!&lt;/h2&gt;
+  &lt;h2 i18n&#x3D;&quot;page heading 2|greeting to user@@dashboard.heading&quot;&gt;Hello {{ name }}!&lt;/h2&gt;
 } @else {
   &lt;app-spinner /&gt;
 }
@@ -339,7 +339,7 @@ export class DashboardComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>@if (name$ | async; as name) {  <h2>Hello {{ name }}!</h2>} @else {  <app-spinner />}</div>'
+        var COMPONENT_TEMPLATE = '<div>@if (name$ | async; as name) {  <h2 i18n="page heading 2|greeting to user@@dashboard.heading">Hello {{ name }}!</h2>} @else {  <app-spinner />}</div>'
     var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'app-actions'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthErrorMessagesComponent', 'selector': 'app-auth-error-messages'},{'name': 'CentralLayoutComponent', 'selector': 'app-central-layout'},{'name': 'ChangeEmailComponent', 'selector': 'app-change-email'},{'name': 'ChangePasswordComponent', 'selector': 'app-change-password'},{'name': 'ConfirmEmailComponent', 'selector': 'app-confirm-email'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteAccountComponent', 'selector': 'app-delete-account'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutComponent', 'selector': 'app-logout'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PhotoManagerComponent', 'selector': 'app-photo-manager'},{'name': 'PhotoUploadComponent', 'selector': 'app-photo-upload'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'QuizEditorComponent', 'selector': 'app-editor'},{'name': 'QuizListComponent', 'selector': 'app-list'},{'name': 'QuizPresenterComponent', 'selector': 'app-presenter'},{'name': 'RecoverEmailComponent', 'selector': 'app-recover-email'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'StandardLayoutComponent', 'selector': 'app-standard-layout'},{'name': 'TermsAndConditionsComponent', 'selector': 'app-terms-and-conditions'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'VerifyEmailComponent', 'selector': 'app-verify-email'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DashboardComponent'};

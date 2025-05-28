@@ -875,15 +875,15 @@ type LoginFormGroup &#x3D; FormGroup&lt;{
  * Email and password login form.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: &#x27;app-login&#x27;,
   imports: [
     AuthErrorMessagesComponent,
     ReactiveFormsModule,
     RouterLink,
     SpinnerComponent,
   ],
-  selector: &#x27;app-login&#x27;,
   templateUrl: &#x27;./login.component.html&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
   /** Errors specific to the email field. */

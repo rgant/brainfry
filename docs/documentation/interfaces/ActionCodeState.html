@@ -389,10 +389,10 @@ const cleanUrl &#x3D; (continueUrl: string | undefined): string | undefined &#x3
  * specific Components to handle.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ SpinnerComponent ],
   selector: &#x27;app-actions&#x27;,
+  imports: [ SpinnerComponent ],
   template: &#x27;&lt;app-spinner class&#x3D;&quot;modal-block&quot; /&gt;&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActionsComponent {
   /** Query parameter from Firebase Authentication link. */

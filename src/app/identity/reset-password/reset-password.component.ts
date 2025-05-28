@@ -26,7 +26,7 @@ type ResetPasswordFormGroup = FormGroup<{
  * Collects and confirm new password to recover user's account with Firebase Authentication.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-reset-password',
   imports: [
     AsyncPipe,
     AuthErrorMessagesComponent,
@@ -34,8 +34,8 @@ type ResetPasswordFormGroup = FormGroup<{
     RouterLink,
     SpinnerComponent,
   ],
-  selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ResetPasswordComponent {
   /** Form level aria-invalid. */

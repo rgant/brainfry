@@ -198,10 +198,10 @@ import { RouterOutlet } from &#x27;@angular/router&#x27;;
  * Primary router outlet for the entire application, otherwise a dumb Component.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ RouterOutlet ],
   selector: &#x27;app-root&#x27;,
+  imports: [ RouterOutlet ],
   template: &#x27;&lt;router-outlet /&gt;&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {}
 </code></pre>

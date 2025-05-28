@@ -14,10 +14,10 @@ import { SpinnerComponent } from '~/app/shared/spinner/spinner.component';
  * Form to logout current user's session with Firebase Authentication.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ RouterLink, SpinnerComponent ],
   selector: 'app-logout',
+  imports: [ RouterLink, SpinnerComponent ],
   templateUrl: './logout.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LogoutComponent {
   /** During logout block the entire window to prevent User interaction with the application. */

@@ -34,15 +34,15 @@ type ChangeEmailFormGroup = FormGroup<{
  * must be verified by clicking a link and applying an oobCode before it actually updates.
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-change-email',
   imports: [
     AsyncPipe,
     AuthErrorMessagesComponent,
     ReactiveFormsModule,
     SpinnerComponent,
   ],
-  selector: 'app-change-email',
   templateUrl: './change-email.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangeEmailComponent {
   /** Errors specific to the first new email field. */
