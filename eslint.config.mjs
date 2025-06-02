@@ -3,7 +3,7 @@ import eslint from '@eslint/js';
 import rxjs from '@smarttools/eslint-plugin-rxjs';
 import stylistic from '@stylistic/eslint-plugin';
 import angular from 'angular-eslint';
-import * as pluginImportX from 'eslint-plugin-import-x';
+import { importX } from 'eslint-plugin-import-x';
 import jasmine from 'eslint-plugin-jasmine';
 import perfectionist from 'eslint-plugin-perfectionist';
 import preferArrow from 'eslint-plugin-prefer-arrow-functions';
@@ -11,7 +11,7 @@ import pluginPromise from 'eslint-plugin-promise';
 import tsdoc from 'eslint-plugin-tsdoc';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
-import tseslint from 'typescript-eslint';
+import tseslint, { configs as tseslintConfigs } from 'typescript-eslint';
 
 export default tseslint.config(
   {
@@ -20,9 +20,9 @@ export default tseslint.config(
     extends: [
       eslint.configs.all,
       stylistic.configs['all'],
-      tseslint.configs.all,
-      pluginImportX.flatConfigs.recommended,
-      pluginImportX.flatConfigs.typescript,
+      tseslintConfigs.all,
+      importX.flatConfigs.recommended,
+      importX.flatConfigs.typescript,
       perfectionist.configs['recommended-natural'],
       pluginPromise.configs['flat/recommended'],
       rxjs.configs.recommended,
