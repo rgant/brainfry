@@ -18,6 +18,19 @@ describe('VerifyEmailComponent', (): void => {
   let router: Router;
   let resolveVerifyEmail: PromiseResolver<VerifyEmailResult>;
 
+  /**
+   * Helper function to get the href attribute from a RouterLink element in a type-safe way
+   */
+  const getRouterLinkHref = (): string | null => {
+    const linkDe = fixture.debugElement.query(By.directive(RouterLink));
+    const linkElement: unknown = linkDe.nativeElement;
+
+    if (linkElement instanceof HTMLAnchorElement) {
+      return linkElement.getAttribute('href');
+    }
+
+    throw new TypeError('Expected RouterLink element to be an HTMLAnchorElement');
+  };
   const setupFixture = (oobCode: string, continueUrl?: string): void => {
     getCurrentNavigationSpy.and.returnValue(createMockNavigation({ continueUrl, oobCode }));
     fixture = TestBed.createComponent(VerifyEmailComponent);
@@ -69,10 +82,9 @@ describe('VerifyEmailComponent', (): void => {
 
     expect(safeQuerySelector(compiled, 'h2').textContent).withContext('h2 header').toContain('Your email has been verified!');
 
-    const lnkDe = fixture.debugElement.query(By.directive(RouterLink));
-    const routerLink = lnkDe.injector.get(RouterLink);
+    const linkHref = getRouterLinkHref();
 
-    expect(routerLink.href).toBe('/');
+    expect(linkHref).toBe('/');
   });
 
   it('should use continueUrl', async (): Promise<void> => {
@@ -89,10 +101,9 @@ describe('VerifyEmailComponent', (): void => {
 
     expect(verifyEmailSpy).toHaveBeenCalledOnceWith(expectedCode, expectedUrl);
 
-    const lnkDe = fixture.debugElement.query(By.directive(RouterLink));
-    const routerLink = lnkDe.injector.get(RouterLink);
+    const linkHref = getRouterLinkHref();
 
-    expect(routerLink.href).toBe(expectedUrl);
+    expect(linkHref).toBe(expectedUrl);
   });
 
   it('should handle failure to verify', async (): Promise<void> => {
