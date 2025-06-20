@@ -15,8 +15,8 @@ import tseslint, { configs as tseslintConfigs } from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    files: ['**/*.ts'],
-    ignores: ['cypress/**/*.ts'],
+    files: [ '**/*.ts' ],
+    ignores: [ 'cypress/**/*.ts' ],
     extends: [
       eslint.configs.all,
       stylistic.configs['all'],
@@ -74,19 +74,19 @@ export default tseslint.config(
         'error',
         { multiline: true },
       ],
-      '@stylistic/array-bracket-spacing': ['error', 'always'],
-      '@stylistic/array-element-newline': ['error', 'consistent'],
-      '@stylistic/arrow-parens': ['error', 'always'],
-      '@stylistic/block-spacing': ['error', 'always'],
+      '@stylistic/array-bracket-spacing': [ 'error', 'always' ],
+      '@stylistic/array-element-newline': [ 'error', 'consistent' ],
+      '@stylistic/arrow-parens': [ 'error', 'always' ],
+      '@stylistic/block-spacing': [ 'error', 'always' ],
       '@stylistic/brace-style': [
         'error',
         '1tbs',
         { allowSingleLine: true },
       ],
-      '@stylistic/comma-dangle': ['error', 'always-multiline'],
-      '@stylistic/dot-location': ['error', 'property'], // Put the dot at the start of the property
-      '@stylistic/function-call-argument-newline': ['error', 'consistent'],
-      '@stylistic/function-paren-newline': ['error', 'multiline-arguments'],
+      '@stylistic/comma-dangle': [ 'error', 'always-multiline' ],
+      '@stylistic/dot-location': [ 'error', 'property' ], // Put the dot at the start of the property
+      '@stylistic/function-call-argument-newline': [ 'error', 'consistent' ],
+      '@stylistic/function-paren-newline': [ 'error', 'multiline-arguments' ],
       '@stylistic/generator-star-spacing': [
         'error',
         { before: false, after: true },
@@ -102,7 +102,7 @@ export default tseslint.config(
           ],
         },
       ],
-      '@stylistic/indent-binary-ops': ['error', 2],
+      '@stylistic/indent-binary-ops': [ 'error', 2 ],
       '@stylistic/lines-around-comment': 'off',
       '@stylistic/lines-between-class-members': [
         'error',
@@ -117,7 +117,7 @@ export default tseslint.config(
           code: 140,
         },
       ],
-      '@stylistic/multiline-ternary': ['error', 'always-multiline'],
+      '@stylistic/multiline-ternary': [ 'error', 'always-multiline' ],
       '@stylistic/newline-per-chained-call': [
         'error',
         { ignoreChainWithDepth: 3 },
@@ -158,7 +158,7 @@ export default tseslint.config(
           ObjectPattern: { consistent: true },
         },
       ],
-      '@stylistic/object-curly-spacing': ['error', 'always'],
+      '@stylistic/object-curly-spacing': [ 'error', 'always' ],
       '@stylistic/object-property-newline': [
         'error',
         { allowAllPropertiesOnSameLine: true },
@@ -170,9 +170,9 @@ export default tseslint.config(
         'before',
         { overrides: { '=': 'none' } },
       ],
-      '@stylistic/padded-blocks': ['error', 'never'],
+      '@stylistic/padded-blocks': [ 'error', 'never' ],
       '@stylistic/padding-line-between-statements': 'off',
-      '@stylistic/quote-props': ['error', 'as-needed'],
+      '@stylistic/quote-props': [ 'error', 'as-needed' ],
       '@stylistic/quotes': [
         'error',
         'single',
@@ -191,11 +191,11 @@ export default tseslint.config(
         'always',
         {
           line: {
-            markers: ['/'],
+            markers: [ '/' ],
           },
           block: {
-            markers: ['!'],
-            exceptions: ['*'],
+            markers: [ '!' ],
+            exceptions: [ '*' ],
             balanced: true,
           },
         },
@@ -382,47 +382,47 @@ export default tseslint.config(
         'error',
         {
           selector: 'default',
-          format: ['camelCase'],
+          format: [ 'camelCase' ],
         },
         {
           selector: 'variable',
-          format: ['camelCase', 'UPPER_CASE'],
+          format: [ 'camelCase', 'UPPER_CASE' ],
         },
         {
           selector: 'variable',
-          modifiers: ['unused'],
-          format: ['camelCase'],
+          modifiers: [ 'unused' ],
+          format: [ 'camelCase' ],
           leadingUnderscore: 'require',
         },
         {
           selector: 'parameter',
-          format: ['camelCase'],
+          format: [ 'camelCase' ],
           leadingUnderscore: 'allow',
         },
         {
           selector: 'memberLike',
-          format: ['camelCase'],
+          format: [ 'camelCase' ],
           leadingUnderscore: 'allow',
         },
         {
           selector: 'memberLike',
-          modifiers: ['private'],
-          format: ['camelCase'],
+          modifiers: [ 'private' ],
+          format: [ 'camelCase' ],
           leadingUnderscore: 'require',
         },
         {
           selector: 'parameterProperty',
-          modifiers: ['private'],
-          format: ['camelCase'],
+          modifiers: [ 'private' ],
+          format: [ 'camelCase' ],
           leadingUnderscore: 'forbid',
         },
         {
           selector: 'typeLike',
-          format: ['PascalCase'],
+          format: [ 'PascalCase' ],
         },
         {
           selector: 'enum',
-          format: ['UPPER_CASE'],
+          format: [ 'UPPER_CASE' ],
         },
       ],
       '@typescript-eslint/no-empty-object-type': [
@@ -522,7 +522,7 @@ export default tseslint.config(
       'complexity': 'off',
       'consistent-this': 'off',
       'default-case': 'off',
-      'eqeqeq': ['off', 'always', { null: 'ignore' }], // eslint refuses to support undefined
+      'eqeqeq': [ 'off', 'always', { null: 'ignore' } ], // eslint refuses to support undefined
       'func-name-matching': 'off',
       'func-style': [
         'error',
@@ -544,9 +544,9 @@ export default tseslint.config(
       'id-length': 'off', // Don't use short names that are confusing, but the rule is too inexact.
       'id-match': 'off',
       // eslint-plugin-import-x doesn't have an all config so this is just modifications to recommended
-      'import-x/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+      'import-x/consistent-type-specifier-style': [ 'error', 'prefer-top-level' ],
       'import-x/exports-last': 'off', // conflicts with perfectionist/sort-modules
-      'import-x/extensions': ['error', 'never', { json: 'always' }],
+      'import-x/extensions': [ 'error', 'never', { json: 'always' } ],
       'import-x/first': 'error',
       'import-x/max-dependencies': 'error',
       'import-x/newline-after-import': 'error',
@@ -554,7 +554,7 @@ export default tseslint.config(
       'import-x/no-amd': 'error',
       'import-x/no-anonymous-default-export': 'error',
       'import-x/no-commonjs': 'error',
-      'import-x/no-cycle': ['error', { ignoreExternal: true }],
+      'import-x/no-cycle': [ 'error', { ignoreExternal: true } ],
       'import-x/no-default-export': 'error',
       'import-x/no-deprecated': 'off', // Use @typescript-eslint/no-deprecated instead
       'import-x/no-duplicates': 'error', // Change from warning to error
@@ -584,14 +584,14 @@ export default tseslint.config(
         'off', // Doesn't with or without src option: 'No ESLint configuration found in src.'
         {
           missingExports: true,
-          src: ['./src'],
+          src: [ './src' ],
           unusedExports: true,
         },
       ],
       'import-x/no-useless-path-segments': 'error',
       'import-x/order': 'off', // Use perfectionist/sort-imports instead
       'line-comment-position': 'off',
-      'max-classes-per-file': ['error', 1],
+      'max-classes-per-file': [ 'error', 1 ],
       // Ideally we would consider this, but in practice it is just annoying, esp with spec files.
       'max-lines-per-function': 'off',
       'max-params': 'off', // Angular and Rob both use a lot of parameters
@@ -618,7 +618,7 @@ export default tseslint.config(
       'no-global-assign': 'off', // Seems likely tsc will catch this, and rare to have happen.
       'no-implicit-coercion': [
         'error',
-        { allow: ['!!'] },
+        { allow: [ '!!' ] },
       ],
       'no-implicit-globals': 'off', // TypeScript, NodeJS, and Angular all make this unnecessary I believe
       'no-inline-comments': 'off',
@@ -850,7 +850,7 @@ export default tseslint.config(
       'sort-imports': 'off', // Using perfectionist/sort-imports instead
       'sort-keys': 'off', // Use perfectionist/sort-objects instead
       'sort-vars': 'off', // This doesn't sort multiple let or consts so it's not useful
-      'strict': ['error', 'never'], // NodeJS and TypeScript are always strict
+      'strict': [ 'error', 'never' ], // NodeJS and TypeScript are always strict
       'tsdoc/syntax': 'warn',
       'unicode-bom': 'off',
       'unicorn/catch-error-name': [
@@ -886,14 +886,14 @@ export default tseslint.config(
     },
   },
   {
-    files: ['**/*.html'],
+    files: [ '**/*.html' ],
     ignores: [
       'cypress/**/*.html',
       'docs/**/*.html',
       'dist/**/*.html',
       'src/index.html',
     ],
-    extends: [angular.configs.templateAll],
+    extends: [ angular.configs.templateAll ],
     rules: {
       '@angular-eslint/template/attributes-order': [
         'error',
@@ -946,7 +946,7 @@ export default tseslint.config(
   {
     // Disable rules for inline templates in spec & testing files
     // https://github.com/angular-eslint/angular-eslint/issues/1023#issuecomment-2607207815
-    files: ['**/*.spec.ts*.html', 'src/testing/**/*.html'],
+    files: [ '**/*.spec.ts*.html', 'src/testing/**/*.html' ],
     rules: { '@angular-eslint/template/i18n': 'off' }
   },
   {
@@ -954,8 +954,8 @@ export default tseslint.config(
       '**/*.spec.ts',
       'src/testing/**/*.ts',
     ],
-    extends: [jasmine.configs.recommended],
-    plugins: {jasmine},
+    extends: [ jasmine.configs.recommended ],
+    plugins: { jasmine },
     'rules': {
       '@angular-eslint/prefer-on-push-component-change-detection': 'off',
       '@angular-eslint/use-component-selector': 'off',

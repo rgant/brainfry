@@ -1,4 +1,4 @@
-# BrainFry Pub Quiz App
+# Brainfry Pub Quiz App
 
 ![A brain wearing a graduation cap on a plate of fries](/public/imgs/logo-260.png)
 

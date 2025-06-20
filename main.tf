@@ -19,17 +19,17 @@ module "brainfry" {
 
 variable "project_id" {
   type        = string
-  description = "Firebase project ID for BrainFry app"
+  description = "Firebase project ID for Brainfry app"
 }
 
 variable "project_name" {
   type        = string
-  description = "Firebase project name for BrainFry app"
+  description = "Firebase project name for Brainfry app"
 }
 
 variable "billing_account" {
   type        = string
-  description = "GCP billing account for BrainFry app"
+  description = "GCP billing account for Brainfry app"
 }
 
 output "web_app_config" {
