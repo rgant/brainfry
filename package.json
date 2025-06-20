@@ -114,7 +114,7 @@
     "typescript-eslint": "^8.34.1"
   },
   "engines": {
-    "node": "v20.19.2",
-    "npm": "11.4.2"
+    "node": "v22.16.0",
+    "npm": "10.9.2"
   }
 }
