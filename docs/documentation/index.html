@@ -92,7 +92,13 @@
 </ol>
 <p>Install general dependencies:</p>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-sh">brew install dprint git git-absorb git-machete
-npm --global install markdownlint-cli prettier-plugin-multiline-arrays prettier</code></pre></div><p>To manage the application infrastructure see <a href="docs/developer-setup-terraform.md">Developer Setup Terraform Doc</a></p>
+npm --global install markdownlint-cli prettier \
+  &#64;awmottaz/prettier-plugin-void-html \
+  prettier-plugin-embed \
+  prettier-plugin-multiline-arrays \
+  prettier-plugin-organize-attributes \
+  prettier-plugin-sh \
+  prettier-plugin-sql-cst</code></pre></div><p>To manage the application infrastructure see <a href="docs/developer-setup-terraform.md">Developer Setup Terraform Doc</a></p>
 <p>To work on the Angular application see <a href="docs/developer-setup-angular.md">Developer Setup Angular Doc</a></p>
 
 

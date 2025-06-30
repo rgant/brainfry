@@ -17,8 +17,11 @@ Notes on accessibility for how to design this application.
 
 ### Documentation
 
-1. [Support for aria-errormessage is getting better, but still not there yet
-](https://cerovac.com/a11y/2024/06/support-for-aria-errormessage-is-getting-better-but-still-not-there-yet/) June 2024
-2. [What is the difference between aria-errormessage and aria-alert?](https://stackoverflow.com/a/78675883/41908) June 2024
-3. [Exposing Field Errors](https://adrianroselli.com/2023/04/exposing-field-errors.html) August 2023
-4. [Testing error messages with JAWS and NVDA](https://www.davidmacd.com/blog/test-aria-describedby-errormessage-aria-live.html) May 2020
+1. [Support for `aria-errormessage` is getting better, but still not there yet](https://cerovac.com/a11y/2024/06/support-for-aria-errormessage-is-getting-better-but-still-not-there-yet/)
+   June 2024
+2. [What is the difference between `aria-errormessage` and `aria-alert`?](https://stackoverflow.com/a/78675883/41908)
+   June 2024
+3. [Exposing Field Errors](https://adrianroselli.com/2023/04/exposing-field-errors.html)
+   August 2023
+4. [Testing error messages with JAWS and NVDA](https://www.davidmacd.com/blog/test-aria-describedby-errormessage-aria-live.html)
+   May 2020

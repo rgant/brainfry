@@ -13,7 +13,13 @@ Install general dependencies:
 
 ```sh
 brew install dprint git git-absorb git-machete
-npm --global install markdownlint-cli prettier-plugin-multiline-arrays prettier
+npm --global install markdownlint-cli prettier \
+  @awmottaz/prettier-plugin-void-html \
+  prettier-plugin-embed \
+  prettier-plugin-multiline-arrays \
+  prettier-plugin-organize-attributes \
+  prettier-plugin-sh \
+  prettier-plugin-sql-cst
 ```
 
 To manage the application infrastructure see [Developer Setup Terraform Doc](docs/developer-setup-terraform.md)
