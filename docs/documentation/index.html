@@ -61,6 +61,20 @@
                }
                toggleDarkMode(darkModeState);
           </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
                <div class="d-flex">
@@ -79,8 +93,9 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content getting-started">
+               <div class="content readme">
                    <div class="content-data">
+
 
 <h1>Brainfry Pub Quiz App</h1>
 <p><img src="/public/imgs/logo-260.png" alt="A brain wearing a graduation cap on a plate of fries" class="img-responsive"></p>
@@ -100,6 +115,9 @@ npm --global install markdownlint-cli prettier \
   prettier-plugin-sh \
   prettier-plugin-sql-cst</code></pre></div><p>To manage the application infrastructure see <a href="docs/developer-setup-terraform.md">Developer Setup Terraform Doc</a></p>
 <p>To work on the Angular application see <a href="docs/developer-setup-angular.md">Developer Setup Angular Doc</a></p>
+
+
+
 
 
 
@@ -146,7 +164,7 @@ npm --global install markdownlint-cli prettier \
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 0;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'readme';
             var COMPODOC_CURRENT_PAGE_URL = 'index.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>

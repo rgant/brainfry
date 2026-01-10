@@ -41,7 +41,7 @@ export class VerifyEmailComponent {
     this._router = inject(Router);
     this._service = inject(VerifyEmailService);
 
-    const { continueUrl, oobCode } = getState(this._router.getCurrentNavigation());
+    const { continueUrl, oobCode } = getState(this._router.currentNavigation());
     this.vm = this._service.verifyEmail(oobCode, continueUrl);
   }
 }

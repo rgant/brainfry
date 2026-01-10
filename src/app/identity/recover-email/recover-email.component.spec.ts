@@ -12,12 +12,12 @@ import type { RecoverEmailResults } from './recover-email.service';
 
 describe('RecoverEmailComponent', (): void => {
   let fixture: ComponentFixture<RecoverEmailComponent>;
-  let getCurrentNavigationSpy: jasmine.Spy;
+  let currentNavigationSpy: jasmine.Spy;
   let recoverEmailSpy: jasmine.Spy;
   let router: Router;
 
   const setupFixture = (oobCode: string): void => {
-    getCurrentNavigationSpy.and.returnValue(createMockNavigation({ oobCode }));
+    currentNavigationSpy.and.returnValue(createMockNavigation({ oobCode }));
     fixture = TestBed.createComponent(RecoverEmailComponent);
     fixture.detectChanges();
   };
@@ -37,8 +37,8 @@ describe('RecoverEmailComponent', (): void => {
       .compileComponents();
 
     router = TestBed.inject(Router);
-    getCurrentNavigationSpy = spyOn(router, 'getCurrentNavigation');
-    // Cannot call createComponent until the getCurrentNavigationSpy return is setup for each test.
+    currentNavigationSpy = spyOn(router, 'currentNavigation');
+    // Cannot call createComponent until the currentNavigationSpy return is setup for each test.
   });
 
   it('should successfully recover email', (): void => {

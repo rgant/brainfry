@@ -99,6 +99,11 @@ describe('RecoverEmailService', (): void => {
     flush(); // Makes the promises actually settle, but causes auth/network-request-failed FirebaseError
   }));
 
+  /**
+   * This test calls the real `applyActionCode` method because Jasmine and ES Modules do not support
+   * mocking imported functions. So this test will generate a network error in the console like:
+   * POST http://localhost:9099/identitytoolkit.googleapis.com/v1/accounts:resetPassword?key=... 400 (Bad Request)
+   */
   it('should gracefully handle errors', (done: DoneFn): void => {
     const badCode = 'wtuoeNEd_2a1_1q7Ikotm6upGJ3WPdOLbbnOMjeHTl5vcUa-am91ws';
     const consoleSpy = spyOn(console, 'error');

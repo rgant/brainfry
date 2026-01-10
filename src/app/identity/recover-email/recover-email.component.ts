@@ -42,7 +42,7 @@ export class RecoverEmailComponent {
     this._router = inject(Router);
     this._service = inject(RecoverEmailService);
 
-    const { oobCode } = getState(this._router.getCurrentNavigation());
+    const { oobCode } = getState(this._router.currentNavigation());
     this.vm$ = this._service.recoverEmail$(oobCode);
   }
 }

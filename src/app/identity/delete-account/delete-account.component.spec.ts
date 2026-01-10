@@ -101,6 +101,12 @@ describe('DeleteAccountComponent', (): void => {
     expect(navigateSpy).withContext('navigateByUrl').toHaveBeenCalledOnceWith('/');
   });
 
+  /**
+   * This test calls the real `reauthenticateWithCredential` method because Jasmine and ES Modules
+   * do not support mocking imported functions. So this test will generate a network error in the
+   * console like:
+   * POST http://localhost:9099/identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=... 400 (Bad Request)
+   */
   it('should handle reauthenticate errors', async (): Promise<void> => {
     const newPassword = 'f254)b65dE6d';
     component.deleteAccountForm.setValue({ password: newPassword });
@@ -119,6 +125,11 @@ describe('DeleteAccountComponent', (): void => {
     expect(component.$errorCode()).withContext('$errorCode').toBe('auth/wrong-password');
   });
 
+  /**
+   * This test calls the real `deleteUser` method because Jasmine and ES Modules do not support
+   * mocking imported functions. So this test will generate a network error in the console like:
+   * POST http://localhost:9099/identitytoolkit.googleapis.com/v1/accounts:lookup?key=... 400 (Bad Request)
+   */
   it('should handle deleteUser errors', async (): Promise<void> => {
     component.deleteAccountForm.setValue({ password: TEST_USER_PASSWORD });
     spyOn(testUser, 'getIdToken').and.resolveTo('bad token');

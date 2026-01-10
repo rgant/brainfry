@@ -61,6 +61,20 @@
                }
                toggleDarkMode(darkModeState);
           </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
                <div class="d-flex">
@@ -81,6 +95,10 @@
                <!-- START CONTENT -->
                <div class="content interface">
                    <div class="content-data">
+
+
+
+
 
 
 
@@ -440,9 +458,9 @@ export class ActionsComponent {
         if (path) {
           // If this promise is not awaited then test cases fail :-(
           await this._router.navigateByUrl(path, { replaceUrl: true, state });
-        } else {
-          console.error(&#x60;Unknown mode &#x27;${state.mode}&#x27;&#x60;);
+          return;
         }
+        console.error(&#x60;Unknown mode &#x27;${state.mode}&#x27;&#x60;);
       } else {
         if (!state.mode) {
           console.error(&#x27;Missing ActionCodeSettings#mode&#x27;);

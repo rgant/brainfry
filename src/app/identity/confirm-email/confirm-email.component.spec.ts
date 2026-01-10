@@ -48,6 +48,12 @@ describe('ConfirmEmailComponent', (): void => {
     await signOut(auth);
   });
 
+  /**
+   * This test calls the real `sendEmailVerification` method because Jasmine and ES Modules do not
+   * support mocking imported functions. So this test will generate a network error in the console
+   * like:
+   * POST http://localhost:9099/identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=... 400 (Bad Request)
+   */
   it('should handle send verification email error', async (): Promise<void> => {
     const { user } = await signInWithEmailAndPassword(auth, UNVERIFIED_TEST_USER.email, UNVERIFIED_TEST_USER.password);
     spyOn(user, 'getIdToken').and.resolveTo('bad token');

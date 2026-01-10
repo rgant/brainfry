@@ -113,6 +113,12 @@ describe('ChangeEmailComponent', (): void => {
     expect(oobCode).withContext('oobCode for password reset email').toBeTruthy();
   });
 
+  /**
+   * This test calls the real `reauthenticateWithCredential` method because Jasmine and ES Modules
+   * do not support mocking imported functions. So this test will generate a network error in the
+   * console like:
+   * POST http://localhost:9099/identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=... 400 (Bad Request)
+   */
   it('should handle reauthenticate errors', async (): Promise<void> => {
     const newEmail = generateRandomEmail('new'); // Generate a new email address each time for multiple test runs.
     component.changeEmailForm.setValue({ email1: newEmail, email2: newEmail, password: 'c17E5bbf9%cf' });
@@ -131,6 +137,12 @@ describe('ChangeEmailComponent', (): void => {
     expect(component.$errorCode()).withContext('$errorCode').toBe('auth/wrong-password');
   });
 
+  /**
+   * This test calls the real `verifyBeforeUpdateEmail` method because Jasmine and ES Modules do not
+   * support mocking imported functions. So this test will generate a network error in the console
+   * like:
+   * POST http://localhost:9099/identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=... 400 (Bad Request)
+   */
   it('should handle update email errors', async (): Promise<void> => {
     const newEmail = DEFAULT_TEST_USER.email;
     component.changeEmailForm.setValue({ email1: newEmail, email2: newEmail, password: TEST_USER_PASSWORD });

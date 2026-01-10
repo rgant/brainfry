@@ -11,9 +11,10 @@ import pluginPromise from 'eslint-plugin-promise';
 import tsdoc from 'eslint-plugin-tsdoc';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
-import tseslint, { configs as tseslintConfigs } from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
+import { configs as tseslintConfigs } from 'typescript-eslint';
 
-export default tseslint.config(
+export default defineConfig(
   {
     files: [ '**/*.ts' ],
     ignores: [ 'cypress/**/*.ts' ],
@@ -385,6 +386,15 @@ export default tseslint.config(
           format: [ 'camelCase' ],
         },
         {
+          selector: 'objectLiteralProperty',
+          // Allow Angular host metadata properties that are enclosed in brackets or parentheses
+          filter: {
+            match: true,
+            regex: '^(\\[[^\\]]+\\]|\\([^\\)]+\\))$',
+          },
+          format: null,
+        },
+        {
           selector: 'variable',
           format: [ 'camelCase', 'UPPER_CASE' ],
         },
@@ -684,24 +694,24 @@ export default tseslint.config(
           groups: [
             [
               'builtin',
+              'type-builtin',
               'external',
-              'type',
+              'type-external',
             ],
             [
               'internal',
-              'internal-type',
+              'type-internal',
             ],
             [
               'parent',
-              'parent-type',
+              'type-parent',
               'sibling',
-              'sibling-type',
+              'type-sibling',
             ],
             [
               'index',
-              'index-type',
+              'type-index',
             ],
-            'object',
             'unknown',
           ],
         },

@@ -79,5 +79,6 @@ legend {
 .button-radio {
   pointer-events: none;
   position: absolute;
-  clip: rect(0, 0, 0, 0);
+  // stylelint-disable-next-line plugin/no-unsupported-browser-features -- Think this is a false positive since it is baseline https://caniuse.com/wf-clip-path
+  clip-path: inset(50%);
 }

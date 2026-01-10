@@ -61,6 +61,20 @@
                }
                toggleDarkMode(darkModeState);
           </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
                <div class="d-flex">
@@ -81,6 +95,10 @@
                <!-- START CONTENT -->
                <div class="content coverage">
                    <div class="content-data">
+
+
+
+
 
 
 
@@ -121,7 +139,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/AppComponent.html">src/app/app.component.ts</a>
+                        <a href="./components/AppComponent.html">src/app/app.component.ts</a>
             </td>
             <td>component</td>
             <td>AppComponent</td>
@@ -145,7 +163,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./injectables/AppTitleStrategyService.html">src/app/core/app-title-strategy.service.ts</a>
+                        <a href="./injectables/AppTitleStrategyService.html">src/app/core/app-title-strategy.service.ts</a>
             </td>
             <td>injectable</td>
             <td>AppTitleStrategyService</td>
@@ -241,7 +259,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/DashboardComponent.html">src/app/dashboard/dashboard.component.ts</a>
+                        <a href="./components/DashboardComponent.html">src/app/dashboard/dashboard.component.ts</a>
             </td>
             <td>component</td>
             <td>DashboardComponent</td>
@@ -250,22 +268,22 @@
                 <span class="coverage-count">(0/3)</span>
             </td>
         </tr>
-        <tr class="very-good">
+        <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/ActionsComponent.html">src/app/identity/actions/actions.component.ts</a>
+                        <a href="./components/ActionsComponent.html">src/app/identity/actions/actions.component.ts</a>
             </td>
             <td>component</td>
             <td>ActionsComponent</td>
-            <td align="right" data-sort="76">
-                <span class="coverage-percent">76 %</span>
-                <span class="coverage-count">(10/13)</span>
+            <td align="right" data-sort="66">
+                <span class="coverage-percent">66 %</span>
+                <span class="coverage-count">(6/9)</span>
             </td>
         </tr>
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/ActionCodeState.html">src/app/identity/actions/actions.component.ts</a>
+                        <a href="./interfaces/ActionCodeState.html">src/app/identity/actions/actions.component.ts</a>
             </td>
             <td>interface</td>
             <td>ActionCodeState</td>
@@ -301,19 +319,19 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/AuthErrorMessagesComponent.html">src/app/identity/auth-error-messages/auth-error-messages.component.ts</a>
+                        <a href="./components/AuthErrorMessagesComponent.html">src/app/identity/auth-error-messages/auth-error-messages.component.ts</a>
             </td>
             <td>component</td>
             <td>AuthErrorMessagesComponent</td>
             <td align="right" data-sort="100">
                 <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(3/3)</span>
+                <span class="coverage-count">(2/2)</span>
             </td>
         </tr>
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/ChangeEmailComponent.html">src/app/identity/change-email/change-email.component.ts</a>
+                        <a href="./components/ChangeEmailComponent.html">src/app/identity/change-email/change-email.component.ts</a>
             </td>
             <td>component</td>
             <td>ChangeEmailComponent</td>
@@ -337,7 +355,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/ChangePasswordComponent.html">src/app/identity/change-password/change-password.component.ts</a>
+                        <a href="./components/ChangePasswordComponent.html">src/app/identity/change-password/change-password.component.ts</a>
             </td>
             <td>component</td>
             <td>ChangePasswordComponent</td>
@@ -361,7 +379,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/ConfirmEmailComponent.html">src/app/identity/confirm-email/confirm-email.component.ts</a>
+                        <a href="./components/ConfirmEmailComponent.html">src/app/identity/confirm-email/confirm-email.component.ts</a>
             </td>
             <td>component</td>
             <td>ConfirmEmailComponent</td>
@@ -385,7 +403,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/DeleteAccountComponent.html">src/app/identity/delete-account/delete-account.component.ts</a>
+                        <a href="./components/DeleteAccountComponent.html">src/app/identity/delete-account/delete-account.component.ts</a>
             </td>
             <td>component</td>
             <td>DeleteAccountComponent</td>
@@ -433,7 +451,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/ForgotPasswordComponent.html">src/app/identity/forgot-password/forgot-password.component.ts</a>
+                        <a href="./components/ForgotPasswordComponent.html">src/app/identity/forgot-password/forgot-password.component.ts</a>
             </td>
             <td>component</td>
             <td>ForgotPasswordComponent</td>
@@ -457,7 +475,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/ControlStruct.html">src/app/identity/identity-forms.ts</a>
+                        <a href="./interfaces/ControlStruct.html">src/app/identity/identity-forms.ts</a>
             </td>
             <td>interface</td>
             <td>ControlStruct</td>
@@ -505,7 +523,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/LoginComponent.html">src/app/identity/login/login.component.ts</a>
+                        <a href="./components/LoginComponent.html">src/app/identity/login/login.component.ts</a>
             </td>
             <td>component</td>
             <td>LoginComponent</td>
@@ -529,7 +547,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/LogoutComponent.html">src/app/identity/logout/logout.component.ts</a>
+                        <a href="./components/LogoutComponent.html">src/app/identity/logout/logout.component.ts</a>
             </td>
             <td>component</td>
             <td>LogoutComponent</td>
@@ -541,7 +559,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/RecoverEmailComponent.html">src/app/identity/recover-email/recover-email.component.ts</a>
+                        <a href="./components/RecoverEmailComponent.html">src/app/identity/recover-email/recover-email.component.ts</a>
             </td>
             <td>component</td>
             <td>RecoverEmailComponent</td>
@@ -553,7 +571,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./injectables/RecoverEmailService.html">src/app/identity/recover-email/recover-email.service.ts</a>
+                        <a href="./injectables/RecoverEmailService.html">src/app/identity/recover-email/recover-email.service.ts</a>
             </td>
             <td>injectable</td>
             <td>RecoverEmailService</td>
@@ -565,7 +583,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/ApplyResult.html">src/app/identity/recover-email/recover-email.service.ts</a>
+                        <a href="./interfaces/ApplyResult.html">src/app/identity/recover-email/recover-email.service.ts</a>
             </td>
             <td>interface</td>
             <td>ApplyResult</td>
@@ -577,7 +595,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/RecoverEmailResults.html">src/app/identity/recover-email/recover-email.service.ts</a>
+                        <a href="./interfaces/RecoverEmailResults.html">src/app/identity/recover-email/recover-email.service.ts</a>
             </td>
             <td>interface</td>
             <td>RecoverEmailResults</td>
@@ -601,7 +619,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/ResetPasswordComponent.html">src/app/identity/reset-password/reset-password.component.ts</a>
+                        <a href="./components/ResetPasswordComponent.html">src/app/identity/reset-password/reset-password.component.ts</a>
             </td>
             <td>component</td>
             <td>ResetPasswordComponent</td>
@@ -625,7 +643,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./injectables/ResetPasswordService.html">src/app/identity/reset-password/reset-password.service.ts</a>
+                        <a href="./injectables/ResetPasswordService.html">src/app/identity/reset-password/reset-password.service.ts</a>
             </td>
             <td>injectable</td>
             <td>ResetPasswordService</td>
@@ -637,7 +655,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/PasswordResetSuccess.html">src/app/identity/reset-password/reset-password.service.ts</a>
+                        <a href="./interfaces/PasswordResetSuccess.html">src/app/identity/reset-password/reset-password.service.ts</a>
             </td>
             <td>interface</td>
             <td>PasswordResetSuccess</td>
@@ -649,7 +667,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/ShowForm.html">src/app/identity/reset-password/reset-password.service.ts</a>
+                        <a href="./interfaces/ShowForm.html">src/app/identity/reset-password/reset-password.service.ts</a>
             </td>
             <td>interface</td>
             <td>ShowForm</td>
@@ -661,7 +679,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/VerifiedFailed.html">src/app/identity/reset-password/reset-password.service.ts</a>
+                        <a href="./interfaces/VerifiedFailed.html">src/app/identity/reset-password/reset-password.service.ts</a>
             </td>
             <td>interface</td>
             <td>VerifiedFailed</td>
@@ -709,7 +727,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/PhotoManagerComponent.html">src/app/identity/user-photos/photo-manager/photo-manager.component.ts</a>
+                        <a href="./components/PhotoManagerComponent.html">src/app/identity/user-photos/photo-manager/photo-manager.component.ts</a>
             </td>
             <td>component</td>
             <td>PhotoManagerComponent</td>
@@ -721,13 +739,13 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/PhotoUploadComponent.html">src/app/identity/user-photos/photo-upload/photo-upload.component.ts</a>
+                        <a href="./components/PhotoUploadComponent.html">src/app/identity/user-photos/photo-upload/photo-upload.component.ts</a>
             </td>
             <td>component</td>
             <td>PhotoUploadComponent</td>
-            <td align="right" data-sort="75">
-                <span class="coverage-percent">75 %</span>
-                <span class="coverage-count">(9/12)</span>
+            <td align="right" data-sort="70">
+                <span class="coverage-percent">70 %</span>
+                <span class="coverage-count">(7/10)</span>
             </td>
         </tr>
         <tr class="very-good">
@@ -745,7 +763,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./injectables/UserPhotosService.html">src/app/identity/user-photos/user-photos.service.ts</a>
+                        <a href="./injectables/UserPhotosService.html">src/app/identity/user-photos/user-photos.service.ts</a>
             </td>
             <td>injectable</td>
             <td>UserPhotosService</td>
@@ -757,7 +775,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/Photo.html">src/app/identity/user-photos/user-photos.service.ts</a>
+                        <a href="./interfaces/Photo.html">src/app/identity/user-photos/user-photos.service.ts</a>
             </td>
             <td>interface</td>
             <td>Photo</td>
@@ -769,7 +787,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/Progress.html">src/app/identity/user-photos/user-photos.service.ts</a>
+                        <a href="./interfaces/Progress.html">src/app/identity/user-photos/user-photos.service.ts</a>
             </td>
             <td>interface</td>
             <td>Progress</td>
@@ -829,7 +847,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/UserProfileComponent.html">src/app/identity/user-profile/user-profile.component.ts</a>
+                        <a href="./components/UserProfileComponent.html">src/app/identity/user-profile/user-profile.component.ts</a>
             </td>
             <td>component</td>
             <td>UserProfileComponent</td>
@@ -841,7 +859,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/ViewModel.html">src/app/identity/user-profile/user-profile.component.ts</a>
+                        <a href="./interfaces/ViewModel.html">src/app/identity/user-profile/user-profile.component.ts</a>
             </td>
             <td>interface</td>
             <td>ViewModel</td>
@@ -937,7 +955,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/VerifyEmailComponent.html">src/app/identity/verify-email/verify-email.component.ts</a>
+                        <a href="./components/VerifyEmailComponent.html">src/app/identity/verify-email/verify-email.component.ts</a>
             </td>
             <td>component</td>
             <td>VerifyEmailComponent</td>
@@ -949,7 +967,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./injectables/VerifyEmailService.html">src/app/identity/verify-email/verify-email.service.ts</a>
+                        <a href="./injectables/VerifyEmailService.html">src/app/identity/verify-email/verify-email.service.ts</a>
             </td>
             <td>injectable</td>
             <td>VerifyEmailService</td>
@@ -961,7 +979,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/VerifyEmailResult.html">src/app/identity/verify-email/verify-email.service.ts</a>
+                        <a href="./interfaces/VerifyEmailResult.html">src/app/identity/verify-email/verify-email.service.ts</a>
             </td>
             <td>interface</td>
             <td>VerifyEmailResult</td>
@@ -973,7 +991,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/CentralLayoutComponent.html">src/app/layouts/central/central.component.ts</a>
+                        <a href="./components/CentralLayoutComponent.html">src/app/layouts/central/central.component.ts</a>
             </td>
             <td>component</td>
             <td>CentralLayoutComponent</td>
@@ -985,7 +1003,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/FooterComponent.html">src/app/layouts/footer/footer.component.ts</a>
+                        <a href="./components/FooterComponent.html">src/app/layouts/footer/footer.component.ts</a>
             </td>
             <td>component</td>
             <td>FooterComponent</td>
@@ -997,19 +1015,19 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/HeaderComponent.html">src/app/layouts/header/header.component.ts</a>
+                        <a href="./components/HeaderComponent.html">src/app/layouts/header/header.component.ts</a>
             </td>
             <td>component</td>
             <td>HeaderComponent</td>
             <td align="right" data-sort="100">
                 <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(7/7)</span>
+                <span class="coverage-count">(6/6)</span>
             </td>
         </tr>
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/SidebarComponent.html">src/app/layouts/sidebar/sidebar.component.ts</a>
+                        <a href="./components/SidebarComponent.html">src/app/layouts/sidebar/sidebar.component.ts</a>
             </td>
             <td>component</td>
             <td>SidebarComponent</td>
@@ -1021,7 +1039,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/StandardLayoutComponent.html">src/app/layouts/standard/standard.component.ts</a>
+                        <a href="./components/StandardLayoutComponent.html">src/app/layouts/standard/standard.component.ts</a>
             </td>
             <td>component</td>
             <td>StandardLayoutComponent</td>
@@ -1033,7 +1051,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/PrivacyPolicyComponent.html">src/app/legal/privacy-policy/privacy-policy.component.ts</a>
+                        <a href="./components/PrivacyPolicyComponent.html">src/app/legal/privacy-policy/privacy-policy.component.ts</a>
             </td>
             <td>component</td>
             <td>PrivacyPolicyComponent</td>
@@ -1045,7 +1063,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/TermsAndConditionsComponent.html">src/app/legal/terms-and-conditions/terms-and-conditions.component.ts</a>
+                        <a href="./components/TermsAndConditionsComponent.html">src/app/legal/terms-and-conditions/terms-and-conditions.component.ts</a>
             </td>
             <td>component</td>
             <td>TermsAndConditionsComponent</td>
@@ -1057,7 +1075,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/PageNotFoundComponent.html">src/app/page-not-found/page-not-found.component.ts</a>
+                        <a href="./components/PageNotFoundComponent.html">src/app/page-not-found/page-not-found.component.ts</a>
             </td>
             <td>component</td>
             <td>PageNotFoundComponent</td>
@@ -1081,7 +1099,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/QuizModel.html">src/app/quizzes/converter.ts</a>
+                        <a href="./interfaces/QuizModel.html">src/app/quizzes/converter.ts</a>
             </td>
             <td>interface</td>
             <td>QuizModel</td>
@@ -1117,7 +1135,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/QuizEditorComponent.html">src/app/quizzes/editor/editor.component.ts</a>
+                        <a href="./components/QuizEditorComponent.html">src/app/quizzes/editor/editor.component.ts</a>
             </td>
             <td>component</td>
             <td>QuizEditorComponent</td>
@@ -1129,7 +1147,7 @@
         <tr class="medium">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/QuizListComponent.html">src/app/quizzes/list/list.component.ts</a>
+                        <a href="./components/QuizListComponent.html">src/app/quizzes/list/list.component.ts</a>
             </td>
             <td>component</td>
             <td>QuizListComponent</td>
@@ -1141,7 +1159,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/ViewModel.html">src/app/quizzes/list/list.component.ts</a>
+                        <a href="./interfaces/ViewModel.html">src/app/quizzes/list/list.component.ts</a>
             </td>
             <td>interface</td>
             <td>ViewModel</td>
@@ -1153,7 +1171,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/QuizPresenterComponent.html">src/app/quizzes/presenter/presenter.component.ts</a>
+                        <a href="./components/QuizPresenterComponent.html">src/app/quizzes/presenter/presenter.component.ts</a>
             </td>
             <td>component</td>
             <td>QuizPresenterComponent</td>
@@ -1165,7 +1183,7 @@
         <tr class="good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./injectables/QuizService.html">src/app/quizzes/quiz.service.ts</a>
+                        <a href="./injectables/QuizService.html">src/app/quizzes/quiz.service.ts</a>
             </td>
             <td>injectable</td>
             <td>QuizService</td>
@@ -1177,7 +1195,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/Quiz.html">src/app/quizzes/quiz.service.ts</a>
+                        <a href="./interfaces/Quiz.html">src/app/quizzes/quiz.service.ts</a>
             </td>
             <td>interface</td>
             <td>Quiz</td>
@@ -1189,7 +1207,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/QuizPayload.html">src/app/quizzes/quiz.service.ts</a>
+                        <a href="./interfaces/QuizPayload.html">src/app/quizzes/quiz.service.ts</a>
             </td>
             <td>interface</td>
             <td>QuizPayload</td>
@@ -1237,7 +1255,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/CombinedObs.html">src/app/shared/control-errors-signal.util.ts</a>
+                        <a href="./interfaces/CombinedObs.html">src/app/shared/control-errors-signal.util.ts</a>
             </td>
             <td>interface</td>
             <td>CombinedObs</td>
@@ -1261,7 +1279,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interfaces/ControlProperties.html">src/app/shared/control-invalid-signal.util.ts</a>
+                        <a href="./interfaces/ControlProperties.html">src/app/shared/control-invalid-signal.util.ts</a>
             </td>
             <td>interface</td>
             <td>ControlProperties</td>
@@ -1297,7 +1315,7 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/SpinnerComponent.html">src/app/shared/spinner/spinner.component.ts</a>
+                        <a href="./components/SpinnerComponent.html">src/app/shared/spinner/spinner.component.ts</a>
             </td>
             <td>component</td>
             <td>SpinnerComponent</td>

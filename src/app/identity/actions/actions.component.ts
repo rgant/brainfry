@@ -95,9 +95,9 @@ export class ActionsComponent {
         if (path) {
           // If this promise is not awaited then test cases fail :-(
           await this._router.navigateByUrl(path, { replaceUrl: true, state });
-        } else {
-          console.error(`Unknown mode '${state.mode}'`);
+          return;
         }
+        console.error(`Unknown mode '${state.mode}'`);
       } else {
         if (!state.mode) {
           console.error('Missing ActionCodeSettings#mode');

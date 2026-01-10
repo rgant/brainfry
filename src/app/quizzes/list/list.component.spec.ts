@@ -123,8 +123,13 @@ describe('QuizListComponent', (): void => {
       if (itemEl) {
         const lnkEl: HTMLAnchorElement = safeQuerySelector(itemEl, 'a');
 
+        // The Angular DatePipe adds a nbsp between the date and time which Intl.DateTimeFormat does not.
+        // Normalize the whitespace for less brittle testing.
+        const actualText = itemEl.textContent.replaceAll(/\s+/gu, ' ');
+        const expectedDateText = `(Updated ${dateFormatter.format(expectedQuiz.updatedAt)})`.replaceAll(/\s+/gu, ' ');
+
         expect(itemEl.textContent).toContain(expectedQuiz.title);
-        expect(itemEl.textContent).toContain(`(Updated ${dateFormatter.format(expectedQuiz.updatedAt)})`);
+        expect(actualText).toContain(expectedDateText);
 
         if (expectedQuiz.owner === DEFAULT_TEST_USER.userId) {
           const re = new RegExp(`/${expectedQuiz.id}/edit`, 'u');

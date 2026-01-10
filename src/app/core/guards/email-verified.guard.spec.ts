@@ -86,9 +86,10 @@ describe('emailVerifiedGuard', (): void => {
     it('should prevent navigation', async (): Promise<void> => {
       await harness.navigateByUrl('/verified-required');
       const { lastSuccessfulNavigation, url } = router;
+      const lastSuccessfulNavigationResult = lastSuccessfulNavigation();
 
       expect(url).toBe('/');
-      expect(lastSuccessfulNavigation).toBeNull();
+      expect(lastSuccessfulNavigationResult).toBeNull();
     });
   });
 });

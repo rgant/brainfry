@@ -53,6 +53,12 @@ describe('ResetPasswordService', (): void => {
     });
   });
 
+  /**
+   * This test calls the real `verifyPasswordResetCode` method because Jasmine and ES Modules do not
+   * support mocking imported functions. So this test will generate a network error in the console
+   * like:
+   * POST http://localhost:9099/identitytoolkit.googleapis.com/v1/accounts:resetPassword?key=... 400 (Bad Request)
+   */
   it('should handle invalid code', (done: DoneFn): void => {
     service.resetPassword$('badcode').pipe(first()).subscribe({
       complete: done,
@@ -104,6 +110,12 @@ describe('ResetPasswordService', (): void => {
     setTimeout((): void => { service.replacePassword('8RfVf)=`+z/a{cs'); }, delayReplacePassword);
   });
 
+  /**
+   * This test calls the real `verifyPasswordResetCode` method because Jasmine and ES Modules do not
+   * support mocking imported functions. So this test will generate a network error in the console
+   * like:
+   * POST http://localhost:9099/identitytoolkit.googleapis.com/v1/accounts:resetPassword?key=... 400 (Bad Request)
+   */
   it('should handle confirmPasswordReset error', (done: DoneFn): void => {
     service.resetPassword$(testOobCode)
       .pipe(
@@ -125,6 +137,12 @@ describe('ResetPasswordService', (): void => {
     setTimeout((): void => { service.replacePassword('shOI'); }, delayReplacePassword);
   });
 
+  /**
+   * This test calls the real `verifyPasswordResetCode` method because Jasmine and ES Modules do not
+   * support mocking imported functions. So this test will generate a network error in the console
+   * like:
+   * POST http://localhost:9099/identitytoolkit.googleapis.com/v1/accounts:resetPassword?key=... 400 (Bad Request)
+   */
   it('should recover from confirmPasswordReset error', (done: DoneFn): void => {
     service.resetPassword$(testOobCode)
       .pipe(

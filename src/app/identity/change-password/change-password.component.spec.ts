@@ -125,6 +125,12 @@ describe('ChangePasswordComponent', (): void => {
     expect(afterPasswordUpdatedAt).withContext('user.passwordUpdatedAt').toBeGreaterThan(beforePasswordUpdatedAt);
   });
 
+  /**
+   * This test calls the real `reauthenticateWithCredential` method because Jasmine and ES Modules
+   * do not support mocking imported functions. So this test will generate a network error in the
+   * console like:
+   * POST http://localhost:9099/identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=... 400 (Bad Request)
+   */
   it('should handle reauthenticate errors', async (): Promise<void> => {
     const newPassword = '51df0a3b5F@b';
     component.changePasswordForm.setValue({ currentPw: 'f73e403e-49AF4e11', password1: newPassword, password2: newPassword });
@@ -143,6 +149,11 @@ describe('ChangePasswordComponent', (): void => {
     expect(component.$errorCode()).withContext('$errorCode').toBe('auth/wrong-password');
   });
 
+  /**
+   * This test calls the real `updatePassword` method because Jasmine and ES Modules do not support
+   * mocking imported functions. So this test will generate a network error in the console like:
+   * POST http://localhost:9099/identitytoolkit.googleapis.com/v1/accounts:update?key=... 400 (Bad Request)
+   */
   it('should handle update password errors', async (): Promise<void> => {
     const newPassword = 'abd2'; // Must be less than the default password policy becaues the emulator doesn't use our policy.
     component.changePasswordForm.setValue({ currentPw: TEST_USER_PASSWORD, password1: newPassword, password2: newPassword });

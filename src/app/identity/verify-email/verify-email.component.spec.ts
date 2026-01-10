@@ -13,7 +13,7 @@ import type { VerifyEmailResult } from './verify-email.service';
 
 describe('VerifyEmailComponent', (): void => {
   let fixture: ComponentFixture<VerifyEmailComponent>;
-  let getCurrentNavigationSpy: jasmine.Spy;
+  let currentNavigationSpy: jasmine.Spy;
   let verifyEmailSpy: jasmine.Spy;
   let router: Router;
   let resolveVerifyEmail: PromiseResolver<VerifyEmailResult>;
@@ -32,7 +32,7 @@ describe('VerifyEmailComponent', (): void => {
     throw new TypeError('Expected RouterLink element to be an HTMLAnchorElement');
   };
   const setupFixture = (oobCode: string, continueUrl?: string): void => {
-    getCurrentNavigationSpy.and.returnValue(createMockNavigation({ continueUrl, oobCode }));
+    currentNavigationSpy.and.returnValue(createMockNavigation({ continueUrl, oobCode }));
     fixture = TestBed.createComponent(VerifyEmailComponent);
     fixture.detectChanges();
   };
@@ -61,8 +61,8 @@ describe('VerifyEmailComponent', (): void => {
       .compileComponents();
 
     router = TestBed.inject(Router);
-    getCurrentNavigationSpy = spyOn(router, 'getCurrentNavigation');
-    // Cannot call createComponent until the getCurrentNavigationSpy return is setup for each test.
+    currentNavigationSpy = spyOn(router, 'currentNavigation');
+    // Cannot call createComponent until the currentNavigationSpy return is setup for each test.
   });
 
   it('should verify email', async (): Promise<void> => {

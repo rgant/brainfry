@@ -50,6 +50,12 @@ describe('ForgotPasswordComponent', (): void => {
     expect(oobCode).withContext('oobCode for password reset email').toBeTruthy();
   });
 
+  /**
+   * This test calls the real `sendPasswordResetEmail` method because Jasmine and ES Modules do not
+   * support mocking imported functions. So this test will generate a network error in the console
+   * like:
+   * POST http://localhost:9099/identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=... 400 (Bad Request)
+   */
   it('should handle send email errors', async (): Promise<void> => {
     component.forgotForm.setValue({ email: '58de@4e2a.8181' });
 

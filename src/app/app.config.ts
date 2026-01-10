@@ -1,5 +1,5 @@
 /* eslint-disable import-x/max-dependencies -- config files tend to have a lot of dependencies */
-import { isDevMode, provideZoneChangeDetection } from '@angular/core';
+import { isDevMode, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import type { ApplicationConfig } from '@angular/core';
 // import {
 //   getAnalytics,
@@ -39,6 +39,7 @@ import { provideOurFirebaseApp } from './core/firebase-app.provider';
  */
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideOurFirebaseApp(),
     provideAuth((): Auth => getAuth()),

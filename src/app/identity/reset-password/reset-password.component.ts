@@ -90,7 +90,7 @@ export class ResetPasswordComponent {
 
     this.$formPasswordsInvalid = confirmMatchFormErrors(this.resetPasswordForm, this.password1Cntrl, this.password2Cntrl);
 
-    const { oobCode } = getState(this._router.getCurrentNavigation());
+    const { oobCode } = getState(this._router.currentNavigation());
     this.vm$ = this._service.resetPassword$(oobCode);
   }
 

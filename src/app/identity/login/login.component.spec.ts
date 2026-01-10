@@ -53,6 +53,12 @@ describe('LoginComponent', (): void => {
     await signOut(auth);
   });
 
+  /**
+   * This test calls the real `signInWithEmailAndPassword` method because Jasmine and ES Modules do
+   * not support mocking imported functions. So this test will generate a network error in the
+   * console like:
+   * POST http://localhost:9099/identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=... 400 (Bad Request)
+   */
   it('should handle authentication errors', async (): Promise<void> => {
     const auth = TestBed.inject(Auth);
 

@@ -43,12 +43,15 @@ describe('ActionsComponent', (): void => {
     };
 
     await harness.navigateByUrl('/actions?mode=recoverEmail&oobCode=ABC123');
+    await harness.fixture.whenStable();
+
     const { lastSuccessfulNavigation, url } = router;
+    const lastSuccessfulNavigationResult = lastSuccessfulNavigation();
 
     expect(consoleSpy).not.toHaveBeenCalled();
     expect(url).toBe('/recover-email');
-    expect(lastSuccessfulNavigation?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
-    expect(lastSuccessfulNavigation?.extras.state).withContext('Route State').toEqual(expectedState);
+    expect(lastSuccessfulNavigationResult?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
+    expect(lastSuccessfulNavigationResult?.extras.state).withContext('Route State').toEqual(expectedState);
   });
 
   it('should handle resetPassword action', async (): Promise<void> => {
@@ -60,12 +63,15 @@ describe('ActionsComponent', (): void => {
     };
 
     await harness.navigateByUrl('/actions?mode=resetPassword&oobCode=ABC123');
+    await harness.fixture.whenStable();
+
     const { lastSuccessfulNavigation, url } = router;
+    const lastSuccessfulNavigationResult = lastSuccessfulNavigation();
 
     expect(consoleSpy).not.toHaveBeenCalled();
     expect(url).toBe('/reset-password');
-    expect(lastSuccessfulNavigation?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
-    expect(lastSuccessfulNavigation?.extras.state).withContext('Route State').toEqual(expectedState);
+    expect(lastSuccessfulNavigationResult?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
+    expect(lastSuccessfulNavigationResult?.extras.state).withContext('Route State').toEqual(expectedState);
   });
 
   it('should handle verifyEmail action', async (): Promise<void> => {
@@ -77,12 +83,15 @@ describe('ActionsComponent', (): void => {
     };
 
     await harness.navigateByUrl('/actions?mode=verifyEmail&oobCode=ABC123');
+    await harness.fixture.whenStable();
+
     const { lastSuccessfulNavigation, url } = router;
+    const lastSuccessfulNavigationResult = lastSuccessfulNavigation();
 
     expect(consoleSpy).not.toHaveBeenCalled();
     expect(url).toBe('/verify-email');
-    expect(lastSuccessfulNavigation?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
-    expect(lastSuccessfulNavigation?.extras.state).withContext('Route State').toEqual(expectedState);
+    expect(lastSuccessfulNavigationResult?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
+    expect(lastSuccessfulNavigationResult?.extras.state).withContext('Route State').toEqual(expectedState);
   });
 
   it('should add continueUrl to state', async (): Promise<void> => {
@@ -95,12 +104,15 @@ describe('ActionsComponent', (): void => {
 
     const continueUrl = 'https%3A%2F%2Fexample.com%2Flogin%3Fnext%3D%2Fdashboard%26tab%3Dquizzes%232025-04-14';
     await harness.navigateByUrl(`/actions?mode=verifyEmail&oobCode=ABC123&continueUrl=${continueUrl}`);
+    await harness.fixture.whenStable();
+
     const { lastSuccessfulNavigation, url } = router;
+    const lastSuccessfulNavigationResult = lastSuccessfulNavigation();
 
     expect(consoleSpy).not.toHaveBeenCalled();
     expect(url).toBe('/verify-email');
-    expect(lastSuccessfulNavigation?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
-    expect(lastSuccessfulNavigation?.extras.state).withContext('Route State').toEqual(expectedState);
+    expect(lastSuccessfulNavigationResult?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
+    expect(lastSuccessfulNavigationResult?.extras.state).withContext('Route State').toEqual(expectedState);
   });
 
   it('should add lang to state', async (): Promise<void> => {
@@ -112,38 +124,50 @@ describe('ActionsComponent', (): void => {
     };
 
     await harness.navigateByUrl('/actions?mode=verifyEmail&oobCode=ABC123&lang=fr');
+    await harness.fixture.whenStable();
+
     const { lastSuccessfulNavigation, url } = router;
+    const lastSuccessfulNavigationResult = lastSuccessfulNavigation();
 
     expect(consoleSpy).not.toHaveBeenCalled();
     expect(url).toBe('/verify-email');
-    expect(lastSuccessfulNavigation?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
-    expect(lastSuccessfulNavigation?.extras.state).withContext('Route State').toEqual(expectedState);
+    expect(lastSuccessfulNavigationResult?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
+    expect(lastSuccessfulNavigationResult?.extras.state).withContext('Route State').toEqual(expectedState);
   });
 
   it('should handle missing mode parameter', async (): Promise<void> => {
     await harness.navigateByUrl('/actions?oobCode=ABC123');
+    await harness.fixture.whenStable();
+
     const { lastSuccessfulNavigation, url } = router;
+    const lastSuccessfulNavigationResult = lastSuccessfulNavigation();
 
     expect(consoleSpy).toHaveBeenCalledOnceWith('Missing ActionCodeSettings#mode');
     expect(url).toBe('/');
-    expect(lastSuccessfulNavigation?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
+    expect(lastSuccessfulNavigationResult?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
   });
 
   it('should handle missing oobCode parameter', async (): Promise<void> => {
     await harness.navigateByUrl('/actions?mode=resetPassword');
+    await harness.fixture.whenStable();
+
     const { lastSuccessfulNavigation, url } = router;
+    const lastSuccessfulNavigationResult = lastSuccessfulNavigation();
 
     expect(consoleSpy).toHaveBeenCalledOnceWith('Missing ActionCodeSettings#oobCode');
     expect(url).toBe('/');
-    expect(lastSuccessfulNavigation?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
+    expect(lastSuccessfulNavigationResult?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
   });
 
   it('should handle unknown mode parameter', async (): Promise<void> => {
     await harness.navigateByUrl('/actions?mode=unknownCode&oobCode=ABC123');
+    await harness.fixture.whenStable();
+
     const { lastSuccessfulNavigation, url } = router;
+    const lastSuccessfulNavigationResult = lastSuccessfulNavigation();
 
     expect(consoleSpy).toHaveBeenCalledOnceWith("Unknown mode 'unknownCode'");
     expect(url).toBe('/');
-    expect(lastSuccessfulNavigation?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
+    expect(lastSuccessfulNavigationResult?.extras.replaceUrl).withContext('replaceUrl').toBeTrue();
   });
 });

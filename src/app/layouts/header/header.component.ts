@@ -1,10 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostListener,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import type { WritableSignal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
@@ -20,6 +15,9 @@ import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(click)': 'onClick($event)',
+  },
 })
 export class HeaderComponent {
   /** Toggles the collapsible User Account menu. */
@@ -32,7 +30,6 @@ export class HeaderComponent {
   /**
    * Close the menu if the user clicks on a link.
    */
-  @HostListener('click', [ '$event' ])
   public onClick(event: Event): void {
     const { target } = event;
 

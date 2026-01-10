@@ -36,12 +36,12 @@ type FieldSetup = typeof passwordFields[number];
 describe('ResetPasswordComponent', (): void => {
   let component: ResetPasswordComponent;
   let fixture: ComponentFixture<ResetPasswordComponent>;
-  let getCurrentNavigationSpy: jasmine.Spy;
+  let currentNavigationSpy: jasmine.Spy;
   let mockService: jasmine.SpyObj<ResetPasswordService>;
   let router: Router;
 
   const setupComponent = (oobCode: string, verifyPayload?: ResetPasswordResults): void => {
-    getCurrentNavigationSpy.and.returnValue(createMockNavigation({ oobCode }));
+    currentNavigationSpy.and.returnValue(createMockNavigation({ oobCode }));
     fixture = TestBed.createComponent(ResetPasswordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -102,8 +102,8 @@ describe('ResetPasswordComponent', (): void => {
       .compileComponents();
 
     router = TestBed.inject(Router);
-    getCurrentNavigationSpy = spyOn(router, 'getCurrentNavigation');
-    // Cannot call createComponent until the getCurrentNavigationSpy return is setup for each test.
+    currentNavigationSpy = spyOn(router, 'currentNavigation');
+    // Cannot call createComponent until the currentNavigationSpy return is setup for each test.
   });
 
   it('should have password constraints', (): void => {

@@ -61,6 +61,20 @@
                }
                toggleDarkMode(darkModeState);
           </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
                <div class="d-flex">
@@ -81,6 +95,10 @@
                <!-- START CONTENT -->
                <div class="content miscellaneous-variables">
                    <div class="content-data">
+
+
+
+
 
 
 
@@ -237,6 +255,7 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
   providers: [
+    provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideOurFirebaseApp(),
     provideAuth((): Auth &#x3D;&gt; getAuth()),
@@ -348,6 +367,12 @@ Can be used for both CanActivate and CanActivateChild guards.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
                         <i>Default value : </i><code>(continueUrl: string | undefined): string | undefined &#x3D;&gt; {
   if (continueUrl) {
     const url &#x3D; new URL(continueUrl);
@@ -410,6 +435,12 @@ Can be used for both CanActivate and CanActivateChild guards.</p>
                     </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(password1: string, password2: string): ValidatorFn &#x3D;&gt;
@@ -499,6 +530,12 @@ Can be used for both CanActivate and CanActivateChild guards.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
                         <i>Default value : </i><code>(form: FormGroup, control1: FormControl, control2: FormControl): Signal&lt;boolean&gt; &#x3D;&gt; {
   const initialValue: boolean &#x3D; form.invalid &amp;&amp; control1.valid &amp;&amp; control2.valid &amp;&amp; form.errors?.[ERROR_NAME] !&#x3D; undefined;
 
@@ -542,6 +579,12 @@ Can be used for both CanActivate and CanActivateChild guards.</p>
                     </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(control: AbstractControl): Signal&lt;ValidationErrors | undefined&gt; &#x3D;&gt; {
@@ -610,6 +653,12 @@ also modified (dirty).</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
                         <i>Default value : </i><code>(control: AbstractControl): Signal&lt;boolean&gt; &#x3D;&gt; {
   const defaultProperties: ControlProperties &#x3D; {
     dirty: control.dirty,
@@ -675,6 +724,12 @@ with.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
                         <i>Default value : </i><code>(properties: ControlProperties): boolean &#x3D;&gt; {
   let invalid &#x3D; true;
 
@@ -712,6 +767,12 @@ with.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
                         <i>Default value : </i><code>(): ControlStruct&lt;FormControl&gt; &#x3D;&gt; {
   // eslint-disable-next-line unicorn/no-null -- DOM forms use null
   const control &#x3D; new FormControl&lt;string | null&gt;(null, [ Validators.required, Validators.email ]);
@@ -740,6 +801,12 @@ with.</p>
                     </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(isNewPassword: boolean &#x3D; false): ControlStruct&lt;FormControl&gt; &#x3D;&gt; {
@@ -782,6 +849,12 @@ with.</p>
                     </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>&lt;T extends AbstractControl&gt;(control: T): ControlStruct&lt;T&gt; &#x3D;&gt; {
@@ -876,6 +949,12 @@ Can be used for both CanActivate and CanActivateChild guards.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
                         <i>Default value : </i><code>{
   /** Input event delay for form fields to prevent an event on every keystroke. Milliseconds */
   inputDebounce: 1000,
@@ -903,6 +982,12 @@ Can be used for both CanActivate and CanActivateChild guards.</p>
                     </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
@@ -946,6 +1031,12 @@ Can be used for both CanActivate and CanActivateChild guards.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
                         <i>Default value : </i><code>(err: unknown): string &#x3D;&gt; {
   if (err instanceof FirebaseError) {
     return err.code;
@@ -984,6 +1075,12 @@ for FirebaseError and extracting the code, or the message from plain Errors.</p>
                     </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(control: AbstractControl&lt;unknown&gt;): string | null &#x3D;&gt; {
@@ -1026,6 +1123,12 @@ for FirebaseError and extracting the code, or the message from plain Errors.</p>
                     </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(maybeNavigation: Navigation | null): Partial&lt;ActionCodeState&gt; &#x3D;&gt;
@@ -1244,6 +1347,12 @@ Can be used for both CanActivate and CanActivateChild guards.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
                         <i>Default value : </i><code>(): AsyncValidatorFn &#x3D;&gt; {
   const auth: Auth &#x3D; inject(Auth);
 
@@ -1338,6 +1447,12 @@ other Validators already check for that. However it is nice to know how to do th
                     </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(): EnvironmentProviders &#x3D;&gt;
@@ -1445,6 +1560,12 @@ disable.</p>
                     </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(date: FieldValue | WithFieldValue&lt;Date&gt;): FieldValue | WithFieldValue&lt;Timestamp&gt; &#x3D;&gt; {
@@ -1560,6 +1681,12 @@ that unlikely case that the date is neither a FieldValue nor a Date.</p>
                     </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>new InjectionToken&lt;MaybeUser$&gt;(

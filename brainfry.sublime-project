@@ -12,6 +12,7 @@
 			"folder_exclude_patterns":
 			[
 				".angular",
+				".firebase",
 				".terraform",
 				".vscode",
 				"coverage",
